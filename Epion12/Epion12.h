@@ -1,0 +1,12 @@
+#pragma once
+#include <windows.h>
+#include <wrl.h>
+#include<tchar.h>
+#include <d3d12.h>
+#include <d3dcompiler.h>
+#include <dxgi1_6.h>
+
+#include "Resource.h"
+
+#include "All.h"
+#include "Math/EpionMath.h"

@@ -13,5 +13,105 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ImGui_Docking">
+      <UniqueIdentifier>{2ffba99c-6c68-4526-a907-2ff495750d8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Math">
+      <UniqueIdentifier>{5cbd5b55-9827-4c7f-bb28-478e56fd4d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math">
+      <UniqueIdentifier>{b0bfb273-8c4d-495f-9a4c-4a1c5d292391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\DX12">
+      <UniqueIdentifier>{fd3c6139-78d4-487c-8c28-50475697bab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\DX12">
+      <UniqueIdentifier>{58be812b-56c3-44dd-abaa-698d5bec067e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Epion12\Epion12.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\WinApp.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imconfig.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imgui.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imgui_impl_dx12.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imgui_impl_win32.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imgui_internal.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imstb_rectpack.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imstb_textedit.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui_Docking\imstb_truetype.h">
+      <Filter>ImGui_Docking</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Math\EpionMath.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Math\EpionMatrix.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Math\EpionRandom.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Math\EpionVector2.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Math\EpionVector3.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Math\EpionVector4.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Resource.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\All.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Epion12\WinMain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\WinApp.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui_Docking\imgui.cpp">
+      <Filter>ImGui_Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui_Docking\imgui_demo.cpp">
+      <Filter>ImGui_Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui_Docking\imgui_draw.cpp">
+      <Filter>ImGui_Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui_Docking\imgui_impl_dx12.cpp">
+      <Filter>ImGui_Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui_Docking\imgui_impl_win32.cpp">
+      <Filter>ImGui_Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui_Docking\imgui_widgets.cpp">
+      <Filter>ImGui_Docking</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Math\EpionRandom.cpp">
+      <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
