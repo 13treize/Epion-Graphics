@@ -28,7 +28,7 @@ namespace epion
 		RECT wrc = { 0,0,width,height };//ウィンドウサイズを決める
 		AdjustWindowRect(&wrc, WS_OVERLAPPEDWINDOW, false);//ウィンドウのサイズはちょっと面倒なので関数を使って補正する
 
-		m_hInst = hInstance; // グローバル変数にインスタンス ハンドルを格納する
+		m_hInst = hInstance;
 
 		m_hwnd = CreateWindow(
 			L"DX12 Epion",
