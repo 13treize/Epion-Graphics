@@ -1,5 +1,6 @@
 #pragma once
 #include	"DX12/PipeLine.h"
+#include	"GUI/WindowSetting.h"
 
 /**
  * @file MainSystem .h
@@ -21,7 +22,7 @@ namespace epion
 
 	private:
 		static	DX12::PipeLine m_pipeline;
-		//static	GUI::SettingWindow setting_window;
+		static	GUI::SettingWindow setting_window;
 		static	std::array<float, 4> m_back_color;
 	};
 }

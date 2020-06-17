@@ -15,16 +15,16 @@ namespace epion::GUI
 		(void)io;
 		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
 		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
-		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+		//io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+		//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
 		ImGui::StyleColorsDark();
 
-		ImGuiStyle& style = ImGui::GetStyle();
-		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-		{
-			style.WindowRounding = 0.0f;
-			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
-		}
+		//ImGuiStyle& style = ImGui::GetStyle();
+		//if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		//{
+		//	style.WindowRounding = 0.0f;
+		//	style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+		//}
 		ImGui_ImplWin32_Init(hwnd);
 		ImGui_ImplDX12_Init(device.Get(),//DirectX12デバイス
 			2,//frames_in_flightと説明にはあるがflightの意味が掴めず(後述)
@@ -55,11 +55,11 @@ namespace epion::GUI
 
 	void ImGuiManager::UpdatePlatformWindow(com_ptr<ID3D12GraphicsCommandList>& cmd_list)
 	{
-		ImGuiIO& io = ImGui::GetIO();
-		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-		{
-			ImGui::UpdatePlatformWindows();
-			ImGui::RenderPlatformWindowsDefault(nullptr, reinterpret_cast<void*>(cmd_list.Get()));
-		}
+		//ImGuiIO& io = ImGui::GetIO();
+		//if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		//{
+		//	ImGui::UpdatePlatformWindows();
+		//	ImGui::RenderPlatformWindowsDefault(nullptr, reinterpret_cast<void*>(cmd_list.Get()));
+		//}
 	}
 }
