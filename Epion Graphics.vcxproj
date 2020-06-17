@@ -145,7 +145,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\All.h" />
+    <ClInclude Include="Epion12\Common.h" />
+    <ClInclude Include="Epion12\DX12\CommandList.h" />
+    <ClInclude Include="Epion12\DX12\CommandQueue.h" />
+    <ClInclude Include="Epion12\DX12\Device.h" />
+    <ClInclude Include="Epion12\DX12\Factory.h" />
+    <ClInclude Include="Epion12\DX12\PipeLine.h" />
+    <ClInclude Include="Epion12\DX12\RenderTarget.h" />
+    <ClInclude Include="Epion12\DX12\SwapChain.h" />
+    <ClInclude Include="Epion12\DX12\ViewPort.h" />
     <ClInclude Include="Epion12\Epion12.h" />
+    <ClInclude Include="Epion12\GUI\EpionGUI.h" />
+    <ClInclude Include="Epion12\GUI\ImGuiManager.h" />
     <ClInclude Include="Epion12\MainSystem.h" />
     <ClInclude Include="Epion12\Math\EpionMath.h" />
     <ClInclude Include="Epion12\Math\EpionMatrix.h" />
@@ -165,6 +176,15 @@
     <ClInclude Include="ImGui_Docking\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Epion12\DX12\CommandList.cpp" />
+    <ClCompile Include="Epion12\DX12\CommandQueue.cpp" />
+    <ClCompile Include="Epion12\DX12\Device.cpp" />
+    <ClCompile Include="Epion12\DX12\Factory.cpp" />
+    <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
+    <ClCompile Include="Epion12\DX12\RenderTarget.cpp" />
+    <ClCompile Include="Epion12\DX12\SwapChain.cpp" />
+    <ClCompile Include="Epion12\DX12\ViewPort.cpp" />
+    <ClCompile Include="Epion12\GUI\ImGuiManager.cpp" />
     <ClCompile Include="Epion12\MainSystem.cpp" />
     <ClCompile Include="Epion12\Math\EpionRandom.cpp" />
     <ClCompile Include="Epion12\WinApp.cpp" />

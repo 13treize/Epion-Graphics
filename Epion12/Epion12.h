@@ -9,4 +9,6 @@
 #include "Resource.h"
 
 #include "All.h"
+#include "Common.h"
 #include "Math/EpionMath.h"
+#include "GUI/EpionGUI.h"

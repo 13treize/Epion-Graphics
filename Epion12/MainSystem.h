@@ -1,4 +1,6 @@
 #pragma once
+#include	"DX12/PipeLine.h"
+
 /**
  * @file MainSystem .h
  * @brief MainSystemƒNƒ‰ƒX
@@ -12,13 +14,13 @@ namespace epion
 	class MainSystem final
 	{
 	public:
-		static bool	Initialize(HWND hwnd);
+		static bool	Initialize(HWND hwnd, const Math::Vector2<int>& screen_size);
 		static bool	Finalize();
 		static void	Update();
 		static void	Render();
 
 	private:
-		//static	DX12::DX12Pipeline2 dx2;
+		static	DX12::PipeLine m_pipeline;
 		//static	GUI::SettingWindow setting_window;
 		static	std::array<float, 4> m_back_color;
 	};

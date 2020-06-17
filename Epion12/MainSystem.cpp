@@ -1,4 +1,11 @@
 #include	"Epion12.h"
+#include	"DX12/ViewPort.h"
+#include	"DX12/Device.h"
+#include	"DX12/CommandList.h"
+//#include	"DX12/PipeLine.h"
+
+#include	"GUI/ImGuiManager.h"
+
 #include	"MainSystem.h"
 
 namespace
@@ -9,10 +16,17 @@ namespace
 
 namespace epion
 {
+	DX12::PipeLine MainSystem::m_pipeline;
 	std::array<float, 4> MainSystem::m_back_color;
 
-	bool MainSystem::Initialize(HWND hwnd)
+	bool MainSystem::Initialize(HWND hwnd, const Math::Vector2<int>& screen_size)
 	{
+
+		DX12::ViewPort::Initialize();
+		DX12::ViewPort::SetScreenSize(screen_size);
+		m_pipeline.Initialize(hwnd);
+		GUI::ImGuiManager::Init(hwnd, DX12::Device::Get(), m_pipeline.GetHeapImGui());
+		m_back_color = { 1.0f,0.0f,0.0f,1.0f };
 		return true;
 	}
 	bool MainSystem::Finalize()
@@ -22,23 +36,22 @@ namespace epion
 	void MainSystem::Update()
 	{
 		////SceneManager::ChangeScene();
-		//GUI::ImGuiManager::Begin();
+		GUI::ImGuiManager::Begin();
 		////SceneManager::Update();
 		//setting_window.Update(m_back_color);
-		////GUI::NodeEditor::Update();
-		//dx2.SetBackColor(m_back_color);
-		//dx2.Update();
+		//GUI::NodeEditor::Update();
+		m_pipeline.SetBackColor(m_back_color);
+		m_pipeline.Update();
 	}
 
 	void MainSystem::Render()
 	{
-		//dx2.Render();
-		//DX12::DX12ScreenData::RSSets(DX12::DX12CommandList::GetPtr());
+		m_pipeline.Render();
+		DX12::ViewPort::RSSets(DX12::CommandList::GetPtr());
 		////SceneManager::Render();
-		//GUI::ImGuiManager::End(DX12::DX12CommandList::GetPtr(), dx2.GetHeapImGui());
-		//GUI::ImGuiManager::UpdatePlatformWindow(DX12::DX12CommandList::GetPtr());
-		//dx2.EndUpdate();
-		//dx2.End();
+		GUI::ImGuiManager::End(DX12::CommandList::GetPtr(), m_pipeline.GetHeapImGui());
+		GUI::ImGuiManager::UpdatePlatformWindow(DX12::CommandList::GetPtr());
+		m_pipeline.EndUpdate();
+		m_pipeline.End();
 	}
-
 }

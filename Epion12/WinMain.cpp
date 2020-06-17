@@ -1,6 +1,6 @@
 #include "Epion12.h"
 #include "WinApp.h"
-//#include "MainSystem.h"
+#include "MainSystem.h"
 //#include "DX12/DX12ScreenData.h"
 
 namespace
@@ -22,7 +22,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
 	epion::WinApp::CallRegisterClass(hInstance);
 	//RECT wrc = { 0,0,	SCREEN_WIDTH,SCREEN_HEIGHT };//ウィンドウサイズを決める
 	//AdjustWindowRect(&wrc, WS_OVERLAPPEDWINDOW, false);//ウィンドウのサイズはちょっと面倒なので関数を使って補正する
-	//epion::DX12::DX12ScreenData::SetScreenSize(SCREEN_SIZE);
 	if (!epion::WinApp::InitInstance(hInstance, nCmdShow, SCREEN_WIDTH, SCREEN_HEIGHT))
 	{
 		return 0;
@@ -32,7 +31,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
 
 	epion::WinApp::UpdateWindowCall(nCmdShow);
 
-	//epion::MainSystem::Initialize(epion::WinApp::GetHwnd());
+	epion::MainSystem::Initialize(epion::WinApp::GetHwnd(), SCREEN_SIZE);
 
 
 	MSG msg = {};
@@ -44,10 +43,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		//epion::MainSystem::Update();
-		//epion::MainSystem::Render();
+		epion::MainSystem::Update();
+		epion::MainSystem::Render();
 	}
-	//epion::MainSystem::Finalize();
+	epion::MainSystem::Finalize();
 
 	epion::WinApp::UnRegisterCall();
 
