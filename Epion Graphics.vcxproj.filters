@@ -58,6 +58,9 @@
     <Filter Include="リソース ファイル\HLSL\PS">
       <UniqueIdentifier>{0792d2d8-accb-4f20-a918-535276e3d6da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\HLSL\Function">
+      <UniqueIdentifier>{01698109-1ba6-421e-bc61-2cd40bb955ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -320,5 +323,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Epion12\HLSL\Function\Noise.hlsli">
+      <Filter>リソース ファイル\HLSL\Function</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Epion12\HLSL\PS\PixelShader.hlsl">
+      <Filter>リソース ファイル\HLSL\PS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\VS\VertexShader.hlsl">
+      <Filter>リソース ファイル\HLSL\VS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\PS\PixelShaderConst.hlsl">
+      <Filter>リソース ファイル\HLSL\PS</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

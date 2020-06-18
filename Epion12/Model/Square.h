@@ -17,6 +17,7 @@ namespace epion::Model
 
 		bool Finalize();
 		void Update(const Math::FVector2& d_xy, const Math::FVector2& d_wh);
+		void A();
 		void Render();
 	private:
 		com_ptr<ID3D12RootSignature> m_root_signature;

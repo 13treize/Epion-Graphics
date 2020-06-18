@@ -98,8 +98,20 @@ namespace epion::Model
 		DX12::Device::Get()->CreateRootSignature(0, root_sig_blob->GetBufferPointer(), root_sig_blob->GetBufferSize(), IID_PPV_ARGS(&m_root_signature));
 
 		m_root_signature = nullptr;
+		D3D12_DESCRIPTOR_RANGE descTblRange[1] = {};//テクスチャと定数の２つ
+		descTblRange[0].NumDescriptors = 1;//定数ひとつ
+		descTblRange[0].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;//種別は定数
+		descTblRange[0].BaseShaderRegister = 0;//0番スロットから
+		descTblRange[0].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
+
+		D3D12_ROOT_PARAMETER rootparam = {};
+		rootparam.ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+		rootparam.DescriptorTable.pDescriptorRanges = &descTblRange[0];//デスクリプタレンジのアドレス
+		rootparam.DescriptorTable.NumDescriptorRanges = 1;//デスクリプタレンジ数
+		rootparam.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;//全てのシェーダから見える
 
 		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
+		rootSignatureDesc.pParameters = &rootparam;//ルートパラメータの先頭アドレス
 		rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
 
 		ID3DBlob* rootSigBlob = nullptr;

@@ -183,14 +183,23 @@ namespace epion::Model
 		}
 		m_is_update = false;
 	}
-	void Square::Render()
+	void Square::A()
 	{
 		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
 		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
-
 		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
 		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
+		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
+
+	}
+
+
+	void Square::Render()
+	{
+		//DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
+		//DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
+
 		DX12::CommandList::GetPtr()->DrawIndexedInstanced(6, 1, 0, 0, 0);
 	}
 }
