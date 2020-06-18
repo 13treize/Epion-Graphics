@@ -169,6 +169,8 @@
     <ClInclude Include="Epion12\Math\EpionVector2.h" />
     <ClInclude Include="Epion12\Math\EpionVector3.h" />
     <ClInclude Include="Epion12\Math\EpionVector4.h" />
+    <ClInclude Include="Epion12\Model\Model.h" />
+    <ClInclude Include="Epion12\Model\Plane.h" />
     <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Resource.h" />
     <ClInclude Include="Epion12\Scene\Scene2D.h" />
@@ -249,6 +251,8 @@
     <ClCompile Include="Epion12\GUI\WindowSetting.cpp" />
     <ClCompile Include="Epion12\MainSystem.cpp" />
     <ClCompile Include="Epion12\Math\EpionRandom.cpp" />
+    <ClCompile Include="Epion12\Model\Model.cpp" />
+    <ClCompile Include="Epion12\Model\Plane.cpp" />
     <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Scene\Scene2D.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDefault.cpp" />

@@ -1,5 +1,5 @@
 #include "../Epion12.h"
-#include "Square.h"
+#include "Plane.h"
 #include "../DX12/ViewPort.h"
 #include "../DX12/Device.h"
 #include "../DX12/CommandList.h"
@@ -10,24 +10,27 @@ namespace
 
 namespace epion::Model
 {
-	Square::Square()
-		:Model()
+	Plane::Plane()
 	{
+		m_is_update = true;
+		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
+		m_vertex = std::make_unique<DX12::VertexBuffer>();
+		m_index = std::make_unique<DX12::IndexBuffer>();
 		m_pipeline_state = nullptr;
 		m_root_signature = nullptr;
 		m_pipeline_desc = {};
 	}
 
-	Square::~Square()
+	Plane::~Plane()
 	{
 	}
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob,	com_ptr<ID3DBlob>& ps_blob)
+	bool Plane::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, const D3D12_RASTERIZER_DESC& r_desc)
 	{
 		HRESULT hr = S_OK;
 
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(SquareVertex), sizeof(SquareVertex) * 4);
+		m_vertex->Initialize(sizeof(PlaneVertex), sizeof(PlaneVertex) * 4);
 
 		unsigned short indices[] = { 0,1,2, 2,1,3 };
 
@@ -68,22 +71,8 @@ namespace epion::Model
 
 		m_pipeline_desc.BlendState.RenderTarget[0] = renderTargetBlendDesc;
 
-		D3D12_RASTERIZER_DESC solid_desc;
 
-		solid_desc.FillMode = D3D12_FILL_MODE_SOLID;
-		solid_desc.CullMode = D3D12_CULL_MODE_NONE;
-		solid_desc.FrontCounterClockwise = false;
-		solid_desc.DepthBias = D3D12_DEFAULT_DEPTH_BIAS;
-		solid_desc.DepthBiasClamp = D3D12_DEFAULT_DEPTH_BIAS_CLAMP;
-		solid_desc.SlopeScaledDepthBias = D3D12_DEFAULT_SLOPE_SCALED_DEPTH_BIAS;
-		solid_desc.DepthClipEnable = true;
-		solid_desc.MultisampleEnable = false;
-		solid_desc.AntialiasedLineEnable = false;
-		solid_desc.ForcedSampleCount = 0;
-		solid_desc.ConservativeRaster = D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF;
-
-
-		m_pipeline_desc.RasterizerState = solid_desc;
+		m_pipeline_desc.RasterizerState = r_desc;
 
 		m_pipeline_desc.DepthStencilState.DepthEnable = false;
 		m_pipeline_desc.DepthStencilState.StencilEnable = false;
@@ -137,11 +126,11 @@ namespace epion::Model
 
 		return true;
 	}
-	bool Square::Finalize()
+	bool Plane::Finalize()
 	{
 		return true;
 	}
-	void Square::Update(const Math::FVector2& d_xy, const Math::FVector2& d_wh)
+	void Plane::Update(const Math::FVector2& d_xy, const Math::FVector2& d_wh)
 	{
 		if (m_is_update)
 		{
@@ -160,7 +149,7 @@ namespace epion::Model
 				d_xy.y + d_wh.y,	//left-bottom
 				d_xy.y + d_wh.y,	//right-bottom
 			};
-			std::array<SquareVertex, 4> vertices;
+			std::array<PlaneVertex, 4> vertices;
 
 			arr_x = 2.0f * arr_x / static_cast<float>(DX12::ViewPort::GetScreenSize().x) - 1.0f;
 			arr_y = 1.0f - 2.0f * arr_y / static_cast<float>(DX12::ViewPort::GetScreenSize().y);
@@ -176,14 +165,14 @@ namespace epion::Model
 			vertices[1].uv = { 0.0f,0.0f };
 			vertices[2].uv = { 1.0f,1.0f };
 			vertices[3].uv = { 1.0f,0.0f };
-			SquareVertex* vertMap = nullptr;
+			PlaneVertex* vertMap = nullptr;
 			m_vertex->GetBuffer()->Map(0, nullptr, (void**)&vertMap);
 			std::copy(vertices.begin(), vertices.end(), vertMap);
 			m_vertex->GetBuffer()->Unmap(0, nullptr);
 		}
 		m_is_update = false;
 	}
-	void Square::Render()
+	void Plane::Render()
 	{
 		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
 		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
