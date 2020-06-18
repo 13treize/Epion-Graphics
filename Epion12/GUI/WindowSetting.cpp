@@ -15,6 +15,7 @@ namespace epion::GUI
 	{
 		m_bar_title = "SettingWindow";
 		m_window_flags = 0;
+		m_select_scene = 0;
 		return true;
 	}
 	bool SettingWindow::Finalize()

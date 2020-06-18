@@ -166,6 +166,7 @@ namespace	epion::DX12
 				slot += semantic_name[i] - '0';
 			}
 		}
+
 		return slot;
 	}
 }

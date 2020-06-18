@@ -1,7 +1,6 @@
 #include "Epion12.h"
 #include "WinApp.h"
 #include "MainSystem.h"
-//#include "DX12/DX12ScreenData.h"
 
 namespace
 {

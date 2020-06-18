@@ -56,7 +56,7 @@ namespace epion
 		DX12::ViewPort::RSSets(DX12::CommandList::GetPtr());
 		SceneManager::Render();
 		GUI::ImGuiManager::End(DX12::CommandList::GetPtr(), m_pipeline.GetHeapImGui());
-		GUI::ImGuiManager::UpdatePlatformWindow(DX12::CommandList::GetPtr());
+	//	GUI::ImGuiManager::UpdatePlatformWindow(DX12::CommandList::GetPtr());
 		m_pipeline.EndUpdate();
 		m_pipeline.End();
 	}

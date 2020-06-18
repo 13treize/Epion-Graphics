@@ -146,12 +146,14 @@
   <ItemGroup>
     <ClInclude Include="Epion12\All.h" />
     <ClInclude Include="Epion12\Common.h" />
+    <ClInclude Include="Epion12\DX12\Buffer.h" />
     <ClInclude Include="Epion12\DX12\CommandList.h" />
     <ClInclude Include="Epion12\DX12\CommandQueue.h" />
     <ClInclude Include="Epion12\DX12\Device.h" />
     <ClInclude Include="Epion12\DX12\Factory.h" />
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
     <ClInclude Include="Epion12\DX12\RenderTarget.h" />
+    <ClInclude Include="Epion12\DX12\ShaderManager.h" />
     <ClInclude Include="Epion12\DX12\SwapChain.h" />
     <ClInclude Include="Epion12\DX12\ViewPort.h" />
     <ClInclude Include="Epion12\Epion12.h" />
@@ -167,6 +169,7 @@
     <ClInclude Include="Epion12\Math\EpionVector2.h" />
     <ClInclude Include="Epion12\Math\EpionVector3.h" />
     <ClInclude Include="Epion12\Math\EpionVector4.h" />
+    <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Resource.h" />
     <ClInclude Include="Epion12\Scene\Scene2D.h" />
     <ClInclude Include="Epion12\Scene\SceneDefault.h" />
@@ -230,12 +233,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Epion12\DX12\Buffer.cpp" />
     <ClCompile Include="Epion12\DX12\CommandList.cpp" />
     <ClCompile Include="Epion12\DX12\CommandQueue.cpp" />
     <ClCompile Include="Epion12\DX12\Device.cpp" />
     <ClCompile Include="Epion12\DX12\Factory.cpp" />
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
     <ClCompile Include="Epion12\DX12\RenderTarget.cpp" />
+    <ClCompile Include="Epion12\DX12\ShaderManager.cpp" />
     <ClCompile Include="Epion12\DX12\SwapChain.cpp" />
     <ClCompile Include="Epion12\DX12\ViewPort.cpp" />
     <ClCompile Include="Epion12\GUI\ImGuiBase.cpp" />
@@ -244,6 +249,7 @@
     <ClCompile Include="Epion12\GUI\WindowSetting.cpp" />
     <ClCompile Include="Epion12\MainSystem.cpp" />
     <ClCompile Include="Epion12\Math\EpionRandom.cpp" />
+    <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Scene\Scene2D.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDefault.cpp" />
     <ClCompile Include="Epion12\Scene\SceneManager.cpp" />
@@ -292,7 +298,19 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets" Condition="Exists('packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets')" />
+    <Import Project="packages\cereal.1.0.0\build\native\cereal.targets" Condition="Exists('packages\cereal.1.0.0\build\native\cereal.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets'))" />
+    <Error Condition="!Exists('packages\cereal.1.0.0\build\native\cereal.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cereal.1.0.0\build\native\cereal.targets'))" />
+  </Target>
 </Project>

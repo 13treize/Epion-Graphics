@@ -1,4 +1,5 @@
 #pragma once
+#include	"../Model/Square.h"
 
 namespace	epion
 {
@@ -12,9 +13,6 @@ namespace	epion
 		void	RenderTex()		override;
 
 	private:
-		com_ptr<ID3DBlob> vs_blob;
-		com_ptr<ID3DBlob> ps_blob;
-		//std::unique_ptr<Model::Square> m_square;
-		//std::unique_ptr<Model::Square> m_square2;
+		std::unique_ptr<Model::Square> m_square;
 	};
 }
