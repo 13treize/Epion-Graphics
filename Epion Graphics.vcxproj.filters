@@ -55,6 +55,9 @@
     <Filter Include="リソース ファイル\HLSL\VS">
       <UniqueIdentifier>{b5177feb-1dbf-4123-b593-512682c30930}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\HLSL\PS">
+      <UniqueIdentifier>{0792d2d8-accb-4f20-a918-535276e3d6da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">

@@ -5,9 +5,6 @@
 
 namespace
 {
-	epion::com_ptr<ID3DBlob> vs_blob;
-	epion::com_ptr<ID3DBlob> ps_blob;
-
 }
 namespace epion
 {
@@ -15,9 +12,9 @@ namespace epion
 	{
 		vs_blob = nullptr;
 		ps_blob = nullptr;
-		bool a=DX12::ShaderManager::Compile(L"VertexShader.hlsl", vs_blob, DX12::ShaderType::VERTEX);
-		DX12::ShaderManager::Compile(L"HLSL\\PS\\PixelShader.hlsl", ps_blob, DX12::ShaderType::PIXEL);
-
+		bool a;
+		DX12::ShaderManager::Compile(L"Epion12\\HLSL\\VS\\VertexShader.hlsl", vs_blob, DX12::ShaderType::VERTEX);
+		DX12::ShaderManager::Compile(L"Epion12\\HLSL\\PS\\PixelShader.hlsl", ps_blob, DX12::ShaderType::PIXEL);
 		m_square = std::make_unique<Model::Square>();
 		m_square->Initialize(vs_blob, ps_blob);
 
@@ -29,7 +26,7 @@ namespace epion
 	}
 	void Scene2D::Update()
 	{
-		m_square->Update(Math::FVector2(0, 0), Math::FVector2(200, 200));
+		m_square->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
 	}
 	void Scene2D::Render()
 	{

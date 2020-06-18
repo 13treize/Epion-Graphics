@@ -9,7 +9,7 @@ namespace
 namespace	epion
 {
 	std::unique_ptr<Scene>	SceneManager::m_scene = {};
-	std::unique_ptr<Scene>	SceneManager::m_next_scene = std::make_unique<Scene2D>();
+	std::unique_ptr<Scene>	SceneManager::m_next_scene = std::make_unique<SceneDefault>();
 
 	void	SceneManager::Update()
 	{

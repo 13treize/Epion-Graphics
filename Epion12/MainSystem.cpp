@@ -23,9 +23,8 @@ namespace epion
 
 	bool MainSystem::Initialize(HWND hwnd, const Math::Vector2<int>& screen_size)
 	{
-
-		DX12::ViewPort::Initialize();
 		DX12::ViewPort::SetScreenSize(screen_size);
+		DX12::ViewPort::Initialize();
 		m_pipeline.Initialize(hwnd);
 		GUI::ImGuiManager::Init(hwnd, DX12::Device::Get(), m_pipeline.GetHeapImGui());
 		//m_back_color = { 1.0f,0.0f,0.0f,1.0f };
@@ -56,7 +55,7 @@ namespace epion
 		DX12::ViewPort::RSSets(DX12::CommandList::GetPtr());
 		SceneManager::Render();
 		GUI::ImGuiManager::End(DX12::CommandList::GetPtr(), m_pipeline.GetHeapImGui());
-	//	GUI::ImGuiManager::UpdatePlatformWindow(DX12::CommandList::GetPtr());
+		GUI::ImGuiManager::UpdatePlatformWindow(DX12::CommandList::GetPtr());
 		m_pipeline.EndUpdate();
 		m_pipeline.End();
 	}
