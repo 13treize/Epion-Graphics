@@ -1,7 +1,7 @@
 #include "../Epion12.h"
 #include "ShaderManager.h"
 
-
+//VS > HS > DS > GS > PS
 namespace	epion::DX12
 {
 	bool ShaderCompile(const std::wstring& hlsl_name,
@@ -48,12 +48,21 @@ namespace	epion::DX12
 	{
 		switch (type)
 		{
-		case ShaderType::VERTEX:
+		case ShaderType::TYPE_VERTEX:
 			if (ShaderCompile(hlsl_name, "VS", "vs_5_0", shader_blob))	return true;
+		break;
+		case ShaderType::TYPE_HULL:
+			if (ShaderCompile(hlsl_name, "HS", "hs_5_0", shader_blob))	return true;
 			break;
-		case ShaderType::PIXEL:
+		case ShaderType::TYPE_DOMAIN:
+			if (ShaderCompile(hlsl_name, "DS", "ds_5_0", shader_blob))	return true;
+			break;
+		case ShaderType::TYPE_GEOMETRY:
+			if (ShaderCompile(hlsl_name, "GS", "gs_5_0", shader_blob))	return true;
+			break;
+		case ShaderType::TYPE_PIXEL:
 			if (ShaderCompile(hlsl_name, "PS", "ps_5_0", shader_blob))	return true;
-			break;
+		break;
 		default:
 			break;
 		}

@@ -61,6 +61,15 @@
     <Filter Include="リソース ファイル\HLSL\Function">
       <UniqueIdentifier>{01698109-1ba6-421e-bc61-2cd40bb955ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\HLSL\GS">
+      <UniqueIdentifier>{db2c7b2c-7f40-4656-a8c1-59543ca3ff7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\HLSL\HS">
+      <UniqueIdentifier>{9e5018f3-28cb-4e52-a452-3ccf6fcbb869}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\HLSL\DS">
+      <UniqueIdentifier>{ca35380d-88af-48d5-8e5d-6b9cd3d13326}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -210,6 +219,9 @@
     <ClInclude Include="Epion12\Model\Model.h">
       <Filter>ヘッダー ファイル\Model</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\DX12\RasterizerManager.h">
+      <Filter>ヘッダー ファイル\DX12</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -320,6 +332,9 @@
     <ClCompile Include="Epion12\Model\Model.cpp">
       <Filter>ソース ファイル\Model</Filter>
     </ClCompile>
+    <ClCompile Include="Epion12\DX12\RasterizerManager.cpp">
+      <Filter>ソース ファイル\DX12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -336,6 +351,15 @@
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\PS\PixelShaderConst.hlsl">
       <Filter>リソース ファイル\HLSL\PS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\DS\DomainShader.hlsl">
+      <Filter>リソース ファイル\HLSL\DS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\HS\HullShader.hlsl">
+      <Filter>リソース ファイル\HLSL\HS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\GS\GeometryShader.hlsl">
+      <Filter>リソース ファイル\HLSL\GS</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

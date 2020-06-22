@@ -22,8 +22,11 @@ namespace	epion::DX12
 
 	enum class ShaderType :unsigned char
 	{
-		VERTEX,
-		PIXEL,
+		TYPE_VERTEX,
+		TYPE_HULL,
+		TYPE_DOMAIN,
+		TYPE_GEOMETRY,
+		TYPE_PIXEL,
 	};
 
 	class	ShaderManager	final

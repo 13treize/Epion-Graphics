@@ -15,6 +15,10 @@ namespace	epion
 	private:
 		epion::com_ptr<ID3DBlob> vs_blob;
 		epion::com_ptr<ID3DBlob> ps_blob;
+		epion::com_ptr<ID3DBlob> hs_blob;
+		epion::com_ptr<ID3DBlob> ds_blob;
+		epion::com_ptr<ID3DBlob> gs_blob;
+
 		epion::com_ptr<ID3DBlob> ps_blob2;
 
 		std::unique_ptr<Model::Square> m_square;
