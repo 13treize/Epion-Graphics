@@ -6,6 +6,7 @@
 #include	"Scene2D.h"
 #include	"../DX12/ShaderManager.h"
 #include	"../DX12/RasterizerManager.h"
+#include	"../DX12/RootSignature.h"
 
 namespace
 {
@@ -44,10 +45,16 @@ namespace epion
 		//assert(aaaaa);
 		DX12::ShaderManager::Compile(L"Epion12\\HLSL\\PS\\PixelShaderConst.hlsl", ps_blob2, DX12::ShaderType::TYPE_PIXEL);
 
+		DX12::RootSignature root;
+		root.Initialize();
 		//m_square = std::make_unique<Model::Square>();
 		//m_square->Initialize(vs_blob, ps_blob, gs_blob, DX12::RasterizerManager::GetSolidDesc());
-		m_plane= std::make_unique<Model::Plane>();
-		m_plane->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc());
+	/*	m_plane= std::make_unique<Model::Plane>();
+		m_plane->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc());*/
+
+		m_square = std::make_unique<Model::Square>();
+		m_square->Initialize(vs_blob, ps_blob, gs_blob, DX12::RasterizerManager::GetSolidDesc(), root.Get());
+
 		return true;
 	}
 	bool Scene2D::Finalize()
@@ -56,14 +63,14 @@ namespace epion
 	}
 	void Scene2D::Update()
 	{
-		//m_square->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
-		m_plane->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
+		m_square->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
+		//m_plane->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
 
 	}
 	void Scene2D::Render()
 	{
-		//m_square->Render();
-		m_plane->Render();
+		m_square->Render();
+		//m_plane->Render();
 
 	}
 	void Scene2D::RenderTex()

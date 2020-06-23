@@ -14,14 +14,13 @@ namespace epion::Model
 		:Model()
 	{
 		m_pipeline_state = nullptr;
-		m_root_signature = nullptr;
 		m_pipeline_desc = {};
 	}
 
 	Square::~Square()
 	{
 	}
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
@@ -85,43 +84,12 @@ namespace epion::Model
 		m_pipeline_desc.SampleDesc.Count = 1;//サンプリングは1ピクセルにつき１
 		m_pipeline_desc.SampleDesc.Quality = 0;//クオリティは最低
 
-		D3D12_ROOT_SIGNATURE_DESC root_sig_desc = {};
-		root_sig_desc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+		m_pipeline_desc.pRootSignature = root_sig.Get();
+		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 
-		com_ptr<ID3DBlob> root_sig_blob;
-		D3D12SerializeRootSignature(&root_sig_desc, D3D_ROOT_SIGNATURE_VERSION_1_0, &root_sig_blob, &m_error_blob);
-
-		DX12::Device::Get()->CreateRootSignature(0, root_sig_blob->GetBufferPointer(), root_sig_blob->GetBufferSize(), IID_PPV_ARGS(&m_root_signature));
-
-		m_root_signature = nullptr;
-
-		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
-		rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
-
-		ID3DBlob* rootSigBlob = nullptr;
-		hr = D3D12SerializeRootSignature(&rootSignatureDesc, D3D_ROOT_SIGNATURE_VERSION_1_0, &rootSigBlob, &m_error_blob);
-		if (FAILED(hr))
-		{
-			return	false;
-		}
-
-		hr = DX12::Device::Get()->CreateRootSignature(0, rootSigBlob->GetBufferPointer(), rootSigBlob->GetBufferSize(), IID_PPV_ARGS(&m_root_signature));
-		//rootSigBlob->Release();
-		if (FAILED(hr))
-		{
-			return	false;
-		}
-
-		m_pipeline_desc.pRootSignature = m_root_signature.Get();
-		hr = DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
-
-		if (FAILED(hr))
-		{
-			return	false;
-		}
 		return true;
 	}
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
@@ -186,46 +154,13 @@ namespace epion::Model
 
 		m_pipeline_desc.SampleDesc.Count = 1;//サンプリングは1ピクセルにつき１
 		m_pipeline_desc.SampleDesc.Quality = 0;//クオリティは最低
-
-		D3D12_ROOT_SIGNATURE_DESC root_sig_desc = {};
-		root_sig_desc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
-
-		com_ptr<ID3DBlob> root_sig_blob;
-		D3D12SerializeRootSignature(&root_sig_desc, D3D_ROOT_SIGNATURE_VERSION_1_0, &root_sig_blob, &m_error_blob);
-
-		DX12::Device::Get()->CreateRootSignature(0, root_sig_blob->GetBufferPointer(), root_sig_blob->GetBufferSize(), IID_PPV_ARGS(&m_root_signature));
-
-		m_root_signature = nullptr;
-
-		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
-		rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
-
-		ID3DBlob* rootSigBlob = nullptr;
-		hr = D3D12SerializeRootSignature(&rootSignatureDesc, D3D_ROOT_SIGNATURE_VERSION_1_0, &rootSigBlob, &m_error_blob);
-		if (FAILED(hr))
-		{
-			return	false;
-		}
-
-		hr = DX12::Device::Get()->CreateRootSignature(0, rootSigBlob->GetBufferPointer(), rootSigBlob->GetBufferSize(), IID_PPV_ARGS(&m_root_signature));
-		//rootSigBlob->Release();
-		if (FAILED(hr))
-		{
-			return	false;
-		}
-
-		m_pipeline_desc.pRootSignature = m_root_signature.Get();
-		hr = DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
-
-		if (FAILED(hr))
-		{
-			return	false;
-		}
+		m_pipeline_desc.pRootSignature = root_sig.Get();
+		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 		return true;
 
 	}
 
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob,com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob,com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
@@ -248,7 +183,6 @@ namespace epion::Model
 
 
 		m_pipeline_desc = {};
-		m_pipeline_desc.pRootSignature = nullptr;
 		m_pipeline_desc.VS.pShaderBytecode = vs_blob->GetBufferPointer();
 		m_pipeline_desc.VS.BytecodeLength = vs_blob->GetBufferSize();
 		m_pipeline_desc.PS.pShaderBytecode = ps_blob->GetBufferPointer();
@@ -295,42 +229,10 @@ namespace epion::Model
 		m_pipeline_desc.SampleDesc.Count = 1;//サンプリングは1ピクセルにつき１
 		m_pipeline_desc.SampleDesc.Quality = 0;//クオリティは最低
 
-		D3D12_ROOT_SIGNATURE_DESC root_sig_desc = {};
-		root_sig_desc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+		m_pipeline_desc.pRootSignature = root_sig.Get();
+		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 
-		com_ptr<ID3DBlob> root_sig_blob;
-		D3D12SerializeRootSignature(&root_sig_desc, D3D_ROOT_SIGNATURE_VERSION_1_0, &root_sig_blob, &m_error_blob);
-
-		DX12::Device::Get()->CreateRootSignature(0, root_sig_blob->GetBufferPointer(), root_sig_blob->GetBufferSize(), IID_PPV_ARGS(&m_root_signature));
-
-		m_root_signature = nullptr;
-
-		D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
-		rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
-
-		ID3DBlob* rootSigBlob = nullptr;
-		hr = D3D12SerializeRootSignature(&rootSignatureDesc, D3D_ROOT_SIGNATURE_VERSION_1_0, &rootSigBlob, &m_error_blob);
-		if (FAILED(hr))
-		{
-			return	false;
-		}
-
-		hr = DX12::Device::Get()->CreateRootSignature(0, rootSigBlob->GetBufferPointer(), rootSigBlob->GetBufferSize(), IID_PPV_ARGS(&m_root_signature));
-		//rootSigBlob->Release();
-		if (FAILED(hr))
-		{
-			return	false;
-		}
-
-		m_pipeline_desc.pRootSignature = m_root_signature.Get();
-		hr = DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
-
-		if (FAILED(hr))
-		{
-			return	false;
-		}
 		return true;
-
 	}
 
 	bool Square::Finalize()
@@ -388,7 +290,7 @@ namespace epion::Model
 		//DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
 
 		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
-		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
+		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_pipeline_desc.pRootSignature);
 		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
 		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());

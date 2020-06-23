@@ -154,6 +154,7 @@
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
     <ClInclude Include="Epion12\DX12\RasterizerManager.h" />
     <ClInclude Include="Epion12\DX12\RenderTarget.h" />
+    <ClInclude Include="Epion12\DX12\RootSignature.h" />
     <ClInclude Include="Epion12\DX12\ShaderManager.h" />
     <ClInclude Include="Epion12\DX12\SwapChain.h" />
     <ClInclude Include="Epion12\DX12\ViewPort.h" />
@@ -244,6 +245,7 @@
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
     <ClCompile Include="Epion12\DX12\RasterizerManager.cpp" />
     <ClCompile Include="Epion12\DX12\RenderTarget.cpp" />
+    <ClCompile Include="Epion12\DX12\RootSignature.cpp" />
     <ClCompile Include="Epion12\DX12\ShaderManager.cpp" />
     <ClCompile Include="Epion12\DX12\SwapChain.cpp" />
     <ClCompile Include="Epion12\DX12\ViewPort.cpp" />
