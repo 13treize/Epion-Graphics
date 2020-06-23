@@ -35,7 +35,6 @@ namespace	epion::DX12
 		static bool Compile(const std::wstring& hlsl_name, com_ptr<ID3DBlob>& shader_blob, ShaderType type);
 	private:
 	};
-
 	class	ShaderReflection final
 	{
 	public:
@@ -47,7 +46,6 @@ namespace	epion::DX12
 
 		const DXGI_FORMAT GetDXGIFormat(const D3D_REGISTER_COMPONENT_TYPE type, const byte mask);
 		const unsigned int	GetVertexBufferSlot(const std::string& semantic_name);
-
 	};
 
 }

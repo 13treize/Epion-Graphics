@@ -7,10 +7,8 @@ namespace epion::DX12
 	public:
 		Buffer() {};
 		virtual	~Buffer() {};
-
 		virtual bool	Finalize() = 0;
 		virtual void	SetState() = 0;
-
 	private:
 	};
 
@@ -47,22 +45,23 @@ namespace epion::DX12
 		com_ptr<ID3D12Resource>	m_index_buffer;
 		D3D12_INDEX_BUFFER_VIEW m_index_buffer_view;
 	};
-	//class ConstantBuffer :public Buffer
-	//{
-	//public:
-	//	ConstantBuffer();
-	//	~ConstantBuffer();
-	//	bool Initialize(int size);
-	//	bool Finalize() override;
-	//	void SetState() override;
+	
+	class ConstantBuffer :public Buffer
+	{
+	public:
+		ConstantBuffer();
+		~ConstantBuffer();
+		bool Initialize(int size);
+		bool Finalize() override;
+		void SetState() override;
 
-	//	com_ptr<ID3D12Resource>& GetBuffer();
-	//	D3D12_CONSTANT_BUFFER_VIEW_DESC& GetView();
+		com_ptr<ID3D12Resource>& GetBuffer();
+		D3D12_CONSTANT_BUFFER_VIEW_DESC& GetView();
 
-	//private:
-	//	com_ptr<ID3D12Resource>	m_constant_buffer;
-	//	D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view;
-	//};
+	private:
+		com_ptr<ID3D12Resource>	m_constant_buffer;
+		D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view;
+	};
 
 }
 
