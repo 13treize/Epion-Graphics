@@ -6,28 +6,22 @@
 #include	"Scene2D.h"
 #include	"../DX12/ShaderManager.h"
 #include	"../DX12/RasterizerManager.h"
+#include	"../DX12/ConstantBufferManager.h"
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
 namespace
 {
-	struct TestCBuffer
-	{
-		float Time;
-		float A;
-		float B;
-		float C;
-	};
-	std::unique_ptr<epion::DX12::DescriptorHeap> cheap;
-	TestCBuffer *buffer_data;
-	TestCBuffer data2;
+	epion::DX12::RootSignature root;
+
 }
 namespace epion
 {
 	bool Scene2D::Initialize()
 	{
 		HRESULT hr;
-		cheap = std::make_unique<DX12::DescriptorHeap>();
-		cheap->Initialize(1, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+		DX12::ConstantBufferManager::Initialize();
+
 		D3D12_DESCRIPTOR_RANGE desc_range = {};//テクスチャと定数の２つ
 		desc_range.NumDescriptors = 1;//定数ひとつ
 		desc_range.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;//種別は定数
@@ -39,6 +33,9 @@ namespace epion
 		rootparam.DescriptorTable.pDescriptorRanges = &desc_range;//デスクリプタレンジのアドレス
 		rootparam.DescriptorTable.NumDescriptorRanges = 1;//デスクリプタレンジ数
 		rootparam.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;//全てのシェーダから見える
+
+
+		root.Initialize(rootparam);
 
 
 		DX12::RasterizerManager::Initialize();
@@ -53,8 +50,6 @@ namespace epion
 		//aaaaa=DX12::ShaderManager::Compile(L"Epion12\\HLSL\\DS\\DomainShader.hlsl", ds_blob, DX12::ShaderType::TYPE_DOMAIN);
 		//assert(aaaaa);
 
-		DX12::RootSignature root;
-		root.Initialize(rootparam);
 
 
 		//m_square = std::make_unique<Model::Square>();
@@ -65,15 +60,6 @@ namespace epion
 		m_square = std::make_unique<Model::Square>();
 		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), root.Get());
 
-		m_cbuffer = std::make_unique<DX12::ConstantBuffer>();
-		m_cbuffer->Initialize(256);
-		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer->GetView(), cheap->m_heap->GetCPUDescriptorHandleForHeapStart());
-
-		m_cbuffer->GetBuffer()->Map(0, nullptr, (void**)&buffer_data);
-
-		data2 = { 1.0f,0.0f,0.0f,0.0f };
-
-		memcpy(buffer_data, &data2, sizeof(data2));
 		return true;
 	}	
 
@@ -83,24 +69,17 @@ namespace epion
 	}
 	void Scene2D::Update()
 	{
-		data2 = { 1.0f,0.0f,1.0f,0.0f };
-		memcpy(buffer_data, &data2, sizeof(data2));
 
 		m_square->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
+		DX12::ConstantBufferManager::UpdateCBuffer0();
 		//m_plane->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
 
 	}
 
 	void Scene2D::Render()
 	{
-		m_square->A();
-
-		ID3D12DescriptorHeap* ppHeaps[] = { cheap->m_heap.Get() };
-
-		DX12::CommandList::GetPtr()->SetDescriptorHeaps(1, ppHeaps);
-		//DX12::CommandList::GetPtr()->SetDescriptorHeaps(1, &cheap->m_heap);
-		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(0, cheap->m_heap->GetGPUDescriptorHandleForHeapStart());
-
+		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(root.Get().Get());
+		DX12::ConstantBufferManager::SetCBuffer0();
 		m_square->Render();
 		//m_plane->Render();
 
