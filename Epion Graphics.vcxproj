@@ -149,6 +149,8 @@
     <ClInclude Include="Epion12\DX12\Buffer.h" />
     <ClInclude Include="Epion12\DX12\CommandList.h" />
     <ClInclude Include="Epion12\DX12\CommandQueue.h" />
+    <ClInclude Include="Epion12\DX12\ConstantBufferManager.h" />
+    <ClInclude Include="Epion12\DX12\DescriptorHeap.h" />
     <ClInclude Include="Epion12\DX12\Device.h" />
     <ClInclude Include="Epion12\DX12\Factory.h" />
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
@@ -240,6 +242,8 @@
     <ClCompile Include="Epion12\DX12\Buffer.cpp" />
     <ClCompile Include="Epion12\DX12\CommandList.cpp" />
     <ClCompile Include="Epion12\DX12\CommandQueue.cpp" />
+    <ClCompile Include="Epion12\DX12\ConstantBufferManager.cpp" />
+    <ClCompile Include="Epion12\DX12\DescriptorHeap.cpp" />
     <ClCompile Include="Epion12\DX12\Device.cpp" />
     <ClCompile Include="Epion12\DX12\Factory.cpp" />
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
