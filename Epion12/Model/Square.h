@@ -19,8 +19,6 @@ namespace epion::Model
 
 		bool Finalize();
 		void Update(const Math::FVector2& d_xy, const Math::FVector2& d_wh);
-
-		void A();
 		void Render();
 	private:
 		D3D12_GRAPHICS_PIPELINE_STATE_DESC m_pipeline_desc;

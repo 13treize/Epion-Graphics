@@ -18,13 +18,14 @@ namespace epion::DX12
 
 		static bool Initialize();
 		static bool Finalize();
+		static void UpdateCBuffer0();
 		static void SetCBuffer0();
 
 
 	private:
 		static std::unique_ptr<epion::DX12::DescriptorHeap> m_heap;
 		static std::unique_ptr<DX12::ConstantBuffer> m_cbuffer0;
-		static std::unique_ptr<CBuffer0> m_cbuffer0_data;
+		static CBuffer0* m_cbuffer0_data;
 
 	};
 }

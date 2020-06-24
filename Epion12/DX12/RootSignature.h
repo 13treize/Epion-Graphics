@@ -13,6 +13,5 @@ namespace epion::DX12
 
 	private:
 		com_ptr<ID3D12RootSignature> m_root_signature;
-
 	};
 }
