@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\All.h" />
+    <ClInclude Include="Epion12\Camera\CameraManager.h" />
     <ClInclude Include="Epion12\Common.h" />
     <ClInclude Include="Epion12\DX12\Buffer.h" />
     <ClInclude Include="Epion12\DX12\CommandList.h" />
@@ -174,6 +175,8 @@
     <ClInclude Include="Epion12\Math\EpionVector3.h" />
     <ClInclude Include="Epion12\Math\EpionVector4.h" />
     <ClInclude Include="Epion12\Model\Model.h" />
+    <ClInclude Include="Epion12\Model\ObjLoader.h" />
+    <ClInclude Include="Epion12\Model\ObjMesh.h" />
     <ClInclude Include="Epion12\Model\Plane.h" />
     <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Resource.h" />
@@ -239,6 +242,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Epion12\Camera\CameraManager.cpp" />
     <ClCompile Include="Epion12\DX12\Buffer.cpp" />
     <ClCompile Include="Epion12\DX12\CommandList.cpp" />
     <ClCompile Include="Epion12\DX12\CommandQueue.cpp" />
@@ -260,6 +264,8 @@
     <ClCompile Include="Epion12\MainSystem.cpp" />
     <ClCompile Include="Epion12\Math\EpionRandom.cpp" />
     <ClCompile Include="Epion12\Model\Model.cpp" />
+    <ClCompile Include="Epion12\Model\ObjLoader.cpp" />
+    <ClCompile Include="Epion12\Model\ObjMesh.cpp" />
     <ClCompile Include="Epion12\Model\Plane.cpp" />
     <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Scene\Scene2D.cpp" />

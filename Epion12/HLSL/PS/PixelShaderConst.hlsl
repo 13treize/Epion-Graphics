@@ -1,10 +1,10 @@
 #include"../Function//Noise.hlsli"
 cbuffer CBuffer : register(b0)
 {
-    float A;
-    float B;
-    float C;
-    float D;
+    float A: packoffset(c0);
+    float B: packoffset(c0.y);
+    float C: packoffset(c0.z);
+    float D: packoffset(c0.w);
 };
 
 struct Input

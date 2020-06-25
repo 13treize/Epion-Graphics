@@ -6,6 +6,8 @@
 #include <d3dcompiler.h>
 #include <dxgi1_6.h>
 
+#include "DirectXTex.h"
+
 #include "Resource.h"
 
 #include "All.h"

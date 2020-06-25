@@ -181,7 +181,6 @@ namespace epion::Model
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
-
 		m_pipeline_desc = {};
 		m_pipeline_desc.VS.pShaderBytecode = vs_blob->GetBufferPointer();
 		m_pipeline_desc.VS.BytecodeLength = vs_blob->GetBufferSize();
