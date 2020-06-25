@@ -2,6 +2,7 @@
 #include	"SceneManager.h"
 #include	"SceneDefault.h"
 #include	"Scene2D.h"
+#include	"Scene3D.h"
 
 namespace
 {

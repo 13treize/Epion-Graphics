@@ -1,6 +1,14 @@
 #include "../Epion12.h"
 #include "ObjLoader.h"
 
+
+namespace
+{
+
+}
+#undef	min
+#undef	max
+
 namespace epion::Model
 {
 	ObjLoader::ObjLoader()
@@ -20,7 +28,7 @@ namespace epion::Model
 		std::vector<Math::FVector4>	normals;
 		std::vector<Math::FVector2>	uvs;
 
-		std::wstring	file_path = StringConverter::get_file_path(file_name_);
+		std::wstring	file_path = String::StringConverter::GetFilePath(file_name);
 
 
 		while (fin)
@@ -108,8 +116,7 @@ namespace epion::Model
 		{
 			iterator_->index_count = (iterator_ - 1)->index_start - iterator_->index_start;
 		}
-		mtl_filenames[0] = set_file_path(mtl_filenames[0].c_str(), file_name_.c_str());
-
+		mtl_filenames[0] = String::StringConverter::SetFilePath(mtl_filenames[0].c_str(), file_name.c_str());
 	}
 
 }

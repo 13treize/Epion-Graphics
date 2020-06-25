@@ -181,8 +181,10 @@
     <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Resource.h" />
     <ClInclude Include="Epion12\Scene\Scene2D.h" />
+    <ClInclude Include="Epion12\Scene\Scene3D.h" />
     <ClInclude Include="Epion12\Scene\SceneDefault.h" />
     <ClInclude Include="Epion12\Scene\SceneManager.h" />
+    <ClInclude Include="Epion12\String\EpionString.h" />
     <ClInclude Include="Epion12\WinApp.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
@@ -269,8 +271,10 @@
     <ClCompile Include="Epion12\Model\Plane.cpp" />
     <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Scene\Scene2D.cpp" />
+    <ClCompile Include="Epion12\Scene\Scene3D.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDefault.cpp" />
     <ClCompile Include="Epion12\Scene\SceneManager.cpp" />
+    <ClCompile Include="Epion12\String\EpionString.cpp" />
     <ClCompile Include="Epion12\WinApp.cpp" />
     <ClCompile Include="Epion12\WinMain.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />

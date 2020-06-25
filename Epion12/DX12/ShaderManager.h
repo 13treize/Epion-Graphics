@@ -1,25 +1,6 @@
 #pragma once
 namespace	epion::DX12
 {
-	bool	ShaderCompile(const std::wstring& hlsl_name,
-		const std::string& entry_point,
-		const std::string& target,
-		com_ptr<ID3DBlob>& shader_blob);
-
-
-	class	ShaderBase	abstract
-	{
-	public:
-		virtual	~ShaderBase() {};
-
-		virtual	bool	Create(const std::wstring& hlsl_name) = 0;
-
-		com_ptr<ID3DBlob>& GetBlob()	noexcept;
-
-	protected:
-		com_ptr<ID3DBlob>	m_blob;
-	};
-
 	enum class ShaderType :unsigned char
 	{
 		TYPE_VERTEX,
@@ -29,10 +10,16 @@ namespace	epion::DX12
 		TYPE_PIXEL,
 	};
 
-	class	ShaderManager	final
+	bool	ShaderCompile(const std::wstring& hlsl_name, const std::string& entry_point, const std::string& target, com_ptr<ID3DBlob>& shader_blob);
+
+	class ShaderResouceManager final
 	{
 	public:
+		bool	Initialize();
+		bool	Finalize();
 		static bool Compile(const std::wstring& hlsl_name, com_ptr<ID3DBlob>& shader_blob, ShaderType type);
+		static bool Compile(const std::wstring& hlsl_name, const std::string& entry_point,com_ptr<ID3DBlob>& shader_blob, ShaderType type);
+
 	private:
 	};
 	class	ShaderReflection final

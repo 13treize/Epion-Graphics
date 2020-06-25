@@ -1,8 +1,4 @@
 #include"../Function//Noise.hlsli"
-//cbuffer CBuffer : register(b0)
-//{
-//    float4 A;
-//};
 
 struct Input
 {

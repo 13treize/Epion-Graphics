@@ -76,6 +76,12 @@
     <Filter Include="ヘッダー ファイル\Camera">
       <UniqueIdentifier>{c5bac705-96c6-4b02-9ab2-35464eccbed6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\String">
+      <UniqueIdentifier>{c6aa0e17-6165-424f-9cde-3a6f14f27c8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\String">
+      <UniqueIdentifier>{e204accb-49af-4850-918b-6e9a15b7d3b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -246,6 +252,12 @@
     <ClInclude Include="Epion12\Model\ObjLoader.h">
       <Filter>ヘッダー ファイル\Model</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\String\EpionString.h">
+      <Filter>ヘッダー ファイル\String</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Scene\Scene3D.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -376,6 +388,12 @@
     </ClCompile>
     <ClCompile Include="Epion12\Model\ObjLoader.cpp">
       <Filter>ソース ファイル\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\String\EpionString.cpp">
+      <Filter>ソース ファイル\String</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Scene\Scene3D.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

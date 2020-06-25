@@ -25,7 +25,7 @@ namespace epion::Model
 	{
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(SquareVertex), sizeof(SquareVertex) * 4);
+		//m_vertex->Initialize(sizeof(SquareVertex), sizeof(SquareVertex) * 4);
 
 		unsigned short indices[] = { 0,1,2, 2,1,3 };
 

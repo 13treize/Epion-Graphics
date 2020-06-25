@@ -73,7 +73,7 @@ namespace epion::Model
 		m_pipeline_desc.DepthStencilState.StencilEnable = false;
 
 		m_pipeline_desc.InputLayout.pInputElementDescs = m_shader_reflection->GetInputLayout().data();//レイアウト先頭アドレス
-		m_pipeline_desc.InputLayout.NumElements = m_shader_reflection->GetInputLayout().size();//レイアウト配列数
+		m_pipeline_desc.InputLayout.NumElements = static_cast<UINT>(m_shader_reflection->GetInputLayout().size());
 
 		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;//ストリップ時のカットなし
 		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;//三角形で構成
@@ -144,7 +144,7 @@ namespace epion::Model
 		m_pipeline_desc.DepthStencilState.StencilEnable = false;
 
 		m_pipeline_desc.InputLayout.pInputElementDescs = m_shader_reflection->GetInputLayout().data();//レイアウト先頭アドレス
-		m_pipeline_desc.InputLayout.NumElements = m_shader_reflection->GetInputLayout().size();//レイアウト配列数
+		m_pipeline_desc.InputLayout.NumElements = static_cast<UINT>(m_shader_reflection->GetInputLayout().size());
 
 		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;//ストリップ時のカットなし
 		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;//三角形で構成
@@ -217,7 +217,7 @@ namespace epion::Model
 		m_pipeline_desc.DepthStencilState.StencilEnable = false;
 
 		m_pipeline_desc.InputLayout.pInputElementDescs = m_shader_reflection->GetInputLayout().data();//レイアウト先頭アドレス
-		m_pipeline_desc.InputLayout.NumElements = m_shader_reflection->GetInputLayout().size();//レイアウト配列数
+		m_pipeline_desc.InputLayout.NumElements = static_cast<UINT>(m_shader_reflection->GetInputLayout().size());
 
 		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;//ストリップ時のカットなし
 		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;//三角形で構成

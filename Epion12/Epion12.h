@@ -13,4 +13,6 @@
 #include "All.h"
 #include "Common.h"
 #include "Math/EpionMath.h"
+#include "String/EpionString.h"
+
 #include "GUI/EpionGUI.h"
