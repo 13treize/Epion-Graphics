@@ -7,6 +7,7 @@ namespace epion::DX12
 		RootSignature();
 		~RootSignature();
 
+		bool Initialize();
 		bool Initialize(D3D12_ROOT_PARAMETER& desc);
 
 		com_ptr<ID3D12RootSignature>& Get();

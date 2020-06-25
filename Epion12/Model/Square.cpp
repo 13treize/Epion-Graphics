@@ -20,6 +20,7 @@ namespace epion::Model
 	Square::~Square()
 	{
 	}
+
 	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;

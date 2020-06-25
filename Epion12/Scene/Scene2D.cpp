@@ -37,7 +37,6 @@ namespace epion
 
 		root.Initialize(rootparam);
 
-
 		DX12::RasterizerManager::Initialize();
 
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS\\VertexShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
