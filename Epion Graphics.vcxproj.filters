@@ -401,6 +401,12 @@
     <None Include="Epion12\HLSL\Function\Noise.hlsli">
       <Filter>リソース ファイル\HLSL\Function</Filter>
     </None>
+    <None Include="Epion12\HLSL\Function\Procedural.hlsli">
+      <Filter>リソース ファイル\HLSL\Function</Filter>
+    </None>
+    <None Include="Epion12\HLSL\Function\UV.hlsli">
+      <Filter>リソース ファイル\HLSL\Function</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Epion12\HLSL\PS\PixelShader.hlsl">

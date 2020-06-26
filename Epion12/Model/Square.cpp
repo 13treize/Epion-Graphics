@@ -271,8 +271,8 @@ namespace epion::Model
 				vertices[i].pos.w = 1.0f;
 			}
 			vertices[0].uv = { 0.0f,1.0f };
-			vertices[1].uv = { 0.0f,0.0f };
-			vertices[2].uv = { 1.0f,1.0f };
+			vertices[1].uv = { 1.0f,1.0f };
+			vertices[2].uv = { 0.0f,0.0f };
 			vertices[3].uv = { 1.0f,0.0f };
 			SquareVertex* vertMap = nullptr;
 			m_vertex->GetBuffer()->Map(0, nullptr, (void**)&vertMap);

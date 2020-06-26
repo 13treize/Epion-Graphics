@@ -1,5 +1,7 @@
 #include "../Epion12.h"
 #include "ObjMesh.h"
+#include "ObjLoader.h"
+
 #include "../DX12/ViewPort.h"
 #include "../DX12/Device.h"
 #include "../DX12/CommandList.h"
@@ -7,9 +9,119 @@
 namespace
 {
 }
+#undef	min
+#undef	max
 
 namespace epion::Model
 {
+	ObjLoader::ObjLoader()
+	{
+	}
+	ObjLoader::~ObjLoader()
+	{
+	}
+	void	ObjLoader::Load(const std::wstring& file_name, bool	flipping_v_coordinates)
+	{
+		std::wifstream	fin(file_name);
+		std::wstring	command;
+
+		unsigned	int			index = 0;
+
+		std::vector<Math::FVector4>	positions;
+		std::vector<Math::FVector4>	normals;
+		std::vector<Math::FVector2>	uvs;
+
+		std::wstring	file_path = String::StringConverter::GetFilePath(file_name);
+
+
+		while (fin)
+		{
+			fin >> command;	//一文字ずつの読み込みは遅いらしい
+
+			if (command == L"v")
+			{
+				float	x, y, z;
+				fin >> x >> y >> z;
+
+				positions.push_back(Math::FVector4(x, y, z, 1.0f));
+				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
+			}
+			else	if (command == L"vt")
+			{
+				float u, v;
+				fin >> u >> v;
+				uvs.push_back(Math::FVector2(u, flipping_v_coordinates ? 1.0f - v : v));
+				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
+			}
+			else	if (command == L"vn")
+			{
+				float	i, j, k;
+				fin >> i >> j >> k;
+				normals.push_back(Math::FVector4(i, j, k, 0));
+				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
+			}
+			else	if (command == L"f")
+			{
+				for (unsigned int i = 0; i < 3; i++)
+				{
+					ObjVertex	vertex;
+					unsigned int	v, vt, vn;
+
+					fin >> v;
+					vertex.position = positions[v - 1];
+					if (L'/' == fin.peek())
+					{
+						fin.ignore();
+						if (L'/' != fin.peek())
+						{
+							fin >> vt;
+							vertex.uv = uvs[vt - 1];
+						}
+						if (L'/' == fin.peek())
+						{
+							fin.ignore();
+							fin >> vn;
+							vertex.normal = normals[vn - 1];
+						}
+					}
+					vertices.push_back(vertex);
+					indices.push_back(index++);
+				}
+				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
+			}
+			else	if (command == L"mtllib")
+			{
+				wchar_t	mtllib[256];
+				fin >> mtllib;
+				mtl_filenames.push_back(mtllib);
+			}
+			else	if (command == L"usemtl")
+			{
+				wchar_t	usemtl[MAX_PATH] = { 0 };
+				fin >> usemtl;
+
+				Subset	current_subset = {};
+				current_subset.usemtl = usemtl;
+				current_subset.index_start = static_cast<unsigned int>(indices.size());
+				subsets.push_back(current_subset);
+			}
+			else
+			{
+				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
+			}
+		}
+		fin.close();
+		//コピピペ
+
+		auto	iterator_ = subsets.rbegin();
+		iterator_->index_count = static_cast<unsigned int>(indices.size() - iterator_->index_start);
+		for (iterator_ = subsets.rbegin() + 1; iterator_ != subsets.rend(); ++iterator_)
+		{
+			iterator_->index_count = (iterator_ - 1)->index_start - iterator_->index_start;
+		}
+		mtl_filenames[0] = String::StringConverter::SetFilePath(mtl_filenames[0].c_str(), file_name.c_str());
+	}
+
 	ObjMesh::ObjMesh()
 		:Model()
 	{
@@ -21,19 +133,21 @@ namespace epion::Model
 	ObjMesh::~ObjMesh()
 	{
 	}
-	bool ObjMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool ObjMesh::Initialize(const std::wstring& file_name,com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		m_is_update = true;
 
-		//m_vertex->Initialize(sizeof(SquareVertex), sizeof(SquareVertex) * 4);
+		m_obj_loader = std::make_unique<ObjLoader>();
+		m_obj_loader->Load(file_name);
 
-		unsigned short indices[] = { 0,1,2, 2,1,3 };
+		m_vertex->Initialize(sizeof(ObjVertex), sizeof(ObjVertex) * 4);
 
-		m_index->Initialize(sizeof(indices));
+
+		m_index->Initialize(sizeof(unsigned	int) * m_obj_loader->indices.size());
 
 		unsigned short* mappedIdx = nullptr;
 		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(std::begin(indices), std::end(indices), mappedIdx);
+		//std::copy(std::begin(indices), std::end(indices), mappedIdx);
 		m_index->GetBuffer()->Unmap(0, nullptr);
 
 
@@ -93,5 +207,22 @@ namespace epion::Model
 		return true;
 	}
 
+	void ObjMesh::Render()
+	{
+		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
+		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
+		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
+		for (auto& material : m_obj_loader->materials)
+		{
+			for (Subset& subset : m_obj_loader->subsets)
+			{
+				if (material.newmtl == subset.usemtl)
+				{
+					DX12::CommandList::GetPtr()->DrawIndexedInstanced(subset.index_count, subset.index_start,0,0,0);
+				}
+			}
+		}
+	}
 
 }
