@@ -11,6 +11,11 @@ namespace epion::DX12
 		float C;
 
 	};
+	struct	CBuffer3
+	{
+		DirectX::XMFLOAT4X4	world_view_projection;
+		DirectX::XMFLOAT4X4	world;
+	};
 
 	class ConstantBufferManager final
 	{

@@ -136,6 +136,10 @@ namespace epion::Model
 	bool ObjMesh::Initialize(const std::wstring& file_name,com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		m_is_update = true;
+		m_pos = { 0,0,0 };
+		m_scale = { 1,1,1 };
+		m_angle = { 0,0,0 };
+
 
 		m_obj_loader = std::make_unique<ObjLoader>();
 		m_obj_loader->Load(file_name);
@@ -205,6 +209,34 @@ namespace epion::Model
 	bool ObjMesh::Finalize()
 	{
 		return true;
+	}
+	void ObjMesh::Update()
+	{
+		m_world_matrix = DirectX::XMFLOAT4X4(1, 0, 0, 0,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1);
+
+		DirectX::XMMATRIX	mw = DirectX::XMMatrixIdentity();
+
+		DirectX::XMMATRIX	s, r, t;
+
+		//マトリクスはそのまま計算できる。
+		//　拡大行列作成
+		s = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
+
+		//　回転行列作成
+		r = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
+		//r = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x, m_angle.y, m_angle.z);
+
+		//　移動行列作成
+		t = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
+
+		//　行列合成と変換
+
+		//XMFLOAT4X4へ変換はStore、逆はLoad命令を使ってください。
+		mw = s * r * t;
+		XMStoreFloat4x4(&m_world_matrix, mw);
 	}
 
 	void ObjMesh::Render()

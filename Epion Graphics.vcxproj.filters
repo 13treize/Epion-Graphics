@@ -427,5 +427,11 @@
     <FxCompile Include="Epion12\HLSL\GS\GeometryShader.hlsl">
       <Filter>リソース ファイル\HLSL\GS</Filter>
     </FxCompile>
+    <FxCompile Include="Epion12\HLSL\VS\ObjVertexShader.hlsl">
+      <Filter>リソース ファイル\HLSL\VS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\PS\ObjPixelShader.hlsl">
+      <Filter>リソース ファイル\HLSL\PS</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

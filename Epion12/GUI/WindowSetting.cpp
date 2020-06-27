@@ -3,8 +3,9 @@
 
 #include "ImGuiFunction.h"
 #include "../Scene/SceneManager.h"
-#include "../Scene/Scene2D.h"
 #include "../Scene/SceneDefault.h"
+#include "../Scene/Scene2D.h"
+#include "../Scene/Scene3D.h"
 
 #include "WindowSetting.h"
 
@@ -46,6 +47,11 @@ namespace epion::GUI
 			{
 				SceneManager::SetNextScene<Scene2D>();
 			}
+			if (ImGui::RadioButton("3D Scene", &m_select_scene, 2))
+			{
+				SceneManager::SetNextScene<Scene3D>();
+			}
+
 			ImGui::EndTabItem();
 		}
 		ImGui::EndTabBar();

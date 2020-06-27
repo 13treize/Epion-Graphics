@@ -62,11 +62,17 @@ namespace epion::Model
 		~ObjMesh();
 		bool Initialize(const std::wstring& file_name,com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig);
 		bool Finalize();
+		void Update();
 		void Render();
 	private:
 		std::unique_ptr<ObjLoader> m_obj_loader;
 		D3D12_GRAPHICS_PIPELINE_STATE_DESC m_pipeline_desc;
 		com_ptr<ID3D12PipelineState> m_pipeline_state;
+
+		Math::FVector3		m_pos;
+		Math::FVector3		m_scale;
+		Math::FVector3		m_angle;
+		DirectX::XMFLOAT4X4	m_world_matrix;
 
 	};
 }
