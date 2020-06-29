@@ -23,7 +23,7 @@ namespace epion
 
 		DX12::ConstantBufferManager::Initialize();
 
-		D3D12_DESCRIPTOR_RANGE desc_range = {};//テクスチャと定数の２つ
+		D3D12_DESCRIPTOR_RANGE desc_range = {};
 		desc_range.NumDescriptors = 1;//定数ひとつ
 		desc_range.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;//種別は定数
 		desc_range.BaseShaderRegister = 0;//0番スロットから
@@ -48,7 +48,7 @@ namespace epion
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\PixelShaderConst.hlsl", ps_blob2, DX12::ShaderType::TYPE_PIXEL);
 
 		m_square = std::make_unique<Model::Square>();
-		m_square->Initialize(vs_blob, ps_blob, gs_blob, DX12::RasterizerManager::GetSolidDesc(), root2.Get());
+		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), root.Get());
 
 		return true;
 	}	
@@ -59,9 +59,9 @@ namespace epion
 	}
 	void Scene2D::Update()
 	{
-
+		Math::FVector2 pos = {0.0f,0.0f};
 		m_square->Update(Math::FVector2(0, 0), Math::FVector2(1280, 720));
-		DX12::ConstantBufferManager::UpdateCBuffer0();
+		DX12::ConstantBufferManager::UpdateCBuffer0(pos);
 		//m_plane->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
 
 	}

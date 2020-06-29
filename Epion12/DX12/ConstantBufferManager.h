@@ -5,12 +5,18 @@ namespace epion::DX12
 {
 	struct CBuffer0
 	{
+		Math::FVector4 Time;
+		Math::FVector2 ScreenSize;
+		Math::FVector2 MousePos;
+	};
+	struct CBuffer1
+	{
 		float Time;
 		float A;
 		float B;
 		float C;
-
 	};
+
 	struct	CBuffer3
 	{
 		DirectX::XMFLOAT4X4	world_view_projection;
@@ -23,7 +29,7 @@ namespace epion::DX12
 
 		static bool Initialize();
 		static bool Finalize();
-		static void UpdateCBuffer0();
+		static void UpdateCBuffer0(const Math::FVector2& mouse_pos);
 		static void SetCBuffer0();
 
 

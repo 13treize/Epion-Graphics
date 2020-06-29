@@ -2,6 +2,7 @@
 #include "ConstantBufferManager.h"
 #include "Device.h"
 #include "CommandList.h"
+#include	"../DX12/ViewPort.h"
 
 namespace epion::DX12
 {
@@ -20,8 +21,12 @@ namespace epion::DX12
 
 
 		m_cbuffer0->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer0_data));
-		CBuffer0 data2 = { 1.0f,0.0f,0.0f,0.0f };
-		memcpy(m_cbuffer0_data, &data2, sizeof(data2));
+		CBuffer0 data0;
+		data0.Time = { 0.0f,0.0f,0.0f,0.0f };
+		data0.ScreenSize = { 0.0f,0.0f };
+		data0.MousePos = { 0.0f,0.0f };
+
+		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
 
 		return true;
 	}
@@ -32,10 +37,19 @@ namespace epion::DX12
 		return true;
 	}
 
-	void ConstantBufferManager::UpdateCBuffer0()
+	void ConstantBufferManager::UpdateCBuffer0(const Math::FVector2& mouse_pos)
 	{
-		CBuffer0 data2 = { 1.0f,0.0f,1.0f,0.0f };
-		memcpy(m_cbuffer0_data, &data2, sizeof(data2));
+		static float time= 0.0f;
+		time += 1.0f / 400.0f;
+		CBuffer0 data0;
+		data0.ScreenSize =
+		{
+			static_cast<float>(ViewPort::GetScreenSize().x),
+			static_cast<float>(ViewPort::GetScreenSize().y)
+		};
+		data0.MousePos = mouse_pos;
+		data0.Time = { time,0.0f,0.0f,0.0f };
+		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
 	}
 
 	void ConstantBufferManager::SetCBuffer0()
