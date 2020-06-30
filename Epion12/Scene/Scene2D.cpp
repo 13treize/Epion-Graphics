@@ -45,7 +45,7 @@ namespace epion
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS\\VertexShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\PixelShader.hlsl", ps_blob, DX12::ShaderType::TYPE_PIXEL);
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\GS\\GeometryShader.hlsl", gs_blob, DX12::ShaderType::TYPE_GEOMETRY);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\PixelShaderConst.hlsl", ps_blob2, DX12::ShaderType::TYPE_PIXEL);
+		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\Scene2DDemo.hlsl", ps_blob2, DX12::ShaderType::TYPE_PIXEL);
 
 		m_square = std::make_unique<Model::Square>();
 		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), root.Get());
@@ -60,7 +60,7 @@ namespace epion
 	void Scene2D::Update()
 	{
 		Math::FVector2 pos = {0.0f,0.0f};
-		m_square->Update(Math::FVector2(0, 0), Math::FVector2(1280, 720));
+		m_square->Update(Math::FVector2(0, 0), Math::FVector2(200, 200));
 		DX12::ConstantBufferManager::UpdateCBuffer0(pos);
 		//m_plane->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
 

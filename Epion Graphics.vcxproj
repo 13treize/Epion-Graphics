@@ -407,7 +407,7 @@
     <FxCompile Include="Epion12\HLSL\PS\PixelShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Epion12\HLSL\PS\PixelShaderConst.hlsl">
+    <FxCompile Include="Epion12\HLSL\PS\Scene2DDemo.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\VS\ObjVertexShader.hlsl">

@@ -433,9 +433,6 @@
     <FxCompile Include="Epion12\HLSL\VS\VertexShader.hlsl">
       <Filter>リソース ファイル\HLSL\VS</Filter>
     </FxCompile>
-    <FxCompile Include="Epion12\HLSL\PS\PixelShaderConst.hlsl">
-      <Filter>リソース ファイル\HLSL\PS</Filter>
-    </FxCompile>
     <FxCompile Include="Epion12\HLSL\DS\DomainShader.hlsl">
       <Filter>リソース ファイル\HLSL\DS</Filter>
     </FxCompile>
@@ -456,6 +453,9 @@
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\Obj\TestVertexShader.hlsl">
       <Filter>リソース ファイル\HLSL\Obj</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\PS\Scene2DDemo.hlsl">
+      <Filter>リソース ファイル\HLSL\PS</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

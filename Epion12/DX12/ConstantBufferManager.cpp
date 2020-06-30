@@ -16,27 +16,26 @@ namespace epion::DX12
 	{
 		m_heap = std::make_unique<DX12::DescriptorHeap>();
 		m_heap->Initialize(1, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-		//m_cbuffer0 = std::make_unique<DX12::ConstantBuffer>();
-		//m_cbuffer0->Initialize(256);
+		m_cbuffer0 = std::make_unique<DX12::ConstantBuffer>();
+		m_cbuffer0->Initialize(256);
+		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer0->GetView(), m_heap->GetHeap()->GetCPUDescriptorHandleForHeapStart());
 
-		//DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer0->GetView(), m_heap->GetHeap()->GetCPUDescriptorHandleForHeapStart());
+		m_cbuffer0->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer0_data));
+		CBuffer0 data0;
+		data0.Time = { 0.0f,0.0f,0.0f,0.0f };
+		data0.ScreenSize = { 0.0f,0.0f };
+		data0.MousePos = { 0.0f,0.0f };
+		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
 
-		//m_cbuffer0->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer0_data));
-		//CBuffer0 data0;
-		//data0.Time = { 0.0f,0.0f,0.0f,0.0f };
-		//data0.ScreenSize = { 0.0f,0.0f };
-		//data0.MousePos = { 0.0f,0.0f };
-		//memcpy(m_cbuffer0_data, &data0, sizeof(data0));
+		//m_cbuffer1 = std::make_unique<DX12::ConstantBuffer>();
+		//m_cbuffer1->Initialize(256);
+		//DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer1->GetView(), m_heap->GetHeap()->GetCPUDescriptorHandleForHeapStart());
 
-		m_cbuffer1 = std::make_unique<DX12::ConstantBuffer>();
-		m_cbuffer1->Initialize(256);
-		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer1->GetView(), m_heap->GetHeap()->GetCPUDescriptorHandleForHeapStart());
-
-		m_cbuffer1->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer1_data));
-		CBuffer3 data1;
-		data1.World = {};
-		data1.WorldViewProjection = {};
-		memcpy(m_cbuffer1_data, &data1, sizeof(data1));
+		//m_cbuffer1->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer1_data));
+		//CBuffer3 data1;
+		//data1.World = {};
+		//data1.WorldViewProjection = {};
+		//memcpy(m_cbuffer1_data, &data1, sizeof(data1));
 
 		return true;
 	}
