@@ -6,7 +6,7 @@
 #include "../Scene/SceneDefault.h"
 #include "../Scene/Scene2D.h"
 #include "../Scene/Scene3D.h"
-
+#include "../Camera/CameraManager.h"
 #include "WindowSetting.h"
 
 namespace epion::GUI
@@ -54,6 +54,49 @@ namespace epion::GUI
 
 			ImGui::EndTabItem();
 		}
+		if (ImGui::BeginTabItem("Camera Manager"))
+		{
+			if (ImGui::TreeNode("Basic Camera"))
+			{
+				auto pos = Camera::CameraManager::GetBasicCamera()->GetPos();
+				auto target = Camera::CameraManager::GetBasicCamera()->GetTarget();
+
+				ImGui::Text("Pos");
+				ImGui::InputFloat("x", &pos.x, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("y", &pos.y, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("z", &pos.z, 0.01f, 100.0f, "%.3f");
+
+				ImGui::Text("Target");
+				ImGui::InputFloat("x ", &target.x, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("y ", &target.y, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("z ", &target.z, 0.01f, 100.0f, "%.3f");
+
+				Camera::CameraManager::GetBasicCamera()->SetPos(pos);
+				Camera::CameraManager::GetBasicCamera()->SetTarget(target);
+				ImGui::TreePop();
+			}
+			if (ImGui::TreeNode("Scene3D Camera"))
+			{
+				auto pos = Camera::CameraManager::GetScene3DCamera()->GetPos();
+				auto target = Camera::CameraManager::GetScene3DCamera()->GetTarget();
+
+				ImGui::Text("Pos");
+				ImGui::InputFloat("x  ", &pos.x, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("y  ", &pos.y, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("z  ", &pos.z, 0.01f, 100.0f, "%.3f");
+
+				ImGui::Text("Target");
+				ImGui::InputFloat("x   ", &target.x, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("y   ", &target.y, 0.01f, 100.0f, "%.3f");
+				ImGui::InputFloat("z   ", &target.z, 0.01f, 100.0f, "%.3f");
+
+				Camera::CameraManager::GetScene3DCamera()->SetPos(pos);
+				Camera::CameraManager::GetScene3DCamera()->SetTarget(target);
+				ImGui::TreePop();
+			}
+			ImGui::EndTabItem();
+		}
+
 		ImGui::EndTabBar();
 		ImGui::End();
 	}

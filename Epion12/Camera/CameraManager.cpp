@@ -119,7 +119,7 @@ namespace	epion::Camera
 	{
 		//ƒJƒƒ‰‰Šú‰»
 
-		epion::Math::FVector3	pos = { 0.0f,	0.0f, 10.0f };
+		epion::Math::FVector3	pos = { 0.0f,	-7.0f, 5.0f };
 
 		m_basic_camera = std::make_unique<BasicCamera>(
 			Math::FVector3(0.0f, 0.0f, 10.0f),
@@ -140,7 +140,7 @@ namespace	epion::Camera
 			1000.0f);
 
 		m_scene3d_camera = std::make_unique<Scene3DCamera>(
-			Math::FVector3(0.0f, 0.0f, -10.0f),
+			Math::FVector3(0.0f, -6.0f, 5.0f),
 			Math::FVector3(0.0f, 0.0f, 0.0f),
 			up,
 			Math::pi<float> / 8.0f,

@@ -10,6 +10,7 @@ namespace	epion::Math
 		T	z;
 
 		constexpr	Vector3(T	x	=0,	T	y	=0,	T	z	=0)	:x(x),	y(y),	z(z){}
+		constexpr	Vector3(Vector3& vec) : x(vec.x), y(vec.y), z(vec.z) {}
 		constexpr	Vector3(const	Vector3&	vec)	:	x(vec.x),	y(vec.y),		z(vec.z){}
 		~Vector3()	=default;
 

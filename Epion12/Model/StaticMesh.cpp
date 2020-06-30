@@ -1,157 +1,25 @@
 #include "../Epion12.h"
-#include "ObjMesh.h"
-#include "ObjLoader.h"
+#include "StaticMesh.h"
 
 #include "../DX12/ViewPort.h"
 #include "../DX12/Device.h"
 #include "../DX12/CommandList.h"
 #include "../DX12/ConstantBufferManager.h"
 
-namespace
-{
-	struct vertex
-	{
-		DirectX::XMFLOAT3 position;
-		DirectX::XMFLOAT3 normal;
-	};
-}
-#undef	min
-#undef	max
-
 namespace epion::Model
 {
-	ObjLoader::ObjLoader()
+
+	StaticMesh::StaticMesh()
 	{
 	}
-	ObjLoader::~ObjLoader()
+	StaticMesh::~StaticMesh()
 	{
 	}
-	void	ObjLoader::Load(const std::wstring& file_name, bool	flipping_v_coordinates)
+
+	bool StaticMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
-		std::wifstream	fin(file_name);
-		std::wstring	command;
-
-		unsigned	int			index = 0;
-
-		std::vector<Math::FVector4>	positions;
-		std::vector<Math::FVector4>	normals;
-		std::vector<Math::FVector2>	uvs;
-
-		std::wstring	file_path = String::StringConverter::GetFilePath(file_name);
-
-
-		while (fin)
-		{
-			fin >> command;	//一文字ずつの読み込みは遅いらしい
-
-			if (command == L"v")
-			{
-				float	x, y, z;
-				fin >> x >> y >> z;
-
-				positions.push_back(Math::FVector4(x, y, z, 1.0f));
-				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
-			}
-			else	if (command == L"vt")
-			{
-				float u, v;
-				fin >> u >> v;
-				uvs.push_back(Math::FVector2(u, flipping_v_coordinates ? 1.0f - v : v));
-				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
-			}
-			else	if (command == L"vn")
-			{
-				float	i, j, k;
-				fin >> i >> j >> k;
-				normals.push_back(Math::FVector4(i, j, k, 0));
-				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
-			}
-			else	if (command == L"f")
-			{
-				for (unsigned int i = 0; i < 3; i++)
-				{
-					ObjVertex	vertex;
-					unsigned int	v, vt, vn;
-
-					fin >> v;
-					vertex.position = positions[v - 1];
-					if (L'/' == fin.peek())
-					{
-						fin.ignore();
-						if (L'/' != fin.peek())
-						{
-							fin >> vt;
-							vertex.uv = uvs[vt - 1];
-						}
-						if (L'/' == fin.peek())
-						{
-							fin.ignore();
-							fin >> vn;
-							vertex.normal = normals[vn - 1];
-						}
-					}
-					vertices.push_back(vertex);
-					indices.push_back(index++);
-				}
-				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
-			}
-			else	if (command == L"mtllib")
-			{
-				wchar_t	mtllib[256];
-				fin >> mtllib;
-				mtl_filenames.push_back(mtllib);
-			}
-			else	if (command == L"usemtl")
-			{
-				wchar_t	usemtl[MAX_PATH] = { 0 };
-				fin >> usemtl;
-
-				Subset	current_subset = {};
-				current_subset.usemtl = usemtl;
-				current_subset.index_start = static_cast<unsigned int>(indices.size());
-				subsets.push_back(current_subset);
-			}
-			else
-			{
-				fin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');		//読み捨てる
-			}
-		}
-		fin.close();
-		//コピピペ
-
-		auto	iterator_ = subsets.rbegin();
-		iterator_->index_count = static_cast<unsigned int>(indices.size() - iterator_->index_start);
-		for (iterator_ = subsets.rbegin() + 1; iterator_ != subsets.rend(); ++iterator_)
-		{
-			iterator_->index_count = (iterator_ - 1)->index_start - iterator_->index_start;
-		}
-		mtl_filenames[0] = String::StringConverter::SetFilePath(mtl_filenames[0].c_str(), file_name.c_str());
-	}
-
-	ObjMesh::ObjMesh()
-		:Model()
-	{
-		m_pipeline_state = nullptr;
-		m_pipeline_desc = {};
-	}
-
-
-	ObjMesh::~ObjMesh()
-	{
-	}
-	bool ObjMesh::Initialize(const std::wstring& file_name,com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
-	{
-		//m_is_update = true;
-		//m_pos = { 0,0,0 };
-		//m_scale = { 1,1,1 };
-		//m_angle = { 0,0,0 };
-
-
-		//m_obj_loader = std::make_unique<ObjLoader>();
-		//m_obj_loader->Load(file_name);
-
-		vertex vertices[24] = {};
-		u_int indices[36] = {};
+		std::array<StaticMeshVertex, 24> vertices = {};
+		std::array <u_int, 36>indices = {};
 
 		int face;
 
@@ -287,15 +155,12 @@ namespace epion::Model
 		indices[face * 6 + 4] = face * 4 + 2;
 		indices[face * 6 + 5] = face * 4 + 3;
 
+		m_vertex->Initialize(sizeof(StaticMeshVertex), sizeof(StaticMeshVertex) *vertices.size());
 
-		m_vertex->Initialize(sizeof(ObjVertex), sizeof(ObjVertex) * m_obj_loader->vertices.size());
-
-
-		m_index->Initialize(sizeof(unsigned	int) * m_obj_loader->indices.size());
-
+		m_index->Initialize(sizeof(unsigned	int)*indices.size());
 		unsigned short* mappedIdx = nullptr;
 		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(m_obj_loader->indices.begin(), m_obj_loader->indices.end(), mappedIdx);
+		std::copy(indices.begin(), indices.end(), mappedIdx);
 		m_index->GetBuffer()->Unmap(0, nullptr);
 
 
@@ -346,19 +211,26 @@ namespace epion::Model
 		m_pipeline_desc.SampleDesc.Quality = 0;//クオリティは最低
 
 		m_pipeline_desc.pRootSignature = root_sig.Get();
-		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
+		HRESULT hr=DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
+
 
 		return true;
+
 	}
-	bool ObjMesh::Finalize()
+
+	bool StaticMesh::Finalize()
 	{
-		return true;
+		return false;
 	}
-	void ObjMesh::CBufferUpdate()
+	void StaticMesh::CBufferUpdate()
+	{
+
+	}
+	void StaticMesh::Update()
 	{
 		DirectX::XMMATRIX P;	// projection matrix
 		{
-			float aspect_ratio =DX12::ViewPort::GetAspect();
+			float aspect_ratio = DX12::ViewPort::GetAspect();
 			//P = DirectX::XMMatrixOrthographicLH(2 * aspect_ratio, 2, 0.1f, 100.0f);
 			P = DirectX::XMMatrixPerspectiveFovLH(30 * 0.01745f, aspect_ratio, 0.1f, 1000.0f);
 		}
@@ -373,12 +245,12 @@ namespace epion::Model
 		DirectX::XMMATRIX W;	// world matrix
 		{
 			DirectX::XMFLOAT3 position(0, 0, 0);
-			DirectX::XMFLOAT3 dimensions(1, 1, 1);
+			DirectX::XMFLOAT3 dimensions(2, 2, 2);
 			static DirectX::XMFLOAT3 angles(0, 0, 0);
 
-			angles.x += 30;
+			//angles.x += 30;
 			angles.y += 30;
-			angles.z += 30;
+			//angles.z += 30;
 
 			DirectX::XMMATRIX S, R, T;
 			//W = DirectX::XMMatrixIdentity();
@@ -398,67 +270,14 @@ namespace epion::Model
 		data.World = world_inverse_transpose;
 		memcpy(DX12::ConstantBufferManager::m_cbuffer1_data, &data, sizeof(data));
 
-
 	}
-
-	void ObjMesh::Update()
-	{
-		//static float a = 0.0f;
-		//a += 1.0f / 400.0f;
-		//if (a > 360.0f)
-		//{
-		//	a = 0.0f;
-		//}
-		//m_angle.y = a;
-		//m_world_matrix = DirectX::XMFLOAT4X4(1, 0, 0, 0,
-		//	0, 1, 0, 0,
-		//	0, 0, 1, 0,
-		//	0, 0, 0, 1);
-
-		//DirectX::XMMATRIX	mw = DirectX::XMMatrixIdentity();
-
-		//DirectX::XMMATRIX	s, r, t;
-		//m_pos= { 0.0f,0.0f,0.0f };
-
-		////マトリクスはそのまま計算できる。
-		////　拡大行列作成
-		//s = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
-
-		////　回転行列作成
-		//r = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
-		////r = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x, m_angle.y, m_angle.z);
-
-		////　移動行列作成
-		//t = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
-
-		////　行列合成と変換
-
-		////XMFLOAT4X4へ変換はStore、逆はLoad命令を使ってください。
-		//mw = s * r * t;
-		//XMStoreFloat4x4(&m_world_matrix, mw);
-		CBufferUpdate();
-	}
-
-	void ObjMesh::Render()
+	void StaticMesh::Render()
 	{
 		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
 		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
 		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
-		for (auto& material : m_obj_loader->materials)
-		{
-			for (Subset& subset : m_obj_loader->subsets)
-			{
-				if (material.newmtl == subset.usemtl)
-				{
-					DX12::CommandList::GetPtr()->DrawIndexedInstanced(subset.index_count, subset.index_start,0,0,0);
-				}
-			}
-		}
-	}
-
-	DirectX::XMFLOAT4X4& ObjMesh::GetWorldMatrix()
-	{
-		return m_world_matrix;
+		//DX12::CommandList::GetPtr()->DrawInstanced(3, 1, 0, 0);
+		DX12::CommandList::GetPtr()->DrawIndexedInstanced(36, 1, 0, 0, 0);
 	}
 }

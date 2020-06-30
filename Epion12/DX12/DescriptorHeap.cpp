@@ -24,4 +24,9 @@ namespace epion::DX12
 		return true;
 	}
 
+	com_ptr<ID3D12DescriptorHeap>& DescriptorHeap::GetHeap()
+	{
+		return m_heap;
+	}
+
 }

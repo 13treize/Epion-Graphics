@@ -54,7 +54,6 @@ namespace epion::DX12
 		bool Initialize(int size);
 		bool Finalize() override;
 		void SetState() override;
-
 		com_ptr<ID3D12Resource>& GetBuffer();
 		D3D12_CONSTANT_BUFFER_VIEW_DESC& GetView();
 
