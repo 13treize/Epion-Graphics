@@ -41,8 +41,6 @@ namespace epion
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS\\ObjVertexShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\ObjPixelShader.hlsl", ps_blob, DX12::ShaderType::TYPE_PIXEL);
 
-		//m_plane = std::make_unique<Model::ObjMesh>();
-		//m_plane->Initialize(L"Epion12\\Assets\\Obj\\Cube\\cube.obj",vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), root.Get());
 		m_mesh= std::make_unique<Model::StaticMesh>();
 		m_mesh->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), root.Get());
 
@@ -57,7 +55,7 @@ namespace epion
 	{
 		//Camera::CameraManager::Update();
 		m_mesh->Update();
-		//DX12::ConstantBufferManager::UpdateCBuffer1(m_plane->GetWorldMatrix(),Camera::CameraManager::GetScene3DCamera()->GetView(), Camera::CameraManager::GetScene3DCamera()->GetProjection());
+		DX12::ConstantBufferManager::UpdateCBuffer1(Camera::CameraManager::GetScene3DCamera()->GetView(), Camera::CameraManager::GetScene3DCamera()->GetProjection());
 
 	}
 

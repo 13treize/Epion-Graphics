@@ -11,9 +11,7 @@
 #include	"../DX12/DescriptorHeap.h"
 namespace
 {
-	epion::DX12::RootSignature root;
 	epion::DX12::RootSignature root2;
-
 }
 namespace epion
 {
@@ -22,33 +20,21 @@ namespace epion
 		HRESULT hr;
 
 		DX12::ConstantBufferManager::Initialize();
-
-		D3D12_DESCRIPTOR_RANGE desc_range = {};
-		desc_range.NumDescriptors = 1;//定数ひとつ
-		desc_range.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;//種別は定数
-		desc_range.BaseShaderRegister = 0;//0番スロットから
-		desc_range.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
-
-		D3D12_ROOT_PARAMETER rootparam = {};
-		rootparam.ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-		rootparam.DescriptorTable.pDescriptorRanges = &desc_range;//デスクリプタレンジのアドレス
-		rootparam.DescriptorTable.NumDescriptorRanges = 1;//デスクリプタレンジ数
-		rootparam.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;//全てのシェーダから見える
-
-
-		root.Initialize(rootparam);
-
-		root2.Initialize();
-
+		//root2.Initialize();
+		DX12::RootSignatureManager::Build();
 		DX12::RasterizerManager::Initialize();
 
+		// Build Shader
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS\\VertexShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\PixelShader.hlsl", ps_blob, DX12::ShaderType::TYPE_PIXEL);
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\GS\\GeometryShader.hlsl", gs_blob, DX12::ShaderType::TYPE_GEOMETRY);
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\Scene2DDemo.hlsl", ps_blob2, DX12::ShaderType::TYPE_PIXEL);
 
 		m_square = std::make_unique<Model::Square>();
-		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), root.Get());
+		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
+
+
+		//m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
 
 		return true;
 	}	
@@ -68,7 +54,7 @@ namespace epion
 
 	void Scene2D::Render()
 	{
-		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(root.Get().Get());
+		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		DX12::ConstantBufferManager::SetCBuffer0();
 		m_square->Render();
 		//m_plane->Render();

@@ -1,6 +1,7 @@
 #pragma once
 namespace epion::DX12
 {
+
 	class RootSignature final
 	{
 	public:
@@ -16,12 +17,18 @@ namespace epion::DX12
 		com_ptr<ID3D12RootSignature> m_root_signature;
 	};
 
+
 	class RootSignatureManager final
 	{
 	public:
-		RootSignatureManager();
-		~RootSignatureManager();
+		static void Build();
+		static void SetGraphicsRootSignature();
+
+		static com_ptr<ID3D12RootSignature>& Get();
+
 	private:
+		static com_ptr<ID3D12RootSignature> m_root_signature;
 
 	};
+
 }

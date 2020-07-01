@@ -31,5 +31,6 @@ cbuffer CONSTANT_BUFFER : register(b0)
 
 float4 PS(VS_OUT pin) : SV_TARGET
 {
-    return pin.color;
+    float4 color=float4(1.0f, 1.0f, 1.0f, 1.0f);
+    return color;
 }

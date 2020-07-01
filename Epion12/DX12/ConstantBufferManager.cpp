@@ -28,9 +28,8 @@ namespace epion::DX12
 		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
 
 		//m_cbuffer1 = std::make_unique<DX12::ConstantBuffer>();
-		//m_cbuffer1->Initialize(256);
+		//m_cbuffer1->Initialize(512);
 		//DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer1->GetView(), m_heap->GetHeap()->GetCPUDescriptorHandleForHeapStart());
-
 		//m_cbuffer1->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer1_data));
 		//CBuffer3 data1;
 		//data1.World = {};
@@ -60,28 +59,48 @@ namespace epion::DX12
 		data0.Time = { time,0.0f,0.0f,0.0f };
 		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
 	}
-	void ConstantBufferManager::UpdateCBuffer1(DirectX::XMFLOAT4X4& matrix,const DirectX::XMFLOAT4X4& view, const DirectX::XMFLOAT4X4& projection)
+	void ConstantBufferManager::UpdateCBuffer1(/*DirectX::XMFLOAT4X4& matrix,*/const DirectX::XMFLOAT4X4& view, const DirectX::XMFLOAT4X4& projection)
 	{
-		DirectX::XMFLOAT4X4	coordinate_conversion = { 1, 0, 0, 0,
-									0, 1, 0, 0,
-									0, 0,-1, 0,
-									0, 0, 0, 1 };
+		DirectX::XMMATRIX P;	// projection matrix
+		{
+			float aspect_ratio = DX12::ViewPort::GetAspect();
+			//P = DirectX::XMMatrixOrthographicLH(2 * aspect_ratio, 2, 0.1f, 100.0f);
+			P = DirectX::XMMatrixPerspectiveFovLH(30 * 0.01745f, aspect_ratio, 0.1f, 1000.0f);
+		}
+		DirectX::XMMATRIX V;	// view matrix
+		{
+			DirectX::XMVECTOR eye, focus, up;
+			eye = DirectX::XMVectorSet(0.0f, 0.0f, -10.0f, 1.0f);
+			focus = DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
+			up = DirectX::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+			V = DirectX::XMMatrixLookAtLH(eye, focus, up);
+		}
+		DirectX::XMMATRIX W;	// world matrix
+		{
+			DirectX::XMFLOAT3 position(0, 0, 0);
+			DirectX::XMFLOAT3 dimensions(1, 1, 1);
+			static DirectX::XMFLOAT3 angles(0, 0, 0);
 
-		DirectX::XMFLOAT4X4 world_view_projection;	//ローカル座標からプロジェクション座標への変換マトリクス
-		DirectX::XMFLOAT4X4 world;					//法線を取る為ののワールド座標　光と、面の計算用
+			//angles.x += 30;
+			angles.y += 30;
+			//angles.z += 30;
 
-		//プロジェクションとワーロドとビューをコンスタントバッファに別々に送ってGPUで合成すると並列処理分、計算される。
-		//ならば、最初から計算されたローカル２D変換マトリクスとワーロドマトリクスを渡す方が良いかも。
+			DirectX::XMMATRIX S, R, T;
+			//W = DirectX::XMMatrixIdentity();
+			S = DirectX::XMMatrixScaling(dimensions.x, dimensions.y, dimensions.z);
+			R = DirectX::XMMatrixRotationRollPitchYaw(angles.x * 0.01745f, angles.y * 0.01745f, angles.z * 0.01745f);
+			T = DirectX::XMMatrixTranslation(position.x, position.y, position.z);
+			W = S * R * T;
+		}
+		DirectX::XMFLOAT4X4 world_view_projection;
+		DirectX::XMFLOAT4X4 world_inverse_transpose;
 
-		DirectX::XMStoreFloat4x4(&world, DirectX::XMLoadFloat4x4(&matrix));
-
-		DirectX::XMMATRIX  WP = DirectX::XMLoadFloat4x4(&matrix) * DirectX::XMLoadFloat4x4(&view) * DirectX::XMLoadFloat4x4(&projection);
-
-		DirectX::XMStoreFloat4x4(&world_view_projection, WP);
-
-
-		DirectX::XMStoreFloat4x4(&m_cbuffer1_data->WorldViewProjection, DirectX::XMLoadFloat4x4(&coordinate_conversion) * DirectX::XMLoadFloat4x4(&world_view_projection));
-		DirectX::XMStoreFloat4x4(&m_cbuffer1_data->World, DirectX::XMLoadFloat4x4(&coordinate_conversion) * DirectX::XMLoadFloat4x4(&world));
+		DirectX::XMStoreFloat4x4(&world_view_projection, W * V * P);
+		DirectX::XMStoreFloat4x4(&world_inverse_transpose, DirectX::XMMatrixTranspose(DirectX::XMMatrixInverse(0, W)));
+		DX12::CBuffer3 data;
+		data.WorldViewProjection = world_view_projection;
+		data.World = world_inverse_transpose;
+		memcpy(m_cbuffer1_data, &data, sizeof(data));
 
 	}
 

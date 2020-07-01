@@ -457,5 +457,11 @@
     <FxCompile Include="Epion12\HLSL\PS\Scene2DDemo.hlsl">
       <Filter>リソース ファイル\HLSL\PS</Filter>
     </FxCompile>
+    <FxCompile Include="PS.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
+    <FxCompile Include="VS.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

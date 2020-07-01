@@ -5,8 +5,8 @@ namespace epion::Model
 {
 	struct StaticMeshVertex
 	{
-		DirectX::XMFLOAT3 position;
-		DirectX::XMFLOAT3 normal;
+		DirectX::XMFLOAT4 position;
+		DirectX::XMFLOAT4 normal;
 	};
 	struct cbuffer
 	{

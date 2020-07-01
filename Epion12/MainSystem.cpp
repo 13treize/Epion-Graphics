@@ -3,6 +3,7 @@
 #include	"DX12/Device.h"
 #include	"DX12/CommandList.h"
 //#include	"DX12/PipeLine.h"
+#include	"DX12/ShaderManager.h"
 
 #include	"GUI/ImGuiManager.h"
 
@@ -11,7 +12,6 @@
 
 namespace
 {
-
 }
 
 
@@ -27,7 +27,6 @@ namespace epion
 		DX12::ViewPort::Initialize();
 		m_pipeline.Initialize(hwnd);
 		GUI::ImGuiManager::Init(hwnd, DX12::Device::Get(), m_pipeline.GetHeapImGui());
-		//m_back_color = { 1.0f,0.0f,0.0f,1.0f };
 		setting_window.Initialize();
 
 		return true;

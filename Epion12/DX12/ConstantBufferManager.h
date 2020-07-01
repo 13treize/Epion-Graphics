@@ -31,7 +31,7 @@ namespace epion::DX12
 		static bool Initialize();
 		static bool Finalize();
 		static void UpdateCBuffer0(const Math::FVector2& mouse_pos);
-		static void UpdateCBuffer1(DirectX::XMFLOAT4X4& matrix, const	DirectX::XMFLOAT4X4& view, const	DirectX::XMFLOAT4X4& projection);
+		static void UpdateCBuffer1(/*DirectX::XMFLOAT4X4& matrix,*/ const	DirectX::XMFLOAT4X4& view, const	DirectX::XMFLOAT4X4& projection);
 		static void SetCBuffer0();
 		static void SetCBuffer1();
 
