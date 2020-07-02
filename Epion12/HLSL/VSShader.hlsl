@@ -1,4 +1,3 @@
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // VSInput structure
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -6,7 +5,7 @@ struct VSInput
 {
     float3 Position : POSITION;
     float3 Normal : NORMAL;
-    float2 TexCoord : TEXCOORD;
+    float2 UV : TEXCOORD;
     float4 Color : VTX_COLOR;
 };
 
@@ -17,7 +16,7 @@ struct VSOutput
 {
     float4 Position : SV_POSITION;
     float3 Normal : NORMAL;
-    float2 TexCoord : TEXCOORD;
+    float2 UV : TEXCOORD;
     float4 Color : VTX_COLOR;
 };
 
@@ -51,7 +50,7 @@ VSOutput VS(const VSInput input)
 
     output.Position = projPos;
     output.Normal = input.Normal;
-    output.TexCoord = input.TexCoord;
+    output.UV = input.UV;
     output.Color = input.Color;
 
     return output;

@@ -105,7 +105,6 @@ float4 PS(Input input) : SV_TARGET
     float4 set_color;
     float3 AAA;
     float2 data = float2(ScreenSize.x / 100.0, ScreenSize.y / 100.0);
-    Checkerboard(input.uv, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), data, AAA);
 
     float a, b, c, d;
     Voronoi(input.uv, 3.0 * abs(sin(Time.x)), 5.0, a, b, c, d);

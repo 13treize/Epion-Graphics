@@ -38,19 +38,38 @@ namespace	epion::Camera
 
 	void	View::Activate()
 	{
-		DirectX::XMMATRIX	mv, mp;
 
 		DirectX::XMVECTOR	eye = {}, focus = {}, up_ = {};
 		eye = DirectX::XMVectorSet(pos.x, pos.y, pos.z, 1.0f);
 		focus = DirectX::XMVectorSet(target.x, target.y, target.z, 1.0f);
 		up_ = DirectX::XMVectorSet(up.x, up.y, up.z, 0.0f);
 
-		mv = DirectX::XMMatrixLookAtLH(eye, focus, up_);
-		DirectX::XMStoreFloat4x4(&matView, mv);
+		MatView = DirectX::XMMatrixLookAtLH(eye, focus, up_);
+		DirectX::XMStoreFloat4x4(&F4x4View, MatView);
 
-		mp = DirectX::XMMatrixPerspectiveFovLH(fov, aspect, nearPlane, farPlane);
-		DirectX::XMStoreFloat4x4(&matProjection, mp);
+		MatProjection = DirectX::XMMatrixPerspectiveFovLH(fov, aspect, nearPlane, farPlane);
+		DirectX::XMStoreFloat4x4(&F4x4Projection, MatProjection);
 	}
+
+	DirectX::XMMATRIX& View::GetMatView()
+	{
+		return MatView;
+	}
+	DirectX::XMMATRIX& View::GetMatProjection()
+	{
+		return MatProjection;
+	}
+
+	DirectX::XMFLOAT4X4& View::Get4x4View()
+	{
+		return F4x4View;
+	}
+
+	DirectX::XMFLOAT4X4& View::Get4x4Projection()
+	{
+		return F4x4Projection;
+	}
+
 
 	//	getä÷êî
 	Math::FVector3& View::GetPos()
@@ -140,11 +159,11 @@ namespace	epion::Camera
 			1000.0f);
 
 		m_scene3d_camera = std::make_unique<Scene3DCamera>(
-			Math::FVector3(0.0f, -6.0f, 5.0f),
+			Math::FVector3(0.0f, 0.0f, -10.0f),
 			Math::FVector3(0.0f, 0.0f, 0.0f),
 			up,
 			Math::pi<float> / 8.0f,
-			aspect,
+			1280.0f/720.0f,
 			0.1f,
 			1000.0f);
 

@@ -20,16 +20,11 @@ namespace	epion::Camera
 		void Activate();
 
 
-		DirectX::XMFLOAT4X4& GetView()
-		{
-			return matView;
-		}
+		DirectX::XMMATRIX&	GetMatView();
+		DirectX::XMMATRIX&	GetMatProjection();
 
-		DirectX::XMFLOAT4X4& GetProjection()
-		{
-			return matProjection;
-		}
-
+		DirectX::XMFLOAT4X4& Get4x4View();
+		DirectX::XMFLOAT4X4& Get4x4Projection();
 		//get関数
 		Math::FVector3& GetPos();
 		Math::FVector3& GetTarget();
@@ -41,8 +36,10 @@ namespace	epion::Camera
 		void	SetUp(Math::FVector3& up_);
 
 	protected:
-		DirectX::XMFLOAT4X4	matView;		//視野変換行列
-		DirectX::XMFLOAT4X4	matProjection;	//投影変換行列
+		DirectX::XMMATRIX	MatView;		//視野変換行列
+		DirectX::XMMATRIX	MatProjection;	//投影変換行列
+		DirectX::XMFLOAT4X4	F4x4View;		//視野変換行列
+		DirectX::XMFLOAT4X4	F4x4Projection;	//投影変換行列
 		Math::FVector3	pos;
 		Math::FVector3	target;
 		Math::FVector3	up;

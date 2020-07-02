@@ -6,6 +6,7 @@
 #include "../Scene/SceneDefault.h"
 #include "../Scene/Scene2D.h"
 #include "../Scene/Scene3D.h"
+#include "../Scene/SceneTest.h"
 #include "../Camera/CameraManager.h"
 #include "WindowSetting.h"
 
@@ -51,6 +52,12 @@ namespace epion::GUI
 			{
 				SceneManager::SetNextScene<Scene3D>();
 			}
+
+			if (ImGui::RadioButton("Test Scene", &m_select_scene, 3))
+			{
+				SceneManager::SetNextScene<SceneTest>();
+			}
+
 
 			ImGui::EndTabItem();
 		}

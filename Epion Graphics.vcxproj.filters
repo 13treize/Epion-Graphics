@@ -267,6 +267,12 @@
     <ClInclude Include="Epion12\Model\TestModel.h">
       <Filter>ヘッダー ファイル\Model</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\Scene\SceneTest.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\DX12\BlendState.h">
+      <Filter>ヘッダー ファイル\DX12</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -410,6 +416,12 @@
     <ClCompile Include="Epion12\Model\TestModel.cpp">
       <Filter>ソース ファイル\Model</Filter>
     </ClCompile>
+    <ClCompile Include="Epion12\Scene\SceneTest.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\DX12\BlendState.cpp">
+      <Filter>ソース ファイル\DX12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -457,11 +469,11 @@
     <FxCompile Include="Epion12\HLSL\PS\Scene2DDemo.hlsl">
       <Filter>リソース ファイル\HLSL\PS</Filter>
     </FxCompile>
-    <FxCompile Include="PS.hlsl">
-      <Filter>リソース ファイル</Filter>
+    <FxCompile Include="Epion12\HLSL\PSShader.hlsl">
+      <Filter>リソース ファイル\HLSL</Filter>
     </FxCompile>
-    <FxCompile Include="VS.hlsl">
-      <Filter>リソース ファイル</Filter>
+    <FxCompile Include="Epion12\HLSL\VSShader.hlsl">
+      <Filter>リソース ファイル\HLSL</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
