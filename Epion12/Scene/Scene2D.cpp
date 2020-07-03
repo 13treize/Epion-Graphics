@@ -45,8 +45,8 @@ namespace epion
 	}
 	void Scene2D::Update()
 	{
-		Math::FVector2 pos = {0.0f,0.0f};
 		m_square->Update(Math::FVector2(0, 0), Math::FVector2(200, 200));
+		Math::FVector2 pos = { 0.0f,0.0f };
 		DX12::ConstantBufferManager::UpdateCBuffer0(pos);
 		//m_plane->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
 

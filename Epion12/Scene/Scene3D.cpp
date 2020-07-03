@@ -41,6 +41,7 @@ namespace epion
 	{
 		//Camera::CameraManager::Update();
 		m_mesh->Update();
+
 		//DX12::ConstantBufferManager::UpdateCBuffer1(Camera::CameraManager::GetScene3DCamera()->GetView(), Camera::CameraManager::GetScene3DCamera()->GetProjection());
 
 	}

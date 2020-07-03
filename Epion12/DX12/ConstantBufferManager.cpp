@@ -15,22 +15,16 @@ namespace epion::DX12
 	bool ConstantBufferManager::Initialize()
 	{
 		m_heap = std::make_unique<DX12::DescriptorHeap>();
-		m_heap->Initialize(1, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-	
+		m_heap->Initialize(2, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
 		m_cbuffer0 = std::make_unique<DX12::ConstantBuffer>();
 		m_cbuffer0->Initialize(256);
-		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer0->GetView(), m_heap->GetHeap()->GetCPUDescriptorHandleForHeapStart());
-
+		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer0->GetView(), m_heap->GetHandleCPU(0));
 		m_cbuffer0->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer0_data));
-		CBuffer0 data0;
-		data0.Time = { 0.0f,0.0f,0.0f,0.0f };
-		data0.ScreenSize = { 0.0f,0.0f };
-		data0.MousePos = { 0.0f,0.0f };
-		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
 
 		m_cbuffer1 = std::make_unique<DX12::ConstantBuffer>();
 		m_cbuffer1->Initialize(256);
-		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer1->GetView(), m_heap->GetHeap()->GetCPUDescriptorHandleForHeapStart());
+		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer1->GetView(), m_heap->GetHandleCPU(1));
 		m_cbuffer1->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer1_data));
 		return true;
 	}
@@ -55,8 +49,13 @@ namespace epion::DX12
 		data0.Time = { time,0.0f,0.0f,0.0f };
 		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
 	}
-	void ConstantBufferManager::UpdateCBuffer1(/*DirectX::XMFLOAT4X4& matrix,*/const DirectX::XMFLOAT4X4& view, const DirectX::XMFLOAT4X4& projection)
+	void ConstantBufferManager::UpdateCBuffer1(const DirectX::XMMATRIX& world, const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& projection)
 	{
+		CBuffer1 data1;
+		data1.World = world;
+		data1.View = view;
+		data1.Proj = projection;
+		memcpy(m_cbuffer1_data, &data1, sizeof(data1));
 
 	}
 
@@ -65,7 +64,7 @@ namespace epion::DX12
 		ID3D12DescriptorHeap* pp_heaps[] = { m_heap->GetHeap().Get() };
 
 		DX12::CommandList::GetPtr()->SetDescriptorHeaps(1, pp_heaps);
-		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(0, m_heap->GetHeap()->GetGPUDescriptorHandleForHeapStart());
+		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(0, m_heap->GetHandleGPU(0));
 	}
 
 	void ConstantBufferManager::SetCBuffer1()
@@ -73,7 +72,7 @@ namespace epion::DX12
 		ID3D12DescriptorHeap* pp_heaps[] = { m_heap->GetHeap().Get() };
 
 		DX12::CommandList::GetPtr()->SetDescriptorHeaps(1, pp_heaps);
-		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(0, m_heap->GetHeap()->GetGPUDescriptorHandleForHeapStart());
+		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(1, m_heap->GetHandleGPU(1));
 	}
 
 }

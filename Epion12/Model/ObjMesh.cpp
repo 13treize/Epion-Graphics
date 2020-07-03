@@ -356,48 +356,6 @@ namespace epion::Model
 	}
 	void ObjMesh::CBufferUpdate()
 	{
-		DirectX::XMMATRIX P;	// projection matrix
-		{
-			float aspect_ratio =DX12::ViewPort::GetAspect();
-			//P = DirectX::XMMatrixOrthographicLH(2 * aspect_ratio, 2, 0.1f, 100.0f);
-			P = DirectX::XMMatrixPerspectiveFovLH(30 * 0.01745f, aspect_ratio, 0.1f, 1000.0f);
-		}
-		DirectX::XMMATRIX V;	// view matrix
-		{
-			DirectX::XMVECTOR eye, focus, up;
-			eye = DirectX::XMVectorSet(0.0f, 0.0f, -10.0f, 1.0f);
-			focus = DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 1.0f);
-			up = DirectX::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
-			V = DirectX::XMMatrixLookAtLH(eye, focus, up);
-		}
-		DirectX::XMMATRIX W;	// world matrix
-		{
-			DirectX::XMFLOAT3 position(0, 0, 0);
-			DirectX::XMFLOAT3 dimensions(1, 1, 1);
-			static DirectX::XMFLOAT3 angles(0, 0, 0);
-
-			angles.x += 30;
-			angles.y += 30;
-			angles.z += 30;
-
-			DirectX::XMMATRIX S, R, T;
-			//W = DirectX::XMMatrixIdentity();
-			S = DirectX::XMMatrixScaling(dimensions.x, dimensions.y, dimensions.z);
-			R = DirectX::XMMatrixRotationRollPitchYaw(angles.x * 0.01745f, angles.y * 0.01745f, angles.z * 0.01745f);
-			T = DirectX::XMMatrixTranslation(position.x, position.y, position.z);
-			W = S * R * T;
-		}
-		DirectX::XMFLOAT4X4 world_view_projection;
-		DirectX::XMFLOAT4X4 world_inverse_transpose;
-
-		DirectX::XMStoreFloat4x4(&world_view_projection, W * V * P);
-		DirectX::XMStoreFloat4x4(&world_inverse_transpose, DirectX::XMMatrixTranspose(DirectX::XMMatrixInverse(0, W)));
-		DX12::CBuffer3 data;
-
-		data.WorldViewProjection = world_view_projection;
-		data.World = world_inverse_transpose;
-		memcpy(DX12::ConstantBufferManager::m_cbuffer1_data, &data, sizeof(data));
-
 
 	}
 
