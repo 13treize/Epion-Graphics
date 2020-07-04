@@ -5,11 +5,14 @@ namespace epion::DX12
 	class Buffer abstract
 	{
 	public:
-		Buffer() {};
+		Buffer();
 		virtual	~Buffer() {};
 		virtual bool	Finalize() = 0;
 		virtual void	SetState() = 0;
-	private:
+		unsigned int GetBufferCount();
+	protected:
+		unsigned int m_buffer_count;
+
 	};
 
 	class VertexBuffer :public Buffer

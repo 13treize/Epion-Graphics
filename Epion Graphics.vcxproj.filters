@@ -273,6 +273,9 @@
     <ClInclude Include="Epion12\DX12\BlendState.h">
       <Filter>ヘッダー ファイル\DX12</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\Model\PrimitiveModelData.h">
+      <Filter>ヘッダー ファイル\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -421,6 +424,9 @@
     </ClCompile>
     <ClCompile Include="Epion12\DX12\BlendState.cpp">
       <Filter>ソース ファイル\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Model\PrimitiveModelData.cpp">
+      <Filter>ソース ファイル\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

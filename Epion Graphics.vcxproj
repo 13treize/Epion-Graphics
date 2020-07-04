@@ -179,6 +179,7 @@
     <ClInclude Include="Epion12\Model\ObjLoader.h" />
     <ClInclude Include="Epion12\Model\ObjMesh.h" />
     <ClInclude Include="Epion12\Model\Plane.h" />
+    <ClInclude Include="Epion12\Model\PrimitiveModelData.h" />
     <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Model\StaticMesh.h" />
     <ClInclude Include="Epion12\Model\TestModel.h" />
@@ -274,6 +275,7 @@
     <ClCompile Include="Epion12\Model\ObjLoader.cpp" />
     <ClCompile Include="Epion12\Model\ObjMesh.cpp" />
     <ClCompile Include="Epion12\Model\Plane.cpp" />
+    <ClCompile Include="Epion12\Model\PrimitiveModelData.cpp" />
     <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Model\StaticMesh.cpp" />
     <ClCompile Include="Epion12\Model\TestModel.cpp" />

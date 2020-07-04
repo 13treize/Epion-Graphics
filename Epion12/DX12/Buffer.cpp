@@ -5,6 +5,14 @@
 
 namespace epion::DX12
 {
+	Buffer::Buffer()
+		:m_buffer_count(0)
+	{
+	}
+	unsigned int Buffer::GetBufferCount()
+	{
+		return m_buffer_count;
+	}
 	VertexBuffer::VertexBuffer()
 		: m_vertex_buffer_view({})
 	{
@@ -104,7 +112,10 @@ namespace epion::DX12
 		m_index_buffer_view = {};
 		m_index_buffer_view.BufferLocation = m_index_buffer->GetGPUVirtualAddress();
 		m_index_buffer_view.Format = DXGI_FORMAT_R16_UINT;
-		m_index_buffer_view.SizeInBytes = size;
+		m_index_buffer_view.SizeInBytes = size*sizeof(unsigned short);
+
+		m_buffer_count = static_cast<unsigned int>(size);
+
 		return true;
 	}
 

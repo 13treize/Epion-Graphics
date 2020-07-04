@@ -5,7 +5,7 @@
 #include "../DX12/Device.h"
 #include "../DX12/CommandList.h"
 #include "../DX12/ConstantBufferManager.h"
-
+#include "PrimitiveModelData.h"
 namespace epion::Model
 {
 
@@ -95,21 +95,20 @@ namespace epion::Model
 		vertices[2] = { {	1.0f,	-1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f }, { 0.0f, 0.0f, 1.0f, 1.0f } };
 		vertices[3] = { {	1.0f,	1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f }, { 1.0f, 0.0f, 1.0f, 1.0f } };
 
-		unsigned short indices[] = { 0,1,2, 2,1,3 };
 
 		m_vertex = std::make_unique<DX12::VertexBuffer>();
 		m_vertex->Initialize(sizeof(PolygonVertex), sizeof(PolygonVertex) * 4);
 
 		m_index = std::make_unique<DX12::IndexBuffer>();
-		m_index->Initialize(sizeof(indices));
+		m_index->Initialize(PrimitiveData::Polygon::indices.size());
 
-		PolygonVertex* pData = nullptr;
-		m_vertex->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pData));
-		std::copy(vertices.begin(), vertices.end(), pData);
+		PolygonVertex* vertex_data = nullptr;
+		m_vertex->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&vertex_data));
+		memcpy(vertex_data, vertices.data(), sizeof(vertices));
 
-		unsigned short* mappedIdx = nullptr;
-		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(std::begin(indices), std::end(indices), mappedIdx);
+		unsigned short* index_data = nullptr;
+		m_index->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&index_data));
+		memcpy(index_data, PrimitiveData::Polygon::indices.data(), sizeof(PrimitiveData::Polygon::indices));
 		m_index->GetBuffer()->Unmap(0, nullptr);
 		return true;
 	}
@@ -133,6 +132,6 @@ namespace epion::Model
 		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
 		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
-		DX12::CommandList::GetPtr()->DrawIndexedInstanced(6, 1, 0, 0, 0);
+		DX12::CommandList::GetPtr()->DrawIndexedInstanced(m_index->GetBufferCount(), 1, 0, 0, 0);
 	}
 }

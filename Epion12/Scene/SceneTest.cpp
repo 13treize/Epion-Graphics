@@ -32,13 +32,13 @@ namespace epion
 		Camera::CameraManager::Init(DX12::ViewPort::GetAspect());
 		Camera::CameraManager::Update();
 
-		m_mesh[0] = std::make_unique < Model::Polygon >();
-		m_mesh[0]->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
-		m_mesh[0]->SetScale(1.0f, 1.0f, 1.0f);
 
-		m_mesh[1] = std::make_unique < Model::Polygon >();
-		m_mesh[1]->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
-		m_mesh[1]->SetScale(1.0f, 1.0f, 1.0f);
+		for (int i = 0; i < 2; i++)
+		{
+			m_mesh[i] = std::make_unique < Model::Polygon >();
+			m_mesh[i]->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
+			m_mesh[i]->SetScale(1.0f, 1.0f, 1.0f);
+		}
 
 		DX12::ConstantBufferManager::Initialize();
 		// ³íI—¹.
@@ -100,7 +100,7 @@ namespace epion
 		DX12::ConstantBufferManager::SetCBuffer1();
 		m_mesh[0]->Render();
 
-		//DX12::RootSignatureManager::SetGraphicsRootSignature();
+		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		//DX12::ConstantBufferManager::SetCBuffer0();
 		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh[1]->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
 		DX12::ConstantBufferManager::SetCBuffer1();

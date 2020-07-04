@@ -47,7 +47,7 @@ namespace epion::Model
 		Math::FVector3 m_angle;
 		Math::FVector3 m_scale;
 		DirectX::XMMATRIX m_world_matrix;
-
 	};
+
 
 }
