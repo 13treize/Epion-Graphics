@@ -331,6 +331,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Epion12\HLSL\Function\DistanceFunction.hlsli" />
+    <None Include="Epion12\HLSL\Function\Lighting.hlsli" />
     <None Include="Epion12\HLSL\Function\Noise.hlsli" />
     <None Include="Epion12\HLSL\Function\Procedural.hlsli" />
     <None Include="Epion12\HLSL\Function\UV.hlsli" />

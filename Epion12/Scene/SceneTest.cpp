@@ -33,12 +33,17 @@ namespace epion
 		Camera::CameraManager::Update();
 
 
-		for (int i = 0; i < 2; i++)
-		{
-			m_mesh[i] = std::make_unique < Model::Polygon >();
-			m_mesh[i]->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
-			m_mesh[i]->SetScale(1.0f, 1.0f, 1.0f);
-		}
+		m_mesh = std::make_unique <Model::CubeMesh>();
+		m_mesh->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
+		m_mesh->SetPos(0.0, 0.0, 0.0);
+		m_mesh->SetScale(1.0f, 1.0f, 1.0f);
+
+		//for (int i = 0; i < 2; i++)
+		//{
+		//	m_mesh[i] = std::make_unique < Model::Polygon >();
+		//	m_mesh[i]->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
+		//	m_mesh[i]->SetScale(1.0f, 1.0f, 1.0f);
+		//}
 
 		DX12::ConstantBufferManager::Initialize();
 		// ³íI—¹.
@@ -50,61 +55,61 @@ namespace epion
 	}
 	void SceneTest::Update()
 	{
-		//ImGui::Begin("test ", nullptr, 0);
+		ImGui::Begin("test ", nullptr, 0);
 		//if (ImGui::TreeNode("model"))
 		//{
 		//	auto pos = m_mesh->GetPos();
 		//	auto scale = m_mesh->GetScale();
 		//	auto angle = m_mesh->GetAngle();
-
 		//	ImGui::Text("Pos");
 		//	ImGui::InputFloat("  x", &pos.x, 0.01f, 100.0f, "%.2f");
 		//	ImGui::InputFloat("  y", &pos.y, 0.01f, 100.0f, "%.2f");
 		//	ImGui::InputFloat("  z", &pos.z, 0.01f, 100.0f, "%.2f");
-
 		//	ImGui::Text("Scale");
 		//	ImGui::InputFloat("  x ", &scale.x, 0.01f, 100.0f, "%.2f");
 		//	ImGui::InputFloat("  y ", &scale.y, 0.01f, 100.0f, "%.2f");
 		//	ImGui::InputFloat("  z ", &scale.z, 0.01f, 100.0f, "%.2f");
-
 		//	ImGui::Text("Angle");
 		//	ImGui::InputFloat("  x  ", &angle.x, 0.01f, 100.0f, "%.2f");
 		//	ImGui::InputFloat("  y  ", &angle.y, 0.01f, 100.0f, "%.2f");
 		//	ImGui::InputFloat("  z  ", &angle.z, 0.01f, 100.0f, "%.2f");
-
 		//	m_mesh->SetPos(pos.x, pos.y, pos.z);
 		//	m_mesh->SetScale(scale.x, scale.y, scale.z);
 		//	m_mesh->SetAngle(angle.x, angle.y, angle.z);
-
 		//	ImGui::TreePop();
 		//}
 		////m_mesh->SetAngle(45.0f, 0.0f, 0.0f);
-
-		//ImGui::End();
+		ImGui::End();
 		Camera::CameraManager::Update();
-		m_mesh[0]->SetPos(1.0, 0.0, 0.0);
-		m_mesh[1]->SetPos(-1.0, 0.0, 0.0);
 
-		m_mesh[0]->Update();
-		m_mesh[1]->Update();
+		static float aaaa=0;
+		aaaa += 1.0 / 400 / 0.0f;
+		m_mesh->SetAngle(aaaa, angle.y, angle.z);
+
+		m_mesh->Update();
+
+		//m_mesh[0]->SetPos(0.0, 0.0, 0.0);
+		//m_mesh[1]->SetPos(-1.0, 0.0, 0.0);
+
+		//m_mesh[0]->Update();
+		//m_mesh[1]->Update();
 
 		Math::FVector2 pos = { 0.0f,0.0f };
 		DX12::ConstantBufferManager::UpdateCBuffer0(pos);
-
 	}
 	void SceneTest::Render()
 	{
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		DX12::ConstantBufferManager::SetCBuffer0();
-		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh[0]->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
+		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
 		DX12::ConstantBufferManager::SetCBuffer1();
-		m_mesh[0]->Render();
+		m_mesh->Render();
 
-		DX12::RootSignatureManager::SetGraphicsRootSignature();
-		//DX12::ConstantBufferManager::SetCBuffer0();
-		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh[1]->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
-		DX12::ConstantBufferManager::SetCBuffer1();
-		m_mesh[1]->Render();
+		//DX12::RootSignatureManager::SetGraphicsRootSignature();
+		////DX12::ConstantBufferManager::SetCBuffer0();
+		//DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh[1]->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
+		//DX12::ConstantBufferManager::SetCBuffer1();
+		//m_mesh[1]->Render();
 
 	}
 	void SceneTest::RenderTex()

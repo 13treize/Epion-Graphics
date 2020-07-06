@@ -134,4 +134,127 @@ namespace epion::Model
 		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
 		DX12::CommandList::GetPtr()->DrawIndexedInstanced(m_index->GetBufferCount(), 1, 0, 0, 0);
 	}
+
+	CubeMesh::CubeMesh()
+		:Model3D()
+	{
+	}
+
+
+	CubeMesh::~CubeMesh()
+	{
+	}
+	bool CubeMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	{
+		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
+		m_shader_reflection->ReflectionInputLayout(vs_blob);
+
+		m_pipeline_desc = {};
+		m_pipeline_desc.pRootSignature = nullptr;
+		m_pipeline_desc.VS.pShaderBytecode = vs_blob->GetBufferPointer();
+		m_pipeline_desc.VS.BytecodeLength = vs_blob->GetBufferSize();
+		m_pipeline_desc.PS.pShaderBytecode = ps_blob->GetBufferPointer();
+		m_pipeline_desc.PS.BytecodeLength = ps_blob->GetBufferSize();
+
+		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
+
+		m_pipeline_desc.BlendState = b_desc;
+		m_pipeline_desc.RasterizerState = r_desc;
+
+		m_pipeline_desc.DepthStencilState.DepthEnable = false;
+		m_pipeline_desc.DepthStencilState.StencilEnable = false;
+
+		m_pipeline_desc.InputLayout.pInputElementDescs = m_shader_reflection->GetInputLayout().data();
+		m_pipeline_desc.InputLayout.NumElements = m_shader_reflection->GetInputLayout().size();
+
+		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
+		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+
+		m_pipeline_desc.NumRenderTargets = 1;//今は１つのみ
+		m_pipeline_desc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;//0～1に正規化されたRGBA
+
+		m_pipeline_desc.SampleDesc.Count = 1;//サンプリングは1ピクセルにつき１
+		m_pipeline_desc.SampleDesc.Quality = 0;//クオリティは最低
+
+		m_pipeline_desc.pRootSignature = root_sig.Get();
+		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
+
+		std::array <Model3DVertex, 24> vertices=
+		{
+			Math::FVector3(0.5f,	0.5f,  -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(1,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,  0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(0,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,  -0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(1,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f, -0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(0,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,	0.5f, 0.5f),	Math::FVector3(0.0f, 0.0f, 1.0f),  Math::FVector2(1,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,  0.5f, 0.5f),		Math::FVector3(0.0f, 0.0f, 1.0f),  Math::FVector2(0,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,-0.5f, 0.5f),		Math::FVector3(0.0f, 0.0f, 1.0f),  Math::FVector2(1,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f, -0.5f, 0.5f),		Math::FVector3(0.0f, 0.0f, 1.0f),  Math::FVector2(0,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,	0.5f, 0.5f),	Math::FVector3(1.0f, 0.0f, 0.0f),  Math::FVector2(1,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,  0.5f, -0.5f),		Math::FVector3(1.0f, 0.0f, 0.0f),  Math::FVector2(0,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f, -0.5f, 0.5f),		Math::FVector3(1.0f, 0.0f, 0.0f),  Math::FVector2(1,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f, -0.5f, -0.5f),		Math::FVector3(1.0f, 0.0f, 0.0f),  Math::FVector2(0,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,	0.5f, -0.5f),	Math::FVector3(-1.0f, 0.0f, 0.0f), Math::FVector2(1,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,  0.5f, 0.5f),		Math::FVector3(-1.0f, 0.0f, 0.0f), Math::FVector2(0,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f, -0.5f, -0.5f),	Math::FVector3(-1.0f, 0.0f, 0.0f), Math::FVector2(1,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f, -0.5f, 0.5f),		Math::FVector3(-1.0f, 0.0f, 0.0f), Math::FVector2(0,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,	 0.5f,  0.5f),	Math::FVector3(0.0f, 1.0f, 0.0f),  Math::FVector2(1,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,  0.5f,  0.5f),	Math::FVector3(0.0f, 1.0f, 0.0f),  Math::FVector2(0,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,  0.5f, -0.5f),		Math::FVector3(0.0f, 1.0f, 0.0f),  Math::FVector2(1,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,  0.5f, -0.5f),	Math::FVector3(0.0f, 1.0f, 0.0f),  Math::FVector2(0,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,	 -0.5f, -0.5f),	Math::FVector3(0.0f, -1.0f, 0.0f), Math::FVector2(1,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,  -0.5f, -0.5f),	Math::FVector3(0.0f, -1.0f, 0.0f), Math::FVector2(0,0),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,  -0.5f, 0.5f),		Math::FVector3(0.0f, -1.0f, 0.0f), Math::FVector2(1,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(-0.5f,  -0.5f, 0.5f),	Math::FVector3(0.0f, -1.0f, 0.0f), Math::FVector2(0,1),Math::FVector4(1,1,1,1),
+		};
+		//インデックスを定義
+		std::array<unsigned short,36> indices;
+		for (int face = 0; face < 6; face++) {
+			indices[face * 6] = face * 4;
+			indices[face * 6 + 1] = face * 4 + 2;
+			indices[face * 6 + 2] = face * 4 + 1;
+			indices[face * 6 + 3] = face * 4 + 1;
+			indices[face * 6 + 4] = face * 4 + 2;
+			indices[face * 6 + 5] = face * 4 + 3;
+		}
+
+
+		m_vertex = std::make_unique<DX12::VertexBuffer>();
+		m_vertex->Initialize(sizeof(Model3DVertex), sizeof(Model3DVertex) * 24);
+
+		m_index = std::make_unique<DX12::IndexBuffer>();
+		m_index->Initialize(indices.size());
+
+		Model3DVertex* vertex_data = nullptr;
+		m_vertex->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&vertex_data));
+		memcpy(vertex_data, vertices.data(), sizeof(vertices));
+
+		unsigned short* index_data = nullptr;
+		m_index->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&index_data));
+		memcpy(index_data,indices.data(), sizeof(indices));
+		m_index->GetBuffer()->Unmap(0, nullptr);
+		return true;
+	}
+	bool CubeMesh::Finalize()
+	{
+		return true;
+	}
+
+	void CubeMesh::Update()
+	{
+		DirectX::XMMATRIX S, R, T;
+		S = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
+		R = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
+		T = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
+		m_world_matrix = S * R * T;
+	}
+
+	void CubeMesh::Render()
+	{
+		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
+		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
+		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
+		DX12::CommandList::GetPtr()->DrawIndexedInstanced(m_index->GetBufferCount(), 1, 0, 0, 0);
+	}
+
 }

@@ -443,6 +443,12 @@
     <None Include="Epion12\HLSL\Obj\Obj.hlsli">
       <Filter>リソース ファイル\HLSL\Obj</Filter>
     </None>
+    <None Include="Epion12\HLSL\Function\Lighting.hlsli">
+      <Filter>リソース ファイル\HLSL\Function</Filter>
+    </None>
+    <None Include="Epion12\HLSL\Function\DistanceFunction.hlsli">
+      <Filter>リソース ファイル\HLSL\Function</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Epion12\HLSL\PS\PixelShader.hlsl">

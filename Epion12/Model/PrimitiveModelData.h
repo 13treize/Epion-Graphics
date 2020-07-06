@@ -3,10 +3,10 @@ namespace epion::Model
 {
 	struct Model3DVertex
 	{
-		epion::Math::FVector3 Position;
-		epion::Math::FVector3 Normal;
-		epion::Math::FVector2 UV;
-		epion::Math::FVector4 Color;
+		Math::FVector3 Position;
+		Math::FVector3 Normal;
+		Math::FVector2 UV;
+		Math::FVector4 Color;
 	};
 	struct PrimitiveData final
 	{
