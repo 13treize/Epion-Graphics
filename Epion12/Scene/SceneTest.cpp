@@ -23,8 +23,6 @@ namespace epion
 	{
 		HRESULT hr = S_OK;
 
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob, DX12::ShaderType::TYPE_PIXEL);
 
 		DX12::RootSignatureManager::Build();
 		DX12::BlendStateManager::Initialize();
@@ -33,20 +31,32 @@ namespace epion
 		Camera::CameraManager::Update();
 
 
-		m_mesh = std::make_unique <Model::CubeMesh>();
+		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
+		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob, DX12::ShaderType::TYPE_PIXEL);
+		//m_mesh = std::make_unique <Model::CubeMesh>();
+
+		m_mesh = std::make_unique <Model::Polygon>();
 		m_mesh->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
-		m_mesh->SetPos(0.0, 0.0, 0.0);
+		m_mesh->SetPos(2.0, 0.0, 0.0);
 		m_mesh->SetScale(1.0f, 1.0f, 1.0f);
 
-		//for (int i = 0; i < 2; i++)
-		//{
-		//	m_mesh[i] = std::make_unique < Model::Polygon >();
-		//	m_mesh[i]->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
-		//	m_mesh[i]->SetScale(1.0f, 1.0f, 1.0f);
-		//}
+
+		//m_mesh2 = std::make_unique <Model::Polygon>();
+		//m_mesh2->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
+		//m_mesh2->SetPos(-2.0, 0.0, 0.0);
+		//m_mesh2->SetScale(1.0f, 1.0f, 1.0f);
+
+
+		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
+		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS.hlsl", ps_blob, DX12::ShaderType::TYPE_PIXEL);
+		//m_plane = std::make_unique<Model::ObjMesh>();
+		//m_plane->Initialize(L"Epion12\\Assets\\Obj\\Plane\\plane.obj", vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
+		//m_plane->SetPos(0.0, 0.0, 0.0);
+		//m_plane->SetScale(1.0f, 1.0f, 1.0f);
+
 
 		DX12::ConstantBufferManager::Initialize();
-		// ³íI—¹.
+
 		return true;
 	}
 	bool SceneTest::Finalize()
@@ -55,7 +65,7 @@ namespace epion
 	}
 	void SceneTest::Update()
 	{
-		ImGui::Begin("test ", nullptr, 0);
+		//ImGui::Begin("test ", nullptr, 0);
 		//if (ImGui::TreeNode("model"))
 		//{
 		//	auto pos = m_mesh->GetPos();
@@ -79,14 +89,17 @@ namespace epion
 		//	ImGui::TreePop();
 		//}
 		////m_mesh->SetAngle(45.0f, 0.0f, 0.0f);
-		ImGui::End();
+		//ImGui::End();
 		Camera::CameraManager::Update();
 
-		static float aaaa=0;
-		aaaa += 1.0 / 400 / 0.0f;
-		m_mesh->SetAngle(aaaa, angle.y, angle.z);
+		//static float aaaa=0;
+		//aaaa += 0.05f;
+		//m_mesh->SetAngle(aaaa, aaaa, 0.0f);
 
 		m_mesh->Update();
+		//m_mesh2->Update();
+
+		//m_plane->Update();
 
 		//m_mesh[0]->SetPos(0.0, 0.0, 0.0);
 		//m_mesh[1]->SetPos(-1.0, 0.0, 0.0);
@@ -96,14 +109,30 @@ namespace epion
 
 		Math::FVector2 pos = { 0.0f,0.0f };
 		DX12::ConstantBufferManager::UpdateCBuffer0(pos);
+		Math::FVector4 col, dir, am;
+		col = { 1.0,1.0,1.0,1.0 };
+		dir = { 1.0,1.0,1.0,1.0 };
+		am = { 1.0,0.0,0.0,1.0 };
+		DX12::ConstantBufferManager::UpdateCBuffer2(col,dir,am);
+
 	}
 	void SceneTest::Render()
 	{
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		DX12::ConstantBufferManager::SetCBuffer0();
 		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
-		DX12::ConstantBufferManager::SetCBuffer1();
+		DX12::ConstantBufferManager::SetCBuffer1(1);
+		DX12::ConstantBufferManager::SetCBuffer2();
+
 		m_mesh->Render();
+
+		//DX12::RootSignatureManager::SetGraphicsRootSignature();
+		//DX12::ConstantBufferManager::SetCBuffer0();
+		//DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
+		//DX12::ConstantBufferManager::SetCBuffer1(1);
+		//m_mesh2->Render();
+
+		//m_plane->Render();
 
 		//DX12::RootSignatureManager::SetGraphicsRootSignature();
 		////DX12::ConstantBufferManager::SetCBuffer0();

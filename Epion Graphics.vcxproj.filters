@@ -490,5 +490,11 @@
     <FxCompile Include="Epion12\HLSL\GSShader.hlsl">
       <Filter>リソース ファイル\HLSL</Filter>
     </FxCompile>
+    <FxCompile Include="Epion12\HLSL\VS.hlsl">
+      <Filter>リソース ファイル\HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\PS.hlsl">
+      <Filter>リソース ファイル\HLSL</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

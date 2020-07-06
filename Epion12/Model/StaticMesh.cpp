@@ -179,12 +179,13 @@ namespace epion::Model
 		m_pipeline_desc.pRootSignature = root_sig.Get();
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 
+
 		std::array <Model3DVertex, 24> vertices=
 		{
-			Math::FVector3(0.5f,	0.5f,  -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(1,0),Math::FVector4(1,1,1,1),
-			Math::FVector3(-0.5f,  0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(0,0),Math::FVector4(1,1,1,1),
-			Math::FVector3(0.5f,  -0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(1,1),Math::FVector4(1,1,1,1),
-			Math::FVector3(-0.5f, -0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(0,1),Math::FVector4(1,1,1,1),
+			Math::FVector3(0.5f,	0.5f,  -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(1,0),Math::FVector4(0,0,0,1),
+			Math::FVector3(-0.5f,  0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(0,0),Math::FVector4(1,0,0,1),
+			Math::FVector3(0.5f,  -0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(1,1),Math::FVector4(0,1,0,1),
+			Math::FVector3(-0.5f, -0.5f, -0.5f),	Math::FVector3(0.0f, 0.0f, -1.0f), Math::FVector2(0,1),Math::FVector4(0,0,1,1),
 			Math::FVector3(-0.5f,	0.5f, 0.5f),	Math::FVector3(0.0f, 0.0f, 1.0f),  Math::FVector2(1,0),Math::FVector4(1,1,1,1),
 			Math::FVector3(0.5f,  0.5f, 0.5f),		Math::FVector3(0.0f, 0.0f, 1.0f),  Math::FVector2(0,0),Math::FVector4(1,1,1,1),
 			Math::FVector3(-0.5f,-0.5f, 0.5f),		Math::FVector3(0.0f, 0.0f, 1.0f),  Math::FVector2(1,1),Math::FVector4(1,1,1,1),

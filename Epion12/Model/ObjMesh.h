@@ -24,7 +24,7 @@ namespace epion::Model
 
 	struct	Material
 	{
-		std::wstring			newmtl;
+		std::wstring	newmtl;
 		Math::FVector3	Ka;
 		Math::FVector3	Kd;
 		Math::FVector3	Ks;
@@ -55,28 +55,19 @@ namespace epion::Model
 		//std::vector<unsigned	int>	indices;
 	};
 
-	class ObjMesh final :public Model
+	class ObjMesh final :public Model3D
 	{
 	public:
 		ObjMesh();
 		~ObjMesh();
-		bool Initialize(const std::wstring& file_name,com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig);
+		bool Initialize(const std::wstring& file_name, com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig);
 		bool Finalize();
-		void CBufferUpdate();
 		void Update();
 		void Render();
 
-		DirectX::XMFLOAT4X4&	GetWorldMatrix();
-
 	private:
 		std::unique_ptr<ObjLoader> m_obj_loader;
-		D3D12_GRAPHICS_PIPELINE_STATE_DESC m_pipeline_desc;
 		com_ptr<ID3D12PipelineState> m_pipeline_state;
-
-		Math::FVector3		m_pos;
-		Math::FVector3		m_scale;
-		Math::FVector3		m_angle;
-		DirectX::XMFLOAT4X4	m_world_matrix;
 
 	};
 }

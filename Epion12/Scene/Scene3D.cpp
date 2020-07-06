@@ -49,7 +49,7 @@ namespace epion
 	void Scene3D::Render()
 	{
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
-		DX12::ConstantBufferManager::SetCBuffer1();
+		//DX12::ConstantBufferManager::SetCBuffer1();
 
 		m_mesh->Render();
 	}

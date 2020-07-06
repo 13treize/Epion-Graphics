@@ -129,7 +129,7 @@ namespace epion::Model
 	}
 
 	ObjMesh::ObjMesh()
-		:Model()
+		:Model3D()
 	{
 		m_pipeline_state = nullptr;
 		m_pipeline_desc = {};
@@ -139,169 +139,10 @@ namespace epion::Model
 	ObjMesh::~ObjMesh()
 	{
 	}
-	bool ObjMesh::Initialize(const std::wstring& file_name,com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool ObjMesh::Initialize(const std::wstring& file_name, com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
-		//m_is_update = true;
-		//m_pos = { 0,0,0 };
-		//m_scale = { 1,1,1 };
-		//m_angle = { 0,0,0 };
-
-
-		//m_obj_loader = std::make_unique<ObjLoader>();
-		//m_obj_loader->Load(file_name);
-
-		vertex vertices[24] = {};
-		u_int indices[36] = {};
-
-		int face;
-
-		// top-side
-		// 0---------1
-		// |         |
-		// |   -Y    |
-		// |         |
-		// 2---------3
-		face = 0;
-		vertices[face * 4 + 0].position = DirectX::XMFLOAT3(-0.5f, +0.5f, +0.5f);
-		vertices[face * 4 + 1].position = DirectX::XMFLOAT3(+0.5f, +0.5f, +0.5f);
-		vertices[face * 4 + 2].position = DirectX::XMFLOAT3(-0.5f, +0.5f, -0.5f);
-		vertices[face * 4 + 3].position = DirectX::XMFLOAT3(+0.5f, +0.5f, -0.5f);
-		vertices[face * 4 + 0].normal = DirectX::XMFLOAT3(+0.0f, +1.0f, +0.0f);
-		vertices[face * 4 + 1].normal = DirectX::XMFLOAT3(+0.0f, +1.0f, +0.0f);
-		vertices[face * 4 + 2].normal = DirectX::XMFLOAT3(+0.0f, +1.0f, +0.0f);
-		vertices[face * 4 + 3].normal = DirectX::XMFLOAT3(+0.0f, +1.0f, +0.0f);
-		indices[face * 6 + 0] = face * 4 + 0;
-		indices[face * 6 + 1] = face * 4 + 1;
-		indices[face * 6 + 2] = face * 4 + 2;
-		indices[face * 6 + 3] = face * 4 + 1;
-		indices[face * 6 + 4] = face * 4 + 3;
-		indices[face * 6 + 5] = face * 4 + 2;
-
-		// bottom-side
-		// 0---------1
-		// |         |
-		// |   -Y    |
-		// |         |
-		// 2---------3
-		face += 1;
-		vertices[face * 4 + 0].position = DirectX::XMFLOAT3(-0.5f, -0.5f, +0.5f);
-		vertices[face * 4 + 1].position = DirectX::XMFLOAT3(+0.5f, -0.5f, +0.5f);
-		vertices[face * 4 + 2].position = DirectX::XMFLOAT3(-0.5f, -0.5f, -0.5f);
-		vertices[face * 4 + 3].position = DirectX::XMFLOAT3(+0.5f, -0.5f, -0.5f);
-		vertices[face * 4 + 0].normal = DirectX::XMFLOAT3(+0.0f, -1.0f, +0.0f);
-		vertices[face * 4 + 1].normal = DirectX::XMFLOAT3(+0.0f, -1.0f, +0.0f);
-		vertices[face * 4 + 2].normal = DirectX::XMFLOAT3(+0.0f, -1.0f, +0.0f);
-		vertices[face * 4 + 3].normal = DirectX::XMFLOAT3(+0.0f, -1.0f, +0.0f);
-		indices[face * 6 + 0] = face * 4 + 0;
-		indices[face * 6 + 1] = face * 4 + 2;
-		indices[face * 6 + 2] = face * 4 + 1;
-		indices[face * 6 + 3] = face * 4 + 1;
-		indices[face * 6 + 4] = face * 4 + 2;
-		indices[face * 6 + 5] = face * 4 + 3;
-
-		// front-side
-		// 0---------1
-		// |         |
-		// |   +Z    |
-		// |         |
-		// 2---------3
-		face += 1;
-		vertices[face * 4 + 0].position = DirectX::XMFLOAT3(-0.5f, +0.5f, -0.5f);
-		vertices[face * 4 + 1].position = DirectX::XMFLOAT3(+0.5f, +0.5f, -0.5f);
-		vertices[face * 4 + 2].position = DirectX::XMFLOAT3(-0.5f, -0.5f, -0.5f);
-		vertices[face * 4 + 3].position = DirectX::XMFLOAT3(+0.5f, -0.5f, -0.5f);
-		vertices[face * 4 + 0].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, -1.0f);
-		vertices[face * 4 + 1].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, -1.0f);
-		vertices[face * 4 + 2].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, -1.0f);
-		vertices[face * 4 + 3].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, -1.0f);
-		indices[face * 6 + 0] = face * 4 + 0;
-		indices[face * 6 + 1] = face * 4 + 1;
-		indices[face * 6 + 2] = face * 4 + 2;
-		indices[face * 6 + 3] = face * 4 + 1;
-		indices[face * 6 + 4] = face * 4 + 3;
-		indices[face * 6 + 5] = face * 4 + 2;
-
-		// back-side
-		// 0---------1
-		// |         |
-		// |   +Z    |
-		// |         |
-		// 2---------3
-		face += 1;
-		vertices[face * 4 + 0].position = DirectX::XMFLOAT3(-0.5f, +0.5f, +0.5f);
-		vertices[face * 4 + 1].position = DirectX::XMFLOAT3(+0.5f, +0.5f, +0.5f);
-		vertices[face * 4 + 2].position = DirectX::XMFLOAT3(-0.5f, -0.5f, +0.5f);
-		vertices[face * 4 + 3].position = DirectX::XMFLOAT3(+0.5f, -0.5f, +0.5f);
-		vertices[face * 4 + 0].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, +1.0f);
-		vertices[face * 4 + 1].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, +1.0f);
-		vertices[face * 4 + 2].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, +1.0f);
-		vertices[face * 4 + 3].normal = DirectX::XMFLOAT3(+0.0f, +0.0f, +1.0f);
-		indices[face * 6 + 0] = face * 4 + 0;
-		indices[face * 6 + 1] = face * 4 + 2;
-		indices[face * 6 + 2] = face * 4 + 1;
-		indices[face * 6 + 3] = face * 4 + 1;
-		indices[face * 6 + 4] = face * 4 + 2;
-		indices[face * 6 + 5] = face * 4 + 3;
-
-		// right-side
-		// 0---------1
-		// |         |      
-		// |   -X    |
-		// |         |
-		// 2---------3
-		face += 1;
-		vertices[face * 4 + 0].position = DirectX::XMFLOAT3(+0.5f, +0.5f, -0.5f);
-		vertices[face * 4 + 1].position = DirectX::XMFLOAT3(+0.5f, +0.5f, +0.5f);
-		vertices[face * 4 + 2].position = DirectX::XMFLOAT3(+0.5f, -0.5f, -0.5f);
-		vertices[face * 4 + 3].position = DirectX::XMFLOAT3(+0.5f, -0.5f, +0.5f);
-		vertices[face * 4 + 0].normal = DirectX::XMFLOAT3(+1.0f, +0.0f, +0.0f);
-		vertices[face * 4 + 1].normal = DirectX::XMFLOAT3(+1.0f, +0.0f, +0.0f);
-		vertices[face * 4 + 2].normal = DirectX::XMFLOAT3(+1.0f, +0.0f, +0.0f);
-		vertices[face * 4 + 3].normal = DirectX::XMFLOAT3(+1.0f, +0.0f, +0.0f);
-		indices[face * 6 + 0] = face * 4 + 0;
-		indices[face * 6 + 1] = face * 4 + 1;
-		indices[face * 6 + 2] = face * 4 + 2;
-		indices[face * 6 + 3] = face * 4 + 1;
-		indices[face * 6 + 4] = face * 4 + 3;
-		indices[face * 6 + 5] = face * 4 + 2;
-
-		// left-side
-		// 0---------1
-		// |         |      
-		// |   -X    |
-		// |         |
-		// 2---------3
-		face += 1;
-		vertices[face * 4 + 0].position = DirectX::XMFLOAT3(-0.5f, +0.5f, -0.5f);
-		vertices[face * 4 + 1].position = DirectX::XMFLOAT3(-0.5f, +0.5f, +0.5f);
-		vertices[face * 4 + 2].position = DirectX::XMFLOAT3(-0.5f, -0.5f, -0.5f);
-		vertices[face * 4 + 3].position = DirectX::XMFLOAT3(-0.5f, -0.5f, +0.5f);
-		vertices[face * 4 + 0].normal = DirectX::XMFLOAT3(-1.0f, +0.0f, +0.0f);
-		vertices[face * 4 + 1].normal = DirectX::XMFLOAT3(-1.0f, +0.0f, +0.0f);
-		vertices[face * 4 + 2].normal = DirectX::XMFLOAT3(-1.0f, +0.0f, +0.0f);
-		vertices[face * 4 + 3].normal = DirectX::XMFLOAT3(-1.0f, +0.0f, +0.0f);
-		indices[face * 6 + 0] = face * 4 + 0;
-		indices[face * 6 + 1] = face * 4 + 2;
-		indices[face * 6 + 2] = face * 4 + 1;
-		indices[face * 6 + 3] = face * 4 + 1;
-		indices[face * 6 + 4] = face * 4 + 2;
-		indices[face * 6 + 5] = face * 4 + 3;
-
-
-		m_vertex->Initialize(sizeof(ObjVertex), sizeof(ObjVertex) * m_obj_loader->vertices.size());
-
-
-		m_index->Initialize(sizeof(unsigned	int) * m_obj_loader->indices.size());
-
-		unsigned short* mappedIdx = nullptr;
-		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(m_obj_loader->indices.begin(), m_obj_loader->indices.end(), mappedIdx);
-		m_index->GetBuffer()->Unmap(0, nullptr);
-
-
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
-
 
 		m_pipeline_desc = {};
 		m_pipeline_desc.pRootSignature = nullptr;
@@ -312,22 +153,7 @@ namespace epion::Model
 
 		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;//中身は0xffffffff
 
-		m_pipeline_desc.BlendState.AlphaToCoverageEnable = false;
-		m_pipeline_desc.BlendState.IndependentBlendEnable = false;
-
-
-
-		D3D12_RENDER_TARGET_BLEND_DESC renderTargetBlendDesc = {};
-
-		//ひとまず加算や乗算やαブレンディングは使用しない
-		renderTargetBlendDesc.BlendEnable = false;
-		renderTargetBlendDesc.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
-
-		//ひとまず論理演算は使用しない
-		renderTargetBlendDesc.LogicOpEnable = false;
-
-		m_pipeline_desc.BlendState.RenderTarget[0] = renderTargetBlendDesc;
-
+		m_pipeline_desc.BlendState = b_desc;
 		m_pipeline_desc.RasterizerState = r_desc;
 
 		m_pipeline_desc.DepthStencilState.DepthEnable = false;
@@ -348,53 +174,34 @@ namespace epion::Model
 		m_pipeline_desc.pRootSignature = root_sig.Get();
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 
+		m_obj_loader = std::make_unique<ObjLoader>();
+		m_obj_loader->Load(file_name);
+		m_vertex->Initialize(sizeof(ObjVertex), sizeof(ObjVertex) * m_obj_loader->vertices.size());
+		m_index->Initialize(sizeof(unsigned	int) * m_obj_loader->indices.size());
+
+		ObjVertex* vertex_data = nullptr;
+		m_vertex->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&vertex_data));
+		memcpy(vertex_data, m_obj_loader->vertices.data(), sizeof(m_obj_loader->vertices));
+
+		unsigned short* index_data = nullptr;
+		m_index->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&index_data));
+		memcpy(index_data, m_obj_loader->indices.data(), sizeof(m_obj_loader->indices));
+		//m_index->GetBuffer()->Unmap(0, nullptr);
+
 		return true;
 	}
 	bool ObjMesh::Finalize()
 	{
 		return true;
 	}
-	void ObjMesh::CBufferUpdate()
-	{
-
-	}
 
 	void ObjMesh::Update()
 	{
-		//static float a = 0.0f;
-		//a += 1.0f / 400.0f;
-		//if (a > 360.0f)
-		//{
-		//	a = 0.0f;
-		//}
-		//m_angle.y = a;
-		//m_world_matrix = DirectX::XMFLOAT4X4(1, 0, 0, 0,
-		//	0, 1, 0, 0,
-		//	0, 0, 1, 0,
-		//	0, 0, 0, 1);
-
-		//DirectX::XMMATRIX	mw = DirectX::XMMatrixIdentity();
-
-		//DirectX::XMMATRIX	s, r, t;
-		//m_pos= { 0.0f,0.0f,0.0f };
-
-		////マトリクスはそのまま計算できる。
-		////　拡大行列作成
-		//s = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
-
-		////　回転行列作成
-		//r = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
-		////r = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x, m_angle.y, m_angle.z);
-
-		////　移動行列作成
-		//t = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
-
-		////　行列合成と変換
-
-		////XMFLOAT4X4へ変換はStore、逆はLoad命令を使ってください。
-		//mw = s * r * t;
-		//XMStoreFloat4x4(&m_world_matrix, mw);
-		CBufferUpdate();
+		DirectX::XMMATRIX S, R, T;
+		S = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
+		R = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
+		T = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
+		m_world_matrix = S * R * T;
 	}
 
 	void ObjMesh::Render()
@@ -403,6 +210,8 @@ namespace epion::Model
 		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
 		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
+		//DX12::CommandList::GetPtr()->DrawIndexedInstanced(m_obj_loader->subsets[0].index_count,1, 0, 0, 0);
+
 		for (auto& material : m_obj_loader->materials)
 		{
 			for (Subset& subset : m_obj_loader->subsets)
@@ -415,8 +224,4 @@ namespace epion::Model
 		}
 	}
 
-	DirectX::XMFLOAT4X4& ObjMesh::GetWorldMatrix()
-	{
-		return m_world_matrix;
-	}
 }

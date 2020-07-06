@@ -1,7 +1,6 @@
 #include"Function//Noise.hlsli"
 #include"Function//Procedural.hlsli"
 #include"Function//UV.hlsli"
-#include"Function//Lighting.hlsli"
 
 cbuffer CBuffer0 : register(b0)
 {
@@ -15,35 +14,25 @@ cbuffer CBuffer1 : register(b1)
     float4x4 View : packoffset(c4);
     float4x4 Proj : packoffset(c8);
 };
-cbuffer CBuffer2 : register(b2)
-{
-    float4 LightColor;
-    float4 LightDir;
-    float4 AmbientColor;
-};
-
 
 struct VSInput
 {
-    float3  Position : POSITION;
-    float3  Normal   : NORMAL;
-    float2  UV       : TEXCOORD;
-    float4  Color    : VTX_COLOR;
+    float4 Position : POSITION;
+    float4 Normal : NORMAL;
+    float2 UV : TEXCOORD;
 };
-
 
 struct VSOutput
 {
-    float4  Position : SV_POSITION;
-    float3  Normal   : NORMAL;
-    float2  UV       : TEXCOORD;
-    float4  Color    : VTX_COLOR;
+    float4 Position : SV_POSITION;
+    float4 Normal : NORMAL;
+    float2 UV : TEXCOORD;
 };
 
 
 struct PSOutput
 {
-    float4  Color   : SV_TARGET0;
+    float4 Color : SV_TARGET0;
 };
 
 
@@ -71,31 +60,11 @@ float4 Fire(float2 UV, float3 Color)
 PSOutput PS(const VSOutput input)
 {
     PSOutput output = (PSOutput) 0;
-    //output.Color = input.Color;
-    //return output;
-    //PSOutput output = (PSOutput) 0;
     float4 aa;
-    float3 aaaaaa;
-    Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(10.0, 10.0), aaaaaa);
-
     //Voronoi(input.UV, 3.0, 5.0, aa.x, aa.y, aa.z, aa.w);
+    output.Color = aa;
     ////float3 Vector3_out10 = float3(2.0, 0.600000, 0.000000);
     ////output.Color = Fire(input.UV, Vector3_out10);
-
-    
-    float3 N = mul((float3x3) World, input.Normal);
-    N = normalize(N); //ê≥ãKâª
-
-	//Å@ÉâÉCÉgåvéZ
-    float3 L = normalize(LightDir.xyz);
-	//float D = max(0, dot(-L, N));
-    float3 C = LightColor.rgb;
-	// îΩéÀó¶
-    float3 Kd = float3(1, 1, 1);
-	// ägéUîΩéÀåvéZ
-    float3 D;
-    Diffuse(N, L, C, Kd, D);
-    output.Color.rgb = aaaaaa+ D + AmbientColor.rgb;
 
     return output;
 }
