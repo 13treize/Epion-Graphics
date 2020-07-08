@@ -39,12 +39,13 @@ namespace epion::DX12
 		static void UpdateCBuffer1(const DirectX::XMMATRIX& world, const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& projection);
 		static void UpdateCBuffer2(const Math::FVector4& color, const Math::FVector4& dir, const Math::FVector4& ambient);
 
+		static void SetHeap();
+
 		static void SetCBuffer0();
 		static void SetCBuffer1(unsigned int index);
 		static void SetCBuffer2();
 
-
-
+		static UINT CalcConstantBufferByteSize(UINT byteSize);
 
 		//	private:
 		static std::unique_ptr<DX12::DescriptorHeap> m_heap;

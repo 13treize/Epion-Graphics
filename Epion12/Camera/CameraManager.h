@@ -11,8 +11,6 @@ namespace	epion::Camera
 
 		virtual	~View() {};
 
-
-
 		void SetView(const	Math::FVector3& p, const	Math::FVector3& t, const Math::FVector3& u);
 
 		void SetProjection(float fov, float aspect, float n, float f);

@@ -74,7 +74,23 @@ float2 voronoi_noise_randomVector(float2 UV, float2 offset)
     UV = frac(sin(mul(UV, m)) * 46839.32);
     return float2(sin(UV.y * +offset.x) * 0.5 + 0.5, cos(UV.x * offset.y) * 0.5 + 0.5);
 }
+float voronoi_max_abs(float2 p)
+{
+    return max(abs(p.x), abs(p.y));
+}
+float voronoi_sum_abs(float2 p)
+{
+    return abs(p.x) + abs(p.y);
+}
 
+float voronoi_lp_norm(float2 p, float n)
+{
+    float2 t = pow(abs(p), n);
+    return pow(t.x + t.y, 1.0 / n);
+}
+
+
+//  Voronoi
 void Voronoi(float2 UV, float2 AngleOffset, float2 CellDensity, out float Out, out float Cells, out float Lines, out float Points)
 {
     float2 g = floor(UV * CellDensity);
@@ -106,6 +122,150 @@ void Voronoi(float2 UV, float2 AngleOffset, float2 CellDensity, out float Out, o
             float2 offset = voronoi_noise_randomVector(lattice + g, AngleOffset);
             float2 r = lattice + offset - f;
             float d = dot(r, r);
+            if (d < res)
+            {
+                res = d;
+                Out = res;
+                Cells = offset.x;
+            }
+            if (dot(mr - r, mr - r) > 0.00001)
+            {
+                md = min(md, dot(0.5 * (mr + r), normalize(r - mr)));
+            }
+        }
+    }
+    Lines = lerp(1.0, 0.0, smoothstep(0.03, 0.06, md));
+    Points = 1.0 - smoothstep(0.0, 0.1, res);
+}
+
+//  ChebychevVoronoi
+void ChebychevVoronoi(float2 UV, float2 AngleOffset, float2 CellDensity, out float Out, out float Cells, out float Lines, out float Points)
+{
+    float2 g = floor(UV * CellDensity);
+    float2 f = frac(UV * CellDensity);
+    float res = 8.0;
+    float md = 8.0;
+    float2 mr;
+    for (int y = -1; y <= 1; y++)
+    {
+        for (int x = -1; x <= 1; x++)
+        {
+            float2 lattice = float2(x, y);
+            float2 offset = voronoi_noise_randomVector(lattice + g, AngleOffset);
+            float2 r = lattice + offset - f;
+            float d = voronoi_max_abs(r);
+            if (d < res)
+            {
+                res = d;
+                mr = r;
+            }
+        }
+    }
+    res = 8.0;
+    for (int yy = -1; yy <= 1; yy++)
+    {
+        for (int xx = -1; xx <= 1; xx++)
+        {
+            float2 lattice = float2(xx, yy);
+            float2 offset = voronoi_noise_randomVector(lattice + g, AngleOffset);
+            float2 r = lattice + offset - f;
+            float d = voronoi_max_abs(r);
+            if (d < res)
+            {
+                res = d;
+                Out = res;
+                Cells = offset.x;
+            }
+            if (dot(mr - r, mr - r) > 0.00001)
+            {
+                md = min(md, dot(0.5 * (mr + r), normalize(r - mr)));
+            }
+        }
+    }
+    Lines = lerp(1.0, 0.0, smoothstep(0.03, 0.06, md));
+    Points = 1.0 - smoothstep(0.0, 0.1, res);
+}
+
+//  ManhattanVoronoi
+void ManhattanVoronoi(float2 UV, float2 AngleOffset, float2 CellDensity, out float Out, out float Cells, out float Lines, out float Points)
+{
+    float2 g = floor(UV * CellDensity);
+    float2 f = frac(UV * CellDensity);
+    float res = 8.0;
+    float md = 8.0;
+    float2 mr;
+    for (int y = -1; y <= 1; y++)
+    {
+        for (int x = -1; x <= 1; x++)
+        {
+            float2 lattice = float2(x, y);
+            float2 offset = voronoi_noise_randomVector(lattice + g, AngleOffset);
+            float2 r = lattice + offset - f;
+            float d = voronoi_sum_abs(r);
+            if (d < res)
+            {
+                res = d;
+                mr = r;
+            }
+        }
+    }
+    res = 8.0;
+    for (int yy = -1; yy <= 1; yy++)
+    {
+        for (int xx = -1; xx <= 1; xx++)
+        {
+            float2 lattice = float2(xx, yy);
+            float2 offset = voronoi_noise_randomVector(lattice + g, AngleOffset);
+            float2 r = lattice + offset - f;
+            float d = voronoi_sum_abs(r);
+            if (d < res)
+            {
+                res = d;
+                Out = res;
+                Cells = offset.x;
+            }
+            if (dot(mr - r, mr - r) > 0.00001)
+            {
+                md = min(md, dot(0.5 * (mr + r), normalize(r - mr)));
+            }
+        }
+    }
+    Lines = lerp(1.0, 0.0, smoothstep(0.03, 0.06, md));
+    Points = 1.0 - smoothstep(0.0, 0.1, res);
+}
+
+// MinkowskiVoronoi
+void MinkowskiVoronoi(float2 UV, float2 AngleOffset, float2 CellDensity, float p, out float Out, out float Cells, out float Lines, out float Points)
+{
+    float2 g = floor(UV * CellDensity);
+    float2 f = frac(UV * CellDensity);
+    float res = 8.0;
+    float md = 8.0;
+    float2 mr;
+    for (int y = -1; y <= 1; y++)
+    {
+        for (int x = -1; x <= 1; x++)
+        {
+            float2 lattice = float2(x, y);
+            float2 offset = voronoi_noise_randomVector(lattice + g, AngleOffset);
+            float2 r = lattice + offset - f;
+            float d = voronoi_lp_norm(r,p);
+            if (d < res)
+            {
+                res = d;
+                mr = r;
+            }
+        }
+    }
+    res = 8.0;
+    for (int yy = -1; yy <= 1; yy++)
+    {
+        for (int xx = -1; xx <= 1; xx++)
+        {
+            float2 lattice = float2(xx, yy);
+            float2 offset = voronoi_noise_randomVector(lattice + g, AngleOffset);
+            float2 r = lattice + offset - f;
+            float d = voronoi_lp_norm(r, p);
             if (d < res)
             {
                 res = d;

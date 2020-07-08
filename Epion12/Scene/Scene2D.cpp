@@ -33,6 +33,9 @@ namespace epion
 		m_square = std::make_unique<Model::Square>();
 		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
 
+		m_square2 = std::make_unique<Model::Square>();
+		m_square2->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
+
 
 		//m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
 
@@ -46,6 +49,8 @@ namespace epion
 	void Scene2D::Update()
 	{
 		m_square->Update(Math::FVector2(0, 0), Math::FVector2(200, 200));
+		m_square2->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
+
 		Math::FVector2 pos = { 0.0f,0.0f };
 		DX12::ConstantBufferManager::UpdateCBuffer0(pos);
 		//m_plane->Update(Math::FVector2(200, 200), Math::FVector2(200, 200));
@@ -55,8 +60,13 @@ namespace epion
 	void Scene2D::Render()
 	{
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
+		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		DX12::ConstantBufferManager::SetHeap();
+
 		DX12::ConstantBufferManager::SetCBuffer0();
 		m_square->Render();
+		m_square2->Render();
+
 		//m_plane->Render();
 
 	}

@@ -5,9 +5,9 @@
 
 cbuffer CBuffer0 : register(b0)
 {
-    float4 Time; // packoffset(c1.xyz);
-    float2 ScreenSize; //: packoffset(c0.xy);
-    float2 MousePos; //: packoffset(c0.zw);
+    float4 Time;
+    float2 ScreenSize;
+    float2 MousePos;
 };
 cbuffer CBuffer1 : register(b1)
 {
@@ -78,24 +78,24 @@ PSOutput PS(const VSOutput input)
     float3 aaaaaa;
     Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(10.0, 10.0), aaaaaa);
 
-    //Voronoi(input.UV, 3.0, 5.0, aa.x, aa.y, aa.z, aa.w);
+    MinkowskiVoronoi(input.UV, 7.0, 7.0,0.25, aa.x, aa.y, aa.z, aa.w);
     ////float3 Vector3_out10 = float3(2.0, 0.600000, 0.000000);
-    ////output.Color = Fire(input.UV, Vector3_out10);
+    output.Color.rgb=aa.xyy;
 
     
-    float3 N = mul((float3x3) World, input.Normal);
-    N = normalize(N); //ê≥ãKâª
+ //   float3 N = mul((float3x3) World, input.Normal);
+ //   N = normalize(N); //ê≥ãKâª
 
-	//Å@ÉâÉCÉgåvéZ
-    float3 L = normalize(LightDir.xyz);
-	//float D = max(0, dot(-L, N));
-    float3 C = LightColor.rgb;
-	// îΩéÀó¶
-    float3 Kd = float3(1, 1, 1);
-	// ägéUîΩéÀåvéZ
-    float3 D;
-    Diffuse(N, L, C, Kd, D);
-    output.Color.rgb = aaaaaa+ D + AmbientColor.rgb;
+	////Å@ÉâÉCÉgåvéZ
+ //   float3 L = normalize(LightDir.xyz);
+	////float D = max(0, dot(-L, N));
+ //   float3 C = LightColor.rgb;
+	//// îΩéÀó¶
+ //   float3 Kd = float3(1, 1, 1);
+	//// ägéUîΩéÀåvéZ
+ //   float3 D;
+ //   Diffuse(N, L, C, Kd, D);
+ //   output.Color.rgb = aaaaaa+ D + AmbientColor.rgb;
 
     return output;
 }

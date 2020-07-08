@@ -37,14 +37,15 @@ namespace epion
 
 		m_mesh = std::make_unique <Model::Polygon>();
 		m_mesh->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
-		m_mesh->SetPos(2.0, 0.0, 0.0);
-		m_mesh->SetScale(1.0f, 1.0f, 1.0f);
+		m_mesh->SetPos(0.0, 0.0, 0.0);
+		m_mesh->SetScale(3.0f, 3.0f, 1.0f);
+		m_mesh->SetAngle(45.0f, 0.0f, 0.0f);
 
 
-		//m_mesh2 = std::make_unique <Model::Polygon>();
-		//m_mesh2->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
-		//m_mesh2->SetPos(-2.0, 0.0, 0.0);
-		//m_mesh2->SetScale(1.0f, 1.0f, 1.0f);
+		m_mesh2 = std::make_unique <Model::Polygon>();
+		m_mesh2->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
+		m_mesh2->SetPos(-2.0, 0.0, 0.0);
+		m_mesh2->SetScale(1.0f, 1.0f, 1.0f);
 
 
 		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
@@ -97,7 +98,7 @@ namespace epion
 		//m_mesh->SetAngle(aaaa, aaaa, 0.0f);
 
 		m_mesh->Update();
-		//m_mesh2->Update();
+		m_mesh2->Update();
 
 		//m_plane->Update();
 
@@ -110,24 +111,27 @@ namespace epion
 		Math::FVector2 pos = { 0.0f,0.0f };
 		DX12::ConstantBufferManager::UpdateCBuffer0(pos);
 		Math::FVector4 col, dir, am;
-		col = { 1.0,1.0,1.0,1.0 };
-		dir = { 1.0,1.0,1.0,1.0 };
-		am = { 1.0,0.0,0.0,1.0 };
+		col = { 0.6,0.6,0.6,1.0 };
+		dir = { 0.0,1.0,0.0,1.0 };
+		am = { 0.2,0.2,0.2,1.0 };
 		DX12::ConstantBufferManager::UpdateCBuffer2(col,dir,am);
 
 	}
 	void SceneTest::Render()
 	{
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
+		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+
+		DX12::ConstantBufferManager::SetHeap();
+
 		DX12::ConstantBufferManager::SetCBuffer0();
-		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
-		DX12::ConstantBufferManager::SetCBuffer1(1);
 		DX12::ConstantBufferManager::SetCBuffer2();
 
+		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
+		DX12::ConstantBufferManager::SetCBuffer1(1);
 		m_mesh->Render();
 
-		//DX12::RootSignatureManager::SetGraphicsRootSignature();
-		//DX12::ConstantBufferManager::SetCBuffer0();
 		//DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
 		//DX12::ConstantBufferManager::SetCBuffer1(1);
 		//m_mesh2->Render();

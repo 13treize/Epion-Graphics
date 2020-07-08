@@ -24,6 +24,8 @@ namespace	epion
 		epion::com_ptr<ID3DBlob> ps_blob2;
 
 		std::unique_ptr<Model::Square> m_square;
+		std::unique_ptr<Model::Square> m_square2;
+
 		std::unique_ptr<Model::Plane> m_plane;
 		std::unique_ptr<DX12::ConstantBuffer> m_cbuffer;
 

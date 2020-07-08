@@ -161,6 +161,7 @@
     <ClInclude Include="Epion12\DX12\RootSignature.h" />
     <ClInclude Include="Epion12\DX12\ShaderManager.h" />
     <ClInclude Include="Epion12\DX12\SwapChain.h" />
+    <ClInclude Include="Epion12\DX12\Texture.h" />
     <ClInclude Include="Epion12\DX12\ViewPort.h" />
     <ClInclude Include="Epion12\Epion12.h" />
     <ClInclude Include="Epion12\GUI\EpionGUI.h" />
@@ -264,6 +265,7 @@
     <ClCompile Include="Epion12\DX12\RootSignature.cpp" />
     <ClCompile Include="Epion12\DX12\ShaderManager.cpp" />
     <ClCompile Include="Epion12\DX12\SwapChain.cpp" />
+    <ClCompile Include="Epion12\DX12\Texture.cpp" />
     <ClCompile Include="Epion12\DX12\ViewPort.cpp" />
     <ClCompile Include="Epion12\GUI\ImGuiBase.cpp" />
     <ClCompile Include="Epion12\GUI\ImGuiFunction.cpp" />
@@ -484,14 +486,14 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets" Condition="Exists('packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets')" />
     <Import Project="packages\cereal.1.0.0\build\native\cereal.targets" Condition="Exists('packages\cereal.1.0.0\build\native\cereal.targets')" />
+    <Import Project="packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets" Condition="Exists('packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtex_desktop_win10.2020.6.15.1\build\native\directxtex_desktop_win10.targets'))" />
     <Error Condition="!Exists('packages\cereal.1.0.0\build\native\cereal.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cereal.1.0.0\build\native\cereal.targets'))" />
+    <Error Condition="!Exists('packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets'))" />
   </Target>
 </Project>

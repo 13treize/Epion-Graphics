@@ -12,13 +12,26 @@ namespace
 namespace	epion::Camera
 {
 	View::View()
+		:pos({}), target({}), up({}),
+		fov(0), aspect(0), nearPlane(0), farPlane(0)
 	{
+		//MatView =DirectX::XMMATRIX(1);
+		//MatProjection = DirectX::XMMATRIX(1);
+		//F4x4View = DirectX::XMFLOAT4X4(1);
+		//F4x4Projection = DirectX::XMFLOAT4X4(1);
+
 	}
 
 	View::View(const Math::FVector3& p, const Math::FVector3& t, const Math::FVector3& u, float fov_, float aspect_, float n_, float f_)
 		:pos(p), target(t), up(u),
 		fov(fov_), aspect(aspect_), nearPlane(n_), farPlane(f_)
 	{
+		//MatView = DirectX::XMMATRIX(1);
+		//MatProjection = DirectX::XMMATRIX(1);
+		//F4x4View = DirectX::XMFLOAT4X4(1);
+		//F4x4Projection = DirectX::XMFLOAT4X4(1);
+
+
 	}
 
 	void	View::SetView(const	Math::FVector3& p, const	Math::FVector3& t, const	Math::FVector3& u)
