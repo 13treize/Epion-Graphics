@@ -46,10 +46,10 @@ namespace epion::DX12
 			&resdesc,
 			D3D12_RESOURCE_STATE_GENERIC_READ,
 			nullptr,
-			IID_PPV_ARGS(&m_vertex_buffer));
+			IID_PPV_ARGS(m_resource_buffer.ReleaseAndGetAddressOf()));
 
 		m_vertex_buffer_view = {};
-		m_vertex_buffer_view.BufferLocation = m_vertex_buffer->GetGPUVirtualAddress();//バッファの仮想アドレス
+		m_vertex_buffer_view.BufferLocation = m_resource_buffer->GetGPUVirtualAddress();//バッファの仮想アドレス
 		m_vertex_buffer_view.SizeInBytes = bytes;//全バイト数
 		m_vertex_buffer_view.StrideInBytes = size;//1頂点あたりのバイト数
 		return true;
@@ -64,10 +64,6 @@ namespace epion::DX12
 		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
 	}
 
-	com_ptr<ID3D12Resource>& VertexBuffer::GetBuffer()
-	{
-		return m_vertex_buffer;
-	}
 
 	D3D12_VERTEX_BUFFER_VIEW& VertexBuffer::GetView()
 	{
@@ -107,11 +103,11 @@ namespace epion::DX12
 			&resdesc,
 			D3D12_RESOURCE_STATE_GENERIC_READ,
 			nullptr,
-			IID_PPV_ARGS(&m_index_buffer));
+			IID_PPV_ARGS(m_resource_buffer.ReleaseAndGetAddressOf()));
 
 		m_index_buffer_view = {};
-		m_index_buffer_view.BufferLocation = m_index_buffer->GetGPUVirtualAddress();
-		m_index_buffer_view.Format = DXGI_FORMAT_R16_UINT;
+		m_index_buffer_view.BufferLocation = m_resource_buffer->GetGPUVirtualAddress();
+		m_index_buffer_view.Format = DXGI_FORMAT::DXGI_FORMAT_R16_UINT;
 		m_index_buffer_view.SizeInBytes = size*sizeof(unsigned short);
 
 		m_buffer_count = static_cast<unsigned int>(size);
@@ -126,11 +122,6 @@ namespace epion::DX12
 	void IndexBuffer::SetState()
 	{
 		//DX12::DX12CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
-	}
-
-	com_ptr<ID3D12Resource>& IndexBuffer::GetBuffer()
-	{
-		return m_index_buffer;
 	}
 
 	D3D12_INDEX_BUFFER_VIEW& IndexBuffer::GetView()
@@ -175,14 +166,14 @@ namespace epion::DX12
 			&resdesc,
 			D3D12_RESOURCE_STATE_GENERIC_READ,
 			nullptr,
-			IID_PPV_ARGS(&m_constant_buffer));
+			IID_PPV_ARGS(m_resource_buffer.ReleaseAndGetAddressOf()));
 
 		if (FAILED(hr))
 		{
 			return false;
 		}
 		m_constant_buffer_view = {};
-		m_constant_buffer_view.BufferLocation = m_constant_buffer->GetGPUVirtualAddress();
+		m_constant_buffer_view.BufferLocation = m_resource_buffer->GetGPUVirtualAddress();
 		m_constant_buffer_view.SizeInBytes = size;
 		return true;
 	}
@@ -195,10 +186,6 @@ namespace epion::DX12
 	{
 	}
 
-	com_ptr<ID3D12Resource>& ConstantBuffer::GetBuffer()
-	{
-		return m_constant_buffer;
-	}
 
 	D3D12_CONSTANT_BUFFER_VIEW_DESC& ConstantBuffer::GetView()
 	{

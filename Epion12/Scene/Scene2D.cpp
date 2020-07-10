@@ -5,13 +5,13 @@
 
 #include	"Scene2D.h"
 #include	"../DX12/ShaderManager.h"
+#include	"../DX12/BlendState.h"
 #include	"../DX12/RasterizerManager.h"
 #include	"../DX12/ConstantBufferManager.h"
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
 namespace
 {
-	epion::DX12::RootSignature root2;
 }
 namespace epion
 {
@@ -21,7 +21,8 @@ namespace epion
 
 		DX12::ConstantBufferManager::Initialize();
 		//root2.Initialize();
-		DX12::RootSignatureManager::Build();
+		DX12::RootSignatureManager::Build2D();
+		DX12::BlendStateManager::Initialize();
 		DX12::RasterizerManager::Initialize();
 
 		// Build Shader
@@ -31,13 +32,10 @@ namespace epion
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\Scene2DDemo.hlsl", ps_blob2, DX12::ShaderType::TYPE_PIXEL);
 
 		m_square = std::make_unique<Model::Square>();
-		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
+		m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
 
 		m_square2 = std::make_unique<Model::Square>();
-		m_square2->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
-
-
-		//m_square->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
+		m_square2->Initialize(vs_blob, ps_blob2, gs_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
 
 		return true;
 	}	

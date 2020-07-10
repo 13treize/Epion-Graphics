@@ -37,13 +37,6 @@ namespace epion::Model
 		DirectX::XMFLOAT4X4	m_world_matrix;
 	};
 
-	struct PolygonVertex
-	{
-		epion::Math::FVector3 Position;
-		epion::Math::FVector3 Normal;
-		epion::Math::FVector2 UV;
-		epion::Math::FVector4 Color;
-	};
 
 	class Polygon final :public Model3D
 	{

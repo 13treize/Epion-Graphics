@@ -115,7 +115,7 @@ float4 PS(Input input) : SV_TARGET
     set_color.w = 1.0f;
     //set_color = Dissolve(input.uv);
     
-    set_color = Fire(input.uv, Vector3_out10);
+    //set_color = Fire(input.uv, Vector3_out10);
 
     return set_color;
 }

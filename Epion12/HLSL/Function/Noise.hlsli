@@ -22,6 +22,85 @@ void GradientNoise(float2 UV, float Scale, out float Out)
 {
     Out = gradient_noise(UV * Scale) + 0.5;
 }
+//PhasorNoise    ˆ—‚ªd‚¢
+float M_PI = 3.14159265358979323846;
+
+int morton(int x, int y)
+{
+    int z = 0;
+    for (int i = 0; i < 32 * 4; i++)
+    {
+        z |= ((x & (1 << i)) << i) | ((y & (1 << i)) << (i + 1));
+    }
+    return z;
+}
+float2 phasor(float2 x, float f, float b, float o, float phi)
+{
+    float a = exp(-M_PI * (b * b) * ((x.x * x.x) + (x.y * x.y))),
+          s = sin(2.0 * M_PI * f * (x.x * cos(o) + x.y * sin(o)) + phi),
+          c = cos(2.0 * M_PI * f * (x.x * cos(o) + x.y * sin(o)) + phi);
+    return float2(a * c, a * s);
+}
+
+float uni_0_1(inout int xx)
+{
+    int N = 15487469;
+    xx *= 3039177861;
+    xx %= N;
+    return float(xx) / float(N);
+}
+float uni(inout int xx, float Min, float Max)
+{
+    float uni_0_1_ = uni_0_1(xx);
+    return Min + (uni_0_1_ * (Max - Min));
+}
+
+float2 cell(int2 ij, float2 uv, float _kr, float f, float b, float o)
+{
+    int s = morton(ij.x, ij.y) + 333;
+    s = s == 0 ? 1 : s + 2;
+    int x = s, impulse = 0, nImpulse = 16;
+    float cellsz = 2.0 * _kr;
+    float2 noise;
+    while (impulse <= nImpulse)
+    {
+        float2 impulse_centre = float2(uni_0_1(x), uni_0_1(x));
+        float2 d = (uv - impulse_centre) * cellsz;
+        float rp = uni(x, 0.0, 2.0 * M_PI);
+        noise += phasor(d, f, b, o, rp);
+        impulse++;
+    }
+    return noise;
+}
+float2 eval_noise(float2 UV, float kr, float f, float b, float o)
+{
+
+    float cellsz = kr * 2.0;
+    float2 ij_ = UV / cellsz;
+    int2 ij = int2(int(ij_.x), int(ij_.y));
+    float2 fij = ij_ - float2(float(ij.x), float(ij.y));
+    float2 noise;
+    for (int j = -2; j <= 2; j++)
+    {
+        for (int i = -2; i <= 2; i++)
+        {
+            int2 nij = int2(i, j);
+            noise += cell(ij + nij, fij - float2(float(nij.x), float(nij.y)), kr, f, b, o);
+        }
+    }
+    return noise;
+}
+void PhasorNoise(float2 uv, float f_, float b_, float o_, out float a, out float b, out float c, out float d)
+{
+    float2 dir = float2(cos(o_), sin(o_));
+    float kr = sqrt(-log(0.05) / M_PI) / b_;
+    float2 phasorNoise = eval_noise(uv, kr, f_, b_, o_)*0.3;
+    float phi = atan2(phasorNoise.y, phasorNoise.x);
+    a = phi;
+    b = sin(phi)+ 0.5;
+    c = length(phasorNoise);
+    d = frac(phi / (2.0 * M_PI) - f_ * dot(uv, dir));
+}
 
 //  SimpleNoise
 inline float noise_randomValue(float2 uv)

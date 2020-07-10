@@ -15,12 +15,12 @@ cbuffer CBuffer1 : register(b1)
     float4x4 View : packoffset(c4);
     float4x4 Proj : packoffset(c8);
 };
-cbuffer CBuffer2 : register(b2)
-{
-    float4 LightColor;
-    float4 LightDir;
-    float4 AmbientColor;
-};
+//cbuffer CBuffer2 : register(b2)
+//{
+//    float4 LightColor;
+//    float4 LightDir;
+//    float4 AmbientColor;
+//};
 
 
 struct VSInput
@@ -76,11 +76,12 @@ PSOutput PS(const VSOutput input)
     //PSOutput output = (PSOutput) 0;
     float4 aa;
     float3 aaaaaa;
-    Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(10.0, 10.0), aaaaaa);
+    //Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(10.0, 10.0), aaaaaa);
 
     MinkowskiVoronoi(input.UV, 7.0, 7.0,0.25, aa.x, aa.y, aa.z, aa.w);
+    //PhasorNoise(input.UV, 25.0, 10.0, 0.1, aa.x, aa.y, aa.z, aa.w);
     ////float3 Vector3_out10 = float3(2.0, 0.600000, 0.000000);
-    output.Color.rgb=aa.xyy;
+    output.Color.rgb=aa.yyy;
 
     
  //   float3 N = mul((float3x3) World, input.Normal);

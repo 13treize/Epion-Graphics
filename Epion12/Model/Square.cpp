@@ -1,4 +1,5 @@
 #include "../Epion12.h"
+#include "PrimitiveModelData.h"
 #include "Square.h"
 #include "../DX12/ViewPort.h"
 #include "../DX12/Device.h"
@@ -20,23 +21,18 @@ namespace epion::Model
 	{
 	}
 
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(SquareVertex), sizeof(SquareVertex) * 4);
+		m_vertex->Initialize(sizeof(Model2DVertex), sizeof(Model2DVertex) * 4);
 
-		unsigned short indices[] = { 0,1,2, 2,1,3 };
-
-		m_index->Initialize(sizeof(indices));
-
-		unsigned short* mappedIdx = nullptr;
-		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(std::begin(indices), std::end(indices), mappedIdx);
-		m_index->GetBuffer()->Unmap(0, nullptr);
-
+		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
+		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::SIZE, false);
+		m_index_resource->CopyResource<PrimitiveData::Polygon::SIZE>(PrimitiveData::Polygon::indices);
+		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
@@ -46,22 +42,18 @@ namespace epion::Model
 
 		return true;
 	}
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(SquareVertex), sizeof(SquareVertex) * 4);
+		m_vertex->Initialize(sizeof(Model2DVertex), sizeof(Model2DVertex) * 4);
 
-		unsigned short indices[] = { 0,1,2, 2,1,3 };
-
-		m_index->Initialize(sizeof(indices));
-
-		unsigned short* mappedIdx = nullptr;
-		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(std::begin(indices), std::end(indices), mappedIdx);
-		m_index->GetBuffer()->Unmap(0, nullptr);
+		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
+		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::SIZE, false);
+		m_index_resource->CopyResource<PrimitiveData::Polygon::SIZE>(PrimitiveData::Polygon::indices);
+		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
 
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
@@ -79,22 +71,7 @@ namespace epion::Model
 
 		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;//中身は0xffffffff
 
-		m_pipeline_desc.BlendState.AlphaToCoverageEnable = false;
-		m_pipeline_desc.BlendState.IndependentBlendEnable = false;
-
-
-
-		D3D12_RENDER_TARGET_BLEND_DESC renderTargetBlendDesc = {};
-
-		//ひとまず加算や乗算やαブレンディングは使用しない
-		renderTargetBlendDesc.BlendEnable = false;
-		renderTargetBlendDesc.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
-
-		//ひとまず論理演算は使用しない
-		renderTargetBlendDesc.LogicOpEnable = false;
-
-		m_pipeline_desc.BlendState.RenderTarget[0] = renderTargetBlendDesc;
-
+		m_pipeline_desc.BlendState = b_desc;
 		m_pipeline_desc.RasterizerState = r_desc;
 
 		m_pipeline_desc.DepthStencilState.DepthEnable = false;
@@ -117,22 +94,19 @@ namespace epion::Model
 
 	}
 
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob,com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob,com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(SquareVertex), sizeof(SquareVertex) * 4);
+		m_vertex->Initialize(sizeof(Model2DVertex), sizeof(Model2DVertex) * 4);
 
-		unsigned short indices[] = { 0,1,2, 2,1,3 };
+		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
+		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::SIZE, false);
+		m_index_resource->CopyResource<PrimitiveData::Polygon::SIZE>(PrimitiveData::Polygon::indices);
+		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
-		m_index->Initialize(sizeof(indices));
-
-		unsigned short* mappedIdx = nullptr;
-		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(std::begin(indices), std::end(indices), mappedIdx);
-		m_index->GetBuffer()->Unmap(0, nullptr);
 
 
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
@@ -152,22 +126,7 @@ namespace epion::Model
 
 		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;//中身は0xffffffff
 
-		m_pipeline_desc.BlendState.AlphaToCoverageEnable = false;
-		m_pipeline_desc.BlendState.IndependentBlendEnable = false;
-
-
-
-		D3D12_RENDER_TARGET_BLEND_DESC renderTargetBlendDesc = {};
-
-		//ひとまず加算や乗算やαブレンディングは使用しない
-		renderTargetBlendDesc.BlendEnable = false;
-		renderTargetBlendDesc.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
-
-		//ひとまず論理演算は使用しない
-		renderTargetBlendDesc.LogicOpEnable = false;
-
-		m_pipeline_desc.BlendState.RenderTarget[0] = renderTargetBlendDesc;
-
+		m_pipeline_desc.BlendState = b_desc;
 		m_pipeline_desc.RasterizerState = r_desc;
 
 		m_pipeline_desc.DepthStencilState.DepthEnable = false;
@@ -214,7 +173,7 @@ namespace epion::Model
 				d_xy.y + d_wh.y,	//left-bottom
 				d_xy.y + d_wh.y,	//right-bottom
 			};
-			std::array<SquareVertex, 4> vertices;
+			std::array<Model2DVertex, 4> vertices;
 
 			arr_x = 2.0f * arr_x / static_cast<float>(DX12::ViewPort::GetScreenSize().x) - 1.0f;
 			arr_y = 1.0f - 2.0f * arr_y / static_cast<float>(DX12::ViewPort::GetScreenSize().y);
@@ -230,7 +189,7 @@ namespace epion::Model
 			vertices[1].uv = { 1.0f,1.0f };
 			vertices[2].uv = { 0.0f,0.0f };
 			vertices[3].uv = { 1.0f,0.0f };
-			SquareVertex* vertMap = nullptr;
+			Model2DVertex* vertMap = nullptr;
 			m_vertex->GetBuffer()->Map(0, nullptr, (void**)&vertMap);
 			std::copy(vertices.begin(), vertices.end(), vertMap);
 			m_vertex->GetBuffer()->Unmap(0, nullptr);
@@ -244,7 +203,7 @@ namespace epion::Model
 	{
 		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
 		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
-		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
-		DX12::CommandList::GetPtr()->DrawIndexedInstanced(6, 1, 0, 0, 0);
+		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index_buffer_view);
+		DX12::CommandList::GetPtr()->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
 	}
 }

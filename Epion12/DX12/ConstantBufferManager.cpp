@@ -30,10 +30,10 @@ namespace epion::DX12
 		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer1->GetView(), m_heap->GetHandleCPU(1));
 		m_cbuffer1->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer1_data));
 
-		m_cbuffer2 = std::make_unique<DX12::ConstantBuffer>();
-		m_cbuffer2->Initialize(256);
-		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer2->GetView(), m_heap->GetHandleCPU(2));
-		m_cbuffer2->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer2_data));
+		//m_cbuffer2 = std::make_unique<DX12::ConstantBuffer>();
+		//m_cbuffer2->Initialize(256);
+		//DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer2->GetView(), m_heap->GetHandleCPU(2));
+		//m_cbuffer2->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer2_data));
 
 		return true;
 	}
@@ -83,8 +83,6 @@ namespace epion::DX12
 	void ConstantBufferManager::SetCBuffer0()
 	{
 		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(0, m_heap->GetHandleGPU(0));
-		//auto passCB = m_cbuffer0->GetBuffer().Get();
-		//DX12::CommandList::GetPtr()->SetGraphicsRootConstantBufferView(0, passCB->GetGPUVirtualAddress());
 	}
 
 	void ConstantBufferManager::SetCBuffer1(unsigned int index)

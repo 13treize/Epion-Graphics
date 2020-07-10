@@ -114,7 +114,7 @@ namespace epion
 		col = { 0.6,0.6,0.6,1.0 };
 		dir = { 0.0,1.0,0.0,1.0 };
 		am = { 0.2,0.2,0.2,1.0 };
-		DX12::ConstantBufferManager::UpdateCBuffer2(col,dir,am);
+		//DX12::ConstantBufferManager::UpdateCBuffer2(col,dir,am);
 
 	}
 	void SceneTest::Render()
@@ -126,15 +126,15 @@ namespace epion
 		DX12::ConstantBufferManager::SetHeap();
 
 		DX12::ConstantBufferManager::SetCBuffer0();
-		DX12::ConstantBufferManager::SetCBuffer2();
+		//DX12::ConstantBufferManager::SetCBuffer2();
+
+		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
+		DX12::ConstantBufferManager::SetCBuffer1(1);
+		m_mesh2->Render();
 
 		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
 		DX12::ConstantBufferManager::SetCBuffer1(1);
 		m_mesh->Render();
-
-		//DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetWorldMaxrix(), Camera::CameraManager::GetScene3DCamera()->GetMatView(), Camera::CameraManager::GetScene3DCamera()->GetMatProjection());
-		//DX12::ConstantBufferManager::SetCBuffer1(1);
-		//m_mesh2->Render();
 
 		//m_plane->Render();
 
