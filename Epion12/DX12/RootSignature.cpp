@@ -85,7 +85,7 @@ namespace epion::DX12
 
 	void RootSignatureManager::SetGraphicsRootSignature()
 	{
-		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
+		DX12::CommandList::GetCmd()->SetGraphicsRootSignature(m_root_signature.Get());
 	}
 
 	com_ptr<ID3D12RootSignature>& RootSignatureManager::Get()

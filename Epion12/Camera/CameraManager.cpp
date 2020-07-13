@@ -176,7 +176,7 @@ namespace	epion::Camera
 			Math::FVector3(0.0f, 0.0f, 0.0f),
 			up,
 			Math::pi<float> / 8.0f,
-			1280.0f/720.0f,
+			aspect,
 			0.1f,
 			1000.0f);
 

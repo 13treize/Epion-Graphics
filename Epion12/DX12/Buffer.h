@@ -54,12 +54,27 @@ namespace epion::DX12
 			m_resource_buffer->Map(0, nullptr, reinterpret_cast<void**>(&m_mapped_resource));
 			return true;
 		}
+		bool Finalize()
+		{
+			if (m_resource_buffer != nullptr)
+			{
+				m_resource_buffer->Unmap(0, nullptr);
+			}
+			m_mapped_resource = nullptr;
+			return true;
+		}
 
 		template<size_t N>
 		void CopyResource(const std::array<T, N>& data)
 		{
 			memcpy(m_mapped_resource, data.data(), sizeof(data));
 		}
+
+		void CopyResource(const std::vector<T>& data)
+		{
+			memcpy(m_mapped_resource, data.data(), sizeof(data));
+		}
+
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress()
 		{
 			return m_resource_buffer->GetGPUVirtualAddress();
@@ -111,22 +126,6 @@ namespace epion::DX12
 
 	private:
 		D3D12_VERTEX_BUFFER_VIEW m_vertex_buffer_view;
-	};
-
-	class IndexBuffer :public Buffer
-	{
-	public:
-		IndexBuffer();
-		~IndexBuffer();
-		bool Initialize(int size);
-		bool Finalize() override;
-		void SetState() override;
-
-		//com_ptr<ID3D12Resource>& GetBuffer();
-		D3D12_INDEX_BUFFER_VIEW& GetView();
-
-	private:
-		D3D12_INDEX_BUFFER_VIEW m_index_buffer_view;
 	};
 
 	class ConstantBuffer :public Buffer

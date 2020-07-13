@@ -27,8 +27,6 @@ namespace epion
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS\\ObjVertexShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PS\\ObjPixelShader.hlsl", ps_blob, DX12::ShaderType::TYPE_PIXEL);
 
-		m_mesh= std::make_unique<Model::StaticMesh>();
-		m_mesh->Initialize(vs_blob, ps_blob, DX12::RasterizerManager::GetSolidDesc(), DX12::RootSignatureManager::Get());
 
 		return true;
 	}
@@ -40,7 +38,6 @@ namespace epion
 	void Scene3D::Update()
 	{
 		//Camera::CameraManager::Update();
-		m_mesh->Update();
 
 		//DX12::ConstantBufferManager::UpdateCBuffer1(Camera::CameraManager::GetScene3DCamera()->GetView(), Camera::CameraManager::GetScene3DCamera()->GetProjection());
 
@@ -51,7 +48,6 @@ namespace epion
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		//DX12::ConstantBufferManager::SetCBuffer1();
 
-		m_mesh->Render();
 	}
 	void Scene3D::RenderTex()
 	{

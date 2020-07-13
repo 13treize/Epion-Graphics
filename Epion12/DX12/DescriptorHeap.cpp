@@ -39,7 +39,7 @@ namespace epion::DX12
 	D3D12_GPU_DESCRIPTOR_HANDLE DescriptorHeap::GetHandleGPU(const unsigned index)
 	{
 		D3D12_GPU_DESCRIPTOR_HANDLE handle = m_heap->GetGPUDescriptorHandleForHeapStart();
-		handle.ptr += static_cast<UINT64>(m_size * 1);
+		handle.ptr += static_cast<UINT64>(m_size * index);
 		return handle;
 	}
 

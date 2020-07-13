@@ -20,7 +20,7 @@ namespace epion::DX12
 		static bool Initialize(com_ptr<ID3D12CommandAllocator>& cmd_alloc);
 		bool Finalize();
 		//get
-		static com_ptr<ID3D12GraphicsCommandList>& GetPtr();
+		static com_ptr<ID3D12GraphicsCommandList>& GetCmd();
 	private:
 		static com_ptr<ID3D12GraphicsCommandList> m_cmd_list;
 	};

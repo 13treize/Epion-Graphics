@@ -27,12 +27,14 @@ namespace epion::Model
 
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(Model2DVertex), sizeof(Model2DVertex) * 4);
+		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
+		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model2DVertex), false);
+		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model2DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model2DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::SIZE, false);
-		m_index_resource->CopyResource<PrimitiveData::Polygon::SIZE>(PrimitiveData::Polygon::indices);
-		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
+		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
+		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
@@ -48,12 +50,14 @@ namespace epion::Model
 
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(Model2DVertex), sizeof(Model2DVertex) * 4);
+		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
+		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model2DVertex), false);
+		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model2DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model2DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::SIZE, false);
-		m_index_resource->CopyResource<PrimitiveData::Polygon::SIZE>(PrimitiveData::Polygon::indices);
-		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
+		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
+		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
 
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
@@ -61,33 +65,21 @@ namespace epion::Model
 
 
 		m_pipeline_desc = {};
-		m_pipeline_desc.pRootSignature = nullptr;
-		m_pipeline_desc.VS.pShaderBytecode = vs_blob->GetBufferPointer();
-		m_pipeline_desc.VS.BytecodeLength = vs_blob->GetBufferSize();
-		m_pipeline_desc.PS.pShaderBytecode = ps_blob->GetBufferPointer();
-		m_pipeline_desc.PS.BytecodeLength = ps_blob->GetBufferSize();
-		m_pipeline_desc.GS.pShaderBytecode = gs_blob->GetBufferPointer();
-		m_pipeline_desc.GS.BytecodeLength = gs_blob->GetBufferSize();
-
-		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;//中身は0xffffffff
-
+		m_pipeline_desc.VS = { vs_blob->GetBufferPointer(), vs_blob->GetBufferSize() };
+		m_pipeline_desc.PS = { ps_blob->GetBufferPointer(), ps_blob->GetBufferSize() };
+		m_pipeline_desc.GS = { gs_blob->GetBufferPointer(), gs_blob->GetBufferSize() };
 		m_pipeline_desc.BlendState = b_desc;
 		m_pipeline_desc.RasterizerState = r_desc;
-
 		m_pipeline_desc.DepthStencilState.DepthEnable = false;
 		m_pipeline_desc.DepthStencilState.StencilEnable = false;
-
-		m_pipeline_desc.InputLayout.pInputElementDescs = m_shader_reflection->GetInputLayout().data();//レイアウト先頭アドレス
-		m_pipeline_desc.InputLayout.NumElements = static_cast<UINT>(m_shader_reflection->GetInputLayout().size());
-
-		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;//ストリップ時のカットなし
-		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;//三角形で構成
-
-		m_pipeline_desc.NumRenderTargets = 1;//今は１つのみ
-		m_pipeline_desc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;//0～1に正規化されたRGBA
-
-		m_pipeline_desc.SampleDesc.Count = 1;//サンプリングは1ピクセルにつき１
-		m_pipeline_desc.SampleDesc.Quality = 0;//クオリティは最低
+		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
+		m_pipeline_desc.InputLayout = { m_shader_reflection->GetInputLayout().data(), static_cast<UINT>(m_shader_reflection->GetInputLayout().size()) };
+		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
+		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+		m_pipeline_desc.NumRenderTargets = 1;
+		m_pipeline_desc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+		m_pipeline_desc.SampleDesc.Count = 1;
+		m_pipeline_desc.SampleDesc.Quality = 0;
 		m_pipeline_desc.pRootSignature = root_sig.Get();
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 		return true;
@@ -100,50 +92,36 @@ namespace epion::Model
 
 		m_is_update = true;
 
-		m_vertex->Initialize(sizeof(Model2DVertex), sizeof(Model2DVertex) * 4);
+		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
+		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model2DVertex), false);
+		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model2DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model2DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::SIZE, false);
-		m_index_resource->CopyResource<PrimitiveData::Polygon::SIZE>(PrimitiveData::Polygon::indices);
-		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
-
-
+		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
+		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
+		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
 		m_pipeline_desc = {};
-		m_pipeline_desc.VS.pShaderBytecode = vs_blob->GetBufferPointer();
-		m_pipeline_desc.VS.BytecodeLength = vs_blob->GetBufferSize();
-		m_pipeline_desc.PS.pShaderBytecode = ps_blob->GetBufferPointer();
-		m_pipeline_desc.PS.BytecodeLength = ps_blob->GetBufferSize();
-		m_pipeline_desc.HS.pShaderBytecode = hs_blob->GetBufferPointer();
-		m_pipeline_desc.HS.BytecodeLength = hs_blob->GetBufferSize();
-		m_pipeline_desc.DS.pShaderBytecode = ds_blob->GetBufferPointer();
-		m_pipeline_desc.DS.BytecodeLength = ds_blob->GetBufferSize();
-		m_pipeline_desc.GS.pShaderBytecode = gs_blob->GetBufferPointer();
-		m_pipeline_desc.GS.BytecodeLength = gs_blob->GetBufferSize();
-
-		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;//中身は0xffffffff
-
+		m_pipeline_desc.VS = { vs_blob->GetBufferPointer(), vs_blob->GetBufferSize() };
+		m_pipeline_desc.PS = { ps_blob->GetBufferPointer(), ps_blob->GetBufferSize() };
+		m_pipeline_desc.HS = { hs_blob->GetBufferPointer(), hs_blob->GetBufferSize() };
+		m_pipeline_desc.DS = { ds_blob->GetBufferPointer(), ds_blob->GetBufferSize() };
+		m_pipeline_desc.GS = { gs_blob->GetBufferPointer(), gs_blob->GetBufferSize() };
 		m_pipeline_desc.BlendState = b_desc;
 		m_pipeline_desc.RasterizerState = r_desc;
-
+		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
 		m_pipeline_desc.DepthStencilState.DepthEnable = false;
 		m_pipeline_desc.DepthStencilState.StencilEnable = false;
-
-		m_pipeline_desc.InputLayout.pInputElementDescs = m_shader_reflection->GetInputLayout().data();//レイアウト先頭アドレス
-		m_pipeline_desc.InputLayout.NumElements = static_cast<UINT>(m_shader_reflection->GetInputLayout().size());
-
-		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;//ストリップ時のカットなし
-		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;//三角形で構成
-
-		m_pipeline_desc.NumRenderTargets = 1;//今は１つのみ
-		m_pipeline_desc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;//0～1に正規化されたRGBA
-
-		m_pipeline_desc.SampleDesc.Count = 1;//サンプリングは1ピクセルにつき１
-		m_pipeline_desc.SampleDesc.Quality = 0;//クオリティは最低
-
+		m_pipeline_desc.InputLayout = { m_shader_reflection->GetInputLayout().data(), static_cast<UINT>(m_shader_reflection->GetInputLayout().size()) };
+		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
+		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+		m_pipeline_desc.NumRenderTargets = 1;
+		m_pipeline_desc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+		m_pipeline_desc.SampleDesc.Count = 1;
+		m_pipeline_desc.SampleDesc.Quality = 0;
 		m_pipeline_desc.pRootSignature = root_sig.Get();
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 
@@ -152,6 +130,8 @@ namespace epion::Model
 
 	bool Square::Finalize()
 	{
+		m_vertex_resource->Finalize();
+		m_index_resource->Finalize();
 		return true;
 	}
 	void Square::Update(const Math::FVector2& d_xy, const Math::FVector2& d_wh)
@@ -189,10 +169,7 @@ namespace epion::Model
 			vertices[1].uv = { 1.0f,1.0f };
 			vertices[2].uv = { 0.0f,0.0f };
 			vertices[3].uv = { 1.0f,0.0f };
-			Model2DVertex* vertMap = nullptr;
-			m_vertex->GetBuffer()->Map(0, nullptr, (void**)&vertMap);
-			std::copy(vertices.begin(), vertices.end(), vertMap);
-			m_vertex->GetBuffer()->Unmap(0, nullptr);
+			m_vertex_resource->CopyResource<PrimitiveData::Polygon::VERTEX_SIZE>(vertices);
 		}
 		m_is_update = false;
 	}
@@ -201,9 +178,9 @@ namespace epion::Model
 
 	void Square::Render()
 	{
-		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
-		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
-		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index_buffer_view);
-		DX12::CommandList::GetPtr()->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
+		DX12::CommandList::GetCmd()->SetPipelineState(m_pipeline_state.Get());
+		DX12::CommandList::GetCmd()->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
+		DX12::CommandList::GetCmd()->IASetIndexBuffer(&m_index_buffer_view);
+		DX12::CommandList::GetCmd()->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
 	}
 }

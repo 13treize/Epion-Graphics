@@ -8,6 +8,8 @@
 #include "../Scene/Scene3D.h"
 #include "../Scene/SceneTest.h"
 #include "../Camera/CameraManager.h"
+#include "../DX12/ViewPort.h"
+
 #include "WindowSetting.h"
 
 namespace epion::GUI
@@ -96,6 +98,8 @@ namespace epion::GUI
 				ImGui::InputFloat("x   ", &target.x, 0.01f, 100.0f, "%.3f");
 				ImGui::InputFloat("y   ", &target.y, 0.01f, 100.0f, "%.3f");
 				ImGui::InputFloat("z   ", &target.z, 0.01f, 100.0f, "%.3f");
+
+				ImGui::Text("Aspect %f", DX12::ViewPort::GetAspect());
 
 				Camera::CameraManager::GetScene3DCamera()->SetPos(pos);
 				Camera::CameraManager::GetScene3DCamera()->SetTarget(target);

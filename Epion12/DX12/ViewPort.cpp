@@ -47,7 +47,7 @@ namespace epion::DX12
 	}
 	const float ViewPort::GetAspect()
 	{
-		return static_cast<float>(m_screen_size.x / m_screen_size.y);
+		return static_cast<float>(m_screen_size.x) / static_cast<float>(m_screen_size.y);
 	}
 
 }

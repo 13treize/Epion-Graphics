@@ -69,10 +69,10 @@ namespace epion::DX12
 		ResouceBarrierEnd();
 
 		//命令のクローズ
-		CommandList::GetPtr()->Close();
+		CommandList::GetCmd()->Close();
 
 		//コマンドリストの実行
-		ID3D12CommandList* cmdlists[] = { CommandList::GetPtr().Get() };
+		ID3D12CommandList* cmdlists[] = { CommandList::GetCmd().Get() };
 		m_cmd_queue->ExecuteCommandLists(1, cmdlists);
 		WaitForGPU();
 		Reset();
@@ -94,7 +94,7 @@ namespace epion::DX12
 	__forceinline void PipeLine::Reset()
 	{
 		m_cmd_alloc->Reset();//キューをクリア
-		CommandList::GetPtr()->Reset(m_cmd_alloc.Get(), nullptr);//再びコマンドリストをためる準備
+		CommandList::GetCmd()->Reset(m_cmd_alloc.Get(), nullptr);//再びコマンドリストをためる準備
 	}
 
 	__forceinline void PipeLine::Begin()
@@ -122,8 +122,8 @@ namespace epion::DX12
 		auto bbIdx = m_swap->GetCurrentBackBufferIndex();
 		m_rtv_handle = m_heap_rtv->GetCPUDescriptorHandleForHeapStart();
 		m_rtv_handle.ptr += static_cast<SIZE_T>(bbIdx) * Device::Get()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
-		CommandList::GetPtr()->OMSetRenderTargets(1, &m_rtv_handle, false, nullptr);
-		CommandList::GetPtr()->ClearRenderTargetView(m_rtv_handle, m_clear_color.data(), 0, nullptr);
+		CommandList::GetCmd()->OMSetRenderTargets(1, &m_rtv_handle, false, nullptr);
+		CommandList::GetCmd()->ClearRenderTargetView(m_rtv_handle, m_clear_color.data(), 0, nullptr);
 	}
 
 	void	PipeLine::ResouceBarrierBegin()
@@ -137,13 +137,13 @@ namespace epion::DX12
 		m_barrier_desc.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
 		m_barrier_desc.Transition.StateBefore = D3D12_RESOURCE_STATE_PRESENT;
 		m_barrier_desc.Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET;
-		CommandList::GetPtr()->ResourceBarrier(1, &m_barrier_desc);
+		CommandList::GetCmd()->ResourceBarrier(1, &m_barrier_desc);
 	}
 	void	PipeLine::ResouceBarrierEnd()
 	{
 		m_barrier_desc.Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET;
 		m_barrier_desc.Transition.StateAfter = D3D12_RESOURCE_STATE_PRESENT;
-		CommandList::GetPtr()->ResourceBarrier(1, &m_barrier_desc);
+		CommandList::GetCmd()->ResourceBarrier(1, &m_barrier_desc);
 	}
 
 }

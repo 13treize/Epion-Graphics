@@ -45,7 +45,7 @@ namespace epion::DX12
 	}
 	void ConstantBufferManager::SetHeap()
 	{
-		DX12::CommandList::GetPtr()->SetDescriptorHeaps(1, m_heap->GetHeap().GetAddressOf());
+		DX12::CommandList::GetCmd()->SetDescriptorHeaps(1, m_heap->GetHeap().GetAddressOf());
 	}
 
 	void ConstantBufferManager::UpdateCBuffer0(const Math::FVector2& mouse_pos)
@@ -82,17 +82,21 @@ namespace epion::DX12
 
 	void ConstantBufferManager::SetCBuffer0()
 	{
-		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(0, m_heap->GetHandleGPU(0));
+		//D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = m_cbuffer0->GetBuffer().Get()->GetGPUVirtualAddress();
+		//DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(0, objCBAddress);
+
+		DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(0, m_heap->GetHandleGPU(0));
 	}
 
 	void ConstantBufferManager::SetCBuffer1(unsigned int index)
 	{
-		auto handle = m_heap->GetHandleGPU(index);
-		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(1, handle);
+		auto handle = m_heap->GetHandleGPU(1);
+	//	handle += index * CalcConstantBufferByteSize(sizeof(CBuffer1));
+		DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(1, handle);
 	}
 	void ConstantBufferManager::SetCBuffer2()
 	{
-		DX12::CommandList::GetPtr()->SetGraphicsRootDescriptorTable(2, m_heap->GetHandleGPU(2));
+		DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(2, m_heap->GetHandleGPU(2));
 	}
 
 	UINT ConstantBufferManager::CalcConstantBufferByteSize(UINT byteSize)

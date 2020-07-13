@@ -62,7 +62,7 @@ PSOutput PS(const VSOutput input)
     PSOutput output = (PSOutput) 0;
     float4 aa;
     //Voronoi(input.UV, 3.0, 5.0, aa.x, aa.y, aa.z, aa.w);
-    output.Color = aa;
+    output.Color.xy = input.UV;
     ////float3 Vector3_out10 = float3(2.0, 0.600000, 0.000000);
     ////output.Color = Fire(input.UV, Vector3_out10);
 

@@ -9,6 +9,7 @@ namespace epion::Model
 		m_is_update = true;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_vertex = std::make_unique<DX12::VertexBuffer>();
+		m_vertex_resource= std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
 		m_pipeline_desc = {};
 
@@ -54,8 +55,6 @@ namespace epion::Model
 	{
 		m_is_update = true;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
-		m_vertex = std::make_unique<DX12::VertexBuffer>();
-		m_index = std::make_unique<DX12::IndexBuffer>();
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
 		m_pipeline_desc = {};
 		m_pos = {};
@@ -98,6 +97,14 @@ namespace epion::Model
 		m_pipeline_desc.SampleDesc.Count = 1;
 		m_pipeline_desc.SampleDesc.Quality = 0;
 		m_pipeline_desc.pRootSignature = root_sig.Get();
+	}
+
+	void  Model3D::Draw(com_ptr<ID3D12GraphicsCommandList>& cmd)
+	{
+		cmd->SetPipelineState(m_pipeline_state.Get());
+		cmd->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
+		cmd->IASetIndexBuffer(&m_index_buffer_view);
+		cmd->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
 	}
 
 	Math::FVector3& Model3D::GetPos()

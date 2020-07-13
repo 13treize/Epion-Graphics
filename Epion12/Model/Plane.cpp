@@ -15,7 +15,7 @@ namespace epion::Model
 		m_is_update = true;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_vertex = std::make_unique<DX12::VertexBuffer>();
-		m_index = std::make_unique<DX12::IndexBuffer>();
+		//m_index = std::make_unique<DX12::IndexBuffer>();
 		m_pipeline_state = nullptr;
 		m_root_signature = nullptr;
 		m_pipeline_desc = {};
@@ -34,12 +34,12 @@ namespace epion::Model
 
 		unsigned short indices[] = { 0,1,2, 2,1,3 };
 
-		m_index->Initialize(sizeof(indices));
+		//m_index->Initialize(sizeof(indices));
 
-		unsigned short* mappedIdx = nullptr;
-		m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
-		std::copy(std::begin(indices), std::end(indices), mappedIdx);
-		m_index->GetBuffer()->Unmap(0, nullptr);
+		//unsigned short* mappedIdx = nullptr;
+		//m_index->GetBuffer()->Map(0, nullptr, (void**)&mappedIdx);
+		//std::copy(std::begin(indices), std::end(indices), mappedIdx);
+		//m_index->GetBuffer()->Unmap(0, nullptr);
 
 
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
@@ -186,12 +186,12 @@ namespace epion::Model
 	}
 	void Plane::Render()
 	{
-		DX12::CommandList::GetPtr()->SetPipelineState(m_pipeline_state.Get());
-		DX12::CommandList::GetPtr()->SetGraphicsRootSignature(m_root_signature.Get());
+		DX12::CommandList::GetCmd()->SetPipelineState(m_pipeline_state.Get());
+		DX12::CommandList::GetCmd()->SetGraphicsRootSignature(m_root_signature.Get());
 
-		DX12::CommandList::GetPtr()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		DX12::CommandList::GetPtr()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
-		DX12::CommandList::GetPtr()->IASetIndexBuffer(&m_index->GetView());
-		DX12::CommandList::GetPtr()->DrawIndexedInstanced(6, 1, 0, 0, 0);
+		DX12::CommandList::GetCmd()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		DX12::CommandList::GetCmd()->IASetVertexBuffers(0, 1, &m_vertex->GetView());
+		//DX12::CommandList::GetCmd()->IASetIndexBuffer(&m_index->GetView());
+		DX12::CommandList::GetCmd()->DrawIndexedInstanced(6, 1, 0, 0, 0);
 	}
 }

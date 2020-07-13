@@ -51,10 +51,10 @@ namespace epion
 	void MainSystem::Render()
 	{
 		m_pipeline.Render();
-		DX12::ViewPort::RSSets(DX12::CommandList::GetPtr());
+		DX12::ViewPort::RSSets(DX12::CommandList::GetCmd());
 		SceneManager::Render();
-		GUI::ImGuiManager::End(DX12::CommandList::GetPtr(), m_pipeline.GetHeapImGui());
-		GUI::ImGuiManager::UpdatePlatformWindow(DX12::CommandList::GetPtr());
+		GUI::ImGuiManager::End(DX12::CommandList::GetCmd(), m_pipeline.GetHeapImGui());
+		GUI::ImGuiManager::UpdatePlatformWindow(DX12::CommandList::GetCmd());
 		m_pipeline.EndUpdate();
 		m_pipeline.End();
 	}

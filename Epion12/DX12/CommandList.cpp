@@ -30,7 +30,7 @@ namespace epion::DX12
 		return true;
 	}
 
-	com_ptr<ID3D12GraphicsCommandList>& CommandList::GetPtr()
+	com_ptr<ID3D12GraphicsCommandList>& CommandList::GetCmd()
 	{
 		return m_cmd_list;
 	}

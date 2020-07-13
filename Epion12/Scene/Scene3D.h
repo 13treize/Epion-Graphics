@@ -19,7 +19,6 @@ namespace	epion
 		com_ptr<ID3DBlob> ps_blob;
 
 		//std::unique_ptr<Model::ObjMesh> m_plane;
-		std::unique_ptr<Model::StaticMesh> m_mesh;
 
 		std::unique_ptr<DX12::ConstantBuffer> m_cbuffer;
 

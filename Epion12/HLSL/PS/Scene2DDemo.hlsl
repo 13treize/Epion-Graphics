@@ -107,15 +107,27 @@ float4 PS(Input input) : SV_TARGET
     float2 data = float2(ScreenSize.x / 100.0, ScreenSize.y / 100.0);
 
     float a, b, c, d;
-    Voronoi(input.uv, 3.0 * abs(sin(Time.x)), 5.0, a, b, c, d);
+    Voronoi(input.uv, 3.0 * sin(Time.x), 5.0, a, b, c, d);
 
     float3 Vector3_out10 = float3(2.0, 0.600000, 0.000000);
+    Gear(input.uv, 12., .2, 0.13, 0.5, 6., 0.1, c);
 
     set_color.xyz = c;
-    set_color.w = 1.0f;
+    //set_color.w = 1.0f;
+    //set_color.xy = input.uv;
+ 
     //set_color = Dissolve(input.uv);
     
     //set_color = Fire(input.uv, Vector3_out10);
 
+    return set_color;
+}
+float4 PS2(Input input) : SV_TARGET
+{
+    float4 set_color;
+    float a, b, c, d;
+    Voronoi(input.uv, 3.0 * sin(Time.x), 5.0, a, b, c, d);
+
+    set_color.xyz = c;
     return set_color;
 }

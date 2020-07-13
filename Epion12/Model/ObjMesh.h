@@ -8,12 +8,6 @@ namespace epion::Model
 		std::wstring	file_name;
 	};
 
-	struct	ObjVertex
-	{
-		Math::FVector4	position;
-		Math::FVector4	normal;
-		Math::FVector2	uv;
-	};
 
 	struct	Subset
 	{
@@ -44,8 +38,8 @@ namespace epion::Model
 
 		std::vector<Material>			materials;
 		std::vector<Subset>				subsets;
-		std::vector<ObjVertex>			vertices;
-		std::vector<unsigned	int>	indices;
+		std::vector<Model3DVertex>		vertices;
+		std::vector<unsigned	short>	indices;
 		std::vector<std::wstring>		mtl_filenames;
 
 	private:
@@ -67,6 +61,9 @@ namespace epion::Model
 
 	private:
 		std::unique_ptr<ObjLoader> m_obj_loader;
+		size_t vertex_size;
+		size_t index_size;
+
 		com_ptr<ID3D12PipelineState> m_pipeline_state;
 
 	};

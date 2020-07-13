@@ -18,6 +18,15 @@ void Ellipse(float2 UV, float Width, float Height, out float Out)
     Out = saturate((1 - d) / fwidth(d));
 }
 
+void Gear(float2 UV, float tooths, float radius, float tlength, float tshape, float intooths, float inradius, out float Out)
+{
+    float2 p=UV * 2.0 - 1.0;
+    float col = 1.0;
+    float gear = max(radius, 0.15) + tlength * clamp((cos(atan2(p.x, p.y) * tooths)), 0.0, clamp(tshape, 0.08, 1.0));
+    gear = min(min(gear, step(0.03, length(p))), step(clamp(inradius, 0.1, radius) * (sign(cos((atan2(p.x, p.y) * intooths)))), length(p)));
+    col *= min(step(gear, length(p)), step(0.05, length(p)));
+    Out = 1.0-col;
+}
 void Hexagon(float2 UV, float Scale, out float Out, out float2 Pos, out float2 oUV, out float2 Index)
 {
     float2 p = UV * Scale;
