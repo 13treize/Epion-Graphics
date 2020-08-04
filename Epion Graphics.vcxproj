@@ -162,12 +162,10 @@
     <ClInclude Include="Epion12\DX12\BlendState.h" />
     <ClInclude Include="Epion12\DX12\Buffer.h" />
     <ClInclude Include="Epion12\DX12\CommandList.h" />
-    <ClInclude Include="Epion12\DX12\CommandQueue.h" />
     <ClInclude Include="Epion12\DX12\ConstantBufferManager.h" />
     <ClInclude Include="Epion12\DX12\DescriptorHeap.h" />
     <ClInclude Include="Epion12\DX12\Device.h" />
     <ClInclude Include="Epion12\DX12\DX12Wrapper.h" />
-    <ClInclude Include="Epion12\DX12\Factory.h" />
     <ClInclude Include="Epion12\DX12\FrameResource.h" />
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
     <ClInclude Include="Epion12\DX12\RasterizerManager.h" />
@@ -267,12 +265,10 @@
     <ClCompile Include="Epion12\DX12\BlendState.cpp" />
     <ClCompile Include="Epion12\DX12\Buffer.cpp" />
     <ClCompile Include="Epion12\DX12\CommandList.cpp" />
-    <ClCompile Include="Epion12\DX12\CommandQueue.cpp" />
     <ClCompile Include="Epion12\DX12\ConstantBufferManager.cpp" />
     <ClCompile Include="Epion12\DX12\DescriptorHeap.cpp" />
     <ClCompile Include="Epion12\DX12\Device.cpp" />
     <ClCompile Include="Epion12\DX12\DX12Wrapper.cpp" />
-    <ClCompile Include="Epion12\DX12\Factory.cpp" />
     <ClCompile Include="Epion12\DX12\FrameResource.cpp" />
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
     <ClCompile Include="Epion12\DX12\RasterizerManager.cpp" />

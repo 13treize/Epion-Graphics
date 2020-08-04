@@ -3,11 +3,9 @@
 #include	"Device.h"
 #include	"CommandList.h"
 #include	"SwapChain.h"
-#include	"CommandQueue.h"
-#include	"Factory.h"
 #include	"RenderTarget.h"
+#include	"DX12Wrapper.h"
 #include	"PipeLine.h"
-
 namespace
 {
 }
@@ -17,14 +15,14 @@ namespace epion::DX12
 	{
 		HRESULT hr = S_OK;
 
-		FactoryFunction::CreateFactory<IDXGIFactory6>(m_factory);
+		DX12Wrapper::CreateFactory<IDXGIFactory6>(m_factory);
 
 		Device::Initialize(m_factory);
 
-		hr = Device::Get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(&m_cmd_alloc));
+		DX12Wrapper::CreateCommandAllocator<ID3D12Device>(Device::Get(), m_cmd_alloc);
 		CommandList::Initialize(m_cmd_alloc);
 
-		CommandQueueFunction::CreateCommandQueue(Device::Get(), m_cmd_queue);
+		DX12Wrapper::CreateCommandQueue<ID3D12Device>(Device::Get(), m_cmd_queue);
 		SwapChainFunction::CreateSwapChains<IDXGISwapChain4>(m_swap, m_factory, m_cmd_queue, hwnd, ViewPort::GetScreenSize(), 2);
 		RenderTargetFunction::CreateRenderTarget(Device::Get(), m_heap_rtv);
 		DXGI_SWAP_CHAIN_DESC swcDesc = {};
