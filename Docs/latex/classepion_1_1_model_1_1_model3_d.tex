@@ -1,0 +1,233 @@
+\hypertarget{classepion_1_1_model_1_1_model3_d}{}\doxysection{epion\+::Model\+::Model3D クラス}
+\label{classepion_1_1_model_1_1_model3_d}\index{epion::Model::Model3D@{epion::Model::Model3D}}
+
+
+{\ttfamily \#include $<$Model.\+h$>$}
+
+epion\+::Model\+::Model3D の継承関係図\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classepion_1_1_model_1_1_model3_d}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_ac81c893721f27ed53de92c7adda612b8}{Model3D}} ()
+\item 
+virtual \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_ab806317deb835ee96d9a730758053e00}{$\sim$\+Model3D}} ()
+\item 
+void \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_abfa53641d15653b5a0204b7d21edbca7}{Default\+Set\+Pipe\+Line}} (\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D\+Blob $>$ \&vs\+\_\+blob, \mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D\+Blob $>$ \&ps\+\_\+blob, D3\+D12\+\_\+\+R\+A\+S\+T\+E\+R\+I\+Z\+E\+R\+\_\+\+D\+E\+SC \&r\+\_\+desc, \mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D12\+Root\+Signature $>$ \&root\+\_\+sig)
+\item 
+void \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_aed82b8a21e4c2b654f4816b5aae8c035}{Resource\+Update}} ()
+\item 
+void \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_ad3f3ba208e2e67a3da55f3ced005cd26}{Draw}} (\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D12\+Graphics\+Command\+List $>$ \&cmd)
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a3bacfd46efc653b83a70352646a49c4d}{Get\+Pos}} ()
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_aa4a73f78a0fc44a1adcf157bb9c421c4}{Get\+Angle}} ()
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a27257a252927151896c968d44a51e60b}{Get\+Scale}} ()
+\item 
+Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \& \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a193037c92fcb0fcc752dc93cf4a2da0c}{Get\+World\+Maxrix}} ()
+\item 
+void \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a58a0fca85b5e2d99b009257607bc363b}{Set\+Pos}} (const float x, const float y, const float z)
+\item 
+void \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_ac0a5833a5279ce66ecbffb3fb09bce1b}{Set\+Angle}} (const float x, const float y, const float z)
+\item 
+void \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_ada68d969776ed96832abb7c980f7a226}{Set\+Scale}} (const float x, const float y, const float z)
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_af48c71b5ddb36a98086c34bf1bdac870}{m\+\_\+is\+\_\+update}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_shader_reflection}{D\+X12\+::\+Shader\+Reflection}} $>$ \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a4a1f7bb92b1f6e39c6e010c8726fc7a6}{m\+\_\+shader\+\_\+reflection}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{D\+X12\+::\+Resource\+Buffer}}$<$ \mbox{\hyperlink{structepion_1_1_model_1_1_model3_d_vertex}{Model3\+D\+Vertex}} $>$ $>$ \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a34517a24a648a0e2172df2c44e1bfdb4}{m\+\_\+vertex\+\_\+resource}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{D\+X12\+::\+Resource\+Buffer}}$<$ unsigned short $>$ $>$ \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a91153ecbb0f223b8e016b891f77afa35}{m\+\_\+index\+\_\+resource}}
+\item 
+\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D12\+Pipeline\+State $>$ \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a677ef1dd4f0d66e2db568ca0f6cfa2b6}{m\+\_\+pipeline\+\_\+state}}
+\item 
+\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D\+Blob $>$ \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a45d39c6f228e38404f694ac75b28eb92}{m\+\_\+error\+\_\+blob}}
+\item 
+D3\+D12\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+V\+I\+EW \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a19236026786b249160872cf904c382fe}{m\+\_\+vertex\+\_\+buffer\+\_\+view}}
+\item 
+D3\+D12\+\_\+\+I\+N\+D\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+V\+I\+EW \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_aadf8b7841db6f148d3951082b7303721}{m\+\_\+index\+\_\+buffer\+\_\+view}}
+\item 
+D3\+D12\+\_\+\+G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+P\+I\+P\+E\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+E\+\_\+\+D\+E\+SC \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_ab7e6c48d4193c2dfe505e2b5c2c55e67}{m\+\_\+pipeline\+\_\+desc}}
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a6b01f5e8882c0ea97988dbb2c668ccae}{m\+\_\+pos}}
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a1ac2e796b1c6b6f06a088518acc8f179}{m\+\_\+angle}}
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_a644ea16216b88c13f23fcd9ee35f585b}{m\+\_\+scale}}
+\item 
+Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \mbox{\hyperlink{classepion_1_1_model_1_1_model3_d_ad8a4112fe83b2185e52f2860cb3f8695}{m\+\_\+world\+\_\+matrix}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_ac81c893721f27ed53de92c7adda612b8}\label{classepion_1_1_model_1_1_model3_d_ac81c893721f27ed53de92c7adda612b8}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!Model3D@{Model3D}}
+\index{Model3D@{Model3D}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{Model3D()}{Model3D()}}
+{\footnotesize\ttfamily epion\+::\+Model\+::\+Model3\+D\+::\+Model3D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_ab806317deb835ee96d9a730758053e00}\label{classepion_1_1_model_1_1_model3_d_ab806317deb835ee96d9a730758053e00}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!````~Model3D@{$\sim$Model3D}}
+\index{````~Model3D@{$\sim$Model3D}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{$\sim$Model3D()}{~Model3D()}}
+{\footnotesize\ttfamily virtual epion\+::\+Model\+::\+Model3\+D\+::$\sim$\+Model3D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_abfa53641d15653b5a0204b7d21edbca7}\label{classepion_1_1_model_1_1_model3_d_abfa53641d15653b5a0204b7d21edbca7}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!DefaultSetPipeLine@{DefaultSetPipeLine}}
+\index{DefaultSetPipeLine@{DefaultSetPipeLine}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{DefaultSetPipeLine()}{DefaultSetPipeLine()}}
+{\footnotesize\ttfamily void epion\+::\+Model\+::\+Model3\+D\+::\+Default\+Set\+Pipe\+Line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D\+Blob $>$ \&}]{vs\+\_\+blob,  }\item[{\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D\+Blob $>$ \&}]{ps\+\_\+blob,  }\item[{D3\+D12\+\_\+\+R\+A\+S\+T\+E\+R\+I\+Z\+E\+R\+\_\+\+D\+E\+SC \&}]{r\+\_\+desc,  }\item[{\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D12\+Root\+Signature $>$ \&}]{root\+\_\+sig }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_ad3f3ba208e2e67a3da55f3ced005cd26}\label{classepion_1_1_model_1_1_model3_d_ad3f3ba208e2e67a3da55f3ced005cd26}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!Draw@{Draw}}
+\index{Draw@{Draw}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void epion\+::\+Model\+::\+Model3\+D\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ I\+D3\+D12\+Graphics\+Command\+List $>$ \&}]{cmd }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_aa4a73f78a0fc44a1adcf157bb9c421c4}\label{classepion_1_1_model_1_1_model3_d_aa4a73f78a0fc44a1adcf157bb9c421c4}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!GetAngle@{GetAngle}}
+\index{GetAngle@{GetAngle}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{GetAngle()}{GetAngle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& epion\+::\+Model\+::\+Model3\+D\+::\+Get\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a3bacfd46efc653b83a70352646a49c4d}\label{classepion_1_1_model_1_1_model3_d_a3bacfd46efc653b83a70352646a49c4d}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!GetPos@{GetPos}}
+\index{GetPos@{GetPos}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{GetPos()}{GetPos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& epion\+::\+Model\+::\+Model3\+D\+::\+Get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a27257a252927151896c968d44a51e60b}\label{classepion_1_1_model_1_1_model3_d_a27257a252927151896c968d44a51e60b}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!GetScale@{GetScale}}
+\index{GetScale@{GetScale}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{GetScale()}{GetScale()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& epion\+::\+Model\+::\+Model3\+D\+::\+Get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a193037c92fcb0fcc752dc93cf4a2da0c}\label{classepion_1_1_model_1_1_model3_d_a193037c92fcb0fcc752dc93cf4a2da0c}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!GetWorldMaxrix@{GetWorldMaxrix}}
+\index{GetWorldMaxrix@{GetWorldMaxrix}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{GetWorldMaxrix()}{GetWorldMaxrix()}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \& epion\+::\+Model\+::\+Model3\+D\+::\+Get\+World\+Maxrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_aed82b8a21e4c2b654f4816b5aae8c035}\label{classepion_1_1_model_1_1_model3_d_aed82b8a21e4c2b654f4816b5aae8c035}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!ResourceUpdate@{ResourceUpdate}}
+\index{ResourceUpdate@{ResourceUpdate}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{ResourceUpdate()}{ResourceUpdate()}}
+{\footnotesize\ttfamily void epion\+::\+Model\+::\+Model3\+D\+::\+Resource\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_ac0a5833a5279ce66ecbffb3fb09bce1b}\label{classepion_1_1_model_1_1_model3_d_ac0a5833a5279ce66ecbffb3fb09bce1b}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!SetAngle@{SetAngle}}
+\index{SetAngle@{SetAngle}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{SetAngle()}{SetAngle()}}
+{\footnotesize\ttfamily void epion\+::\+Model\+::\+Model3\+D\+::\+Set\+Angle (\begin{DoxyParamCaption}\item[{const float}]{x,  }\item[{const float}]{y,  }\item[{const float}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a58a0fca85b5e2d99b009257607bc363b}\label{classepion_1_1_model_1_1_model3_d_a58a0fca85b5e2d99b009257607bc363b}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!SetPos@{SetPos}}
+\index{SetPos@{SetPos}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{SetPos()}{SetPos()}}
+{\footnotesize\ttfamily void epion\+::\+Model\+::\+Model3\+D\+::\+Set\+Pos (\begin{DoxyParamCaption}\item[{const float}]{x,  }\item[{const float}]{y,  }\item[{const float}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_ada68d969776ed96832abb7c980f7a226}\label{classepion_1_1_model_1_1_model3_d_ada68d969776ed96832abb7c980f7a226}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{SetScale()}{SetScale()}}
+{\footnotesize\ttfamily void epion\+::\+Model\+::\+Model3\+D\+::\+Set\+Scale (\begin{DoxyParamCaption}\item[{const float}]{x,  }\item[{const float}]{y,  }\item[{const float}]{z }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a1ac2e796b1c6b6f06a088518acc8f179}\label{classepion_1_1_model_1_1_model3_d_a1ac2e796b1c6b6f06a088518acc8f179}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_angle@{m\_angle}}
+\index{m\_angle@{m\_angle}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_angle}{m\_angle}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+angle\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a45d39c6f228e38404f694ac75b28eb92}\label{classepion_1_1_model_1_1_model3_d_a45d39c6f228e38404f694ac75b28eb92}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_error\_blob@{m\_error\_blob}}
+\index{m\_error\_blob@{m\_error\_blob}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_error\_blob}{m\_error\_blob}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$I\+D3\+D\+Blob$>$ epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+error\+\_\+blob\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_aadf8b7841db6f148d3951082b7303721}\label{classepion_1_1_model_1_1_model3_d_aadf8b7841db6f148d3951082b7303721}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_index\_buffer\_view@{m\_index\_buffer\_view}}
+\index{m\_index\_buffer\_view@{m\_index\_buffer\_view}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_index\_buffer\_view}{m\_index\_buffer\_view}}
+{\footnotesize\ttfamily D3\+D12\+\_\+\+I\+N\+D\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+V\+I\+EW epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+index\+\_\+buffer\+\_\+view\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a91153ecbb0f223b8e016b891f77afa35}\label{classepion_1_1_model_1_1_model3_d_a91153ecbb0f223b8e016b891f77afa35}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_index\_resource@{m\_index\_resource}}
+\index{m\_index\_resource@{m\_index\_resource}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_index\_resource}{m\_index\_resource}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{D\+X12\+::\+Resource\+Buffer}}$<$unsigned short$>$ $>$ epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+index\+\_\+resource\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_af48c71b5ddb36a98086c34bf1bdac870}\label{classepion_1_1_model_1_1_model3_d_af48c71b5ddb36a98086c34bf1bdac870}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_is\_update@{m\_is\_update}}
+\index{m\_is\_update@{m\_is\_update}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_is\_update}{m\_is\_update}}
+{\footnotesize\ttfamily bool epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+is\+\_\+update\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_ab7e6c48d4193c2dfe505e2b5c2c55e67}\label{classepion_1_1_model_1_1_model3_d_ab7e6c48d4193c2dfe505e2b5c2c55e67}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_pipeline\_desc@{m\_pipeline\_desc}}
+\index{m\_pipeline\_desc@{m\_pipeline\_desc}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_pipeline\_desc}{m\_pipeline\_desc}}
+{\footnotesize\ttfamily D3\+D12\+\_\+\+G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+P\+I\+P\+E\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+E\+\_\+\+D\+E\+SC epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+pipeline\+\_\+desc\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a677ef1dd4f0d66e2db568ca0f6cfa2b6}\label{classepion_1_1_model_1_1_model3_d_a677ef1dd4f0d66e2db568ca0f6cfa2b6}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_pipeline\_state@{m\_pipeline\_state}}
+\index{m\_pipeline\_state@{m\_pipeline\_state}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_pipeline\_state}{m\_pipeline\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$I\+D3\+D12\+Pipeline\+State$>$ epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+pipeline\+\_\+state\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a6b01f5e8882c0ea97988dbb2c668ccae}\label{classepion_1_1_model_1_1_model3_d_a6b01f5e8882c0ea97988dbb2c668ccae}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_pos@{m\_pos}}
+\index{m\_pos@{m\_pos}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_pos}{m\_pos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+pos\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a644ea16216b88c13f23fcd9ee35f585b}\label{classepion_1_1_model_1_1_model3_d_a644ea16216b88c13f23fcd9ee35f585b}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_scale@{m\_scale}}
+\index{m\_scale@{m\_scale}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_scale}{m\_scale}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+scale\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a4a1f7bb92b1f6e39c6e010c8726fc7a6}\label{classepion_1_1_model_1_1_model3_d_a4a1f7bb92b1f6e39c6e010c8726fc7a6}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_shader\_reflection@{m\_shader\_reflection}}
+\index{m\_shader\_reflection@{m\_shader\_reflection}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_shader\_reflection}{m\_shader\_reflection}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classepion_1_1_d_x12_1_1_shader_reflection}{D\+X12\+::\+Shader\+Reflection}}$>$ epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+shader\+\_\+reflection\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a19236026786b249160872cf904c382fe}\label{classepion_1_1_model_1_1_model3_d_a19236026786b249160872cf904c382fe}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_vertex\_buffer\_view@{m\_vertex\_buffer\_view}}
+\index{m\_vertex\_buffer\_view@{m\_vertex\_buffer\_view}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_vertex\_buffer\_view}{m\_vertex\_buffer\_view}}
+{\footnotesize\ttfamily D3\+D12\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+V\+I\+EW epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+vertex\+\_\+buffer\+\_\+view\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_a34517a24a648a0e2172df2c44e1bfdb4}\label{classepion_1_1_model_1_1_model3_d_a34517a24a648a0e2172df2c44e1bfdb4}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_vertex\_resource@{m\_vertex\_resource}}
+\index{m\_vertex\_resource@{m\_vertex\_resource}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_vertex\_resource}{m\_vertex\_resource}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{D\+X12\+::\+Resource\+Buffer}}$<$\mbox{\hyperlink{structepion_1_1_model_1_1_model3_d_vertex}{Model3\+D\+Vertex}}$>$ $>$ epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+vertex\+\_\+resource\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_model_1_1_model3_d_ad8a4112fe83b2185e52f2860cb3f8695}\label{classepion_1_1_model_1_1_model3_d_ad8a4112fe83b2185e52f2860cb3f8695}} 
+\index{epion::Model::Model3D@{epion::Model::Model3D}!m\_world\_matrix@{m\_world\_matrix}}
+\index{m\_world\_matrix@{m\_world\_matrix}!epion::Model::Model3D@{epion::Model::Model3D}}
+\doxysubsubsection{\texorpdfstring{m\_world\_matrix}{m\_world\_matrix}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX epion\+::\+Model\+::\+Model3\+D\+::m\+\_\+world\+\_\+matrix\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+Model/\mbox{\hyperlink{_model_8h}{Model.\+h}}\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+Model/\mbox{\hyperlink{_model_8cpp}{Model.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,249 @@
+\hypertarget{classepion_1_1_camera_1_1_view}{}\doxysection{epion\+::Camera\+::View クラス}
+\label{classepion_1_1_camera_1_1_view}\index{epion::Camera::View@{epion::Camera::View}}
+
+
+{\ttfamily \#include $<$Camera\+Manager.\+h$>$}
+
+epion\+::Camera\+::View の継承関係図\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.839080cm]{classepion_1_1_camera_1_1_view}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classepion_1_1_camera_1_1_view_aff30ace4f601db9eb774a1c3f032715f}{View}} ()
+\item 
+\mbox{\hyperlink{classepion_1_1_camera_1_1_view_a5c5948a83418ac302667173c12dd3b78}{View}} (const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&p\+\_\+, const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&t\+\_\+, const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&u\+\_\+, float fov\+\_\+, float aspect\+\_\+, float n\+\_\+, float f\+\_\+)
+\item 
+virtual \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a6087b5ef43e80a5975ea43ef9fe30e54}{$\sim$\+View}} ()
+\item 
+void \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a5c5d67b81bd33a9df6964c3eb62e3172}{Set\+View}} (const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&p, const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&t, const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&u)
+\item 
+void \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a25717040f93444c25a044dc99fd0e9b9}{Set\+Projection}} (float \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a109da7fe19b191ce541be10ae873f3c3}{fov}}, float \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a79b02ffba028a7cb56fc92ca74c5f224}{aspect}}, float n, float f)
+\item 
+void \mbox{\hyperlink{classepion_1_1_camera_1_1_view_afa596b992f6c1e079bd228433aabe367}{Activate}} ()
+\item 
+Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \& \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a355105b8f81c1172e0849e4ed347b6a2}{Get\+Mat\+View}} ()
+\item 
+Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \& \mbox{\hyperlink{classepion_1_1_camera_1_1_view_ade7a16a5568ec91b687cd65a928c9ca6}{Get\+Mat\+Projection}} ()
+\item 
+Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 \& \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a0776c9daca1548272dbf013b61424ff0}{Get4x4\+View}} ()
+\item 
+Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 \& \mbox{\hyperlink{classepion_1_1_camera_1_1_view_aeb80baa7ea1c51bffec605bf205b7720}{Get4x4\+Projection}} ()
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a614ee3ed18c551a2724ca77d597fd132}{Get\+Pos}} ()
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& \mbox{\hyperlink{classepion_1_1_camera_1_1_view_ac0875e3ea8a8e4fceb59c52196f06683}{Get\+Target}} ()
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& \mbox{\hyperlink{classepion_1_1_camera_1_1_view_aa77151e0dbee02c8eacf88b42520f65e}{Get\+Up}} ()
+\item 
+void \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a898f5a42cadafe4835c42e53bf45a0a4}{Set\+Pos}} (\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&pos\+\_\+)
+\item 
+void \mbox{\hyperlink{classepion_1_1_camera_1_1_view_aed471ab74316a981f6d1492c3aa685c4}{Set\+Target}} (\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&target\+\_\+)
+\item 
+void \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a31ed91cc96c4b7f608fb2ae7b0ac4e5c}{Set\+Up}} (\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&up\+\_\+)
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a86587b79cd770233f01aa55b99673095}{Mat\+View}}
+\item 
+Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \mbox{\hyperlink{classepion_1_1_camera_1_1_view_ab31e3c4fb9c393623ffd573ba89e31ca}{Mat\+Projection}}
+\item 
+Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a7c9ee3568d86b2549640c378d7b164c0}{F4x4\+View}}
+\item 
+Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a8589a047b804260f5bf844badb08cddb}{F4x4\+Projection}}
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a7aab58f825106124d88a9a2865e2a12e}{pos}}
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \mbox{\hyperlink{classepion_1_1_camera_1_1_view_acad90c9bdb3a846d8ee7a81c06923508}{target}}
+\item 
+\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a7fccd6963258ebf226b610d656aace13}{up}}
+\item 
+float \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a109da7fe19b191ce541be10ae873f3c3}{fov}}
+\item 
+float \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a79b02ffba028a7cb56fc92ca74c5f224}{aspect}}
+\item 
+float \mbox{\hyperlink{classepion_1_1_camera_1_1_view_ac63c5c3fe3fc05d01ed4e1b2aaa63d0a}{near\+Plane}}
+\item 
+float \mbox{\hyperlink{classepion_1_1_camera_1_1_view_a74cfc56c24423d5cf31c5eb68539cd6f}{far\+Plane}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_aff30ace4f601db9eb774a1c3f032715f}\label{classepion_1_1_camera_1_1_view_aff30ace4f601db9eb774a1c3f032715f}} 
+\index{epion::Camera::View@{epion::Camera::View}!View@{View}}
+\index{View@{View}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{View()}{View()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily epion\+::\+Camera\+::\+View\+::\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a5c5948a83418ac302667173c12dd3b78}\label{classepion_1_1_camera_1_1_view_a5c5948a83418ac302667173c12dd3b78}} 
+\index{epion::Camera::View@{epion::Camera::View}!View@{View}}
+\index{View@{View}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{View()}{View()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily epion\+::\+Camera\+::\+View\+::\+View (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{p\+\_\+,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{t\+\_\+,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{u\+\_\+,  }\item[{float}]{fov\+\_\+,  }\item[{float}]{aspect\+\_\+,  }\item[{float}]{n\+\_\+,  }\item[{float}]{f\+\_\+ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a6087b5ef43e80a5975ea43ef9fe30e54}\label{classepion_1_1_camera_1_1_view_a6087b5ef43e80a5975ea43ef9fe30e54}} 
+\index{epion::Camera::View@{epion::Camera::View}!````~View@{$\sim$View}}
+\index{````~View@{$\sim$View}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{$\sim$View()}{~View()}}
+{\footnotesize\ttfamily virtual epion\+::\+Camera\+::\+View\+::$\sim$\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_afa596b992f6c1e079bd228433aabe367}\label{classepion_1_1_camera_1_1_view_afa596b992f6c1e079bd228433aabe367}} 
+\index{epion::Camera::View@{epion::Camera::View}!Activate@{Activate}}
+\index{Activate@{Activate}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{Activate()}{Activate()}}
+{\footnotesize\ttfamily void epion\+::\+Camera\+::\+View\+::\+Activate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_aeb80baa7ea1c51bffec605bf205b7720}\label{classepion_1_1_camera_1_1_view_aeb80baa7ea1c51bffec605bf205b7720}} 
+\index{epion::Camera::View@{epion::Camera::View}!Get4x4Projection@{Get4x4Projection}}
+\index{Get4x4Projection@{Get4x4Projection}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{Get4x4Projection()}{Get4x4Projection()}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 \& epion\+::\+Camera\+::\+View\+::\+Get4x4\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a0776c9daca1548272dbf013b61424ff0}\label{classepion_1_1_camera_1_1_view_a0776c9daca1548272dbf013b61424ff0}} 
+\index{epion::Camera::View@{epion::Camera::View}!Get4x4View@{Get4x4View}}
+\index{Get4x4View@{Get4x4View}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{Get4x4View()}{Get4x4View()}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 \& epion\+::\+Camera\+::\+View\+::\+Get4x4\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_ade7a16a5568ec91b687cd65a928c9ca6}\label{classepion_1_1_camera_1_1_view_ade7a16a5568ec91b687cd65a928c9ca6}} 
+\index{epion::Camera::View@{epion::Camera::View}!GetMatProjection@{GetMatProjection}}
+\index{GetMatProjection@{GetMatProjection}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{GetMatProjection()}{GetMatProjection()}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \& epion\+::\+Camera\+::\+View\+::\+Get\+Mat\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a355105b8f81c1172e0849e4ed347b6a2}\label{classepion_1_1_camera_1_1_view_a355105b8f81c1172e0849e4ed347b6a2}} 
+\index{epion::Camera::View@{epion::Camera::View}!GetMatView@{GetMatView}}
+\index{GetMatView@{GetMatView}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{GetMatView()}{GetMatView()}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \& epion\+::\+Camera\+::\+View\+::\+Get\+Mat\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a614ee3ed18c551a2724ca77d597fd132}\label{classepion_1_1_camera_1_1_view_a614ee3ed18c551a2724ca77d597fd132}} 
+\index{epion::Camera::View@{epion::Camera::View}!GetPos@{GetPos}}
+\index{GetPos@{GetPos}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{GetPos()}{GetPos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& epion\+::\+Camera\+::\+View\+::\+Get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_ac0875e3ea8a8e4fceb59c52196f06683}\label{classepion_1_1_camera_1_1_view_ac0875e3ea8a8e4fceb59c52196f06683}} 
+\index{epion::Camera::View@{epion::Camera::View}!GetTarget@{GetTarget}}
+\index{GetTarget@{GetTarget}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{GetTarget()}{GetTarget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& epion\+::\+Camera\+::\+View\+::\+Get\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_aa77151e0dbee02c8eacf88b42520f65e}\label{classepion_1_1_camera_1_1_view_aa77151e0dbee02c8eacf88b42520f65e}} 
+\index{epion::Camera::View@{epion::Camera::View}!GetUp@{GetUp}}
+\index{GetUp@{GetUp}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{GetUp()}{GetUp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \& epion\+::\+Camera\+::\+View\+::\+Get\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a898f5a42cadafe4835c42e53bf45a0a4}\label{classepion_1_1_camera_1_1_view_a898f5a42cadafe4835c42e53bf45a0a4}} 
+\index{epion::Camera::View@{epion::Camera::View}!SetPos@{SetPos}}
+\index{SetPos@{SetPos}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{SetPos()}{SetPos()}}
+{\footnotesize\ttfamily void epion\+::\+Camera\+::\+View\+::\+Set\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{pos\+\_\+ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a25717040f93444c25a044dc99fd0e9b9}\label{classepion_1_1_camera_1_1_view_a25717040f93444c25a044dc99fd0e9b9}} 
+\index{epion::Camera::View@{epion::Camera::View}!SetProjection@{SetProjection}}
+\index{SetProjection@{SetProjection}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{SetProjection()}{SetProjection()}}
+{\footnotesize\ttfamily void epion\+::\+Camera\+::\+View\+::\+Set\+Projection (\begin{DoxyParamCaption}\item[{float}]{fov,  }\item[{float}]{aspect,  }\item[{float}]{n,  }\item[{float}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_aed471ab74316a981f6d1492c3aa685c4}\label{classepion_1_1_camera_1_1_view_aed471ab74316a981f6d1492c3aa685c4}} 
+\index{epion::Camera::View@{epion::Camera::View}!SetTarget@{SetTarget}}
+\index{SetTarget@{SetTarget}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{SetTarget()}{SetTarget()}}
+{\footnotesize\ttfamily void epion\+::\+Camera\+::\+View\+::\+Set\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{target\+\_\+ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a31ed91cc96c4b7f608fb2ae7b0ac4e5c}\label{classepion_1_1_camera_1_1_view_a31ed91cc96c4b7f608fb2ae7b0ac4e5c}} 
+\index{epion::Camera::View@{epion::Camera::View}!SetUp@{SetUp}}
+\index{SetUp@{SetUp}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{SetUp()}{SetUp()}}
+{\footnotesize\ttfamily void epion\+::\+Camera\+::\+View\+::\+Set\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{up\+\_\+ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a5c5d67b81bd33a9df6964c3eb62e3172}\label{classepion_1_1_camera_1_1_view_a5c5d67b81bd33a9df6964c3eb62e3172}} 
+\index{epion::Camera::View@{epion::Camera::View}!SetView@{SetView}}
+\index{SetView@{SetView}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{SetView()}{SetView()}}
+{\footnotesize\ttfamily void epion\+::\+Camera\+::\+View\+::\+Set\+View (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{p,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{t,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{u }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a79b02ffba028a7cb56fc92ca74c5f224}\label{classepion_1_1_camera_1_1_view_a79b02ffba028a7cb56fc92ca74c5f224}} 
+\index{epion::Camera::View@{epion::Camera::View}!aspect@{aspect}}
+\index{aspect@{aspect}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{aspect}{aspect}}
+{\footnotesize\ttfamily float epion\+::\+Camera\+::\+View\+::aspect\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a8589a047b804260f5bf844badb08cddb}\label{classepion_1_1_camera_1_1_view_a8589a047b804260f5bf844badb08cddb}} 
+\index{epion::Camera::View@{epion::Camera::View}!F4x4Projection@{F4x4Projection}}
+\index{F4x4Projection@{F4x4Projection}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{F4x4Projection}{F4x4Projection}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 epion\+::\+Camera\+::\+View\+::\+F4x4\+Projection\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a7c9ee3568d86b2549640c378d7b164c0}\label{classepion_1_1_camera_1_1_view_a7c9ee3568d86b2549640c378d7b164c0}} 
+\index{epion::Camera::View@{epion::Camera::View}!F4x4View@{F4x4View}}
+\index{F4x4View@{F4x4View}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{F4x4View}{F4x4View}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+F\+L\+O\+A\+T4\+X4 epion\+::\+Camera\+::\+View\+::\+F4x4\+View\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a74cfc56c24423d5cf31c5eb68539cd6f}\label{classepion_1_1_camera_1_1_view_a74cfc56c24423d5cf31c5eb68539cd6f}} 
+\index{epion::Camera::View@{epion::Camera::View}!farPlane@{farPlane}}
+\index{farPlane@{farPlane}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{farPlane}{farPlane}}
+{\footnotesize\ttfamily float epion\+::\+Camera\+::\+View\+::far\+Plane\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a109da7fe19b191ce541be10ae873f3c3}\label{classepion_1_1_camera_1_1_view_a109da7fe19b191ce541be10ae873f3c3}} 
+\index{epion::Camera::View@{epion::Camera::View}!fov@{fov}}
+\index{fov@{fov}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{fov}{fov}}
+{\footnotesize\ttfamily float epion\+::\+Camera\+::\+View\+::fov\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_ab31e3c4fb9c393623ffd573ba89e31ca}\label{classepion_1_1_camera_1_1_view_ab31e3c4fb9c393623ffd573ba89e31ca}} 
+\index{epion::Camera::View@{epion::Camera::View}!MatProjection@{MatProjection}}
+\index{MatProjection@{MatProjection}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{MatProjection}{MatProjection}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX epion\+::\+Camera\+::\+View\+::\+Mat\+Projection\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a86587b79cd770233f01aa55b99673095}\label{classepion_1_1_camera_1_1_view_a86587b79cd770233f01aa55b99673095}} 
+\index{epion::Camera::View@{epion::Camera::View}!MatView@{MatView}}
+\index{MatView@{MatView}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{MatView}{MatView}}
+{\footnotesize\ttfamily Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX epion\+::\+Camera\+::\+View\+::\+Mat\+View\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_ac63c5c3fe3fc05d01ed4e1b2aaa63d0a}\label{classepion_1_1_camera_1_1_view_ac63c5c3fe3fc05d01ed4e1b2aaa63d0a}} 
+\index{epion::Camera::View@{epion::Camera::View}!nearPlane@{nearPlane}}
+\index{nearPlane@{nearPlane}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{nearPlane}{nearPlane}}
+{\footnotesize\ttfamily float epion\+::\+Camera\+::\+View\+::near\+Plane\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a7aab58f825106124d88a9a2865e2a12e}\label{classepion_1_1_camera_1_1_view_a7aab58f825106124d88a9a2865e2a12e}} 
+\index{epion::Camera::View@{epion::Camera::View}!pos@{pos}}
+\index{pos@{pos}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{pos}{pos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} epion\+::\+Camera\+::\+View\+::pos\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_acad90c9bdb3a846d8ee7a81c06923508}\label{classepion_1_1_camera_1_1_view_acad90c9bdb3a846d8ee7a81c06923508}} 
+\index{epion::Camera::View@{epion::Camera::View}!target@{target}}
+\index{target@{target}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} epion\+::\+Camera\+::\+View\+::target\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classepion_1_1_camera_1_1_view_a7fccd6963258ebf226b610d656aace13}\label{classepion_1_1_camera_1_1_view_a7fccd6963258ebf226b610d656aace13}} 
+\index{epion::Camera::View@{epion::Camera::View}!up@{up}}
+\index{up@{up}!epion::Camera::View@{epion::Camera::View}}
+\doxysubsubsection{\texorpdfstring{up}{up}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} epion\+::\+Camera\+::\+View\+::up\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+Camera/\mbox{\hyperlink{_camera_manager_8h}{Camera\+Manager.\+h}}\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+Camera/\mbox{\hyperlink{_camera_manager_8cpp}{Camera\+Manager.\+cpp}}\end{DoxyCompactItemize}

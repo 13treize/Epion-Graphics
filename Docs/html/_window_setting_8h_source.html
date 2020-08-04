@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/GUI/WindowSetting.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_fde5755b5f548fd7c9e02e3bf9146a63.html">GUI</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">WindowSetting.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_window_setting_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_im_gui_base_8h.html">ImGuiBase.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_g_u_i.html">epion::GUI</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classepion_1_1_g_u_i_1_1_setting_window.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_g_u_i_1_1_setting_window.html">SettingWindow</a> final :<span class="keyword">public</span> <a class="code" href="classepion_1_1_g_u_i_1_1_im_gui_base.html">ImGuiBase</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_g_u_i_1_1_setting_window.html#ae6c69a8885e8719410f2d319e5810229">Initialize</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_g_u_i_1_1_setting_window.html#ab98c995ebc9e50b27f0d20758e3c55d4">Finalize</a>();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_g_u_i_1_1_setting_window.html#af1f63dcbe3ba669d7065dd29117d1500">Update</a>(std::array&lt;float, 4&gt;&amp; color);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::string m_bar_title;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">int</span> m_select_scene;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    };</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="a_im_gui_base_8h_html"><div class="ttname"><a href="_im_gui_base_8h.html">ImGuiBase.h</a></div></div>
+<div class="ttc" id="aclassepion_1_1_g_u_i_1_1_setting_window_html_ae6c69a8885e8719410f2d319e5810229"><div class="ttname"><a href="classepion_1_1_g_u_i_1_1_setting_window.html#ae6c69a8885e8719410f2d319e5810229">epion::GUI::SettingWindow::Initialize</a></div><div class="ttdeci">bool Initialize()</div><div class="ttdef"><b>Definition:</b> WindowSetting.cpp:18</div></div>
+<div class="ttc" id="anamespaceepion_1_1_g_u_i_html"><div class="ttname"><a href="namespaceepion_1_1_g_u_i.html">epion::GUI</a></div><div class="ttdef"><b>Definition:</b> ImGuiBase.cpp:10</div></div>
+<div class="ttc" id="aclassepion_1_1_g_u_i_1_1_setting_window_html"><div class="ttname"><a href="classepion_1_1_g_u_i_1_1_setting_window.html">epion::GUI::SettingWindow</a></div><div class="ttdef"><b>Definition:</b> WindowSetting.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_g_u_i_1_1_setting_window_html_ab98c995ebc9e50b27f0d20758e3c55d4"><div class="ttname"><a href="classepion_1_1_g_u_i_1_1_setting_window.html#ab98c995ebc9e50b27f0d20758e3c55d4">epion::GUI::SettingWindow::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> WindowSetting.cpp:25</div></div>
+<div class="ttc" id="aclassepion_1_1_g_u_i_1_1_setting_window_html_af1f63dcbe3ba669d7065dd29117d1500"><div class="ttname"><a href="classepion_1_1_g_u_i_1_1_setting_window.html#af1f63dcbe3ba669d7065dd29117d1500">epion::GUI::SettingWindow::Update</a></div><div class="ttdeci">void Update(std::array&lt; float, 4 &gt; &amp;color)</div><div class="ttdef"><b>Definition:</b> WindowSetting.cpp:30</div></div>
+<div class="ttc" id="aclassepion_1_1_g_u_i_1_1_im_gui_base_html"><div class="ttname"><a href="classepion_1_1_g_u_i_1_1_im_gui_base.html">epion::GUI::ImGuiBase</a></div><div class="ttdef"><b>Definition:</b> ImGuiBase.h:6</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

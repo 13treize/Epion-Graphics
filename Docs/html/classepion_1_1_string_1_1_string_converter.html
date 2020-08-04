@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: epion::String::StringConverter クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceepion.html">epion</a></li><li class="navelem"><a class="el" href="namespaceepion_1_1_string.html">String</a></li><li class="navelem"><a class="el" href="classepion_1_1_string_1_1_string_converter.html">StringConverter</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="classepion_1_1_string_1_1_string_converter-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">epion::String::StringConverter クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_epion_string_8h_source.html">EpionString.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:a0fddd61a79f9eb6de3e4aa61fc69e4c7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a0fddd61a79f9eb6de3e4aa61fc69e4c7">ToWchar</a> (const char *str, wchar_t *ret, unsigned int max_size=256)</td></tr>
+<tr class="separator:a0fddd61a79f9eb6de3e4aa61fc69e4c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf682bbc7a3b7df0e047629183ab1e3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#addf682bbc7a3b7df0e047629183ab1e3">ToChar</a> (const wchar_t *str, char *ret, unsigned int max_size=256)</td></tr>
+<tr class="separator:addf682bbc7a3b7df0e047629183ab1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70378a242a40ce2e133e65d7ee137383"><td class="memItemLeft" align="right" valign="top">static std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a70378a242a40ce2e133e65d7ee137383">ToWstring</a> (const std::string &amp;str)</td></tr>
+<tr class="separator:a70378a242a40ce2e133e65d7ee137383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2cce1e1af9ae8ff126fe33d0d99ea07"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#ae2cce1e1af9ae8ff126fe33d0d99ea07">ToString</a> (const std::wstring &amp;str, std::string ret, unsigned int max_size=256)</td></tr>
+<tr class="separator:ae2cce1e1af9ae8ff126fe33d0d99ea07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc55ba7c5d2639a13465cf795f5f155c"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#adc55ba7c5d2639a13465cf795f5f155c">GetFilePath</a> (const std::string &amp;file_name)</td></tr>
+<tr class="separator:adc55ba7c5d2639a13465cf795f5f155c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d61367ca67ef49ff9ee2f174d9333b"><td class="memItemLeft" align="right" valign="top">static std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a29d61367ca67ef49ff9ee2f174d9333b">GetFilePath</a> (const std::wstring &amp;file_name)</td></tr>
+<tr class="separator:a29d61367ca67ef49ff9ee2f174d9333b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ac754794cfab317fbd45f6000571c1"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a99ac754794cfab317fbd45f6000571c1">GetExtension</a> (const std::string &amp;str_)</td></tr>
+<tr class="separator:a99ac754794cfab317fbd45f6000571c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56c23ec4ada29cb97a690c07ba4ed5de"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a56c23ec4ada29cb97a690c07ba4ed5de">ToString2</a> (<a class="el" href="namespaceepion_1_1_math.html#af1aabb16975dbbad2e5703d7b0a019cd">Math::FVector2</a> &amp;vec2, const std::string &amp;str=&quot;,&quot;)</td></tr>
+<tr class="separator:a56c23ec4ada29cb97a690c07ba4ed5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1877c5b8a459702a1d30930c778bc7"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a8f1877c5b8a459702a1d30930c778bc7">ToString2</a> (float x, float y, const std::string &amp;str=&quot;,&quot;)</td></tr>
+<tr class="separator:a8f1877c5b8a459702a1d30930c778bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1117b5dc56a5bc7760843888ce17a7d"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#ab1117b5dc56a5bc7760843888ce17a7d">ToString3</a> (<a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;vec3, const std::string &amp;str=&quot;,&quot;)</td></tr>
+<tr class="separator:ab1117b5dc56a5bc7760843888ce17a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad506edeac6f93c7d34c1971b80e80b1e"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#ad506edeac6f93c7d34c1971b80e80b1e">ToString3</a> (float x, float y, float z, const std::string &amp;str=&quot;,&quot;)</td></tr>
+<tr class="separator:ad506edeac6f93c7d34c1971b80e80b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79a061329565c3ff5865650816d60641"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a79a061329565c3ff5865650816d60641">ToString4</a> (<a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;vec4, const std::string &amp;str=&quot;,&quot;)</td></tr>
+<tr class="separator:a79a061329565c3ff5865650816d60641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb620ab5b1d16a14481436e298247aa8"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#acb620ab5b1d16a14481436e298247aa8">ToString4</a> (float x, float y, float z, float w, const std::string &amp;str=&quot;,&quot;)</td></tr>
+<tr class="separator:acb620ab5b1d16a14481436e298247aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239a550bb82328a064b6f220138b8488"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#a239a550bb82328a064b6f220138b8488">GetSpace</a> (int num)</td></tr>
+<tr class="separator:a239a550bb82328a064b6f220138b8488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae572010cff9579d7d70faaa23fd5ccc5"><td class="memItemLeft" align="right" valign="top">static std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_string_1_1_string_converter.html#ae572010cff9579d7d70faaa23fd5ccc5">SetFilePath</a> (const wchar_t *add_path_filename, const wchar_t *resource_filename)</td></tr>
+<tr class="separator:ae572010cff9579d7d70faaa23fd5ccc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a99ac754794cfab317fbd45f6000571c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99ac754794cfab317fbd45f6000571c1">&#9670;&nbsp;</a></span>GetExtension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::GetExtension </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc55ba7c5d2639a13465cf795f5f155c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc55ba7c5d2639a13465cf795f5f155c">&#9670;&nbsp;</a></span>GetFilePath() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::GetFilePath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29d61367ca67ef49ff9ee2f174d9333b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d61367ca67ef49ff9ee2f174d9333b">&#9670;&nbsp;</a></span>GetFilePath() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::wstring epion::String::StringConverter::GetFilePath </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>file_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a239a550bb82328a064b6f220138b8488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a239a550bb82328a064b6f220138b8488">&#9670;&nbsp;</a></span>GetSpace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::GetSpace </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae572010cff9579d7d70faaa23fd5ccc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae572010cff9579d7d70faaa23fd5ccc5">&#9670;&nbsp;</a></span>SetFilePath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::wstring epion::String::StringConverter::SetFilePath </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>add_path_filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>resource_filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="addf682bbc7a3b7df0e047629183ab1e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf682bbc7a3b7df0e047629183ab1e3">&#9670;&nbsp;</a></span>ToChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::String::StringConverter::ToChar </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ret</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>max_size</em> = <code>256</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2cce1e1af9ae8ff126fe33d0d99ea07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2cce1e1af9ae8ff126fe33d0d99ea07">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::String::StringConverter::ToString </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>ret</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>max_size</em> = <code>256</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f1877c5b8a459702a1d30930c778bc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1877c5b8a459702a1d30930c778bc7">&#9670;&nbsp;</a></span>ToString2() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::ToString2 </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em> = <code>&quot;,&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56c23ec4ada29cb97a690c07ba4ed5de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56c23ec4ada29cb97a690c07ba4ed5de">&#9670;&nbsp;</a></span>ToString2() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::ToString2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceepion_1_1_math.html#af1aabb16975dbbad2e5703d7b0a019cd">Math::FVector2</a> &amp;&#160;</td>
+          <td class="paramname"><em>vec2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em> = <code>&quot;,&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad506edeac6f93c7d34c1971b80e80b1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad506edeac6f93c7d34c1971b80e80b1e">&#9670;&nbsp;</a></span>ToString3() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::ToString3 </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em> = <code>&quot;,&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1117b5dc56a5bc7760843888ce17a7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1117b5dc56a5bc7760843888ce17a7d">&#9670;&nbsp;</a></span>ToString3() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::ToString3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>vec3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em> = <code>&quot;,&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb620ab5b1d16a14481436e298247aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb620ab5b1d16a14481436e298247aa8">&#9670;&nbsp;</a></span>ToString4() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::ToString4 </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em> = <code>&quot;,&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a79a061329565c3ff5865650816d60641"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79a061329565c3ff5865650816d60641">&#9670;&nbsp;</a></span>ToString4() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string epion::String::StringConverter::ToString4 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;&#160;</td>
+          <td class="paramname"><em>vec4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em> = <code>&quot;,&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fddd61a79f9eb6de3e4aa61fc69e4c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fddd61a79f9eb6de3e4aa61fc69e4c7">&#9670;&nbsp;</a></span>ToWchar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::String::StringConverter::ToWchar </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>ret</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>max_size</em> = <code>256</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70378a242a40ce2e133e65d7ee137383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70378a242a40ce2e133e65d7ee137383">&#9670;&nbsp;</a></span>ToWstring()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::wstring epion::String::StringConverter::ToWstring </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/treize/Desktop/Epion-Graphics/Epion12/String/<a class="el" href="_epion_string_8h_source.html">EpionString.h</a></li>
+<li>C:/Users/treize/Desktop/Epion-Graphics/Epion12/String/<a class="el" href="_epion_string_8cpp.html">EpionString.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

@@ -279,6 +279,9 @@
     <ClInclude Include="Epion12\DX12\FrameResource.h">
       <Filter>ヘッダー ファイル\DX12</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\DX12\DX12Wrapper.h">
+      <Filter>ヘッダー ファイル\DX12</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -432,6 +435,9 @@
       <Filter>ソース ファイル\DX12</Filter>
     </ClCompile>
     <ClCompile Include="Epion12\DX12\FrameResource.cpp">
+      <Filter>ソース ファイル\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\DX12\DX12Wrapper.cpp">
       <Filter>ソース ファイル\DX12</Filter>
     </ClCompile>
   </ItemGroup>

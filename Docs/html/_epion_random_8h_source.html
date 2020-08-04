@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/Math/EpionRandom.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_ee0ac09559e8d4abb7c012fb0167297a.html">Math</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">EpionRandom.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_epion_random_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include    &lt;random&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace   </span><a class="code" href="namespaceepion_1_1_math.html">epion::Math</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="comment">//ただの乱数クラス</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random.html">    6</a></span>&#160;    <span class="keyword">class   </span><a class="code" href="classepion_1_1_math_1_1_random.html">Random</a>  final</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="comment">//指定した範囲の間の乱数を返す</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random.html#a460fd0d718c589edd6163256e640ba20">   11</a></span>&#160;        __forceinline   <span class="keyword">static</span>  T   <a class="code" href="classepion_1_1_math_1_1_random.html#a460fd0d718c589edd6163256e640ba20">get_num</a>(T   min_, T max_);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="comment">//指定した確率(0.0f〜1.0f)のtrueを返す</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        __forceinline   <span class="keyword">static</span>  <span class="keywordtype">bool</span>    <a class="code" href="classepion_1_1_math_1_1_random.html#a36df2d2d3bf3fb9e31dd650d0cee6981">is_get</a>(<span class="keywordtype">float</span>    num_);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">//vectorの中身に入っている数値(確率)に応じて、配列の添え字(要素数)を返す</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random.html#a3ff157fa37da8d13b6202d4a935293d1">   18</a></span>&#160;        __forceinline   <span class="keyword">static</span>  <span class="keywordtype">int</span> <a class="code" href="classepion_1_1_math_1_1_random.html#a3ff157fa37da8d13b6202d4a935293d1">discrete_get</a>(<span class="keyword">const</span>  std::vector&lt;T&gt;&amp; data);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="comment">//noise関数</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">float</span>   <a class="code" href="classepion_1_1_math_1_1_random.html#a1bbc90df2b53a459d5e7c610f50a43a1">noise</a>(<span class="keywordtype">int</span>   param_);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">            https://cpprefjp.github.io/reference/random/piecewise_constant_distribution.html</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random_1_1_piecewice.html">   28</a></span>&#160;        <span class="keyword">class   </span><a class="code" href="classepion_1_1_math_1_1_random_1_1_piecewice.html">Piecewice</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        };</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">static</span>  std::random_device  rd; <span class="comment">//ハードウェアエントロピー</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">static</span>  std::mt19937        mt; <span class="comment">//メルセンヌツイスタ</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">//一応</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">//static    std::knuth_b                knu;        //KnuthのリオーダーアルゴリズムB</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">//static    std::default_random_engine  def_rd;     //妥協乱数</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">//static    std::mt19937_64             mt_64;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">//static    std::ranlux24               ra_24;      //RANKUX法</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">//static    std::ranlux48               ra_48;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">//static    std::minstd_rand            minstd;     //MINSTD最小標準</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">//static    std::minstd_rand0           minstd_0;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}<span class="comment">// namespace epion::Math</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//実装</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random.html#a460fd0d718c589edd6163256e640ba20">   51</a></span>&#160;__forceinline   <span class="keyword">static</span>  T   <a class="code" href="classepion_1_1_math_1_1_random.html#a460fd0d718c589edd6163256e640ba20">epion::Math::Random::get_num</a>(T  min_, T max_)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    mt.seed(rd());</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::uniform_int_distribution&lt;T&gt;    rand_num(min_, max_);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span>  rand_num(mt);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random.html#ab4359d24c0aa07422082a28f816000fd">   58</a></span>&#160;__forceinline   <span class="keyword">static</span>  <span class="keywordtype">float</span>   epion::Math::Random::get_num&lt;float&gt;(<span class="keywordtype">float</span>   min_, <span class="keywordtype">float</span> max_)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    mt.seed(rd());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::uniform_real_distribution&lt;float&gt;   rand_num(min_, max_);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span>  rand_num(mt);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random.html#a8da1c844ff5ded3b5813c83257f2ea57">   65</a></span>&#160;__forceinline   <span class="keyword">static</span>  <span class="keywordtype">double</span>  epion::Math::Random::get_num&lt;double&gt;(<span class="keywordtype">double</span> min_, <span class="keywordtype">double</span>    max_)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    mt.seed(rd());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::uniform_real_distribution&lt;double&gt;  rand_num(min_, max_);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span>  rand_num(mt);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classepion_1_1_math_1_1_random.html#a3ff157fa37da8d13b6202d4a935293d1">   74</a></span>&#160;__forceinline   <span class="keyword">static</span>  <span class="keywordtype">int</span> <a class="code" href="classepion_1_1_math_1_1_random.html#a3ff157fa37da8d13b6202d4a935293d1">epion::Math::Random::discrete_get</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; data)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    mt.seed(rd());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::discrete_distribution&lt;int&gt; dist(data.begin(), data.end());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span>  dist(mt);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceepion_1_1_math_html"><div class="ttname"><a href="namespaceepion_1_1_math.html">epion::Math</a></div><div class="ttdef"><b>Definition:</b> EpionMath.h:11</div></div>
+<div class="ttc" id="aclassepion_1_1_math_1_1_random_html_a1bbc90df2b53a459d5e7c610f50a43a1"><div class="ttname"><a href="classepion_1_1_math_1_1_random.html#a1bbc90df2b53a459d5e7c610f50a43a1">epion::Math::Random::noise</a></div><div class="ttdeci">float noise(int param_)</div><div class="ttdef"><b>Definition:</b> EpionRandom.cpp:25</div></div>
+<div class="ttc" id="aclassepion_1_1_math_1_1_random_html_a36df2d2d3bf3fb9e31dd650d0cee6981"><div class="ttname"><a href="classepion_1_1_math_1_1_random.html#a36df2d2d3bf3fb9e31dd650d0cee6981">epion::Math::Random::is_get</a></div><div class="ttdeci">static __forceinline bool is_get(float num_)</div><div class="ttdef"><b>Definition:</b> EpionRandom.cpp:16</div></div>
+<div class="ttc" id="aclassepion_1_1_math_1_1_random_html_a460fd0d718c589edd6163256e640ba20"><div class="ttname"><a href="classepion_1_1_math_1_1_random.html#a460fd0d718c589edd6163256e640ba20">epion::Math::Random::get_num</a></div><div class="ttdeci">static __forceinline T get_num(T min_, T max_)</div></div>
+<div class="ttc" id="aclassepion_1_1_math_1_1_random_1_1_piecewice_html"><div class="ttname"><a href="classepion_1_1_math_1_1_random_1_1_piecewice.html">epion::Math::Random::Piecewice</a></div><div class="ttdef"><b>Definition:</b> EpionRandom.h:29</div></div>
+<div class="ttc" id="aclassepion_1_1_math_1_1_random_html"><div class="ttname"><a href="classepion_1_1_math_1_1_random.html">epion::Math::Random</a></div><div class="ttdef"><b>Definition:</b> EpionRandom.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_math_1_1_random_html_a3ff157fa37da8d13b6202d4a935293d1"><div class="ttname"><a href="classepion_1_1_math_1_1_random.html#a3ff157fa37da8d13b6202d4a935293d1">epion::Math::Random::discrete_get</a></div><div class="ttdeci">static __forceinline int discrete_get(const std::vector&lt; T &gt; &amp;data)</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

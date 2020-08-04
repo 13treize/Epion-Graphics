@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/ConstantBufferManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cb8a3393a2e0031f7f54a9d0b9d7ffe1.html">DX12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ConstantBufferManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_constant_buffer_manager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="_buffer_8h.html">Buffer.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="_descriptor_heap_8h.html">DescriptorHeap.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="namespaceepion_1_1_d_x12.html#aa0c64944c98abbffde2b60038e31a600">    6</a></span>&#160;    <a class="code" href="namespaceepion_1_1_d_x12.html#aa0c64944c98abbffde2b60038e31a600">__declspec</a>(align(256))</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        struct CBuffer0</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Math::FVector4</a> Time;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector2.html">Math::FVector2</a> ScreenSize;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector2.html">Math::FVector2</a> MousePos;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    };</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="namespaceepion_1_1_d_x12.html#aa0c64944c98abbffde2b60038e31a600">__declspec</a>(align(256))</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        struct CBuffer1</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        DirectX::XMMATRIX   World;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    };</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="namespaceepion_1_1_d_x12.html#aa0c64944c98abbffde2b60038e31a600">__declspec</a>(align(256))</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        struct CBuffer2</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        DirectX::XMMATRIX   View;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        DirectX::XMMATRIX   Proj;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">//Math::FVector4        CameraPos;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">//Math::FVector4        LightColor;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">//Math::FVector4        LightDir;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">//Math::FVector4        AmbientColor;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_c_buffer_data.html">   32</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_c_buffer_data.html">CBufferData</a> final</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a956508d3b5324ac4b69e227e121b1962">   35</a></span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a956508d3b5324ac4b69e227e121b1962">CBufferData</a>() :</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            m_cbuffer(nullptr),</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            m_constant_buffer_view({}),</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            m_slot_data(0)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a6c53b90dc473806244b40263d57809f4">   42</a></span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a6c53b90dc473806244b40263d57809f4">~CBufferData</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a07e4427418ad38882cdc069459c15971">   46</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a07e4427418ad38882cdc069459c15971">Initialize</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12Device&gt;</a>&amp; device, D3D12_CPU_DESCRIPTOR_HANDLE handle)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            m_cbuffer = std::make_unique&lt;DX12::ResourceBuffer&lt;T&gt;&gt;();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            m_cbuffer-&gt;Initialize(device, <span class="keyword">sizeof</span>(T), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            m_constant_buffer_view = { m_cbuffer-&gt;GetGPUVirtualAddress(),256 };</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            device-&gt;CreateConstantBufferView(&amp;m_constant_buffer_view, handle);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a074b9dbee5169b268e9e2abcaaeee7a2">   54</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a074b9dbee5169b268e9e2abcaaeee7a2">Finalize</a>()</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#aaf205fbd9215a98d35e4c61d37d73539">   58</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_c_buffer_data.html#aaf205fbd9215a98d35e4c61d37d73539">CopyResource</a>(<span class="keyword">const</span> T&amp; data)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            m_cbuffer-&gt;CopyResource(data);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        std::unique_ptr&lt;ResourceBuffer&lt;T&gt;&gt; m_cbuffer;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_slot_data;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    };</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html">   70</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html">ConstantBufferManager</a> final</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a2ac1bea5e5b979ec2ec55ad2aa3c5e75">Initialize</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#aab3658b9a411a10c3be20d2d11498b99">Build2D</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> buffer_num = 1);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#aee6dcc3204d06c6dc72a76fb66f03257">Build3D</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> buffer_num = 2);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#ac2b5005aaf7ee408fa3153fdd22d397d">Finalize</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a0aff6ecce1a681b4851e03c4d5d9eafa">UpdateCBuffer0</a>(<span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector2.html">Math::FVector2</a>&amp; mouse_pos);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#add1631bd463fac1ef7e060bd06c1af5b">UpdateCBuffer1</a>(<span class="keyword">const</span> DirectX::XMMATRIX&amp; world);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#ac210965fe828be4405b4f9eef669125a">UpdateCBuffer2</a>(<span class="keyword">const</span> DirectX::XMMATRIX&amp; view, <span class="keyword">const</span> DirectX::XMMATRIX&amp; projection, <span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector3.html">Math::FVector3</a>&amp; camera_pos, <span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html">Math::FVector4</a>&amp; color, <span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html">Math::FVector4</a>&amp; dir, <span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html">Math::FVector4</a>&amp; ambient);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#af4a7b9cdc6a250ddf58d136bcd948d2c">SetHeap</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a546c978bbaef89d96a0b29460c3b96a7">SetCBuffer0</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a6634dc12964504e7536a4c5e54c2eb4e">SetCBuffer1</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index,<span class="keywordtype">int</span> frame_count);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#afc8c4f2bafbd7d4d227200d83e48a172">SetCBuffer2</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">static</span> UINT <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#af23271b49c2c6b885a085fd0b069ca4b">CalcConstantBufferByteSize</a>(UINT byteSize);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">//  private:</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3aa6f7ed277037803cee7512a13646db">   91</a></span>&#160;        <span class="keyword">static</span> std::unique_ptr&lt;DX12::DescriptorHeap&gt; <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3aa6f7ed277037803cee7512a13646db">m_heap</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">//static std::unique_ptr &lt;CBufferData&lt;CBuffer0&gt;&gt;    m_cbuffer0;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a42694f04cf66e00828b5b9ee84b46210">   94</a></span>&#160;        <span class="keyword">static</span> std::unique_ptr&lt;ResourceBuffer&lt;CBuffer0&gt;&gt; <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a42694f04cf66e00828b5b9ee84b46210">m_cbuffer0</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3961860810e0fd09b9509ac2a0570dce">   95</a></span>&#160;        <span class="keyword">static</span> std::unique_ptr&lt;ResourceBuffer&lt;CBuffer1&gt;&gt; <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3961860810e0fd09b9509ac2a0570dce">m_cbuffer1</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a17a3a4db76ac33ee12bad146dfbfce97">   96</a></span>&#160;        <span class="keyword">static</span> std::unique_ptr&lt;ResourceBuffer&lt;CBuffer2&gt;&gt; <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a17a3a4db76ac33ee12bad146dfbfce97">m_cbuffer2</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#abfa4f08f1b137e034e812df954f71888">   98</a></span>&#160;        <span class="keyword">static</span> CBuffer0* <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#abfa4f08f1b137e034e812df954f71888">m_cbuffer0_data</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a24250e531d0d321f97abb91cc4e12688">   99</a></span>&#160;        <span class="keyword">static</span> CBuffer1* <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a24250e531d0d321f97abb91cc4e12688">m_cbuffer1_data</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a26099a2e6f20846fcd4c42ef1b12c7c3">  100</a></span>&#160;        <span class="keyword">static</span> CBuffer2* <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a26099a2e6f20846fcd4c42ef1b12c7c3">m_cbuffer2_data</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a6562629b7fc1b96bf4eb4f4df38d0111">  101</a></span>&#160;        <span class="keyword">static</span> D3D12_GPU_VIRTUAL_ADDRESS <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a6562629b7fc1b96bf4eb4f4df38d0111">m_gpu_virtual_address1</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a0123f9f94a4d5b0cc27c96195e24e68f">  102</a></span>&#160;        <span class="keyword">static</span> D3D12_GPU_VIRTUAL_ADDRESS <a class="code" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a0123f9f94a4d5b0cc27c96195e24e68f">m_gpu_virtual_address2</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    };</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_c_buffer_data_html_a6c53b90dc473806244b40263d57809f4"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a6c53b90dc473806244b40263d57809f4">epion::DX12::CBufferData::~CBufferData</a></div><div class="ttdeci">~CBufferData()</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:42</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a0aff6ecce1a681b4851e03c4d5d9eafa"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a0aff6ecce1a681b4851e03c4d5d9eafa">epion::DX12::ConstantBufferManager::UpdateCBuffer0</a></div><div class="ttdeci">static void UpdateCBuffer0(const Math::FVector2 &amp;mouse_pos)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:91</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_abfa4f08f1b137e034e812df954f71888"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#abfa4f08f1b137e034e812df954f71888">epion::DX12::ConstantBufferManager::m_cbuffer0_data</a></div><div class="ttdeci">static CBuffer0 * m_cbuffer0_data</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:98</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a24250e531d0d321f97abb91cc4e12688"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a24250e531d0d321f97abb91cc4e12688">epion::DX12::ConstantBufferManager::m_cbuffer1_data</a></div><div class="ttdeci">static CBuffer1 * m_cbuffer1_data</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:99</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector3_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector3.html">epion::Math::Vector3</a></div><div class="ttdef"><b>Definition:</b> EpionVector3.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_c_buffer_data_html_a074b9dbee5169b268e9e2abcaaeee7a2"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a074b9dbee5169b268e9e2abcaaeee7a2">epion::DX12::CBufferData::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:54</div></div>
+<div class="ttc" id="a_descriptor_heap_8h_html"><div class="ttname"><a href="_descriptor_heap_8h.html">DescriptorHeap.h</a></div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a0123f9f94a4d5b0cc27c96195e24e68f"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a0123f9f94a4d5b0cc27c96195e24e68f">epion::DX12::ConstantBufferManager::m_gpu_virtual_address2</a></div><div class="ttdeci">static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address2</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:102</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_add1631bd463fac1ef7e060bd06c1af5b"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#add1631bd463fac1ef7e060bd06c1af5b">epion::DX12::ConstantBufferManager::UpdateCBuffer1</a></div><div class="ttdeci">static void UpdateCBuffer1(const DirectX::XMMATRIX &amp;world)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:106</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a2ac1bea5e5b979ec2ec55ad2aa3c5e75"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a2ac1bea5e5b979ec2ec55ad2aa3c5e75">epion::DX12::ConstantBufferManager::Initialize</a></div><div class="ttdeci">static bool Initialize()</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:29</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_c_buffer_data_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_c_buffer_data.html">epion::DX12::CBufferData</a></div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:33</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html">epion::Math::Vector4</a></div><div class="ttdef"><b>Definition:</b> EpionVector4.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a546c978bbaef89d96a0b29460c3b96a7"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a546c978bbaef89d96a0b29460c3b96a7">epion::DX12::ConstantBufferManager::SetCBuffer0</a></div><div class="ttdeci">static void SetCBuffer0(int index)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:131</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a17a3a4db76ac33ee12bad146dfbfce97"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a17a3a4db76ac33ee12bad146dfbfce97">epion::DX12::ConstantBufferManager::m_cbuffer2</a></div><div class="ttdeci">static std::unique_ptr&lt; ResourceBuffer&lt; CBuffer2 &gt; &gt; m_cbuffer2</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:96</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_ac210965fe828be4405b4f9eef669125a"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#ac210965fe828be4405b4f9eef669125a">epion::DX12::ConstantBufferManager::UpdateCBuffer2</a></div><div class="ttdeci">static void UpdateCBuffer2(const DirectX::XMMATRIX &amp;view, const DirectX::XMMATRIX &amp;projection, const Math::FVector3 &amp;camera_pos, const Math::FVector4 &amp;color, const Math::FVector4 &amp;dir, const Math::FVector4 &amp;ambient)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:115</div></div>
+<div class="ttc" id="a_buffer_8h_html"><div class="ttname"><a href="_buffer_8h.html">Buffer.h</a></div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_af23271b49c2c6b885a085fd0b069ca4b"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#af23271b49c2c6b885a085fd0b069ca4b">epion::DX12::ConstantBufferManager::CalcConstantBufferByteSize</a></div><div class="ttdeci">static UINT CalcConstantBufferByteSize(UINT byteSize)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:163</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_c_buffer_data_html_a07e4427418ad38882cdc069459c15971"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a07e4427418ad38882cdc069459c15971">epion::DX12::CBufferData::Initialize</a></div><div class="ttdeci">bool Initialize(com_ptr&lt; ID3D12Device &gt; &amp;device, D3D12_CPU_DESCRIPTOR_HANDLE handle)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:46</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_ac2b5005aaf7ee408fa3153fdd22d397d"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#ac2b5005aaf7ee408fa3153fdd22d397d">epion::DX12::ConstantBufferManager::Finalize</a></div><div class="ttdeci">static bool Finalize()</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:81</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_af4a7b9cdc6a250ddf58d136bcd948d2c"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#af4a7b9cdc6a250ddf58d136bcd948d2c">epion::DX12::ConstantBufferManager::SetHeap</a></div><div class="ttdeci">static void SetHeap()</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:86</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a6634dc12964504e7536a4c5e54c2eb4e"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a6634dc12964504e7536a4c5e54c2eb4e">epion::DX12::ConstantBufferManager::SetCBuffer1</a></div><div class="ttdeci">static void SetCBuffer1(unsigned int index, int frame_count)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:142</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div><div class="ttdef"><b>Definition:</b> BlendState.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html">epion::DX12::ConstantBufferManager</a></div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:71</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a3aa6f7ed277037803cee7512a13646db"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3aa6f7ed277037803cee7512a13646db">epion::DX12::ConstantBufferManager::m_heap</a></div><div class="ttdeci">static std::unique_ptr&lt; DX12::DescriptorHeap &gt; m_heap</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:91</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a6562629b7fc1b96bf4eb4f4df38d0111"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a6562629b7fc1b96bf4eb4f4df38d0111">epion::DX12::ConstantBufferManager::m_gpu_virtual_address1</a></div><div class="ttdeci">static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address1</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:101</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_aa0c64944c98abbffde2b60038e31a600"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#aa0c64944c98abbffde2b60038e31a600">epion::DX12::__declspec</a></div><div class="ttdeci">__declspec(align(256)) struct CBuffer0</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_aab3658b9a411a10c3be20d2d11498b99"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#aab3658b9a411a10c3be20d2d11498b99">epion::DX12::ConstantBufferManager::Build2D</a></div><div class="ttdeci">static bool Build2D(const int buffer_num=1)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:61</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a26099a2e6f20846fcd4c42ef1b12c7c3"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a26099a2e6f20846fcd4c42ef1b12c7c3">epion::DX12::ConstantBufferManager::m_cbuffer2_data</a></div><div class="ttdeci">static CBuffer2 * m_cbuffer2_data</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:100</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_aee6dcc3204d06c6dc72a76fb66f03257"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#aee6dcc3204d06c6dc72a76fb66f03257">epion::DX12::ConstantBufferManager::Build3D</a></div><div class="ttdeci">static bool Build3D(const int buffer_num=2)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:73</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_c_buffer_data_html_a956508d3b5324ac4b69e227e121b1962"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_c_buffer_data.html#a956508d3b5324ac4b69e227e121b1962">epion::DX12::CBufferData::CBufferData</a></div><div class="ttdeci">CBufferData()</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:35</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector2_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector2.html">epion::Math::Vector2</a></div><div class="ttdef"><b>Definition:</b> EpionVector2.h:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a3961860810e0fd09b9509ac2a0570dce"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3961860810e0fd09b9509ac2a0570dce">epion::DX12::ConstantBufferManager::m_cbuffer1</a></div><div class="ttdeci">static std::unique_ptr&lt; ResourceBuffer&lt; CBuffer1 &gt; &gt; m_cbuffer1</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:95</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_afc8c4f2bafbd7d4d227200d83e48a172"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#afc8c4f2bafbd7d4d227200d83e48a172">epion::DX12::ConstantBufferManager::SetCBuffer2</a></div><div class="ttdeci">static void SetCBuffer2(int index)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.cpp:151</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_constant_buffer_manager_html_a42694f04cf66e00828b5b9ee84b46210"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a42694f04cf66e00828b5b9ee84b46210">epion::DX12::ConstantBufferManager::m_cbuffer0</a></div><div class="ttdeci">static std::unique_ptr&lt; ResourceBuffer&lt; CBuffer0 &gt; &gt; m_cbuffer0</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:94</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_c_buffer_data_html_aaf205fbd9215a98d35e4c61d37d73539"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_c_buffer_data.html#aaf205fbd9215a98d35e4c61d37d73539">epion::DX12::CBufferData::CopyResource</a></div><div class="ttdeci">void CopyResource(const T &amp;data)</div><div class="ttdef"><b>Definition:</b> ConstantBufferManager.h:58</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

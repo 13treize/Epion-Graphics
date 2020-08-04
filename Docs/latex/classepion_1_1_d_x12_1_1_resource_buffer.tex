@@ -1,0 +1,112 @@
+\hypertarget{classepion_1_1_d_x12_1_1_resource_buffer}{}\doxysection{epion\+::D\+X12\+::Resource\+Buffer$<$ T $>$ クラステンプレート}
+\label{classepion_1_1_d_x12_1_1_resource_buffer}\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Buffer.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a70fc5c0f249206a787d9d3657ff5728a}{Resource\+Buffer}} ()
+\item 
+\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a5f684d9f24054330be35975711a0061e}{$\sim$\+Resource\+Buffer}} ()
+\item 
+{\footnotesize template$<$class U  = I\+D3\+D12\+Device$>$ }\\bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a7a3af9baca0dcb533503e4024e81114a}{Initialize}} (\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ U $>$ \&device, unsigned int buffer\+\_\+count, bool is\+\_\+constant)
+\item 
+bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a21a58248066d044eb94ce566b3ad6dc5}{Finalize}} ()
+\item 
+{\footnotesize template$<$size\+\_\+t N$>$ }\\void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a3c7c3a376ff39e7ffbc38c916ecdfd0f}{Copy\+Resource}} (const std\+::array$<$ T, N $>$ \&data)
+\item 
+void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a002ed5dc43697d119d9c3a11480e307e}{Copy\+Resource}} (const std\+::vector$<$ T $>$ \&data)
+\item 
+void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_aa2ee403ad9a10cd0b29bcfa74330bf46}{Copy\+Resource}} (const T \&data)
+\item 
+D3\+D12\+\_\+\+G\+P\+U\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a45320a03a091c582b8e7cdc2ab8610d4}{Get\+G\+P\+U\+Virtual\+Address}} ()
+\item 
+I\+D3\+D12\+Resource $\ast$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a7433842aaea88efbf08b54936b35c3a0}{Get}} () const
+\item 
+const unsigned int \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer_a47192479f3561f2561ba802f8529e587}{Get\+Count}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a70fc5c0f249206a787d9d3657ff5728a}\label{classepion_1_1_d_x12_1_1_resource_buffer_a70fc5c0f249206a787d9d3657ff5728a}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!ResourceBuffer@{ResourceBuffer}}
+\index{ResourceBuffer@{ResourceBuffer}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ResourceBuffer()}{ResourceBuffer()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a5f684d9f24054330be35975711a0061e}\label{classepion_1_1_d_x12_1_1_resource_buffer_a5f684d9f24054330be35975711a0061e}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!````~ResourceBuffer@{$\sim$ResourceBuffer}}
+\index{````~ResourceBuffer@{$\sim$ResourceBuffer}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$ResourceBuffer()}{~ResourceBuffer()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a3c7c3a376ff39e7ffbc38c916ecdfd0f}\label{classepion_1_1_d_x12_1_1_resource_buffer_a3c7c3a376ff39e7ffbc38c916ecdfd0f}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!CopyResource@{CopyResource}}
+\index{CopyResource@{CopyResource}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CopyResource()}{CopyResource()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+template$<$size\+\_\+t N$>$ \\
+void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Copy\+Resource (\begin{DoxyParamCaption}\item[{const std\+::array$<$ T, N $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a002ed5dc43697d119d9c3a11480e307e}\label{classepion_1_1_d_x12_1_1_resource_buffer_a002ed5dc43697d119d9c3a11480e307e}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!CopyResource@{CopyResource}}
+\index{CopyResource@{CopyResource}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CopyResource()}{CopyResource()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Copy\+Resource (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_aa2ee403ad9a10cd0b29bcfa74330bf46}\label{classepion_1_1_d_x12_1_1_resource_buffer_aa2ee403ad9a10cd0b29bcfa74330bf46}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!CopyResource@{CopyResource}}
+\index{CopyResource@{CopyResource}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CopyResource()}{CopyResource()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Copy\+Resource (\begin{DoxyParamCaption}\item[{const T \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a21a58248066d044eb94ce566b3ad6dc5}\label{classepion_1_1_d_x12_1_1_resource_buffer_a21a58248066d044eb94ce566b3ad6dc5}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a7433842aaea88efbf08b54936b35c3a0}\label{classepion_1_1_d_x12_1_1_resource_buffer_a7433842aaea88efbf08b54936b35c3a0}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!Get@{Get}}
+\index{Get@{Get}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+I\+D3\+D12\+Resource$\ast$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a47192479f3561f2561ba802f8529e587}\label{classepion_1_1_d_x12_1_1_resource_buffer_a47192479f3561f2561ba802f8529e587}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!GetCount@{GetCount}}
+\index{GetCount@{GetCount}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{GetCount()}{GetCount()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const unsigned int \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Get\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a45320a03a091c582b8e7cdc2ab8610d4}\label{classepion_1_1_d_x12_1_1_resource_buffer_a45320a03a091c582b8e7cdc2ab8610d4}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!GetGPUVirtualAddress@{GetGPUVirtualAddress}}
+\index{GetGPUVirtualAddress@{GetGPUVirtualAddress}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{GetGPUVirtualAddress()}{GetGPUVirtualAddress()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+D3\+D12\+\_\+\+G\+P\+U\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Get\+G\+P\+U\+Virtual\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_resource_buffer_a7a3af9baca0dcb533503e4024e81114a}\label{classepion_1_1_d_x12_1_1_resource_buffer_a7a3af9baca0dcb533503e4024e81114a}} 
+\index{epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!epion::DX12::ResourceBuffer$<$ T $>$@{epion::DX12::ResourceBuffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+template$<$class U  = I\+D3\+D12\+Device$>$ \\
+bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{epion\+::\+D\+X12\+::\+Resource\+Buffer}}$<$ T $>$\+::Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{com\+\_\+ptr}}$<$ U $>$ \&}]{device,  }\item[{unsigned int}]{buffer\+\_\+count,  }\item[{bool}]{is\+\_\+constant }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+D\+X12/\mbox{\hyperlink{_buffer_8h}{Buffer.\+h}}\end{DoxyCompactItemize}

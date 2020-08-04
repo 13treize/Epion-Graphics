@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/Model/StaticMesh.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_d6b718fd2e3be668ae9e2e4fb6dd3c69.html">Model</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">StaticMesh.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_static_mesh_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="_model_8h.html">Model.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_model.html">epion::Model</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_polygon.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_model_1_1_polygon.html">Polygon</a> final :<span class="keyword">public</span> <a class="code" href="classepion_1_1_model_1_1_model3_d.html">Model3D</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_polygon.html#a9d93f250ecb7e9a5adc5e1e1435cd5af">Polygon</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_polygon.html#a5cbf39d22f7c65a64fbeafebafe83a83">~Polygon</a>();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_model_1_1_polygon.html#abdde5efcd4268d33ca6c526ea8aab9e2">Initialize</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; vs_blob, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; ps_blob, D3D12_RASTERIZER_DESC&amp; r_desc, D3D12_BLEND_DESC&amp; b_desc, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12RootSignature&gt;</a>&amp; root_sig);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_model_1_1_polygon.html#a0a4ca3ce54db6fe67da2ebd4473d3941">Finalize</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_model_1_1_polygon.html#a340da22f5660e5dc5226fc39faff7ac3">Update</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_model_1_1_polygon.html#a63ec664ce711892f837f5044fb45b3d8">Render</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    };</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_cube_mesh.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_model_1_1_cube_mesh.html">CubeMesh</a> final :<span class="keyword">public</span> <a class="code" href="classepion_1_1_model_1_1_model3_d.html">Model3D</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_cube_mesh.html#aac6f3d9bb180c5b1581b4f397029cc21">CubeMesh</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_cube_mesh.html#adbae56089c6d2c5461b3558ba09050d3">~CubeMesh</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_model_1_1_cube_mesh.html#ad1c1e72585de1bdfee0fa18ebec44883">Initialize</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; vs_blob, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; ps_blob, D3D12_RASTERIZER_DESC&amp; r_desc, D3D12_BLEND_DESC&amp; b_desc, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12RootSignature&gt;</a>&amp; root_sig);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_model_1_1_cube_mesh.html#a26f4924b582da2e1b5e573bfd1f53942">Finalize</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_model_1_1_cube_mesh.html#a7702933a9f568ca2f76ebbbe67d2a509">Update</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_model_1_1_cube_mesh.html#a68429cc21d8813fc96b3e9e921030d60">Render</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    };</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_model_1_1_model3_d_html"><div class="ttname"><a href="classepion_1_1_model_1_1_model3_d.html">epion::Model::Model3D</a></div><div class="ttdef"><b>Definition:</b> Model.h:27</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_polygon_html_a340da22f5660e5dc5226fc39faff7ac3"><div class="ttname"><a href="classepion_1_1_model_1_1_polygon.html#a340da22f5660e5dc5226fc39faff7ac3">epion::Model::Polygon::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:68</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_polygon_html_a0a4ca3ce54db6fe67da2ebd4473d3941"><div class="ttname"><a href="classepion_1_1_model_1_1_polygon.html#a0a4ca3ce54db6fe67da2ebd4473d3941">epion::Model::Polygon::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:60</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_cube_mesh_html_a7702933a9f568ca2f76ebbbe67d2a509"><div class="ttname"><a href="classepion_1_1_model_1_1_cube_mesh.html#a7702933a9f568ca2f76ebbbe67d2a509">epion::Model::CubeMesh::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:143</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_cube_mesh_html_a68429cc21d8813fc96b3e9e921030d60"><div class="ttname"><a href="classepion_1_1_model_1_1_cube_mesh.html#a68429cc21d8813fc96b3e9e921030d60">epion::Model::CubeMesh::Render</a></div><div class="ttdeci">void Render()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:147</div></div>
+<div class="ttc" id="anamespaceepion_1_1_model_html"><div class="ttname"><a href="namespaceepion_1_1_model.html">epion::Model</a></div><div class="ttdef"><b>Definition:</b> Model.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_cube_mesh_html"><div class="ttname"><a href="classepion_1_1_model_1_1_cube_mesh.html">epion::Model::CubeMesh</a></div><div class="ttdef"><b>Definition:</b> StaticMesh.h:21</div></div>
+<div class="ttc" id="a_model_8h_html"><div class="ttname"><a href="_model_8h.html">Model.h</a></div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_cube_mesh_html_ad1c1e72585de1bdfee0fa18ebec44883"><div class="ttname"><a href="classepion_1_1_model_1_1_cube_mesh.html#ad1c1e72585de1bdfee0fa18ebec44883">epion::Model::CubeMesh::Initialize</a></div><div class="ttdeci">bool Initialize(com_ptr&lt; ID3DBlob &gt; &amp;vs_blob, com_ptr&lt; ID3DBlob &gt; &amp;ps_blob, D3D12_RASTERIZER_DESC &amp;r_desc, D3D12_BLEND_DESC &amp;b_desc, com_ptr&lt; ID3D12RootSignature &gt; &amp;root_sig)</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:86</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_polygon_html_abdde5efcd4268d33ca6c526ea8aab9e2"><div class="ttname"><a href="classepion_1_1_model_1_1_polygon.html#abdde5efcd4268d33ca6c526ea8aab9e2">epion::Model::Polygon::Initialize</a></div><div class="ttdeci">bool Initialize(com_ptr&lt; ID3DBlob &gt; &amp;vs_blob, com_ptr&lt; ID3DBlob &gt; &amp;ps_blob, D3D12_RASTERIZER_DESC &amp;r_desc, D3D12_BLEND_DESC &amp;b_desc, com_ptr&lt; ID3D12RootSignature &gt; &amp;root_sig)</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:20</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_polygon_html_a63ec664ce711892f837f5044fb45b3d8"><div class="ttname"><a href="classepion_1_1_model_1_1_polygon.html#a63ec664ce711892f837f5044fb45b3d8">epion::Model::Polygon::Render</a></div><div class="ttdeci">void Render()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:73</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_polygon_html"><div class="ttname"><a href="classepion_1_1_model_1_1_polygon.html">epion::Model::Polygon</a></div><div class="ttdef"><b>Definition:</b> StaticMesh.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_cube_mesh_html_adbae56089c6d2c5461b3558ba09050d3"><div class="ttname"><a href="classepion_1_1_model_1_1_cube_mesh.html#adbae56089c6d2c5461b3558ba09050d3">epion::Model::CubeMesh::~CubeMesh</a></div><div class="ttdeci">~CubeMesh()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:83</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_polygon_html_a5cbf39d22f7c65a64fbeafebafe83a83"><div class="ttname"><a href="classepion_1_1_model_1_1_polygon.html#a5cbf39d22f7c65a64fbeafebafe83a83">epion::Model::Polygon::~Polygon</a></div><div class="ttdeci">~Polygon()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:17</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_cube_mesh_html_aac6f3d9bb180c5b1581b4f397029cc21"><div class="ttname"><a href="classepion_1_1_model_1_1_cube_mesh.html#aac6f3d9bb180c5b1581b4f397029cc21">epion::Model::CubeMesh::CubeMesh</a></div><div class="ttdeci">CubeMesh()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:78</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_cube_mesh_html_a26f4924b582da2e1b5e573bfd1f53942"><div class="ttname"><a href="classepion_1_1_model_1_1_cube_mesh.html#a26f4924b582da2e1b5e573bfd1f53942">epion::Model::CubeMesh::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:137</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_polygon_html_a9d93f250ecb7e9a5adc5e1e1435cd5af"><div class="ttname"><a href="classepion_1_1_model_1_1_polygon.html#a9d93f250ecb7e9a5adc5e1e1435cd5af">epion::Model::Polygon::Polygon</a></div><div class="ttdeci">Polygon()</div><div class="ttdef"><b>Definition:</b> StaticMesh.cpp:12</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

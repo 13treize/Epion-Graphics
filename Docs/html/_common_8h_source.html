@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/Common.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Common.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_common_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//  キャスト関連</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define st_cast static_cast</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="_common_8h.html#ac966cb3476cb46a25c7f517b33392602">    5</a></span>&#160;<span class="preprocessor">#define r_cast  reinterpret_cast</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="_common_8h.html#a1f68aa20bbc7ad6e840a7ec1aca94deb">    6</a></span>&#160;<span class="preprocessor">#define c_cast  const_cast</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="_common_8h.html#a4e0fc547306d5f8ac3ca6a1ea4ad7904">    7</a></span>&#160;<span class="preprocessor">#define d_cast  dynamic_cast</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="_common_8h.html#af6875c1f2c1f99d6c046bd7168722f14">    8</a></span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define sa_cast safe_cast</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="_common_8h.html#acd1f77cd87eb3283dda8111adb0419f3">   10</a></span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define I_FOR(value_limit)  for(unsigned    char    i   =0; i   &lt;value_limit;   i++)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="_common_8h.html#aeafed05a3063ca43b42a675f1d928b67">   13</a></span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define TO_STRING(VariableName) #   VariableName</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="_common_8h.html#a61afd3412f4df573824e552e84c37ba0">   15</a></span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace   </span><a class="code" href="namespaceepion.html">epion</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//シングルトン、クラステンプレート</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classepion_1_1_singleton.html">   20</a></span>&#160;    <span class="keyword">class   </span><a class="code" href="classepion_1_1_singleton.html">Singleton</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classepion_1_1_singleton.html#a35d8becef331f85af45ae06d4d6c023e">   23</a></span>&#160;        <span class="keyword">static</span>  T&amp; <a class="code" href="classepion_1_1_singleton.html#a35d8becef331f85af45ae06d4d6c023e">GetInst</a>()    noexcept</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keyword">static</span>  T   inst;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span>  inst;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        };</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span>    operator    =(<span class="keyword">const</span> <a class="code" href="classepion_1_1_singleton.html">Singleton</a>&amp; obj) {}  <span class="comment">//代入演算子禁止</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classepion_1_1_singleton.html#ac8990b5a5543170b2548fb8aa411a470">Singleton</a>(<span class="keyword">const</span> <a class="code" href="classepion_1_1_singleton.html#ac8990b5a5543170b2548fb8aa411a470">Singleton</a>&amp; obj) {}              <span class="comment">//コピーコンストラクタ禁止</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classepion_1_1_singleton.html#ac8990b5a5543170b2548fb8aa411a470">   32</a></span>&#160;        <a class="code" href="classepion_1_1_singleton.html#ac8990b5a5543170b2548fb8aa411a470">Singleton</a>() {}                                  <span class="comment">//外部でのインスタンス作成は禁止</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classepion_1_1_singleton.html#a7b1b2f43192394cb6ddcc0af97bd19ce">   33</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classepion_1_1_singleton.html#a7b1b2f43192394cb6ddcc0af97bd19ce">~Singleton</a>() {};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//n次元配列初期化(ただの配列のみ)</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">template</span>&lt;   <span class="keyword">class</span>   A, <span class="keywordtype">size_t</span>   N, <span class="keyword">class</span>    T&gt;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="namespaceepion.html#aba984603e92493694f69eccfd4995ff3">   38</a></span>&#160;    <span class="keywordtype">void</span>    <a class="code" href="namespaceepion.html#aba984603e92493694f69eccfd4995ff3">set_array_fill</a>(A(&amp;array)[N], <span class="keyword">const</span>  T&amp; val)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::fill((T*)array, (T*)(array + N), val);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">   44</a></span>&#160;    <span class="keyword">using</span>   <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr</a> = Microsoft::WRL::ComPtr&lt;T&gt;;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">//定数</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="namespaceepion.html#a516533edebf43e6e59d0e4dcbcc2681d">   47</a></span>&#160;    constexpr   <span class="keywordtype">int</span> <a class="code" href="namespaceepion.html#a516533edebf43e6e59d0e4dcbcc2681d">CHAR_SIZE</a> = 256;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classepion_1_1_base_class.html">   49</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_base_class.html">BaseClass</a> <span class="keyword">abstract</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classepion_1_1_base_class.html#a77ef5dc34da25860a218bbe74b5a2ad8">   52</a></span>&#160;        <a class="code" href="classepion_1_1_base_class.html#a77ef5dc34da25860a218bbe74b5a2ad8">BaseClass</a>() {}</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classepion_1_1_base_class.html#a03fce851b77d697572fabcccd46cf16d">   53</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classepion_1_1_base_class.html#a03fce851b77d697572fabcccd46cf16d">~BaseClass</a>() {}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classepion_1_1_base_class.html#a6a2ea317007271d429dc3aa7eef21863">   55</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="classepion_1_1_base_class.html#a6a2ea317007271d429dc3aa7eef21863">Initialize</a>() = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classepion_1_1_base_class.html#a3cc349679c24216f20d3bf16ccecd7ff">   56</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="classepion_1_1_base_class.html#a3cc349679c24216f20d3bf16ccecd7ff">Finalize</a>() = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classepion_1_1_base_class.html#aa750f39b3332c108aff3695457619ecb">   57</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_base_class.html#aa750f39b3332c108aff3695457619ecb">Update</a>() = 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_base_class_html_a3cc349679c24216f20d3bf16ccecd7ff"><div class="ttname"><a href="classepion_1_1_base_class.html#a3cc349679c24216f20d3bf16ccecd7ff">epion::BaseClass::Finalize</a></div><div class="ttdeci">virtual bool Finalize()=0</div></div>
+<div class="ttc" id="anamespaceepion_html_a516533edebf43e6e59d0e4dcbcc2681d"><div class="ttname"><a href="namespaceepion.html#a516533edebf43e6e59d0e4dcbcc2681d">epion::CHAR_SIZE</a></div><div class="ttdeci">constexpr int CHAR_SIZE</div><div class="ttdef"><b>Definition:</b> Common.h:47</div></div>
+<div class="ttc" id="aclassepion_1_1_singleton_html_a7b1b2f43192394cb6ddcc0af97bd19ce"><div class="ttname"><a href="classepion_1_1_singleton.html#a7b1b2f43192394cb6ddcc0af97bd19ce">epion::Singleton::~Singleton</a></div><div class="ttdeci">virtual ~Singleton()</div><div class="ttdef"><b>Definition:</b> Common.h:33</div></div>
+<div class="ttc" id="aclassepion_1_1_singleton_html_a35d8becef331f85af45ae06d4d6c023e"><div class="ttname"><a href="classepion_1_1_singleton.html#a35d8becef331f85af45ae06d4d6c023e">epion::Singleton::GetInst</a></div><div class="ttdeci">static T &amp; GetInst() noexcept</div><div class="ttdef"><b>Definition:</b> Common.h:23</div></div>
+<div class="ttc" id="aclassepion_1_1_base_class_html_a03fce851b77d697572fabcccd46cf16d"><div class="ttname"><a href="classepion_1_1_base_class.html#a03fce851b77d697572fabcccd46cf16d">epion::BaseClass::~BaseClass</a></div><div class="ttdeci">virtual ~BaseClass()</div><div class="ttdef"><b>Definition:</b> Common.h:53</div></div>
+<div class="ttc" id="aclassepion_1_1_base_class_html"><div class="ttname"><a href="classepion_1_1_base_class.html">epion::BaseClass</a></div><div class="ttdef"><b>Definition:</b> Common.h:50</div></div>
+<div class="ttc" id="aclassepion_1_1_singleton_html"><div class="ttname"><a href="classepion_1_1_singleton.html">epion::Singleton</a></div><div class="ttdef"><b>Definition:</b> Common.h:21</div></div>
+<div class="ttc" id="anamespaceepion_html"><div class="ttname"><a href="namespaceepion.html">epion</a></div><div class="ttdef"><b>Definition:</b> CameraManager.cpp:13</div></div>
+<div class="ttc" id="anamespaceepion_html_aba984603e92493694f69eccfd4995ff3"><div class="ttname"><a href="namespaceepion.html#aba984603e92493694f69eccfd4995ff3">epion::set_array_fill</a></div><div class="ttdeci">void set_array_fill(A(&amp;array)[N], const T &amp;val)</div><div class="ttdef"><b>Definition:</b> Common.h:38</div></div>
+<div class="ttc" id="aclassepion_1_1_singleton_html_ac8990b5a5543170b2548fb8aa411a470"><div class="ttname"><a href="classepion_1_1_singleton.html#ac8990b5a5543170b2548fb8aa411a470">epion::Singleton::Singleton</a></div><div class="ttdeci">Singleton()</div><div class="ttdef"><b>Definition:</b> Common.h:32</div></div>
+<div class="ttc" id="aclassepion_1_1_base_class_html_a77ef5dc34da25860a218bbe74b5a2ad8"><div class="ttname"><a href="classepion_1_1_base_class.html#a77ef5dc34da25860a218bbe74b5a2ad8">epion::BaseClass::BaseClass</a></div><div class="ttdeci">BaseClass()</div><div class="ttdef"><b>Definition:</b> Common.h:52</div></div>
+<div class="ttc" id="aclassepion_1_1_base_class_html_a6a2ea317007271d429dc3aa7eef21863"><div class="ttname"><a href="classepion_1_1_base_class.html#a6a2ea317007271d429dc3aa7eef21863">epion::BaseClass::Initialize</a></div><div class="ttdeci">virtual bool Initialize()=0</div></div>
+<div class="ttc" id="aclassepion_1_1_base_class_html_aa750f39b3332c108aff3695457619ecb"><div class="ttname"><a href="classepion_1_1_base_class.html#aa750f39b3332c108aff3695457619ecb">epion::BaseClass::Update</a></div><div class="ttdeci">virtual void Update()=0</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

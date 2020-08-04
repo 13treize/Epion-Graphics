@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/Model/ObjMesh.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_d6b718fd2e3be668ae9e2e4fb6dd3c69.html">Model</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ObjMesh.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_obj_mesh_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="_model_8h.html">Model.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_model.html">epion::Model</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_mtl_texture.html">    5</a></span>&#160;    <span class="keyword">struct  </span><a class="code" href="structepion_1_1_model_1_1_mtl_texture.html">MtlTexture</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="comment">//com_ptr&lt;ID3D11ShaderResourceView&gt; shader_resource_view;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_mtl_texture.html#a5df9836e1aff349227284b7fe0c2a672">    8</a></span>&#160;        std::wstring    <a class="code" href="structepion_1_1_model_1_1_mtl_texture.html#a5df9836e1aff349227284b7fe0c2a672">file_name</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    };</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_subset.html">   12</a></span>&#160;    <span class="keyword">struct  </span><a class="code" href="structepion_1_1_model_1_1_subset.html">Subset</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_subset.html#ad47d553f3ec0ab1777795b3520996f15">   14</a></span>&#160;        std::wstring    <a class="code" href="structepion_1_1_model_1_1_subset.html#ad47d553f3ec0ab1777795b3520996f15">usemtl</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_subset.html#af21edb9708a7db6b86dbc26ccbaf16ca">   15</a></span>&#160;        <span class="keywordtype">unsigned</span>    <span class="keywordtype">int</span> <a class="code" href="structepion_1_1_model_1_1_subset.html#af21edb9708a7db6b86dbc26ccbaf16ca">index_start</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_subset.html#a800935a427e86906f92bc80734eabbdb">   16</a></span>&#160;        <span class="keywordtype">unsigned</span>    <span class="keywordtype">int</span> <a class="code" href="structepion_1_1_model_1_1_subset.html#a800935a427e86906f92bc80734eabbdb">index_count</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    };</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html">   19</a></span>&#160;    <span class="keyword">struct  </span><a class="code" href="structepion_1_1_model_1_1_material.html">Material</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html#afe027b0991ed2f53a38ea7de096467ec">   21</a></span>&#160;        std::wstring    <a class="code" href="structepion_1_1_model_1_1_material.html#afe027b0991ed2f53a38ea7de096467ec">newmtl</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html#ac4f363538e033f2fa4afb62a8569b331">   22</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector3.html">Math::FVector3</a>  <a class="code" href="structepion_1_1_model_1_1_material.html#ac4f363538e033f2fa4afb62a8569b331">Ka</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html#a8fe8535a50b0067b4b324dad5026a673">   23</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector3.html">Math::FVector3</a>  <a class="code" href="structepion_1_1_model_1_1_material.html#a8fe8535a50b0067b4b324dad5026a673">Kd</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html#ab952d678bd0a48219d0976eb8946c3c5">   24</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector3.html">Math::FVector3</a>  <a class="code" href="structepion_1_1_model_1_1_material.html#ab952d678bd0a48219d0976eb8946c3c5">Ks</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html#ae67fa3c49bdd4740976fd85e176dbe37">   26</a></span>&#160;        <span class="keywordtype">unsigned</span>    <span class="keywordtype">int</span> <a class="code" href="structepion_1_1_model_1_1_material.html#ae67fa3c49bdd4740976fd85e176dbe37">illum</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html#a171786ab9ec735ba34a38e9abf21f789">   27</a></span>&#160;        <a class="code" href="structepion_1_1_model_1_1_mtl_texture.html">MtlTexture</a>  <a class="code" href="structepion_1_1_model_1_1_material.html#a171786ab9ec735ba34a38e9abf21f789">map_Kd</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structepion_1_1_model_1_1_material.html#aac6df926afea1ff1417cb866b37a7c86">   28</a></span>&#160;        <a class="code" href="structepion_1_1_model_1_1_mtl_texture.html">MtlTexture</a>  <a class="code" href="structepion_1_1_model_1_1_material.html#aac6df926afea1ff1417cb866b37a7c86">map_bump</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_obj_loader.html">   31</a></span>&#160;    <span class="keyword">class   </span><a class="code" href="classepion_1_1_model_1_1_obj_loader.html">ObjLoader</a>   final</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#a69afe8854f8a89c5007d39db9e62df8b">ObjLoader</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#a18cdb46f56cf3718fadf5a1a65e42135">~ObjLoader</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#ad37761c7adafb07e8db8d93163daeb72">Load</a>(<span class="keyword">const</span> std::wstring&amp; file_name, <span class="keywordtype">bool</span>    flipping_v_coordinates = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_obj_loader.html#a6b7a89fdc6c24b520e1aad8ad2c3c357">   39</a></span>&#160;        std::vector&lt;Material&gt;           <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#a6b7a89fdc6c24b520e1aad8ad2c3c357">materials</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_obj_loader.html#a84b894031dbb0b3c1775ea45f06520e2">   40</a></span>&#160;        std::vector&lt;Subset&gt;             <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#a84b894031dbb0b3c1775ea45f06520e2">subsets</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_obj_loader.html#ad7c39df73cbf94f53ec4035633c763a8">   41</a></span>&#160;        std::vector&lt;Model3DVertex&gt;      <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#ad7c39df73cbf94f53ec4035633c763a8">vertices</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_obj_loader.html#af8bf45ec8a8516a923fc5b78800487c8">   42</a></span>&#160;        std::vector&lt;unsigned    short&gt;  <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#af8bf45ec8a8516a923fc5b78800487c8">indices</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_obj_loader.html#a00f9b693792d6aee188867fca6fa2e3c">   43</a></span>&#160;        std::vector&lt;std::wstring&gt;       <a class="code" href="classepion_1_1_model_1_1_obj_loader.html#a00f9b693792d6aee188867fca6fa2e3c">mtl_filenames</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">//std::vector&lt;material&gt;         materials;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">//std::vector&lt;subset&gt;               subsets;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">//std::vector&lt;obj_vertex&gt;           vertices;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//std::vector&lt;unsigned  int&gt;    indices;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    };</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classepion_1_1_model_1_1_obj_mesh.html">   52</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_model_1_1_obj_mesh.html">ObjMesh</a> final :<span class="keyword">public</span> <a class="code" href="classepion_1_1_model_1_1_model3_d.html">Model3D</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_obj_mesh.html#af5cbeec1d5f7eae8f66cb29a41918b72">ObjMesh</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classepion_1_1_model_1_1_obj_mesh.html#a715511209cfcce13edfc5855962621d7">~ObjMesh</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_model_1_1_obj_mesh.html#aed82f025c51f4477c8029b7012301fc9">Initialize</a>(<span class="keyword">const</span> std::wstring&amp; file_name, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; vs_blob, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; ps_blob, D3D12_RASTERIZER_DESC&amp; r_desc, D3D12_BLEND_DESC&amp; b_desc, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12RootSignature&gt;</a>&amp; root_sig);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_model_1_1_obj_mesh.html#a1e70e7a1a6d521c26e2f8fc185b0f872">Finalize</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_model_1_1_obj_mesh.html#ad2daba20d75d3dfb6bd782017d32985c">Update</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_model_1_1_obj_mesh.html#a5ea9febddca752f79c9e4536130a6721">Render</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::unique_ptr&lt;ObjLoader&gt; m_obj_loader;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">size_t</span> vertex_size;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">size_t</span> index_size;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12PipelineState&gt;</a> m_pipeline_state;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    };</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_a84b894031dbb0b3c1775ea45f06520e2"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#a84b894031dbb0b3c1775ea45f06520e2">epion::Model::ObjLoader::subsets</a></div><div class="ttdeci">std::vector&lt; Subset &gt; subsets</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:40</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_mesh_html_a715511209cfcce13edfc5855962621d7"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_mesh.html#a715511209cfcce13edfc5855962621d7">epion::Model::ObjMesh::~ObjMesh</a></div><div class="ttdeci">~ObjMesh()</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:138</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_model3_d_html"><div class="ttname"><a href="classepion_1_1_model_1_1_model3_d.html">epion::Model::Model3D</a></div><div class="ttdef"><b>Definition:</b> Model.h:27</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html_ae67fa3c49bdd4740976fd85e176dbe37"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html#ae67fa3c49bdd4740976fd85e176dbe37">epion::Model::Material::illum</a></div><div class="ttdeci">unsigned int illum</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:26</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html">epion::Model::Material</a></div><div class="ttdef"><b>Definition:</b> ObjMesh.h:20</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector3_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector3.html">epion::Math::Vector3</a></div><div class="ttdef"><b>Definition:</b> EpionVector3.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_mesh_html"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_mesh.html">epion::Model::ObjMesh</a></div><div class="ttdef"><b>Definition:</b> ObjMesh.h:53</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html_a8fe8535a50b0067b4b324dad5026a673"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html#a8fe8535a50b0067b4b324dad5026a673">epion::Model::Material::Kd</a></div><div class="ttdeci">Math::FVector3 Kd</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:23</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_a18cdb46f56cf3718fadf5a1a65e42135"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#a18cdb46f56cf3718fadf5a1a65e42135">epion::Model::ObjLoader::~ObjLoader</a></div><div class="ttdeci">~ObjLoader()</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:21</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_af8bf45ec8a8516a923fc5b78800487c8"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#af8bf45ec8a8516a923fc5b78800487c8">epion::Model::ObjLoader::indices</a></div><div class="ttdeci">std::vector&lt; unsigned short &gt; indices</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:42</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html_ab952d678bd0a48219d0976eb8946c3c5"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html#ab952d678bd0a48219d0976eb8946c3c5">epion::Model::Material::Ks</a></div><div class="ttdeci">Math::FVector3 Ks</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:24</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_subset_html_af21edb9708a7db6b86dbc26ccbaf16ca"><div class="ttname"><a href="structepion_1_1_model_1_1_subset.html#af21edb9708a7db6b86dbc26ccbaf16ca">epion::Model::Subset::index_start</a></div><div class="ttdeci">unsigned int index_start</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:15</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html">epion::Model::ObjLoader</a></div><div class="ttdef"><b>Definition:</b> ObjMesh.h:32</div></div>
+<div class="ttc" id="anamespaceepion_1_1_model_html"><div class="ttname"><a href="namespaceepion_1_1_model.html">epion::Model</a></div><div class="ttdef"><b>Definition:</b> Model.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_mesh_html_aed82f025c51f4477c8029b7012301fc9"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_mesh.html#aed82f025c51f4477c8029b7012301fc9">epion::Model::ObjMesh::Initialize</a></div><div class="ttdeci">bool Initialize(const std::wstring &amp;file_name, com_ptr&lt; ID3DBlob &gt; &amp;vs_blob, com_ptr&lt; ID3DBlob &gt; &amp;ps_blob, D3D12_RASTERIZER_DESC &amp;r_desc, D3D12_BLEND_DESC &amp;b_desc, com_ptr&lt; ID3D12RootSignature &gt; &amp;root_sig)</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:141</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html_aac6df926afea1ff1417cb866b37a7c86"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html#aac6df926afea1ff1417cb866b37a7c86">epion::Model::Material::map_bump</a></div><div class="ttdeci">MtlTexture map_bump</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:28</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_mtl_texture_html_a5df9836e1aff349227284b7fe0c2a672"><div class="ttname"><a href="structepion_1_1_model_1_1_mtl_texture.html#a5df9836e1aff349227284b7fe0c2a672">epion::Model::MtlTexture::file_name</a></div><div class="ttdeci">std::wstring file_name</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:8</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_a00f9b693792d6aee188867fca6fa2e3c"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#a00f9b693792d6aee188867fca6fa2e3c">epion::Model::ObjLoader::mtl_filenames</a></div><div class="ttdeci">std::vector&lt; std::wstring &gt; mtl_filenames</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:43</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_mesh_html_a1e70e7a1a6d521c26e2f8fc185b0f872"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_mesh.html#a1e70e7a1a6d521c26e2f8fc185b0f872">epion::Model::ObjMesh::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:187</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_a6b7a89fdc6c24b520e1aad8ad2c3c357"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#a6b7a89fdc6c24b520e1aad8ad2c3c357">epion::Model::ObjLoader::materials</a></div><div class="ttdeci">std::vector&lt; Material &gt; materials</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:39</div></div>
+<div class="ttc" id="a_model_8h_html"><div class="ttname"><a href="_model_8h.html">Model.h</a></div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_subset_html_a800935a427e86906f92bc80734eabbdb"><div class="ttname"><a href="structepion_1_1_model_1_1_subset.html#a800935a427e86906f92bc80734eabbdb">epion::Model::Subset::index_count</a></div><div class="ttdeci">unsigned int index_count</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:16</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html_afe027b0991ed2f53a38ea7de096467ec"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html#afe027b0991ed2f53a38ea7de096467ec">epion::Model::Material::newmtl</a></div><div class="ttdeci">std::wstring newmtl</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:21</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_mesh_html_a5ea9febddca752f79c9e4536130a6721"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_mesh.html#a5ea9febddca752f79c9e4536130a6721">epion::Model::ObjMesh::Render</a></div><div class="ttdeci">void Render()</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:201</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html_ac4f363538e033f2fa4afb62a8569b331"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html#ac4f363538e033f2fa4afb62a8569b331">epion::Model::Material::Ka</a></div><div class="ttdeci">Math::FVector3 Ka</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:22</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_a69afe8854f8a89c5007d39db9e62df8b"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#a69afe8854f8a89c5007d39db9e62df8b">epion::Model::ObjLoader::ObjLoader</a></div><div class="ttdeci">ObjLoader()</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:18</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_ad37761c7adafb07e8db8d93163daeb72"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#ad37761c7adafb07e8db8d93163daeb72">epion::Model::ObjLoader::Load</a></div><div class="ttdeci">void Load(const std::wstring &amp;file_name, bool flipping_v_coordinates=true)</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:24</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_subset_html"><div class="ttname"><a href="structepion_1_1_model_1_1_subset.html">epion::Model::Subset</a></div><div class="ttdef"><b>Definition:</b> ObjMesh.h:13</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_mesh_html_af5cbeec1d5f7eae8f66cb29a41918b72"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_mesh.html#af5cbeec1d5f7eae8f66cb29a41918b72">epion::Model::ObjMesh::ObjMesh</a></div><div class="ttdeci">ObjMesh()</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:130</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_material_html_a171786ab9ec735ba34a38e9abf21f789"><div class="ttname"><a href="structepion_1_1_model_1_1_material.html#a171786ab9ec735ba34a38e9abf21f789">epion::Model::Material::map_Kd</a></div><div class="ttdeci">MtlTexture map_Kd</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:27</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_subset_html_ad47d553f3ec0ab1777795b3520996f15"><div class="ttname"><a href="structepion_1_1_model_1_1_subset.html#ad47d553f3ec0ab1777795b3520996f15">epion::Model::Subset::usemtl</a></div><div class="ttdeci">std::wstring usemtl</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:14</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_loader_html_ad7c39df73cbf94f53ec4035633c763a8"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_loader.html#ad7c39df73cbf94f53ec4035633c763a8">epion::Model::ObjLoader::vertices</a></div><div class="ttdeci">std::vector&lt; Model3DVertex &gt; vertices</div><div class="ttdef"><b>Definition:</b> ObjMesh.h:41</div></div>
+<div class="ttc" id="aclassepion_1_1_model_1_1_obj_mesh_html_ad2daba20d75d3dfb6bd782017d32985c"><div class="ttname"><a href="classepion_1_1_model_1_1_obj_mesh.html#ad2daba20d75d3dfb6bd782017d32985c">epion::Model::ObjMesh::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> ObjMesh.cpp:192</div></div>
+<div class="ttc" id="astructepion_1_1_model_1_1_mtl_texture_html"><div class="ttname"><a href="structepion_1_1_model_1_1_mtl_texture.html">epion::Model::MtlTexture</a></div><div class="ttdef"><b>Definition:</b> ObjMesh.h:6</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

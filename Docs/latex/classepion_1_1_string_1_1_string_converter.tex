@@ -1,0 +1,138 @@
+\hypertarget{classepion_1_1_string_1_1_string_converter}{}\doxysection{epion\+::String\+::String\+Converter クラス}
+\label{classepion_1_1_string_1_1_string_converter}\index{epion::String::StringConverter@{epion::String::StringConverter}}
+
+
+{\ttfamily \#include $<$Epion\+String.\+h$>$}
+
+\doxysubsection*{静的公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a0fddd61a79f9eb6de3e4aa61fc69e4c7}{To\+Wchar}} (const char $\ast$str, wchar\+\_\+t $\ast$ret, unsigned int max\+\_\+size=256)
+\item 
+static void \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_addf682bbc7a3b7df0e047629183ab1e3}{To\+Char}} (const wchar\+\_\+t $\ast$str, char $\ast$ret, unsigned int max\+\_\+size=256)
+\item 
+static std\+::wstring \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a70378a242a40ce2e133e65d7ee137383}{To\+Wstring}} (const std\+::string \&str)
+\item 
+static void \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_ae2cce1e1af9ae8ff126fe33d0d99ea07}{To\+String}} (const std\+::wstring \&str, std\+::string ret, unsigned int max\+\_\+size=256)
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_adc55ba7c5d2639a13465cf795f5f155c}{Get\+File\+Path}} (const std\+::string \&file\+\_\+name)
+\item 
+static std\+::wstring \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a29d61367ca67ef49ff9ee2f174d9333b}{Get\+File\+Path}} (const std\+::wstring \&file\+\_\+name)
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a99ac754794cfab317fbd45f6000571c1}{Get\+Extension}} (const std\+::string \&str\+\_\+)
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a56c23ec4ada29cb97a690c07ba4ed5de}{To\+String2}} (\mbox{\hyperlink{namespaceepion_1_1_math_af1aabb16975dbbad2e5703d7b0a019cd}{Math\+::\+F\+Vector2}} \&vec2, const std\+::string \&str=\char`\"{},\char`\"{})
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a8f1877c5b8a459702a1d30930c778bc7}{To\+String2}} (float x, float y, const std\+::string \&str=\char`\"{},\char`\"{})
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_ab1117b5dc56a5bc7760843888ce17a7d}{To\+String3}} (\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&vec3, const std\+::string \&str=\char`\"{},\char`\"{})
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_ad506edeac6f93c7d34c1971b80e80b1e}{To\+String3}} (float x, float y, float z, const std\+::string \&str=\char`\"{},\char`\"{})
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a79a061329565c3ff5865650816d60641}{To\+String4}} (\mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&vec4, const std\+::string \&str=\char`\"{},\char`\"{})
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_acb620ab5b1d16a14481436e298247aa8}{To\+String4}} (float x, float y, float z, float w, const std\+::string \&str=\char`\"{},\char`\"{})
+\item 
+static std\+::string \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_a239a550bb82328a064b6f220138b8488}{Get\+Space}} (int num)
+\item 
+static std\+::wstring \mbox{\hyperlink{classepion_1_1_string_1_1_string_converter_ae572010cff9579d7d70faaa23fd5ccc5}{Set\+File\+Path}} (const wchar\+\_\+t $\ast$add\+\_\+path\+\_\+filename, const wchar\+\_\+t $\ast$resource\+\_\+filename)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a99ac754794cfab317fbd45f6000571c1}\label{classepion_1_1_string_1_1_string_converter_a99ac754794cfab317fbd45f6000571c1}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!GetExtension@{GetExtension}}
+\index{GetExtension@{GetExtension}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{GetExtension()}{GetExtension()}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+Get\+Extension (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_adc55ba7c5d2639a13465cf795f5f155c}\label{classepion_1_1_string_1_1_string_converter_adc55ba7c5d2639a13465cf795f5f155c}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!GetFilePath@{GetFilePath}}
+\index{GetFilePath@{GetFilePath}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{GetFilePath()}{GetFilePath()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+Get\+File\+Path (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a29d61367ca67ef49ff9ee2f174d9333b}\label{classepion_1_1_string_1_1_string_converter_a29d61367ca67ef49ff9ee2f174d9333b}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!GetFilePath@{GetFilePath}}
+\index{GetFilePath@{GetFilePath}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{GetFilePath()}{GetFilePath()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::wstring epion\+::\+String\+::\+String\+Converter\+::\+Get\+File\+Path (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{file\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a239a550bb82328a064b6f220138b8488}\label{classepion_1_1_string_1_1_string_converter_a239a550bb82328a064b6f220138b8488}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!GetSpace@{GetSpace}}
+\index{GetSpace@{GetSpace}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{GetSpace()}{GetSpace()}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+Get\+Space (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_ae572010cff9579d7d70faaa23fd5ccc5}\label{classepion_1_1_string_1_1_string_converter_ae572010cff9579d7d70faaa23fd5ccc5}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!SetFilePath@{SetFilePath}}
+\index{SetFilePath@{SetFilePath}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{SetFilePath()}{SetFilePath()}}
+{\footnotesize\ttfamily std\+::wstring epion\+::\+String\+::\+String\+Converter\+::\+Set\+File\+Path (\begin{DoxyParamCaption}\item[{const wchar\+\_\+t $\ast$}]{add\+\_\+path\+\_\+filename,  }\item[{const wchar\+\_\+t $\ast$}]{resource\+\_\+filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_addf682bbc7a3b7df0e047629183ab1e3}\label{classepion_1_1_string_1_1_string_converter_addf682bbc7a3b7df0e047629183ab1e3}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToChar@{ToChar}}
+\index{ToChar@{ToChar}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToChar()}{ToChar()}}
+{\footnotesize\ttfamily void epion\+::\+String\+::\+String\+Converter\+::\+To\+Char (\begin{DoxyParamCaption}\item[{const wchar\+\_\+t $\ast$}]{str,  }\item[{char $\ast$}]{ret,  }\item[{unsigned int}]{max\+\_\+size = {\ttfamily 256} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_ae2cce1e1af9ae8ff126fe33d0d99ea07}\label{classepion_1_1_string_1_1_string_converter_ae2cce1e1af9ae8ff126fe33d0d99ea07}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToString@{ToString}}
+\index{ToString@{ToString}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily void epion\+::\+String\+::\+String\+Converter\+::\+To\+String (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{str,  }\item[{std\+::string}]{ret,  }\item[{unsigned int}]{max\+\_\+size = {\ttfamily 256} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a8f1877c5b8a459702a1d30930c778bc7}\label{classepion_1_1_string_1_1_string_converter_a8f1877c5b8a459702a1d30930c778bc7}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToString2@{ToString2}}
+\index{ToString2@{ToString2}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToString2()}{ToString2()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+To\+String2 (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{const std\+::string \&}]{str = {\ttfamily \char`\"{},\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a56c23ec4ada29cb97a690c07ba4ed5de}\label{classepion_1_1_string_1_1_string_converter_a56c23ec4ada29cb97a690c07ba4ed5de}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToString2@{ToString2}}
+\index{ToString2@{ToString2}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToString2()}{ToString2()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+To\+String2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_1_1_math_af1aabb16975dbbad2e5703d7b0a019cd}{Math\+::\+F\+Vector2}} \&}]{vec2,  }\item[{const std\+::string \&}]{str = {\ttfamily \char`\"{},\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_ad506edeac6f93c7d34c1971b80e80b1e}\label{classepion_1_1_string_1_1_string_converter_ad506edeac6f93c7d34c1971b80e80b1e}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToString3@{ToString3}}
+\index{ToString3@{ToString3}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToString3()}{ToString3()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+To\+String3 (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z,  }\item[{const std\+::string \&}]{str = {\ttfamily \char`\"{},\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_ab1117b5dc56a5bc7760843888ce17a7d}\label{classepion_1_1_string_1_1_string_converter_ab1117b5dc56a5bc7760843888ce17a7d}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToString3@{ToString3}}
+\index{ToString3@{ToString3}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToString3()}{ToString3()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+To\+String3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{vec3,  }\item[{const std\+::string \&}]{str = {\ttfamily \char`\"{},\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_acb620ab5b1d16a14481436e298247aa8}\label{classepion_1_1_string_1_1_string_converter_acb620ab5b1d16a14481436e298247aa8}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToString4@{ToString4}}
+\index{ToString4@{ToString4}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToString4()}{ToString4()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+To\+String4 (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z,  }\item[{float}]{w,  }\item[{const std\+::string \&}]{str = {\ttfamily \char`\"{},\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a79a061329565c3ff5865650816d60641}\label{classepion_1_1_string_1_1_string_converter_a79a061329565c3ff5865650816d60641}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToString4@{ToString4}}
+\index{ToString4@{ToString4}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToString4()}{ToString4()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string epion\+::\+String\+::\+String\+Converter\+::\+To\+String4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&}]{vec4,  }\item[{const std\+::string \&}]{str = {\ttfamily \char`\"{},\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a0fddd61a79f9eb6de3e4aa61fc69e4c7}\label{classepion_1_1_string_1_1_string_converter_a0fddd61a79f9eb6de3e4aa61fc69e4c7}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToWchar@{ToWchar}}
+\index{ToWchar@{ToWchar}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToWchar()}{ToWchar()}}
+{\footnotesize\ttfamily void epion\+::\+String\+::\+String\+Converter\+::\+To\+Wchar (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str,  }\item[{wchar\+\_\+t $\ast$}]{ret,  }\item[{unsigned int}]{max\+\_\+size = {\ttfamily 256} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_string_1_1_string_converter_a70378a242a40ce2e133e65d7ee137383}\label{classepion_1_1_string_1_1_string_converter_a70378a242a40ce2e133e65d7ee137383}} 
+\index{epion::String::StringConverter@{epion::String::StringConverter}!ToWstring@{ToWstring}}
+\index{ToWstring@{ToWstring}!epion::String::StringConverter@{epion::String::StringConverter}}
+\doxysubsubsection{\texorpdfstring{ToWstring()}{ToWstring()}}
+{\footnotesize\ttfamily std\+::wstring epion\+::\+String\+::\+String\+Converter\+::\+To\+Wstring (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+String/\mbox{\hyperlink{_epion_string_8h}{Epion\+String.\+h}}\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+String/\mbox{\hyperlink{_epion_string_8cpp}{Epion\+String.\+cpp}}\end{DoxyCompactItemize}

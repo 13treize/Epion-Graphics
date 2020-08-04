@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/SwapChain.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cb8a3393a2e0031f7f54a9d0b9d7ffe1.html">DX12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SwapChain.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_swap_chain_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_swap_chain.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_swap_chain.html">SwapChain</a> final</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_swap_chain.html#ad2c087fe9ab10568ad449fc11e12c7ff">SwapChain</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_swap_chain.html#a9be964cacff2d77f430f31045a17ae7b">~SwapChain</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_swap_chain.html#aa3ad7e9111e02b03e1b7118628a44ee8">Initialize</a>(HWND hwnd, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGIFactory6&gt;</a>&amp; factory, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12CommandQueue&gt;</a>&amp; cmd_queue, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_swap_chain.html#aba42d4ab3c00f1e2a1e7d256d737ad09">Finalize</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_swap_chain.html#a84efdd168cfb8530700d10f1941a8df5">Present</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGISwapChain4&gt;</a>&amp; <a class="code" href="classepion_1_1_d_x12_1_1_swap_chain.html#a6de06b627b98c6b76aaaf5045dcfcf21">GetPtr</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGISwapChain4&gt;</a> m_swap_chain;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    };</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structepion_1_1_d_x12_1_1_swap_chain_function.html">   33</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structepion_1_1_d_x12_1_1_swap_chain_function.html">SwapChainFunction</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">template</span>    &lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structepion_1_1_d_x12_1_1_swap_chain_function.html#aed0ab077c88babeec203ca8b95a10080">   46</a></span>&#160;        __forceinline <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="structepion_1_1_d_x12_1_1_swap_chain_function.html#aed0ab077c88babeec203ca8b95a10080">CreateSwapChains</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;T&gt;</a>&amp; swap_ptr, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGIFactory6&gt;</a>&amp; factory, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12CommandQueue&gt;</a>&amp; cmd_queue, HWND hwnd, <span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector2.html">Math::Vector2&lt;int&gt;</a>&amp; screen_size_, <span class="keywordtype">int</span> buffer_num);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//Implementation</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">template</span>    &lt;<span class="keyword">class</span>  T&gt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structepion_1_1_d_x12_1_1_swap_chain_function.html#aed0ab077c88babeec203ca8b95a10080">   52</a></span>&#160;    __forceinline <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="structepion_1_1_d_x12_1_1_swap_chain_function.html#aed0ab077c88babeec203ca8b95a10080">SwapChainFunction::CreateSwapChains</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;T&gt;</a>&amp; swap_ptr, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGIFactory6&gt;</a>&amp; factory, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12CommandQueue&gt;</a>&amp; cmd_queue, HWND hwnd, <span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector2.html">Math::Vector2&lt;int&gt;</a>&amp; screen_size_, <span class="keywordtype">int</span> buffer_num)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        static_assert(std::is_base_of&lt;IDXGIDeviceSubObject, T&gt;::value == <span class="keyword">true</span>, <span class="stringliteral">&quot;BaseClass not IDXGIDeviceSubObject&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        DXGI_SWAP_CHAIN_DESC1 sc_desc = {};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        sc_desc.Width = screen_size_.<a class="code" href="structepion_1_1_math_1_1_vector2.html#adc27e9abdb508e22723934369fbbb3db">x</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        sc_desc.Height = screen_size_.<a class="code" href="structepion_1_1_math_1_1_vector2.html#a2e360f8f37ea3b9eb164130e2cbd627f">y</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        sc_desc.Format = DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        sc_desc.Stereo = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        sc_desc.SampleDesc.Count = 1;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        sc_desc.SampleDesc.Quality = 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        sc_desc.BufferUsage = DXGI_USAGE_BACK_BUFFER;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        sc_desc.BufferCount = <span class="keyword">static_cast&lt;</span>UINT<span class="keyword">&gt;</span>(buffer_num);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        sc_desc.Scaling = DXGI_SCALING::DXGI_SCALING_STRETCH;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        sc_desc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_FLIP_DISCARD;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        sc_desc.AlphaMode = DXGI_ALPHA_MODE::DXGI_ALPHA_MODE_UNSPECIFIED;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        sc_desc.Flags = DXGI_SWAP_CHAIN_FLAG::DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGISwapChain1&gt;</a> p_swap_chain;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        HRESULT hr = factory-&gt;CreateSwapChainForHwnd(</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            cmd_queue.Get(),</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            hwnd,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            &amp;sc_desc,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            p_swap_chain.GetAddressOf());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> (FAILED(hr))</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        hr = p_swap_chain-&gt;QueryInterface(IID_PPV_ARGS(swap_ptr.GetAddressOf()));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_swap_chain_html_a84efdd168cfb8530700d10f1941a8df5"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_swap_chain.html#a84efdd168cfb8530700d10f1941a8df5">epion::DX12::SwapChain::Present</a></div><div class="ttdeci">void Present()</div><div class="ttdef"><b>Definition:</b> SwapChain.cpp:54</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector2_html_adc27e9abdb508e22723934369fbbb3db"><div class="ttname"><a href="structepion_1_1_math_1_1_vector2.html#adc27e9abdb508e22723934369fbbb3db">epion::Math::Vector2::x</a></div><div class="ttdeci">T x</div><div class="ttdef"><b>Definition:</b> EpionVector2.h:7</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector2_html_a2e360f8f37ea3b9eb164130e2cbd627f"><div class="ttname"><a href="structepion_1_1_math_1_1_vector2.html#a2e360f8f37ea3b9eb164130e2cbd627f">epion::Math::Vector2::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition:</b> EpionVector2.h:8</div></div>
+<div class="ttc" id="astructepion_1_1_d_x12_1_1_swap_chain_function_html"><div class="ttname"><a href="structepion_1_1_d_x12_1_1_swap_chain_function.html">epion::DX12::SwapChainFunction</a></div><div class="ttdef"><b>Definition:</b> SwapChain.h:34</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_swap_chain_html_a6de06b627b98c6b76aaaf5045dcfcf21"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_swap_chain.html#a6de06b627b98c6b76aaaf5045dcfcf21">epion::DX12::SwapChain::GetPtr</a></div><div class="ttdeci">com_ptr&lt; IDXGISwapChain4 &gt; &amp; GetPtr()</div><div class="ttdef"><b>Definition:</b> SwapChain.cpp:58</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_swap_chain_html_aa3ad7e9111e02b03e1b7118628a44ee8"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_swap_chain.html#aa3ad7e9111e02b03e1b7118628a44ee8">epion::DX12::SwapChain::Initialize</a></div><div class="ttdeci">bool Initialize(HWND hwnd, com_ptr&lt; IDXGIFactory6 &gt; &amp;factory, com_ptr&lt; ID3D12CommandQueue &gt; &amp;cmd_queue, int width, int height)</div><div class="ttdef"><b>Definition:</b> SwapChain.cpp:14</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_swap_chain_html_aba42d4ab3c00f1e2a1e7d256d737ad09"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_swap_chain.html#aba42d4ab3c00f1e2a1e7d256d737ad09">epion::DX12::SwapChain::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> SwapChain.cpp:48</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div><div class="ttdef"><b>Definition:</b> BlendState.cpp:6</div></div>
+<div class="ttc" id="astructepion_1_1_d_x12_1_1_swap_chain_function_html_aed0ab077c88babeec203ca8b95a10080"><div class="ttname"><a href="structepion_1_1_d_x12_1_1_swap_chain_function.html#aed0ab077c88babeec203ca8b95a10080">epion::DX12::SwapChainFunction::CreateSwapChains</a></div><div class="ttdeci">static __forceinline bool CreateSwapChains(com_ptr&lt; T &gt; &amp;swap_ptr, com_ptr&lt; IDXGIFactory6 &gt; &amp;factory, com_ptr&lt; ID3D12CommandQueue &gt; &amp;cmd_queue, HWND hwnd, const Math::Vector2&lt; int &gt; &amp;screen_size_, int buffer_num)</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_swap_chain_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_swap_chain.html">epion::DX12::SwapChain</a></div><div class="ttdef"><b>Definition:</b> SwapChain.h:17</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector2_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector2.html">epion::Math::Vector2&lt; int &gt;</a></div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_swap_chain_html_a9be964cacff2d77f430f31045a17ae7b"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_swap_chain.html#a9be964cacff2d77f430f31045a17ae7b">epion::DX12::SwapChain::~SwapChain</a></div><div class="ttdeci">~SwapChain()</div><div class="ttdef"><b>Definition:</b> SwapChain.cpp:10</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_swap_chain_html_ad2c087fe9ab10568ad449fc11e12c7ff"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_swap_chain.html#ad2c087fe9ab10568ad449fc11e12c7ff">epion::DX12::SwapChain::SwapChain</a></div><div class="ttdeci">SwapChain()</div><div class="ttdef"><b>Definition:</b> SwapChain.cpp:6</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

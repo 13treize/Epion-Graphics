@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: epion::DX12::ConstantBufferManager クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceepion.html">epion</a></li><li class="navelem"><a class="el" href="namespaceepion_1_1_d_x12.html">DX12</a></li><li class="navelem"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html">ConstantBufferManager</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pub-static-attribs">静的公開変数類</a> &#124;
+<a href="classepion_1_1_d_x12_1_1_constant_buffer_manager-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">epion::DX12::ConstantBufferManager クラス<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_constant_buffer_manager_8h_source.html">ConstantBufferManager.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:a2ac1bea5e5b979ec2ec55ad2aa3c5e75"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a2ac1bea5e5b979ec2ec55ad2aa3c5e75">Initialize</a> ()</td></tr>
+<tr class="separator:a2ac1bea5e5b979ec2ec55ad2aa3c5e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab3658b9a411a10c3be20d2d11498b99"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#aab3658b9a411a10c3be20d2d11498b99">Build2D</a> (const int buffer_num=1)</td></tr>
+<tr class="separator:aab3658b9a411a10c3be20d2d11498b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee6dcc3204d06c6dc72a76fb66f03257"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#aee6dcc3204d06c6dc72a76fb66f03257">Build3D</a> (const int buffer_num=2)</td></tr>
+<tr class="separator:aee6dcc3204d06c6dc72a76fb66f03257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2b5005aaf7ee408fa3153fdd22d397d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#ac2b5005aaf7ee408fa3153fdd22d397d">Finalize</a> ()</td></tr>
+<tr class="separator:ac2b5005aaf7ee408fa3153fdd22d397d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aff6ecce1a681b4851e03c4d5d9eafa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a0aff6ecce1a681b4851e03c4d5d9eafa">UpdateCBuffer0</a> (const <a class="el" href="namespaceepion_1_1_math.html#af1aabb16975dbbad2e5703d7b0a019cd">Math::FVector2</a> &amp;mouse_pos)</td></tr>
+<tr class="separator:a0aff6ecce1a681b4851e03c4d5d9eafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add1631bd463fac1ef7e060bd06c1af5b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#add1631bd463fac1ef7e060bd06c1af5b">UpdateCBuffer1</a> (const DirectX::XMMATRIX &amp;world)</td></tr>
+<tr class="separator:add1631bd463fac1ef7e060bd06c1af5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac210965fe828be4405b4f9eef669125a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#ac210965fe828be4405b4f9eef669125a">UpdateCBuffer2</a> (const DirectX::XMMATRIX &amp;view, const DirectX::XMMATRIX &amp;projection, const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;camera_pos, const <a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;color, const <a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;dir, const <a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;ambient)</td></tr>
+<tr class="separator:ac210965fe828be4405b4f9eef669125a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4a7b9cdc6a250ddf58d136bcd948d2c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#af4a7b9cdc6a250ddf58d136bcd948d2c">SetHeap</a> ()</td></tr>
+<tr class="separator:af4a7b9cdc6a250ddf58d136bcd948d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a546c978bbaef89d96a0b29460c3b96a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a546c978bbaef89d96a0b29460c3b96a7">SetCBuffer0</a> (int index)</td></tr>
+<tr class="separator:a546c978bbaef89d96a0b29460c3b96a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6634dc12964504e7536a4c5e54c2eb4e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a6634dc12964504e7536a4c5e54c2eb4e">SetCBuffer1</a> (unsigned int index, int frame_count)</td></tr>
+<tr class="separator:a6634dc12964504e7536a4c5e54c2eb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc8c4f2bafbd7d4d227200d83e48a172"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#afc8c4f2bafbd7d4d227200d83e48a172">SetCBuffer2</a> (int index)</td></tr>
+<tr class="separator:afc8c4f2bafbd7d4d227200d83e48a172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af23271b49c2c6b885a085fd0b069ca4b"><td class="memItemLeft" align="right" valign="top">static UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#af23271b49c2c6b885a085fd0b069ca4b">CalcConstantBufferByteSize</a> (UINT byteSize)</td></tr>
+<tr class="separator:af23271b49c2c6b885a085fd0b069ca4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静的公開変数類</h2></td></tr>
+<tr class="memitem:a3aa6f7ed277037803cee7512a13646db"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_descriptor_heap.html">DX12::DescriptorHeap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3aa6f7ed277037803cee7512a13646db">m_heap</a></td></tr>
+<tr class="separator:a3aa6f7ed277037803cee7512a13646db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42694f04cf66e00828b5b9ee84b46210"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_resource_buffer.html">ResourceBuffer</a>&lt; CBuffer0 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a42694f04cf66e00828b5b9ee84b46210">m_cbuffer0</a></td></tr>
+<tr class="separator:a42694f04cf66e00828b5b9ee84b46210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3961860810e0fd09b9509ac2a0570dce"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_resource_buffer.html">ResourceBuffer</a>&lt; CBuffer1 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a3961860810e0fd09b9509ac2a0570dce">m_cbuffer1</a></td></tr>
+<tr class="separator:a3961860810e0fd09b9509ac2a0570dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17a3a4db76ac33ee12bad146dfbfce97"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_resource_buffer.html">ResourceBuffer</a>&lt; CBuffer2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a17a3a4db76ac33ee12bad146dfbfce97">m_cbuffer2</a></td></tr>
+<tr class="separator:a17a3a4db76ac33ee12bad146dfbfce97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfa4f08f1b137e034e812df954f71888"><td class="memItemLeft" align="right" valign="top">static CBuffer0 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#abfa4f08f1b137e034e812df954f71888">m_cbuffer0_data</a></td></tr>
+<tr class="separator:abfa4f08f1b137e034e812df954f71888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24250e531d0d321f97abb91cc4e12688"><td class="memItemLeft" align="right" valign="top">static CBuffer1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a24250e531d0d321f97abb91cc4e12688">m_cbuffer1_data</a></td></tr>
+<tr class="separator:a24250e531d0d321f97abb91cc4e12688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26099a2e6f20846fcd4c42ef1b12c7c3"><td class="memItemLeft" align="right" valign="top">static CBuffer2 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a26099a2e6f20846fcd4c42ef1b12c7c3">m_cbuffer2_data</a></td></tr>
+<tr class="separator:a26099a2e6f20846fcd4c42ef1b12c7c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6562629b7fc1b96bf4eb4f4df38d0111"><td class="memItemLeft" align="right" valign="top">static D3D12_GPU_VIRTUAL_ADDRESS&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a6562629b7fc1b96bf4eb4f4df38d0111">m_gpu_virtual_address1</a></td></tr>
+<tr class="separator:a6562629b7fc1b96bf4eb4f4df38d0111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0123f9f94a4d5b0cc27c96195e24e68f"><td class="memItemLeft" align="right" valign="top">static D3D12_GPU_VIRTUAL_ADDRESS&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_d_x12_1_1_constant_buffer_manager.html#a0123f9f94a4d5b0cc27c96195e24e68f">m_gpu_virtual_address2</a></td></tr>
+<tr class="separator:a0123f9f94a4d5b0cc27c96195e24e68f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aab3658b9a411a10c3be20d2d11498b99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab3658b9a411a10c3be20d2d11498b99">&#9670;&nbsp;</a></span>Build2D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool epion::DX12::ConstantBufferManager::Build2D </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>buffer_num</em> = <code>1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee6dcc3204d06c6dc72a76fb66f03257"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee6dcc3204d06c6dc72a76fb66f03257">&#9670;&nbsp;</a></span>Build3D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool epion::DX12::ConstantBufferManager::Build3D </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>buffer_num</em> = <code>2</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af23271b49c2c6b885a085fd0b069ca4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af23271b49c2c6b885a085fd0b069ca4b">&#9670;&nbsp;</a></span>CalcConstantBufferByteSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UINT epion::DX12::ConstantBufferManager::CalcConstantBufferByteSize </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>byteSize</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2b5005aaf7ee408fa3153fdd22d397d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2b5005aaf7ee408fa3153fdd22d397d">&#9670;&nbsp;</a></span>Finalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool epion::DX12::ConstantBufferManager::Finalize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ac1bea5e5b979ec2ec55ad2aa3c5e75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ac1bea5e5b979ec2ec55ad2aa3c5e75">&#9670;&nbsp;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool epion::DX12::ConstantBufferManager::Initialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a546c978bbaef89d96a0b29460c3b96a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a546c978bbaef89d96a0b29460c3b96a7">&#9670;&nbsp;</a></span>SetCBuffer0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::DX12::ConstantBufferManager::SetCBuffer0 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6634dc12964504e7536a4c5e54c2eb4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6634dc12964504e7536a4c5e54c2eb4e">&#9670;&nbsp;</a></span>SetCBuffer1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::DX12::ConstantBufferManager::SetCBuffer1 </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frame_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc8c4f2bafbd7d4d227200d83e48a172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc8c4f2bafbd7d4d227200d83e48a172">&#9670;&nbsp;</a></span>SetCBuffer2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::DX12::ConstantBufferManager::SetCBuffer2 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4a7b9cdc6a250ddf58d136bcd948d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4a7b9cdc6a250ddf58d136bcd948d2c">&#9670;&nbsp;</a></span>SetHeap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::DX12::ConstantBufferManager::SetHeap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0aff6ecce1a681b4851e03c4d5d9eafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aff6ecce1a681b4851e03c4d5d9eafa">&#9670;&nbsp;</a></span>UpdateCBuffer0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::DX12::ConstantBufferManager::UpdateCBuffer0 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#af1aabb16975dbbad2e5703d7b0a019cd">Math::FVector2</a> &amp;&#160;</td>
+          <td class="paramname"><em>mouse_pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add1631bd463fac1ef7e060bd06c1af5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add1631bd463fac1ef7e060bd06c1af5b">&#9670;&nbsp;</a></span>UpdateCBuffer1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::DX12::ConstantBufferManager::UpdateCBuffer1 </td>
+          <td>(</td>
+          <td class="paramtype">const DirectX::XMMATRIX &amp;&#160;</td>
+          <td class="paramname"><em>world</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac210965fe828be4405b4f9eef669125a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac210965fe828be4405b4f9eef669125a">&#9670;&nbsp;</a></span>UpdateCBuffer2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::DX12::ConstantBufferManager::UpdateCBuffer2 </td>
+          <td>(</td>
+          <td class="paramtype">const DirectX::XMMATRIX &amp;&#160;</td>
+          <td class="paramname"><em>view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const DirectX::XMMATRIX &amp;&#160;</td>
+          <td class="paramname"><em>projection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>camera_pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#ae15593863199a3569bb46a323106f9f6">Math::FVector4</a> &amp;&#160;</td>
+          <td class="paramname"><em>ambient</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a42694f04cf66e00828b5b9ee84b46210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42694f04cf66e00828b5b9ee84b46210">&#9670;&nbsp;</a></span>m_cbuffer0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_resource_buffer.html">ResourceBuffer</a>&lt; CBuffer0 &gt; &gt; epion::DX12::ConstantBufferManager::m_cbuffer0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfa4f08f1b137e034e812df954f71888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfa4f08f1b137e034e812df954f71888">&#9670;&nbsp;</a></span>m_cbuffer0_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CBuffer0 * epion::DX12::ConstantBufferManager::m_cbuffer0_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3961860810e0fd09b9509ac2a0570dce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3961860810e0fd09b9509ac2a0570dce">&#9670;&nbsp;</a></span>m_cbuffer1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_resource_buffer.html">ResourceBuffer</a>&lt; CBuffer1 &gt; &gt; epion::DX12::ConstantBufferManager::m_cbuffer1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24250e531d0d321f97abb91cc4e12688"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24250e531d0d321f97abb91cc4e12688">&#9670;&nbsp;</a></span>m_cbuffer1_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CBuffer1 * epion::DX12::ConstantBufferManager::m_cbuffer1_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17a3a4db76ac33ee12bad146dfbfce97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17a3a4db76ac33ee12bad146dfbfce97">&#9670;&nbsp;</a></span>m_cbuffer2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_resource_buffer.html">ResourceBuffer</a>&lt; CBuffer2 &gt; &gt; epion::DX12::ConstantBufferManager::m_cbuffer2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26099a2e6f20846fcd4c42ef1b12c7c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26099a2e6f20846fcd4c42ef1b12c7c3">&#9670;&nbsp;</a></span>m_cbuffer2_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CBuffer2 * epion::DX12::ConstantBufferManager::m_cbuffer2_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6562629b7fc1b96bf4eb4f4df38d0111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6562629b7fc1b96bf4eb4f4df38d0111">&#9670;&nbsp;</a></span>m_gpu_virtual_address1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3D12_GPU_VIRTUAL_ADDRESS epion::DX12::ConstantBufferManager::m_gpu_virtual_address1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0123f9f94a4d5b0cc27c96195e24e68f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0123f9f94a4d5b0cc27c96195e24e68f">&#9670;&nbsp;</a></span>m_gpu_virtual_address2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3D12_GPU_VIRTUAL_ADDRESS epion::DX12::ConstantBufferManager::m_gpu_virtual_address2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3aa6f7ed277037803cee7512a13646db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa6f7ed277037803cee7512a13646db">&#9670;&nbsp;</a></span>m_heap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classepion_1_1_d_x12_1_1_descriptor_heap.html">DescriptorHeap</a> &gt; epion::DX12::ConstantBufferManager::m_heap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/<a class="el" href="_constant_buffer_manager_8h_source.html">ConstantBufferManager.h</a></li>
+<li>C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/<a class="el" href="_constant_buffer_manager_8cpp.html">ConstantBufferManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

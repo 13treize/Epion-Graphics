@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/ShaderManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cb8a3393a2e0031f7f54a9d0b9d7ffe1.html">DX12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ShaderManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_shader_manager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace   </span><a class="code" href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3">    4</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3">ShaderType</a> :unsigned char</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3afe832a8cb64b92bcfbae8a046bb5db90">TYPE_VERTEX</a>,</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a89ccb4efc1a6ac71c6eb698a943335f0">TYPE_HULL</a>,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a335e3a1fe5f85dc6de32078ced859b44">TYPE_DOMAIN</a>,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a28e6cda7f751790eb537642db4695a2c">TYPE_GEOMETRY</a>,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a156029461b5cdcbb734eecb00e86f7fb">TYPE_PIXEL</a>,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    };</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">bool</span>    <a class="code" href="namespaceepion_1_1_d_x12.html#af6e46b72efff5ee9a56efad702fd2f10">ShaderCompile</a>(<span class="keyword">const</span> std::wstring&amp; hlsl_name, <span class="keyword">const</span> std::string&amp; entry_point, <span class="keyword">const</span> std::string&amp; target, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; shader_blob);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html">ShaderResouceManager</a> final</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a3ff3503e6bbb7927a47e2a3377068240">Initialize</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a9cd89ea6bb223ffc2f9cea93cfb1f576">Finalize</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a9d9a2ace961a21bc65fdf2be1d6a21e1">Settings</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a9326f315037d8c6961197ecda58d1158">Compile</a>(<span class="keyword">const</span> std::wstring&amp; hlsl_name, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; shader_blob, <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3">ShaderType</a> type);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a9326f315037d8c6961197ecda58d1158">Compile</a>(<span class="keyword">const</span> std::wstring&amp; hlsl_name, <span class="keyword">const</span> std::string&amp; entry_point,<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; shader_blob, <a class="code" href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3">ShaderType</a> type);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_shader_reflection.html">   26</a></span>&#160;    <span class="keyword">class   </span><a class="code" href="classepion_1_1_d_x12_1_1_shader_reflection.html">ShaderReflection</a> final</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_shader_reflection.html#a2be93429689a37649f970a2167592937">ReflectionInputLayout</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3DBlob&gt;</a>&amp; shader_blob);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::vector&lt;D3D12_INPUT_ELEMENT_DESC&gt;&amp; <a class="code" href="classepion_1_1_d_x12_1_1_shader_reflection.html#a5ab3b76508e936a0e324a1b37c9442f2">GetInputLayout</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12ShaderReflection&gt;</a> m_reflection;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::vector&lt;D3D12_INPUT_ELEMENT_DESC&gt;   m_layout;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">const</span> DXGI_FORMAT GetDXGIFormat(<span class="keyword">const</span> D3D_REGISTER_COMPONENT_TYPE type, <span class="keyword">const</span> <span class="keywordtype">byte</span> mask);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>  GetVertexBufferSlot(<span class="keyword">const</span> std::string&amp; semantic_name);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_resouce_manager_html_a3ff3503e6bbb7927a47e2a3377068240"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a3ff3503e6bbb7927a47e2a3377068240">epion::DX12::ShaderResouceManager::Initialize</a></div><div class="ttdeci">static bool Initialize()</div><div class="ttdef"><b>Definition:</b> ShaderManager.cpp:42</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_a28404776b69c82ad8e56c7a885c4e8d3"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3">epion::DX12::ShaderType</a></div><div class="ttdeci">ShaderType</div><div class="ttdef"><b>Definition:</b> ShaderManager.h:5</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_a28404776b69c82ad8e56c7a885c4e8d3a335e3a1fe5f85dc6de32078ced859b44"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a335e3a1fe5f85dc6de32078ced859b44">epion::DX12::ShaderType::TYPE_DOMAIN</a></div><div class="ttdeci">@ TYPE_DOMAIN</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_reflection_html_a5ab3b76508e936a0e324a1b37c9442f2"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_reflection.html#a5ab3b76508e936a0e324a1b37c9442f2">epion::DX12::ShaderReflection::GetInputLayout</a></div><div class="ttdeci">std::vector&lt; D3D12_INPUT_ELEMENT_DESC &gt; &amp; GetInputLayout()</div><div class="ttdef"><b>Definition:</b> ShaderManager.cpp:118</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div><div class="ttdef"><b>Definition:</b> BlendState.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_resouce_manager_html_a9cd89ea6bb223ffc2f9cea93cfb1f576"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a9cd89ea6bb223ffc2f9cea93cfb1f576">epion::DX12::ShaderResouceManager::Finalize</a></div><div class="ttdeci">static bool Finalize()</div><div class="ttdef"><b>Definition:</b> ShaderManager.cpp:46</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_a28404776b69c82ad8e56c7a885c4e8d3afe832a8cb64b92bcfbae8a046bb5db90"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3afe832a8cb64b92bcfbae8a046bb5db90">epion::DX12::ShaderType::TYPE_VERTEX</a></div><div class="ttdeci">@ TYPE_VERTEX</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_a28404776b69c82ad8e56c7a885c4e8d3a28e6cda7f751790eb537642db4695a2c"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a28e6cda7f751790eb537642db4695a2c">epion::DX12::ShaderType::TYPE_GEOMETRY</a></div><div class="ttdeci">@ TYPE_GEOMETRY</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_a28404776b69c82ad8e56c7a885c4e8d3a89ccb4efc1a6ac71c6eb698a943335f0"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a89ccb4efc1a6ac71c6eb698a943335f0">epion::DX12::ShaderType::TYPE_HULL</a></div><div class="ttdeci">@ TYPE_HULL</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_resouce_manager_html_a9d9a2ace961a21bc65fdf2be1d6a21e1"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a9d9a2ace961a21bc65fdf2be1d6a21e1">epion::DX12::ShaderResouceManager::Settings</a></div><div class="ttdeci">static bool Settings()</div><div class="ttdef"><b>Definition:</b> ShaderManager.cpp:51</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_a28404776b69c82ad8e56c7a885c4e8d3a156029461b5cdcbb734eecb00e86f7fb"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#a28404776b69c82ad8e56c7a885c4e8d3a156029461b5cdcbb734eecb00e86f7fb">epion::DX12::ShaderType::TYPE_PIXEL</a></div><div class="ttdeci">@ TYPE_PIXEL</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_af6e46b72efff5ee9a56efad702fd2f10"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#af6e46b72efff5ee9a56efad702fd2f10">epion::DX12::ShaderCompile</a></div><div class="ttdeci">bool ShaderCompile(const std::wstring &amp;hlsl_name, const std::string &amp;entry_point, const std::string &amp;target, com_ptr&lt; ID3DBlob &gt; &amp;shader_blob)</div><div class="ttdef"><b>Definition:</b> ShaderManager.cpp:7</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_resouce_manager_html_a9326f315037d8c6961197ecda58d1158"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html#a9326f315037d8c6961197ecda58d1158">epion::DX12::ShaderResouceManager::Compile</a></div><div class="ttdeci">static bool Compile(const std::wstring &amp;hlsl_name, com_ptr&lt; ID3DBlob &gt; &amp;shader_blob, ShaderType type)</div><div class="ttdef"><b>Definition:</b> ShaderManager.cpp:57</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_reflection_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_reflection.html">epion::DX12::ShaderReflection</a></div><div class="ttdef"><b>Definition:</b> ShaderManager.h:27</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_resouce_manager_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_resouce_manager.html">epion::DX12::ShaderResouceManager</a></div><div class="ttdef"><b>Definition:</b> ShaderManager.h:16</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_shader_reflection_html_a2be93429689a37649f970a2167592937"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_shader_reflection.html#a2be93429689a37649f970a2167592937">epion::DX12::ShaderReflection::ReflectionInputLayout</a></div><div class="ttdeci">void ReflectionInputLayout(com_ptr&lt; ID3DBlob &gt; &amp;shader_blob)</div><div class="ttdef"><b>Definition:</b> ShaderManager.cpp:87</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

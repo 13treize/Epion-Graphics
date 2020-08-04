@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/Device.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cb8a3393a2e0031f7f54a9d0b9d7ffe1.html">DX12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Device.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_device_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_device.html">   13</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_device.html">Device</a> final</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_device.html#a06142f72d95354a4c5dee3c962951fe6">Device</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_device.html#ae6365161f9cbfd83f33c18727f9d0e66">~Device</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_device.html#aafa1b9693328ec4dfae9df34206305c1">Initialize</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGIFactory6&gt;</a>&amp; factory);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_device.html#aac966628e6d56dca4b2753b62c065589">Finalize</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">//get</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">static</span> <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12Device&gt;</a>&amp; <a class="code" href="classepion_1_1_d_x12_1_1_device.html#a3473f3d383f567400424b0fdea53b171">Get</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">static</span> D3D_FEATURE_LEVEL <a class="code" href="classepion_1_1_d_x12_1_1_device.html#ad0efbb8032e902580b73618770955467">GetFeatureLevel</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">static</span> <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12Device&gt;</a> m_device;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">static</span> D3D_FEATURE_LEVEL m_feature_level;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    __forceinline <span class="keywordtype">bool</span> <a class="code" href="namespaceepion_1_1_d_x12.html#a5f7fbf5c1dbd74a0327695fb78e6352e">CreateDevice</a>(<a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12Device&gt;</a>&amp; device, <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGIAdapter&gt;</a>&amp; adapter, D3D_FEATURE_LEVEL feature_level);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_device_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_device.html">epion::DX12::Device</a></div><div class="ttdef"><b>Definition:</b> Device.h:14</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_device_html_aac966628e6d56dca4b2753b62c065589"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_device.html#aac966628e6d56dca4b2753b62c065589">epion::DX12::Device::Finalize</a></div><div class="ttdeci">static bool Finalize()</div><div class="ttdef"><b>Definition:</b> Device.cpp:45</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_device_html_aafa1b9693328ec4dfae9df34206305c1"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_device.html#aafa1b9693328ec4dfae9df34206305c1">epion::DX12::Device::Initialize</a></div><div class="ttdeci">static bool Initialize(com_ptr&lt; IDXGIFactory6 &gt; &amp;factory)</div><div class="ttdef"><b>Definition:</b> Device.cpp:20</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_device_html_a06142f72d95354a4c5dee3c962951fe6"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_device.html#a06142f72d95354a4c5dee3c962951fe6">epion::DX12::Device::Device</a></div><div class="ttdeci">Device()</div><div class="ttdef"><b>Definition:</b> Device.cpp:13</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_device_html_a3473f3d383f567400424b0fdea53b171"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_device.html#a3473f3d383f567400424b0fdea53b171">epion::DX12::Device::Get</a></div><div class="ttdeci">static com_ptr&lt; ID3D12Device &gt; &amp; Get()</div><div class="ttdef"><b>Definition:</b> Device.cpp:51</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html_a5f7fbf5c1dbd74a0327695fb78e6352e"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html#a5f7fbf5c1dbd74a0327695fb78e6352e">epion::DX12::CreateDevice</a></div><div class="ttdeci">bool CreateDevice(com_ptr&lt; ID3D12Device &gt; &amp;device, com_ptr&lt; IDXGIAdapter &gt; &amp;adapter, D3D_FEATURE_LEVEL feature_level)</div><div class="ttdef"><b>Definition:</b> Device.cpp:62</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div><div class="ttdef"><b>Definition:</b> BlendState.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_device_html_ae6365161f9cbfd83f33c18727f9d0e66"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_device.html#ae6365161f9cbfd83f33c18727f9d0e66">epion::DX12::Device::~Device</a></div><div class="ttdeci">~Device()</div><div class="ttdef"><b>Definition:</b> Device.cpp:16</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_device_html_ad0efbb8032e902580b73618770955467"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_device.html#ad0efbb8032e902580b73618770955467">epion::DX12::Device::GetFeatureLevel</a></div><div class="ttdeci">static D3D_FEATURE_LEVEL GetFeatureLevel()</div><div class="ttdef"><b>Definition:</b> Device.cpp:56</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

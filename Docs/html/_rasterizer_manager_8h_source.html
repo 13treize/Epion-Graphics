@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/RasterizerManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cb8a3393a2e0031f7f54a9d0b9d7ffe1.html">DX12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">RasterizerManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_rasterizer_manager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_rasterizer.html">    4</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html">Rasterizer</a> final</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html#af26d63b1f18c735b3fa7765dcf6757ac">Rasterizer</a>();</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html#ae5fd522c7d00908388c53b9e5ce9046e">~Rasterizer</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html#a721998699046f558a9b99e8259ea43a8">Initialize</a>(<span class="keyword">const</span> D3D12_FILL_MODE fill);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html#ad871c38c75a60d527b8befe02968b149">Finalize</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        D3D12_RASTERIZER_DESC&amp; <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html#a55d2b820be960d8f8eca1c3b199cc3ee">GetDesc</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        D3D12_RASTERIZER_DESC m_desc;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    };</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_rasterizer_manager.html">   19</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_rasterizer_manager.html">RasterizerManager</a> final</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#af8e75533050edea4eed20ae328fe2abd">Initialize</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#a95929adcbd6bf3a098788c0bd1f89da0">Finalize</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">static</span> D3D12_RASTERIZER_DESC&amp; <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#a563f48e3d9b83b544df4e9274213df8b">GetSolidDesc</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">static</span> D3D12_RASTERIZER_DESC&amp; <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#a6720d42092358afd0d27d52c2a3c7cf8">GetWireDesc</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">static</span> <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html">Rasterizer</a> m_solid;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">static</span> <a class="code" href="classepion_1_1_d_x12_1_1_rasterizer.html">Rasterizer</a> m_wire;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_html_a721998699046f558a9b99e8259ea43a8"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer.html#a721998699046f558a9b99e8259ea43a8">epion::DX12::Rasterizer::Initialize</a></div><div class="ttdeci">bool Initialize(const D3D12_FILL_MODE fill)</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:12</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_manager_html_a95929adcbd6bf3a098788c0bd1f89da0"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#a95929adcbd6bf3a098788c0bd1f89da0">epion::DX12::RasterizerManager::Finalize</a></div><div class="ttdeci">static bool Finalize()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:48</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_manager_html_a6720d42092358afd0d27d52c2a3c7cf8"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#a6720d42092358afd0d27d52c2a3c7cf8">epion::DX12::RasterizerManager::GetWireDesc</a></div><div class="ttdeci">static D3D12_RASTERIZER_DESC &amp; GetWireDesc()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:57</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_html_ae5fd522c7d00908388c53b9e5ce9046e"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer.html#ae5fd522c7d00908388c53b9e5ce9046e">epion::DX12::Rasterizer::~Rasterizer</a></div><div class="ttdeci">~Rasterizer()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:8</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div><div class="ttdef"><b>Definition:</b> BlendState.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_html_a55d2b820be960d8f8eca1c3b199cc3ee"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer.html#a55d2b820be960d8f8eca1c3b199cc3ee">epion::DX12::Rasterizer::GetDesc</a></div><div class="ttdeci">D3D12_RASTERIZER_DESC &amp; GetDesc()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:33</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_html_af26d63b1f18c735b3fa7765dcf6757ac"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer.html#af26d63b1f18c735b3fa7765dcf6757ac">epion::DX12::Rasterizer::Rasterizer</a></div><div class="ttdeci">Rasterizer()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:5</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_html_ad871c38c75a60d527b8befe02968b149"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer.html#ad871c38c75a60d527b8befe02968b149">epion::DX12::Rasterizer::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:28</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_manager_html_a563f48e3d9b83b544df4e9274213df8b"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#a563f48e3d9b83b544df4e9274213df8b">epion::DX12::RasterizerManager::GetSolidDesc</a></div><div class="ttdeci">static D3D12_RASTERIZER_DESC &amp; GetSolidDesc()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:53</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_manager_html_af8e75533050edea4eed20ae328fe2abd"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer_manager.html#af8e75533050edea4eed20ae328fe2abd">epion::DX12::RasterizerManager::Initialize</a></div><div class="ttdeci">static bool Initialize()</div><div class="ttdef"><b>Definition:</b> RasterizerManager.cpp:41</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_manager_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer_manager.html">epion::DX12::RasterizerManager</a></div><div class="ttdef"><b>Definition:</b> RasterizerManager.h:20</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_rasterizer_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_rasterizer.html">epion::DX12::Rasterizer</a></div><div class="ttdef"><b>Definition:</b> RasterizerManager.h:5</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

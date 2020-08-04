@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/WinApp.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">WinApp.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_win_app_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion.html">epion</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classepion_1_1_win_app.html">    5</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_win_app.html">WinApp</a> final</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classepion_1_1_win_app.html#ad7366145f536595b2660d0ff3c4164cf">WinApp</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classepion_1_1_win_app.html#a29ca09979eaa1f4c145a3727453f7869">~WinApp</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_win_app.html#a70ed107b3179d01959e15e97e8a9d7c9">InitInstance</a>(HINSTANCE hInstance, <span class="keywordtype">int</span> nCmdShow, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">static</span> ATOM <a class="code" href="classepion_1_1_win_app.html#a27a89b777feabbdfb14469c0c72b4b34">CallRegisterClass</a>(HINSTANCE hInstance);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">static</span> LRESULT CALLBACK <a class="code" href="classepion_1_1_win_app.html#abc5956cf994f89f53c6202e7c9bb8e36">WndProc</a>(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_win_app.html#a19dd7200a06470d27f231801773c2ef8">UpdateWindowCall</a>(<span class="keywordtype">int</span> nCmdShow);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_win_app.html#a1f8391589cf05ae353ae81908044b55e">UnRegisterCall</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="comment">//get</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">static</span> HWND&amp; <a class="code" href="classepion_1_1_win_app.html#ad6200dfc3f4c8c6ff71ed0853d36369b">GetHwnd</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">//set</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classepion_1_1_win_app.html#af03ec677fe7ff2801cfc3ef487128dc1">   19</a></span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_win_app.html#af03ec677fe7ff2801cfc3ef487128dc1">CallReSizeSwap</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">static</span> INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> m_fullscreen_mode;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">static</span> WNDCLASSEX   m_w;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">static</span> HINSTANCE    m_hInst;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">static</span> HWND m_hwnd;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_win_app_html_a19dd7200a06470d27f231801773c2ef8"><div class="ttname"><a href="classepion_1_1_win_app.html#a19dd7200a06470d27f231801773c2ef8">epion::WinApp::UpdateWindowCall</a></div><div class="ttdeci">static void UpdateWindowCall(int nCmdShow)</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:122</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_a27a89b777feabbdfb14469c0c72b4b34"><div class="ttname"><a href="classepion_1_1_win_app.html#a27a89b777feabbdfb14469c0c72b4b34">epion::WinApp::CallRegisterClass</a></div><div class="ttdeci">static ATOM CallRegisterClass(HINSTANCE hInstance)</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:50</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_a1f8391589cf05ae353ae81908044b55e"><div class="ttname"><a href="classepion_1_1_win_app.html#a1f8391589cf05ae353ae81908044b55e">epion::WinApp::UnRegisterCall</a></div><div class="ttdeci">static void UnRegisterCall()</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:128</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html"><div class="ttname"><a href="classepion_1_1_win_app.html">epion::WinApp</a></div><div class="ttdef"><b>Definition:</b> WinApp.h:6</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_abc5956cf994f89f53c6202e7c9bb8e36"><div class="ttname"><a href="classepion_1_1_win_app.html#abc5956cf994f89f53c6202e7c9bb8e36">epion::WinApp::WndProc</a></div><div class="ttdeci">static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:70</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_ad7366145f536595b2660d0ff3c4164cf"><div class="ttname"><a href="classepion_1_1_win_app.html#ad7366145f536595b2660d0ff3c4164cf">epion::WinApp::WinApp</a></div><div class="ttdeci">WinApp()</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:18</div></div>
+<div class="ttc" id="anamespaceepion_html"><div class="ttname"><a href="namespaceepion.html">epion</a></div><div class="ttdef"><b>Definition:</b> CameraManager.cpp:13</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_af03ec677fe7ff2801cfc3ef487128dc1"><div class="ttname"><a href="classepion_1_1_win_app.html#af03ec677fe7ff2801cfc3ef487128dc1">epion::WinApp::CallReSizeSwap</a></div><div class="ttdeci">static void CallReSizeSwap()</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_a70ed107b3179d01959e15e97e8a9d7c9"><div class="ttname"><a href="classepion_1_1_win_app.html#a70ed107b3179d01959e15e97e8a9d7c9">epion::WinApp::InitInstance</a></div><div class="ttdeci">static bool InitInstance(HINSTANCE hInstance, int nCmdShow, int width, int height)</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:22</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_a29ca09979eaa1f4c145a3727453f7869"><div class="ttname"><a href="classepion_1_1_win_app.html#a29ca09979eaa1f4c145a3727453f7869">epion::WinApp::~WinApp</a></div><div class="ttdeci">~WinApp()</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:20</div></div>
+<div class="ttc" id="aclassepion_1_1_win_app_html_ad6200dfc3f4c8c6ff71ed0853d36369b"><div class="ttname"><a href="classepion_1_1_win_app.html#ad6200dfc3f4c8c6ff71ed0853d36369b">epion::WinApp::GetHwnd</a></div><div class="ttdeci">static HWND &amp; GetHwnd()</div><div class="ttdef"><b>Definition:</b> WinApp.cpp:133</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

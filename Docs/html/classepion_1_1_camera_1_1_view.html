@@ -1,0 +1,771 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: epion::Camera::View クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceepion.html">epion</a></li><li class="navelem"><a class="el" href="namespaceepion_1_1_camera.html">Camera</a></li><li class="navelem"><a class="el" href="classepion_1_1_camera_1_1_view.html">View</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="classepion_1_1_camera_1_1_view-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">epion::Camera::View クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_camera_manager_8h_source.html">CameraManager.h</a>&gt;</code></p>
+<div class="dynheader">
+epion::Camera::View の継承関係図</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classepion_1_1_camera_1_1_view.png" usemap="#epion::Camera::View_map" alt=""/>
+  <map id="epion::Camera::View_map" name="epion::Camera::View_map">
+<area href="classepion_1_1_camera_1_1_basic_camera.html" alt="epion::Camera::BasicCamera" shape="rect" coords="0,56,195,80"/>
+<area href="classepion_1_1_camera_1_1_preview_camera.html" alt="epion::Camera::PreviewCamera" shape="rect" coords="205,56,400,80"/>
+<area href="classepion_1_1_camera_1_1_scene3_d_camera.html" alt="epion::Camera::Scene3DCamera" shape="rect" coords="410,56,605,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:aff30ace4f601db9eb774a1c3f032715f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#aff30ace4f601db9eb774a1c3f032715f">View</a> ()</td></tr>
+<tr class="separator:aff30ace4f601db9eb774a1c3f032715f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c5948a83418ac302667173c12dd3b78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a5c5948a83418ac302667173c12dd3b78">View</a> (const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;p_, const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;t_, const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;u_, float fov_, float aspect_, float n_, float f_)</td></tr>
+<tr class="separator:a5c5948a83418ac302667173c12dd3b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6087b5ef43e80a5975ea43ef9fe30e54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a6087b5ef43e80a5975ea43ef9fe30e54">~View</a> ()</td></tr>
+<tr class="separator:a6087b5ef43e80a5975ea43ef9fe30e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c5d67b81bd33a9df6964c3eb62e3172"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a5c5d67b81bd33a9df6964c3eb62e3172">SetView</a> (const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;p, const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;t, const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;u)</td></tr>
+<tr class="separator:a5c5d67b81bd33a9df6964c3eb62e3172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25717040f93444c25a044dc99fd0e9b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a25717040f93444c25a044dc99fd0e9b9">SetProjection</a> (float <a class="el" href="classepion_1_1_camera_1_1_view.html#a109da7fe19b191ce541be10ae873f3c3">fov</a>, float <a class="el" href="classepion_1_1_camera_1_1_view.html#a79b02ffba028a7cb56fc92ca74c5f224">aspect</a>, float n, float f)</td></tr>
+<tr class="separator:a25717040f93444c25a044dc99fd0e9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa596b992f6c1e079bd228433aabe367"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#afa596b992f6c1e079bd228433aabe367">Activate</a> ()</td></tr>
+<tr class="separator:afa596b992f6c1e079bd228433aabe367"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a355105b8f81c1172e0849e4ed347b6a2"><td class="memItemLeft" align="right" valign="top">DirectX::XMMATRIX &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a355105b8f81c1172e0849e4ed347b6a2">GetMatView</a> ()</td></tr>
+<tr class="separator:a355105b8f81c1172e0849e4ed347b6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade7a16a5568ec91b687cd65a928c9ca6"><td class="memItemLeft" align="right" valign="top">DirectX::XMMATRIX &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#ade7a16a5568ec91b687cd65a928c9ca6">GetMatProjection</a> ()</td></tr>
+<tr class="separator:ade7a16a5568ec91b687cd65a928c9ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0776c9daca1548272dbf013b61424ff0"><td class="memItemLeft" align="right" valign="top">DirectX::XMFLOAT4X4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a0776c9daca1548272dbf013b61424ff0">Get4x4View</a> ()</td></tr>
+<tr class="separator:a0776c9daca1548272dbf013b61424ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb80baa7ea1c51bffec605bf205b7720"><td class="memItemLeft" align="right" valign="top">DirectX::XMFLOAT4X4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#aeb80baa7ea1c51bffec605bf205b7720">Get4x4Projection</a> ()</td></tr>
+<tr class="separator:aeb80baa7ea1c51bffec605bf205b7720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a614ee3ed18c551a2724ca77d597fd132"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a614ee3ed18c551a2724ca77d597fd132">GetPos</a> ()</td></tr>
+<tr class="separator:a614ee3ed18c551a2724ca77d597fd132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0875e3ea8a8e4fceb59c52196f06683"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#ac0875e3ea8a8e4fceb59c52196f06683">GetTarget</a> ()</td></tr>
+<tr class="separator:ac0875e3ea8a8e4fceb59c52196f06683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa77151e0dbee02c8eacf88b42520f65e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#aa77151e0dbee02c8eacf88b42520f65e">GetUp</a> ()</td></tr>
+<tr class="separator:aa77151e0dbee02c8eacf88b42520f65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a898f5a42cadafe4835c42e53bf45a0a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a898f5a42cadafe4835c42e53bf45a0a4">SetPos</a> (<a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;pos_)</td></tr>
+<tr class="separator:a898f5a42cadafe4835c42e53bf45a0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed471ab74316a981f6d1492c3aa685c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#aed471ab74316a981f6d1492c3aa685c4">SetTarget</a> (<a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;target_)</td></tr>
+<tr class="separator:aed471ab74316a981f6d1492c3aa685c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ed91cc96c4b7f608fb2ae7b0ac4e5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a31ed91cc96c4b7f608fb2ae7b0ac4e5c">SetUp</a> (<a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;up_)</td></tr>
+<tr class="separator:a31ed91cc96c4b7f608fb2ae7b0ac4e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:a86587b79cd770233f01aa55b99673095"><td class="memItemLeft" align="right" valign="top">DirectX::XMMATRIX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a86587b79cd770233f01aa55b99673095">MatView</a></td></tr>
+<tr class="separator:a86587b79cd770233f01aa55b99673095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab31e3c4fb9c393623ffd573ba89e31ca"><td class="memItemLeft" align="right" valign="top">DirectX::XMMATRIX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#ab31e3c4fb9c393623ffd573ba89e31ca">MatProjection</a></td></tr>
+<tr class="separator:ab31e3c4fb9c393623ffd573ba89e31ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c9ee3568d86b2549640c378d7b164c0"><td class="memItemLeft" align="right" valign="top">DirectX::XMFLOAT4X4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a7c9ee3568d86b2549640c378d7b164c0">F4x4View</a></td></tr>
+<tr class="separator:a7c9ee3568d86b2549640c378d7b164c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8589a047b804260f5bf844badb08cddb"><td class="memItemLeft" align="right" valign="top">DirectX::XMFLOAT4X4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a8589a047b804260f5bf844badb08cddb">F4x4Projection</a></td></tr>
+<tr class="separator:a8589a047b804260f5bf844badb08cddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aab58f825106124d88a9a2865e2a12e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a7aab58f825106124d88a9a2865e2a12e">pos</a></td></tr>
+<tr class="separator:a7aab58f825106124d88a9a2865e2a12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acad90c9bdb3a846d8ee7a81c06923508"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#acad90c9bdb3a846d8ee7a81c06923508">target</a></td></tr>
+<tr class="separator:acad90c9bdb3a846d8ee7a81c06923508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fccd6963258ebf226b610d656aace13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a7fccd6963258ebf226b610d656aace13">up</a></td></tr>
+<tr class="separator:a7fccd6963258ebf226b610d656aace13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a109da7fe19b191ce541be10ae873f3c3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a109da7fe19b191ce541be10ae873f3c3">fov</a></td></tr>
+<tr class="separator:a109da7fe19b191ce541be10ae873f3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b02ffba028a7cb56fc92ca74c5f224"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a79b02ffba028a7cb56fc92ca74c5f224">aspect</a></td></tr>
+<tr class="separator:a79b02ffba028a7cb56fc92ca74c5f224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63c5c3fe3fc05d01ed4e1b2aaa63d0a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#ac63c5c3fe3fc05d01ed4e1b2aaa63d0a">nearPlane</a></td></tr>
+<tr class="separator:ac63c5c3fe3fc05d01ed4e1b2aaa63d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74cfc56c24423d5cf31c5eb68539cd6f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classepion_1_1_camera_1_1_view.html#a74cfc56c24423d5cf31c5eb68539cd6f">farPlane</a></td></tr>
+<tr class="separator:a74cfc56c24423d5cf31c5eb68539cd6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="aff30ace4f601db9eb774a1c3f032715f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff30ace4f601db9eb774a1c3f032715f">&#9670;&nbsp;</a></span>View() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">epion::Camera::View::View </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c5948a83418ac302667173c12dd3b78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c5948a83418ac302667173c12dd3b78">&#9670;&nbsp;</a></span>View() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">epion::Camera::View::View </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>p_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>t_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>u_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fov_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>aspect_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>n_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>f_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6087b5ef43e80a5975ea43ef9fe30e54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6087b5ef43e80a5975ea43ef9fe30e54">&#9670;&nbsp;</a></span>~View()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual epion::Camera::View::~View </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="afa596b992f6c1e079bd228433aabe367"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa596b992f6c1e079bd228433aabe367">&#9670;&nbsp;</a></span>Activate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::Camera::View::Activate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb80baa7ea1c51bffec605bf205b7720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb80baa7ea1c51bffec605bf205b7720">&#9670;&nbsp;</a></span>Get4x4Projection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMFLOAT4X4 &amp; epion::Camera::View::Get4x4Projection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0776c9daca1548272dbf013b61424ff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0776c9daca1548272dbf013b61424ff0">&#9670;&nbsp;</a></span>Get4x4View()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMFLOAT4X4 &amp; epion::Camera::View::Get4x4View </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade7a16a5568ec91b687cd65a928c9ca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade7a16a5568ec91b687cd65a928c9ca6">&#9670;&nbsp;</a></span>GetMatProjection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMMATRIX &amp; epion::Camera::View::GetMatProjection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a355105b8f81c1172e0849e4ed347b6a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a355105b8f81c1172e0849e4ed347b6a2">&#9670;&nbsp;</a></span>GetMatView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMMATRIX &amp; epion::Camera::View::GetMatView </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a614ee3ed18c551a2724ca77d597fd132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614ee3ed18c551a2724ca77d597fd132">&#9670;&nbsp;</a></span>GetPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp; epion::Camera::View::GetPos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0875e3ea8a8e4fceb59c52196f06683"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0875e3ea8a8e4fceb59c52196f06683">&#9670;&nbsp;</a></span>GetTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp; epion::Camera::View::GetTarget </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa77151e0dbee02c8eacf88b42520f65e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa77151e0dbee02c8eacf88b42520f65e">&#9670;&nbsp;</a></span>GetUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp; epion::Camera::View::GetUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a898f5a42cadafe4835c42e53bf45a0a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a898f5a42cadafe4835c42e53bf45a0a4">&#9670;&nbsp;</a></span>SetPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::Camera::View::SetPos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25717040f93444c25a044dc99fd0e9b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25717040f93444c25a044dc99fd0e9b9">&#9670;&nbsp;</a></span>SetProjection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::Camera::View::SetProjection </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fov</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>aspect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed471ab74316a981f6d1492c3aa685c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed471ab74316a981f6d1492c3aa685c4">&#9670;&nbsp;</a></span>SetTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::Camera::View::SetTarget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>target_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31ed91cc96c4b7f608fb2ae7b0ac4e5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31ed91cc96c4b7f608fb2ae7b0ac4e5c">&#9670;&nbsp;</a></span>SetUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::Camera::View::SetUp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>up_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c5d67b81bd33a9df6964c3eb62e3172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c5d67b81bd33a9df6964c3eb62e3172">&#9670;&nbsp;</a></span>SetView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void epion::Camera::View::SetView </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a79b02ffba028a7cb56fc92ca74c5f224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b02ffba028a7cb56fc92ca74c5f224">&#9670;&nbsp;</a></span>aspect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float epion::Camera::View::aspect</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8589a047b804260f5bf844badb08cddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8589a047b804260f5bf844badb08cddb">&#9670;&nbsp;</a></span>F4x4Projection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMFLOAT4X4 epion::Camera::View::F4x4Projection</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c9ee3568d86b2549640c378d7b164c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c9ee3568d86b2549640c378d7b164c0">&#9670;&nbsp;</a></span>F4x4View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMFLOAT4X4 epion::Camera::View::F4x4View</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74cfc56c24423d5cf31c5eb68539cd6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74cfc56c24423d5cf31c5eb68539cd6f">&#9670;&nbsp;</a></span>farPlane</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float epion::Camera::View::farPlane</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a109da7fe19b191ce541be10ae873f3c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a109da7fe19b191ce541be10ae873f3c3">&#9670;&nbsp;</a></span>fov</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float epion::Camera::View::fov</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab31e3c4fb9c393623ffd573ba89e31ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab31e3c4fb9c393623ffd573ba89e31ca">&#9670;&nbsp;</a></span>MatProjection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMMATRIX epion::Camera::View::MatProjection</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86587b79cd770233f01aa55b99673095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86587b79cd770233f01aa55b99673095">&#9670;&nbsp;</a></span>MatView</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::XMMATRIX epion::Camera::View::MatView</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac63c5c3fe3fc05d01ed4e1b2aaa63d0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac63c5c3fe3fc05d01ed4e1b2aaa63d0a">&#9670;&nbsp;</a></span>nearPlane</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float epion::Camera::View::nearPlane</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7aab58f825106124d88a9a2865e2a12e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aab58f825106124d88a9a2865e2a12e">&#9670;&nbsp;</a></span>pos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> epion::Camera::View::pos</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acad90c9bdb3a846d8ee7a81c06923508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acad90c9bdb3a846d8ee7a81c06923508">&#9670;&nbsp;</a></span>target</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> epion::Camera::View::target</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7fccd6963258ebf226b610d656aace13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fccd6963258ebf226b610d656aace13">&#9670;&nbsp;</a></span>up</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceepion_1_1_math.html#a90fd6d7afdc3ce682643d1fff6f18687">Math::FVector3</a> epion::Camera::View::up</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/treize/Desktop/Epion-Graphics/Epion12/Camera/<a class="el" href="_camera_manager_8h_source.html">CameraManager.h</a></li>
+<li>C:/Users/treize/Desktop/Epion-Graphics/Epion12/Camera/<a class="el" href="_camera_manager_8cpp.html">CameraManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

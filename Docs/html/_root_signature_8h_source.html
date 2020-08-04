@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/RootSignature.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cb8a3393a2e0031f7f54a9d0b9d7ffe1.html">DX12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">RootSignature.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_root_signature_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_root_signature_manager.html">    4</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_root_signature_manager.html">RootSignatureManager</a> final</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_root_signature_manager.html#a0cd7f9a86e95cb1b6f6d6615d48b8026">Build2D</a>(D3D12_ROOT_PARAMETER_TYPE type);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_root_signature_manager.html#a62a2672d26ef61752627fca008437055">Build</a>();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_root_signature_manager.html#ae5f19061373cfb2536c91fdcc37154de">SetGraphicsRootSignature</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">static</span> <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12RootSignature&gt;</a>&amp; <a class="code" href="classepion_1_1_d_x12_1_1_root_signature_manager.html#ae7c3640d630292bc4a7dfcfacf1e0fcb">Get</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">static</span> <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12RootSignature&gt;</a> m_root_signature;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    };</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_root_signature_manager_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_root_signature_manager.html">epion::DX12::RootSignatureManager</a></div><div class="ttdef"><b>Definition:</b> RootSignature.h:5</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div><div class="ttdef"><b>Definition:</b> BlendState.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_root_signature_manager_html_a62a2672d26ef61752627fca008437055"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_root_signature_manager.html#a62a2672d26ef61752627fca008437055">epion::DX12::RootSignatureManager::Build</a></div><div class="ttdeci">static void Build()</div><div class="ttdef"><b>Definition:</b> RootSignature.cpp:39</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_root_signature_manager_html_a0cd7f9a86e95cb1b6f6d6615d48b8026"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_root_signature_manager.html#a0cd7f9a86e95cb1b6f6d6615d48b8026">epion::DX12::RootSignatureManager::Build2D</a></div><div class="ttdeci">static void Build2D(D3D12_ROOT_PARAMETER_TYPE type)</div><div class="ttdef"><b>Definition:</b> RootSignature.cpp:10</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_root_signature_manager_html_ae5f19061373cfb2536c91fdcc37154de"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_root_signature_manager.html#ae5f19061373cfb2536c91fdcc37154de">epion::DX12::RootSignatureManager::SetGraphicsRootSignature</a></div><div class="ttdeci">static void SetGraphicsRootSignature()</div><div class="ttdef"><b>Definition:</b> RootSignature.cpp:88</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_root_signature_manager_html_ae7c3640d630292bc4a7dfcfacf1e0fcb"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_root_signature_manager.html#ae7c3640d630292bc4a7dfcfacf1e0fcb">epion::DX12::RootSignatureManager::Get</a></div><div class="ttdeci">static com_ptr&lt; ID3D12RootSignature &gt; &amp; Get()</div><div class="ttdef"><b>Definition:</b> RootSignature.cpp:93</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/Math/EpionVector4.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_ee0ac09559e8d4abb7c012fb0167297a.html">Math</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">EpionVector4.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_epion_vector4_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include&lt;cassert&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace   </span><a class="code" href="namespaceepion_1_1_math.html">epion::Math</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keyword">template</span>&lt;   <span class="keyword">class</span>   T&gt;</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html">    6</a></span>&#160;    <span class="keyword">struct  </span><a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> final</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">    8</a></span>&#160;        T   <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">    9</a></span>&#160;        T   <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">   10</a></span>&#160;        T   <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">   11</a></span>&#160;        T   <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a4bd8955ef6facf62a55529ef9fed2a79">   13</a></span>&#160;        constexpr   <a class="code" href="structepion_1_1_math_1_1_vector4.html#a4bd8955ef6facf62a55529ef9fed2a79">Vector4</a>(T   <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> = 0.0f, T <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> = 0.0f, T <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> = 0.0f, T <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> = 0.0f) :<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>), <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>), <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>), <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>) {}</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a1fd83239103bb609cb7e01f0f21b0561">   14</a></span>&#160;        constexpr   <a class="code" href="structepion_1_1_math_1_1_vector4.html#a1fd83239103bb609cb7e01f0f21b0561">Vector4</a>(<span class="keyword">const</span>   <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    v) : <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>(v.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>), <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>(v.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>), <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>(v.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>), <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>(v.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>) {}</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a6fc451c7e8836d05a0886772f335ae36">   15</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html#a6fc451c7e8836d05a0886772f335ae36">~Vector4</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">class</span> Archive&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a5271f30eb9a74cf20a1d0b2762b088c1">   18</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html#a5271f30eb9a74cf20a1d0b2762b088c1">serialize</a>(Archive &amp; archive,   <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4&lt;T&gt;</a>)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            archive(    CEREAL_NVP(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>),</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        CEREAL_NVP(<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>),</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                        CEREAL_NVP(<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>),</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                        CEREAL_NVP(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>));</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        };</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#affbaa06cd85b40e64ed9dc90b3af7671">   26</a></span>&#160;        <span class="keyword">const</span> T &amp; <a class="code" href="structepion_1_1_math_1_1_vector4.html#affbaa06cd85b40e64ed9dc90b3af7671">operator[]</a>(std::size_t index) <span class="keyword">const</span>&amp;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">if</span> (!(index&gt;=0  &amp;&amp;index&lt;=3))</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                assert(0);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            T* p = &amp;<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordflow">return</span> p[index];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#ae9e357afaa8cae65af1509064c08c536">   37</a></span>&#160;        T   &amp; <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae9e357afaa8cae65af1509064c08c536">operator[]</a>(std::size_t index) &amp;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            T* p = &amp;<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> p[index];</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">//float operator[](std::size_t index) const&amp;&amp;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">//{</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">//  T* p = &amp;x;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">//  return p[index];</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">//}</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">//  +</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a927a90ab848e46f095d9ed41cbd28c59">   48</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> <a class="code" href="structepion_1_1_math_1_1_vector4.html#a927a90ab848e46f095d9ed41cbd28c59">operator+</a>(<span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)<span class="keyword">    const</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>     n = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">return</span>(n += vec);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a6e87b6ed8f8f50d56c32534a2ffb536e">   53</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a6e87b6ed8f8f50d56c32534a2ffb536e">operator+=</a>(<span class="keyword">const</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> += vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> += vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> += vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> += vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span>*<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a64c745e2ef01a46da87fcbba51cf05b4">   61</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a64c745e2ef01a46da87fcbba51cf05b4">operator+=</a>(<span class="keyword">const</span>    T   value)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> += value;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> += value;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> += value;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> += value;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">//  -</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a1e4ad25bd3fa529a3a20ba48191350d7">   71</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> <a class="code" href="structepion_1_1_math_1_1_vector4.html#a1e4ad25bd3fa529a3a20ba48191350d7">operator-</a>(<span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)<span class="keyword">    const</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> n = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">return</span>  n -= vec;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a34e6c336f323f0c1c38e4b3a2c491523">   77</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a34e6c336f323f0c1c38e4b3a2c491523">operator-=</a>(<span class="keyword">const</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> -= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> -= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> -= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> -= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span>*<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a37d60884d0313f2ab8063f94dd1b751e">   86</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a37d60884d0313f2ab8063f94dd1b751e">operator-=</a>(<span class="keyword">const</span>    T   value)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> -= value;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> -= value;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> -= value;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> -= value;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">//  *</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a38b18cbaeee09ef7d81c2bb3d596c580">   96</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> <a class="code" href="structepion_1_1_math_1_1_vector4.html#a38b18cbaeee09ef7d81c2bb3d596c580">operator*</a>(<span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)<span class="keyword">const</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span>  <a class="code" href="structepion_1_1_math_1_1_vector4.html#a4bd8955ef6facf62a55529ef9fed2a79">Vector4</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>   *vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>   *vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>   *vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>   *vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#ae013fb59a26dba55fb5e491666548940">  100</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae013fb59a26dba55fb5e491666548940">operator*</a>(<span class="keyword">const</span> T   value)<span class="keyword">const</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span>  <a class="code" href="structepion_1_1_math_1_1_vector4.html#a4bd8955ef6facf62a55529ef9fed2a79">Vector4</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>   *value, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>   *value, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>   *value, <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>   *value);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#ae5f22f7777a0a36be3be1c887d284e0e">  104</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae5f22f7777a0a36be3be1c887d284e0e">operator*=</a>(<span class="keyword">const</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> *= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> *= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> *= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> *= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#af4b6a8e1fc8b0006929ed3b167262454">  112</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#af4b6a8e1fc8b0006929ed3b167262454">operator*=</a>(T    value)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> *= value;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> *= value;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> *= value;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> *= value;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="comment">//  /</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a4015fb1250f5c6ff3dbe37c0c035734f">  122</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> <a class="code" href="structepion_1_1_math_1_1_vector4.html#a4015fb1250f5c6ff3dbe37c0c035734f">operator/</a>(<span class="keyword">const</span> <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)<span class="keyword">const</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">return</span>  <a class="code" href="structepion_1_1_math_1_1_vector4.html#a4bd8955ef6facf62a55529ef9fed2a79">Vector4</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> / vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> / vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> / vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> / vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#aae7386c304ffb3e21d9defbb7193f9f5">  126</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a> <a class="code" href="structepion_1_1_math_1_1_vector4.html#aae7386c304ffb3e21d9defbb7193f9f5">operator/</a>(<span class="keyword">const</span> T   value)<span class="keyword">const</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">return</span>  <a class="code" href="structepion_1_1_math_1_1_vector4.html#a4bd8955ef6facf62a55529ef9fed2a79">Vector4</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> / value, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> / value, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> / value, <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> / value);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a8483b51233f1ba5ea6f1fccf62bf554e">  130</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a8483b51233f1ba5ea6f1fccf62bf554e">operator/=</a>(<span class="keyword">const</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> /= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> /= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> /= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> /= vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a6f1fa9a6225790debdbc86338f6c7ce8">  138</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a6f1fa9a6225790debdbc86338f6c7ce8">operator/=</a>(<span class="keyword">const</span>    T   value)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> /= value;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> /= value;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> /= value;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> /= value;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">return</span>*<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="comment">//etc...</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a8dd71e2aa2523cfca5851da8c259ea6f">  148</a></span>&#160;        <span class="keywordtype">bool</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a8dd71e2aa2523cfca5851da8c259ea6f">operator==</a>(<span class="keyword">const</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)<span class="keyword">const</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> == vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>  &amp;&amp;<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> == vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>    &amp;&amp;<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> == vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> &amp;&amp;<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> == vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">return</span>  <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            };</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">return</span>  <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a339804dd6f9080e411f1a52e046efcd0">  156</a></span>&#160;        <span class="keywordtype">bool</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a339804dd6f9080e411f1a52e046efcd0">operator!=</a>(<span class="keyword">const</span>    <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    vec)<span class="keyword">const</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> != vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a> || <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> != vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a> || <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> != vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a> || <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a> != vec.<a class="code" href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">w</a>)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">return</span>  <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            };</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">return</span>  <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a4794ca5f4a962fb9978411a8fcc83313">  164</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a4794ca5f4a962fb9978411a8fcc83313">set_x</a>(T _x)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            this-&gt;x = _x;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        }</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#aa0216261666c3edb44296ecad47b92a1">  169</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#aa0216261666c3edb44296ecad47b92a1">set_y</a>(T _y)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            this-&gt;y = _y;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a6d028e2b15a94176cc44613458fe07a4">  174</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a6d028e2b15a94176cc44613458fe07a4">set_z</a>(T _z)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            this-&gt;z = _z;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a856c4c5c46c3b2e55373f5cbd8592db0">  179</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a856c4c5c46c3b2e55373f5cbd8592db0">set_w</a>(T _w)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            this-&gt;w = _w;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        }</div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#ad101a1724e2ac68234bf30070aa1b86f">  184</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#ad101a1724e2ac68234bf30070aa1b86f">set_xy</a>(T    _x, T   _y)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            this-&gt;x = _x;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            this-&gt;y = _y;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a9b300e40b96ce038718598a0d9621cff">  191</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a9b300e40b96ce038718598a0d9621cff">SetXYZ</a>(T    _x, T   _y, T   _z)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            this-&gt;x = _x;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            this-&gt;y = _y;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            this-&gt;z = _z;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#ab405429e52b940ba74fc070e236ee5d8">  198</a></span>&#160;        T   <a class="code" href="structepion_1_1_math_1_1_vector4.html#ab405429e52b940ba74fc070e236ee5d8">get_length</a>()<span class="keyword">    const</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span>  std::hypot(<a class="code" href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">x</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">y</a>, <a class="code" href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">z</a>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="structepion_1_1_math_1_1_vector4.html#a482c6f3fc8257d8a4f9af36af9279eed">  202</a></span>&#160;        <a class="code" href="structepion_1_1_math_1_1_vector4.html">Vector4</a>&amp;    <a class="code" href="structepion_1_1_math_1_1_vector4.html#a482c6f3fc8257d8a4f9af36af9279eed">normalize</a>()</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            *<span class="keyword">this</span> /= <a class="code" href="structepion_1_1_math_1_1_vector4.html#ab405429e52b940ba74fc070e236ee5d8">get_length</a>();</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">return</span>  *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    };</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a4bd8955ef6facf62a55529ef9fed2a79"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a4bd8955ef6facf62a55529ef9fed2a79">epion::Math::Vector4::Vector4</a></div><div class="ttdeci">constexpr Vector4(T x=0.0f, T y=0.0f, T z=0.0f, T w=0.0f)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:13</div></div>
+<div class="ttc" id="anamespaceepion_1_1_math_html"><div class="ttname"><a href="namespaceepion_1_1_math.html">epion::Math</a></div><div class="ttdef"><b>Definition:</b> EpionMath.h:11</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_ae013fb59a26dba55fb5e491666548940"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#ae013fb59a26dba55fb5e491666548940">epion::Math::Vector4::operator*</a></div><div class="ttdeci">Vector4 operator*(const T value) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:100</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a38b18cbaeee09ef7d81c2bb3d596c580"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a38b18cbaeee09ef7d81c2bb3d596c580">epion::Math::Vector4::operator*</a></div><div class="ttdeci">Vector4 operator*(const Vector4 &amp;vec) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:96</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a856c4c5c46c3b2e55373f5cbd8592db0"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a856c4c5c46c3b2e55373f5cbd8592db0">epion::Math::Vector4::set_w</a></div><div class="ttdeci">Vector4 &amp; set_w(T _w)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:179</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_ab405429e52b940ba74fc070e236ee5d8"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#ab405429e52b940ba74fc070e236ee5d8">epion::Math::Vector4::get_length</a></div><div class="ttdeci">T get_length() const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:198</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a6f1fa9a6225790debdbc86338f6c7ce8"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a6f1fa9a6225790debdbc86338f6c7ce8">epion::Math::Vector4::operator/=</a></div><div class="ttdeci">Vector4 &amp; operator/=(const T value)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:138</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a482c6f3fc8257d8a4f9af36af9279eed"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a482c6f3fc8257d8a4f9af36af9279eed">epion::Math::Vector4::normalize</a></div><div class="ttdeci">Vector4 &amp; normalize()</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:202</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a4794ca5f4a962fb9978411a8fcc83313"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a4794ca5f4a962fb9978411a8fcc83313">epion::Math::Vector4::set_x</a></div><div class="ttdeci">Vector4 &amp; set_x(T _x)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:164</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html">epion::Math::Vector4</a></div><div class="ttdef"><b>Definition:</b> EpionVector4.h:7</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a927a90ab848e46f095d9ed41cbd28c59"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a927a90ab848e46f095d9ed41cbd28c59">epion::Math::Vector4::operator+</a></div><div class="ttdeci">Vector4 operator+(const Vector4 &amp;vec) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:48</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a1fd83239103bb609cb7e01f0f21b0561"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a1fd83239103bb609cb7e01f0f21b0561">epion::Math::Vector4::Vector4</a></div><div class="ttdeci">constexpr Vector4(const Vector4 &amp;v)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:14</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_ad101a1724e2ac68234bf30070aa1b86f"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#ad101a1724e2ac68234bf30070aa1b86f">epion::Math::Vector4::set_xy</a></div><div class="ttdeci">Vector4 &amp; set_xy(T _x, T _y)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:184</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_aa0216261666c3edb44296ecad47b92a1"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#aa0216261666c3edb44296ecad47b92a1">epion::Math::Vector4::set_y</a></div><div class="ttdeci">Vector4 &amp; set_y(T _y)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:169</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_affbaa06cd85b40e64ed9dc90b3af7671"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#affbaa06cd85b40e64ed9dc90b3af7671">epion::Math::Vector4::operator[]</a></div><div class="ttdeci">const T &amp; operator[](std::size_t index) const &amp;</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:26</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_ae8fac1c66a97acd439156abdb49f045b"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#ae8fac1c66a97acd439156abdb49f045b">epion::Math::Vector4::x</a></div><div class="ttdeci">T x</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:8</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_ae9e357afaa8cae65af1509064c08c536"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#ae9e357afaa8cae65af1509064c08c536">epion::Math::Vector4::operator[]</a></div><div class="ttdeci">T &amp; operator[](std::size_t index) &amp;</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:37</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_af4b6a8e1fc8b0006929ed3b167262454"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#af4b6a8e1fc8b0006929ed3b167262454">epion::Math::Vector4::operator*=</a></div><div class="ttdeci">Vector4 &amp; operator*=(T value)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:112</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a34e6c336f323f0c1c38e4b3a2c491523"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a34e6c336f323f0c1c38e4b3a2c491523">epion::Math::Vector4::operator-=</a></div><div class="ttdeci">Vector4 &amp; operator-=(const Vector4 &amp;vec)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:77</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a6fc451c7e8836d05a0886772f335ae36"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a6fc451c7e8836d05a0886772f335ae36">epion::Math::Vector4::~Vector4</a></div><div class="ttdeci">~Vector4()=default</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_aae7386c304ffb3e21d9defbb7193f9f5"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#aae7386c304ffb3e21d9defbb7193f9f5">epion::Math::Vector4::operator/</a></div><div class="ttdeci">Vector4 operator/(const T value) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:126</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_ae5f22f7777a0a36be3be1c887d284e0e"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#ae5f22f7777a0a36be3be1c887d284e0e">epion::Math::Vector4::operator*=</a></div><div class="ttdeci">Vector4 &amp; operator*=(const Vector4 &amp;vec)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:104</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a268488e39329f971a5406da52d66d5cf"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a268488e39329f971a5406da52d66d5cf">epion::Math::Vector4::z</a></div><div class="ttdeci">T z</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:10</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a37d60884d0313f2ab8063f94dd1b751e"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a37d60884d0313f2ab8063f94dd1b751e">epion::Math::Vector4::operator-=</a></div><div class="ttdeci">Vector4 &amp; operator-=(const T value)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:86</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a339804dd6f9080e411f1a52e046efcd0"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a339804dd6f9080e411f1a52e046efcd0">epion::Math::Vector4::operator!=</a></div><div class="ttdeci">bool operator!=(const Vector4 &amp;vec) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:156</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a9b300e40b96ce038718598a0d9621cff"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a9b300e40b96ce038718598a0d9621cff">epion::Math::Vector4::SetXYZ</a></div><div class="ttdeci">Vector4 &amp; SetXYZ(T _x, T _y, T _z)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:191</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a6e87b6ed8f8f50d56c32534a2ffb536e"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a6e87b6ed8f8f50d56c32534a2ffb536e">epion::Math::Vector4::operator+=</a></div><div class="ttdeci">Vector4 &amp; operator+=(const Vector4 &amp;vec)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:53</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a4015fb1250f5c6ff3dbe37c0c035734f"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a4015fb1250f5c6ff3dbe37c0c035734f">epion::Math::Vector4::operator/</a></div><div class="ttdeci">Vector4 operator/(const Vector4 &amp;vec) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:122</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_ad7697e02a1e5e68d10d12440d095372b"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#ad7697e02a1e5e68d10d12440d095372b">epion::Math::Vector4::w</a></div><div class="ttdeci">T w</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:11</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a5271f30eb9a74cf20a1d0b2762b088c1"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a5271f30eb9a74cf20a1d0b2762b088c1">epion::Math::Vector4::serialize</a></div><div class="ttdeci">void serialize(Archive &amp;archive, Vector4&lt; T &gt;)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:18</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a034f304fb30f3831d8619f13123cb542"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a034f304fb30f3831d8619f13123cb542">epion::Math::Vector4::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:9</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a8dd71e2aa2523cfca5851da8c259ea6f"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a8dd71e2aa2523cfca5851da8c259ea6f">epion::Math::Vector4::operator==</a></div><div class="ttdeci">bool operator==(const Vector4 &amp;vec) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:148</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a8483b51233f1ba5ea6f1fccf62bf554e"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a8483b51233f1ba5ea6f1fccf62bf554e">epion::Math::Vector4::operator/=</a></div><div class="ttdeci">Vector4 &amp; operator/=(const Vector4 &amp;vec)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:130</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a1e4ad25bd3fa529a3a20ba48191350d7"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a1e4ad25bd3fa529a3a20ba48191350d7">epion::Math::Vector4::operator-</a></div><div class="ttdeci">Vector4 operator-(const Vector4 &amp;vec) const</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:71</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a64c745e2ef01a46da87fcbba51cf05b4"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a64c745e2ef01a46da87fcbba51cf05b4">epion::Math::Vector4::operator+=</a></div><div class="ttdeci">Vector4 &amp; operator+=(const T value)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:61</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html_a6d028e2b15a94176cc44613458fe07a4"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html#a6d028e2b15a94176cc44613458fe07a4">epion::Math::Vector4::set_z</a></div><div class="ttdeci">Vector4 &amp; set_z(T _z)</div><div class="ttdef"><b>Definition:</b> EpionVector4.h:174</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

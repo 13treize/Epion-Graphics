@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/String/EpionString.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_395e0d6a080ef382d6d983bbacb43fd8.html">String</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">EpionString.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_epion_string_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace   </span><a class="code" href="namespaceepion_1_1_string.html">epion::String</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classepion_1_1_string_1_1_string_converter.html">   12</a></span>&#160;    <span class="keyword">class   </span><a class="code" href="classepion_1_1_string_1_1_string_converter.html">StringConverter</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="comment">//char → wchar_t</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">static</span>  <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a0fddd61a79f9eb6de3e4aa61fc69e4c7">ToWchar</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str, <span class="keywordtype">wchar_t</span>* ret, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    max_size = 256);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">//wchar_t → char</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_string_1_1_string_converter.html#addf682bbc7a3b7df0e047629183ab1e3">ToChar</a>(<span class="keyword">const</span> <span class="keywordtype">wchar_t</span>* str, <span class="keywordtype">char</span>* ret, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>  max_size = 256);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">//string → wstring</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">static</span>  std::wstring    <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a70378a242a40ce2e133e65d7ee137383">ToWstring</a>(<span class="keyword">const</span> std::string&amp; str);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">//wstring → string</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_string_1_1_string_converter.html#ae2cce1e1af9ae8ff126fe33d0d99ea07">ToString</a>(<span class="keyword">const</span> std::wstring&amp; str, std::string ret, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> max_size = 256);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">//  引数からファイルパスを取得</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#adc55ba7c5d2639a13465cf795f5f155c">GetFilePath</a>(<span class="keyword">const</span> std::string&amp; file_name);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">static</span>  std::wstring    <a class="code" href="classepion_1_1_string_1_1_string_converter.html#adc55ba7c5d2639a13465cf795f5f155c">GetFilePath</a>(<span class="keyword">const</span> std::wstring&amp; file_name);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">//  引数の拡張子を取得</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">static</span>  std::string <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a99ac754794cfab317fbd45f6000571c1">GetExtension</a>(<span class="keyword">const</span> std::string&amp; str_);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">//std::to_string FVector2</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a56c23ec4ada29cb97a690c07ba4ed5de">ToString2</a>(<a class="code" href="structepion_1_1_math_1_1_vector2.html">Math::FVector2</a>&amp; vec2, <span class="keyword">const</span> std::string&amp; str = <span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a56c23ec4ada29cb97a690c07ba4ed5de">ToString2</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keyword">const</span> std::string&amp; str = <span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#ab1117b5dc56a5bc7760843888ce17a7d">ToString3</a>(<a class="code" href="structepion_1_1_math_1_1_vector3.html">Math::FVector3</a>&amp; vec3, <span class="keyword">const</span> std::string&amp; str = <span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#ab1117b5dc56a5bc7760843888ce17a7d">ToString3</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z, <span class="keyword">const</span> std::string&amp; str = <span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">//std::to_string FVector4</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a79a061329565c3ff5865650816d60641">ToString4</a>(<a class="code" href="structepion_1_1_math_1_1_vector4.html">Math::FVector4</a>&amp; vec4, <span class="keyword">const</span> std::string&amp; str = <span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a79a061329565c3ff5865650816d60641">ToString4</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> w, <span class="keyword">const</span> std::string&amp; str = <span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">static</span>  std::string     <a class="code" href="classepion_1_1_string_1_1_string_converter.html#a239a550bb82328a064b6f220138b8488">GetSpace</a>(<span class="keywordtype">int</span> num);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        [[nodiscard]] <span class="keyword">static</span> std::wstring   <a class="code" href="classepion_1_1_string_1_1_string_converter.html#ae572010cff9579d7d70faaa23fd5ccc5">SetFilePath</a>(<span class="keyword">const</span>   <span class="keywordtype">wchar_t</span>* add_path_filename, <span class="keyword">const</span>   <span class="keywordtype">wchar_t</span>* resource_filename);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceepion_1_1_string_html"><div class="ttname"><a href="namespaceepion_1_1_string.html">epion::String</a></div><div class="ttdef"><b>Definition:</b> EpionString.cpp:8</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_ae2cce1e1af9ae8ff126fe33d0d99ea07"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#ae2cce1e1af9ae8ff126fe33d0d99ea07">epion::String::StringConverter::ToString</a></div><div class="ttdeci">static void ToString(const std::wstring &amp;str, std::string ret, unsigned int max_size=256)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:33</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_ab1117b5dc56a5bc7760843888ce17a7d"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#ab1117b5dc56a5bc7760843888ce17a7d">epion::String::StringConverter::ToString3</a></div><div class="ttdeci">static std::string ToString3(Math::FVector3 &amp;vec3, const std::string &amp;str=&quot;,&quot;)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:83</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_a0fddd61a79f9eb6de3e4aa61fc69e4c7"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#a0fddd61a79f9eb6de3e4aa61fc69e4c7">epion::String::StringConverter::ToWchar</a></div><div class="ttdeci">static void ToWchar(const char *str, wchar_t *ret, unsigned int max_size=256)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:10</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector3_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector3.html">epion::Math::Vector3</a></div><div class="ttdef"><b>Definition:</b> EpionVector3.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_a99ac754794cfab317fbd45f6000571c1"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#a99ac754794cfab317fbd45f6000571c1">epion::String::StringConverter::GetExtension</a></div><div class="ttdeci">static std::string GetExtension(const std::string &amp;str_)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:66</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_ae572010cff9579d7d70faaa23fd5ccc5"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#ae572010cff9579d7d70faaa23fd5ccc5">epion::String::StringConverter::SetFilePath</a></div><div class="ttdeci">static std::wstring SetFilePath(const wchar_t *add_path_filename, const wchar_t *resource_filename)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:57</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector4_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector4.html">epion::Math::Vector4</a></div><div class="ttdef"><b>Definition:</b> EpionVector4.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_adc55ba7c5d2639a13465cf795f5f155c"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#adc55ba7c5d2639a13465cf795f5f155c">epion::String::StringConverter::GetFilePath</a></div><div class="ttdeci">static std::string GetFilePath(const std::string &amp;file_name)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:42</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_addf682bbc7a3b7df0e047629183ab1e3"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#addf682bbc7a3b7df0e047629183ab1e3">epion::String::StringConverter::ToChar</a></div><div class="ttdeci">static void ToChar(const wchar_t *str, char *ret, unsigned int max_size=256)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:18</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_a239a550bb82328a064b6f220138b8488"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#a239a550bb82328a064b6f220138b8488">epion::String::StringConverter::GetSpace</a></div><div class="ttdeci">static std::string GetSpace(int num)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:103</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html">epion::String::StringConverter</a></div><div class="ttdef"><b>Definition:</b> EpionString.h:13</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_a70378a242a40ce2e133e65d7ee137383"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#a70378a242a40ce2e133e65d7ee137383">epion::String::StringConverter::ToWstring</a></div><div class="ttdeci">static std::wstring ToWstring(const std::string &amp;str)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:26</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_a79a061329565c3ff5865650816d60641"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#a79a061329565c3ff5865650816d60641">epion::String::StringConverter::ToString4</a></div><div class="ttdeci">static std::string ToString4(Math::FVector4 &amp;vec4, const std::string &amp;str=&quot;,&quot;)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:93</div></div>
+<div class="ttc" id="aclassepion_1_1_string_1_1_string_converter_html_a56c23ec4ada29cb97a690c07ba4ed5de"><div class="ttname"><a href="classepion_1_1_string_1_1_string_converter.html#a56c23ec4ada29cb97a690c07ba4ed5de">epion::String::StringConverter::ToString2</a></div><div class="ttdeci">static std::string ToString2(Math::FVector2 &amp;vec2, const std::string &amp;str=&quot;,&quot;)</div><div class="ttdef"><b>Definition:</b> EpionString.cpp:73</div></div>
+<div class="ttc" id="astructepion_1_1_math_1_1_vector2_html"><div class="ttname"><a href="structepion_1_1_math_1_1_vector2.html">epion::Math::Vector2</a></div><div class="ttdef"><b>Definition:</b> EpionVector2.h:6</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

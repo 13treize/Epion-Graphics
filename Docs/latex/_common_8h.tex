@@ -1,0 +1,91 @@
+\hypertarget{_common_8h}{}\doxysection{C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+Common.h ファイル}
+\label{_common_8h}\index{C:/Users/treize/Desktop/Epion-\/Graphics/Epion12/Common.h@{C:/Users/treize/Desktop/Epion-\/Graphics/Epion12/Common.h}}
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classepion_1_1_singleton}{epion\+::\+Singleton$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{classepion_1_1_base_class}{epion\+::\+Base\+Class}}
+\end{DoxyCompactItemize}
+\doxysubsection*{名前空間}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceepion}{epion}}
+\end{DoxyCompactItemize}
+\doxysubsection*{マクロ定義}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_common_8h_ac966cb3476cb46a25c7f517b33392602}{st\+\_\+cast}}~static\+\_\+cast
+\item 
+\#define \mbox{\hyperlink{_common_8h_a1f68aa20bbc7ad6e840a7ec1aca94deb}{r\+\_\+cast}}~reinterpret\+\_\+cast
+\item 
+\#define \mbox{\hyperlink{_common_8h_a4e0fc547306d5f8ac3ca6a1ea4ad7904}{c\+\_\+cast}}~const\+\_\+cast
+\item 
+\#define \mbox{\hyperlink{_common_8h_af6875c1f2c1f99d6c046bd7168722f14}{d\+\_\+cast}}~dynamic\+\_\+cast
+\item 
+\#define \mbox{\hyperlink{_common_8h_acd1f77cd87eb3283dda8111adb0419f3}{sa\+\_\+cast}}~safe\+\_\+cast
+\item 
+\#define \mbox{\hyperlink{_common_8h_aeafed05a3063ca43b42a675f1d928b67}{I\+\_\+\+F\+OR}}(value\+\_\+limit)~for(unsigned	char	i	=0;	i	$<$value\+\_\+limit;	i++)
+\item 
+\#define \mbox{\hyperlink{_common_8h_a61afd3412f4df573824e552e84c37ba0}{T\+O\+\_\+\+S\+T\+R\+I\+NG}}(Variable\+Name)~\#	Variable\+Name
+\end{DoxyCompactItemize}
+\doxysubsection*{型定義}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\using \mbox{\hyperlink{namespaceepion_a872c1a59e80466cad125bc80c3cc8277}{epion\+::com\+\_\+ptr}} = Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ T $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class A , size\+\_\+t N, class T $>$ }\\void \mbox{\hyperlink{namespaceepion_aba984603e92493694f69eccfd4995ff3}{epion\+::set\+\_\+array\+\_\+fill}} (A(\&array)\mbox{[}N\mbox{]}, const T \&val)
+\end{DoxyCompactItemize}
+\doxysubsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+constexpr int \mbox{\hyperlink{namespaceepion_a516533edebf43e6e59d0e4dcbcc2681d}{epion\+::\+C\+H\+A\+R\+\_\+\+S\+I\+ZE}} = 256
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{マクロ定義詳解}
+\mbox{\Hypertarget{_common_8h_a4e0fc547306d5f8ac3ca6a1ea4ad7904}\label{_common_8h_a4e0fc547306d5f8ac3ca6a1ea4ad7904}} 
+\index{Common.h@{Common.h}!c\_cast@{c\_cast}}
+\index{c\_cast@{c\_cast}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{c\_cast}{c\_cast}}
+{\footnotesize\ttfamily \#define c\+\_\+cast~const\+\_\+cast}
+
+\mbox{\Hypertarget{_common_8h_af6875c1f2c1f99d6c046bd7168722f14}\label{_common_8h_af6875c1f2c1f99d6c046bd7168722f14}} 
+\index{Common.h@{Common.h}!d\_cast@{d\_cast}}
+\index{d\_cast@{d\_cast}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{d\_cast}{d\_cast}}
+{\footnotesize\ttfamily \#define d\+\_\+cast~dynamic\+\_\+cast}
+
+\mbox{\Hypertarget{_common_8h_aeafed05a3063ca43b42a675f1d928b67}\label{_common_8h_aeafed05a3063ca43b42a675f1d928b67}} 
+\index{Common.h@{Common.h}!I\_FOR@{I\_FOR}}
+\index{I\_FOR@{I\_FOR}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{I\_FOR}{I\_FOR}}
+{\footnotesize\ttfamily \#define I\+\_\+\+F\+OR(\begin{DoxyParamCaption}\item[{}]{value\+\_\+limit }\end{DoxyParamCaption})~for(unsigned	char	i	=0;	i	$<$value\+\_\+limit;	i++)}
+
+\mbox{\Hypertarget{_common_8h_a1f68aa20bbc7ad6e840a7ec1aca94deb}\label{_common_8h_a1f68aa20bbc7ad6e840a7ec1aca94deb}} 
+\index{Common.h@{Common.h}!r\_cast@{r\_cast}}
+\index{r\_cast@{r\_cast}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{r\_cast}{r\_cast}}
+{\footnotesize\ttfamily \#define r\+\_\+cast~reinterpret\+\_\+cast}
+
+\mbox{\Hypertarget{_common_8h_acd1f77cd87eb3283dda8111adb0419f3}\label{_common_8h_acd1f77cd87eb3283dda8111adb0419f3}} 
+\index{Common.h@{Common.h}!sa\_cast@{sa\_cast}}
+\index{sa\_cast@{sa\_cast}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{sa\_cast}{sa\_cast}}
+{\footnotesize\ttfamily \#define sa\+\_\+cast~safe\+\_\+cast}
+
+\mbox{\Hypertarget{_common_8h_ac966cb3476cb46a25c7f517b33392602}\label{_common_8h_ac966cb3476cb46a25c7f517b33392602}} 
+\index{Common.h@{Common.h}!st\_cast@{st\_cast}}
+\index{st\_cast@{st\_cast}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{st\_cast}{st\_cast}}
+{\footnotesize\ttfamily \#define st\+\_\+cast~static\+\_\+cast}
+
+\mbox{\Hypertarget{_common_8h_a61afd3412f4df573824e552e84c37ba0}\label{_common_8h_a61afd3412f4df573824e552e84c37ba0}} 
+\index{Common.h@{Common.h}!TO\_STRING@{TO\_STRING}}
+\index{TO\_STRING@{TO\_STRING}!Common.h@{Common.h}}
+\doxysubsubsection{\texorpdfstring{TO\_STRING}{TO\_STRING}}
+{\footnotesize\ttfamily \#define T\+O\+\_\+\+S\+T\+R\+I\+NG(\begin{DoxyParamCaption}\item[{}]{Variable\+Name }\end{DoxyParamCaption})~\#	Variable\+Name}
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/Scene/SceneManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cac4e5b56fb3a8d8c7df68716c34b69f.html">Scene</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">SceneManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_scene_manager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace   </span><a class="code" href="namespaceepion.html">epion</a></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classepion_1_1_scene.html">    4</a></span>&#160;    <span class="keyword">class   </span><a class="code" href="classepion_1_1_scene.html">Scene</a>   <span class="keyword">abstract</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classepion_1_1_scene.html#ad05b3a6ec36db2244484da665ecccf42">    7</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classepion_1_1_scene.html#ad05b3a6ec36db2244484da665ecccf42">~Scene</a>() {};</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classepion_1_1_scene.html#aa6799a8538e31a6ac9cddc50c63eab15">    9</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="classepion_1_1_scene.html#aa6799a8538e31a6ac9cddc50c63eab15">Initialize</a>() = 0;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classepion_1_1_scene.html#a277dd09ab314c40aadef6d3e8bd483b2">   10</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="classepion_1_1_scene.html#a277dd09ab314c40aadef6d3e8bd483b2">Finalize</a>() = 0;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classepion_1_1_scene.html#a8e3454cab993e42c67ebc244f5cd76b4">   11</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_scene.html#a8e3454cab993e42c67ebc244f5cd76b4">Update</a>() = 0;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classepion_1_1_scene.html#acaf4626d73c8699692ada9f8f6377b78">   12</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_scene.html#acaf4626d73c8699692ada9f8f6377b78">Render</a>(<span class="keywordtype">int</span> frame_count) = 0;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classepion_1_1_scene.html#a42e1824f7e45d815361f2ff538d10661">   13</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_scene.html#a42e1824f7e45d815361f2ff538d10661">RenderTex</a>() = 0;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="comment">//std::unique_ptr&lt;Texture&gt; m_tex;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    };</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classepion_1_1_scene_manager.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_scene_manager.html">SceneManager</a>  final</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_scene_manager.html#a0a556849f37d86dd5999714963d5cf65">Update</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_scene_manager.html#a70a85f5728d3faac2348b5ba7246f812">Render</a>(<span class="keywordtype">int</span> frame_count);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classepion_1_1_scene_manager.html#aba7b5075a8811265d70c0b16ce1c8bd8">Release</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">//static std::unique_ptr&lt;Texture&gt;&amp; GetTexData();</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">class </span>T, <span class="keyword">class </span>...Args&gt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_scene_manager.html#aa033ff6edd5bd73828957912f7c71dbf">SetNextScene</a>(Args ...args);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_scene_manager.html#a121824f5ce6860d52338b29bd444b21e">ChangeScene</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">static</span> std::unique_ptr&lt;Scene&gt; m_scene;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">static</span> std::unique_ptr&lt;Scene&gt; m_next_scene;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class  </span>T, <span class="keyword">class    </span>...Args&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classepion_1_1_scene_manager.html#aa033ff6edd5bd73828957912f7c71dbf">   39</a></span>&#160;    <span class="keyword">inline</span>  <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_scene_manager.html#aa033ff6edd5bd73828957912f7c71dbf">SceneManager::SetNextScene</a>(Args ...args)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (!m_next_scene)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            m_next_scene = std::make_unique&lt;T&gt;(args...);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_scene_html"><div class="ttname"><a href="classepion_1_1_scene.html">epion::Scene</a></div><div class="ttdef"><b>Definition:</b> SceneManager.h:5</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_manager_html_aba7b5075a8811265d70c0b16ce1c8bd8"><div class="ttname"><a href="classepion_1_1_scene_manager.html#aba7b5075a8811265d70c0b16ce1c8bd8">epion::SceneManager::Release</a></div><div class="ttdeci">static bool Release()</div><div class="ttdef"><b>Definition:</b> SceneManager.cpp:24</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_html_a42e1824f7e45d815361f2ff538d10661"><div class="ttname"><a href="classepion_1_1_scene.html#a42e1824f7e45d815361f2ff538d10661">epion::Scene::RenderTex</a></div><div class="ttdeci">virtual void RenderTex()=0</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_html_aa6799a8538e31a6ac9cddc50c63eab15"><div class="ttname"><a href="classepion_1_1_scene.html#aa6799a8538e31a6ac9cddc50c63eab15">epion::Scene::Initialize</a></div><div class="ttdeci">virtual bool Initialize()=0</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_manager_html_a121824f5ce6860d52338b29bd444b21e"><div class="ttname"><a href="classepion_1_1_scene_manager.html#a121824f5ce6860d52338b29bd444b21e">epion::SceneManager::ChangeScene</a></div><div class="ttdeci">static void ChangeScene()</div><div class="ttdef"><b>Definition:</b> SceneManager.cpp:35</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_manager_html"><div class="ttname"><a href="classepion_1_1_scene_manager.html">epion::SceneManager</a></div><div class="ttdef"><b>Definition:</b> SceneManager.h:19</div></div>
+<div class="ttc" id="anamespaceepion_html"><div class="ttname"><a href="namespaceepion.html">epion</a></div><div class="ttdef"><b>Definition:</b> CameraManager.cpp:13</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_manager_html_a70a85f5728d3faac2348b5ba7246f812"><div class="ttname"><a href="classepion_1_1_scene_manager.html#a70a85f5728d3faac2348b5ba7246f812">epion::SceneManager::Render</a></div><div class="ttdeci">static void Render(int frame_count)</div><div class="ttdef"><b>Definition:</b> SceneManager.cpp:20</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_html_a277dd09ab314c40aadef6d3e8bd483b2"><div class="ttname"><a href="classepion_1_1_scene.html#a277dd09ab314c40aadef6d3e8bd483b2">epion::Scene::Finalize</a></div><div class="ttdeci">virtual bool Finalize()=0</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_manager_html_aa033ff6edd5bd73828957912f7c71dbf"><div class="ttname"><a href="classepion_1_1_scene_manager.html#aa033ff6edd5bd73828957912f7c71dbf">epion::SceneManager::SetNextScene</a></div><div class="ttdeci">static void SetNextScene(Args ...args)</div><div class="ttdef"><b>Definition:</b> SceneManager.h:39</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_html_a8e3454cab993e42c67ebc244f5cd76b4"><div class="ttname"><a href="classepion_1_1_scene.html#a8e3454cab993e42c67ebc244f5cd76b4">epion::Scene::Update</a></div><div class="ttdeci">virtual void Update()=0</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_html_ad05b3a6ec36db2244484da665ecccf42"><div class="ttname"><a href="classepion_1_1_scene.html#ad05b3a6ec36db2244484da665ecccf42">epion::Scene::~Scene</a></div><div class="ttdeci">virtual ~Scene()</div><div class="ttdef"><b>Definition:</b> SceneManager.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_manager_html_a0a556849f37d86dd5999714963d5cf65"><div class="ttname"><a href="classepion_1_1_scene_manager.html#a0a556849f37d86dd5999714963d5cf65">epion::SceneManager::Update</a></div><div class="ttdeci">static void Update()</div><div class="ttdef"><b>Definition:</b> SceneManager.cpp:15</div></div>
+<div class="ttc" id="aclassepion_1_1_scene_html_acaf4626d73c8699692ada9f8f6377b78"><div class="ttname"><a href="classepion_1_1_scene.html#acaf4626d73c8699692ada9f8f6377b78">epion::Scene::Render</a></div><div class="ttdeci">virtual void Render(int frame_count)=0</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

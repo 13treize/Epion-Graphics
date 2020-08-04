@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Epion-Graphics: C:/Users/treize/Desktop/Epion-Graphics/Epion12/DX12/PipeLine.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Epion-Graphics
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e189fe5d210138ae938e3558038c40a5.html">Epion12</a></li><li class="navelem"><a class="el" href="dir_cb8a3393a2e0031f7f54a9d0b9d7ffe1.html">DX12</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">PipeLine.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_pipe_line_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;{</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">size_t</span> MAX_BACK_BUFFER_COUNT = 3;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structepion_1_1_d_x12_1_1_pipe_line_states.html">    6</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structepion_1_1_d_x12_1_1_pipe_line_states.html">PipeLineStates</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structepion_1_1_d_x12_1_1_pipe_line_states.html#a14575b47f725ad982dd4b3c2ac6a7001">    8</a></span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="structepion_1_1_d_x12_1_1_pipe_line_states.html#a14575b47f725ad982dd4b3c2ac6a7001">NUM_BACK_BUFFERS</a> = 3;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    };</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classepion_1_1_d_x12_1_1_pipe_line.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html">PipeLine</a> final</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">bool</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a23872c3daa1ac21b8587beea9c5e0bf7">Initialize</a>(HWND hwnd);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">bool</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a5ea43d8ae929703acb8ec297c5c6c618">Finalize</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a4ff4628ab064a8ed213979c488fa0100">Update</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a6df838421a9f1afa5db7c6c5ffe1c35e">Render</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#abccf7caa1ff57f6e459acdb3272d66f7">EndUpdate</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        __forceinline <span class="keywordtype">void</span>  <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#ab9d8493e43c2697f1339df698a386047">WaitForGPU</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        __forceinline <span class="keywordtype">void</span> <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a3f9c8890655b3f0610595795eabee208">Reset</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        __forceinline <span class="keywordtype">void</span>  <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#afa3a3dcb63df951a95130a91b955094a">Begin</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a32bef2b0b200c69a2b6ca7acf103c405">End</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">//微妙</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a28964d3444cef24fa79ac0e9730bff72">ResouceBarrierBegin</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a98a1356ed98f27401d92d02737718cc3">ResouceBarrierEnd</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">//get</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12DescriptorHeap&gt;</a>&amp; <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a44a635d37e2f29287f26ca9bc4e94a71">GetHeapImGui</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a24886b6091b919c5945f5b639ec7487c">GetFrameCount</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">//set</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span>    <a class="code" href="classepion_1_1_d_x12_1_1_pipe_line.html#a62b356652118092a13449449169bdc36">SetBackColor</a>(std::array&lt;float, 4&gt;&amp; color);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGISwapChain4&gt;</a> m_swap;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;IDXGIFactory6&gt;</a> m_factory;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12CommandQueue&gt;</a> m_cmd_queue;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12CommandAllocator&gt;</a> m_cmd_alloc;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12Fence&gt;</a> m_fence;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12DescriptorHeap&gt;</a> m_heap_imgui;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">com_ptr&lt;ID3D12DescriptorHeap&gt;</a> m_heap_rtv;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::vector&lt;com_ptr&lt;ID3D12Resource&gt;&gt; m_back_buffers;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        D3D12_CPU_DESCRIPTOR_HANDLE m_rtv_handle;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        D3D12_RESOURCE_BARRIER m_barrier_desc;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        UINT64 m_fence_value;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::array&lt;float, 4&gt; m_clear_color;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        __forceinline <span class="keywordtype">void</span>  ClearRenderTarget();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    };</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a28964d3444cef24fa79ac0e9730bff72"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a28964d3444cef24fa79ac0e9730bff72">epion::DX12::PipeLine::ResouceBarrierBegin</a></div><div class="ttdeci">void ResouceBarrierBegin()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:132</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a6df838421a9f1afa5db7c6c5ffe1c35e"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a6df838421a9f1afa5db7c6c5ffe1c35e">epion::DX12::PipeLine::Render</a></div><div class="ttdeci">void Render()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:60</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a24886b6091b919c5945f5b639ec7487c"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a24886b6091b919c5945f5b639ec7487c">epion::DX12::PipeLine::GetFrameCount</a></div><div class="ttdeci">int GetFrameCount()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:112</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a3f9c8890655b3f0610595795eabee208"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a3f9c8890655b3f0610595795eabee208">epion::DX12::PipeLine::Reset</a></div><div class="ttdeci">__forceinline void Reset()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:93</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_afa3a3dcb63df951a95130a91b955094a"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#afa3a3dcb63df951a95130a91b955094a">epion::DX12::PipeLine::Begin</a></div><div class="ttdeci">__forceinline void Begin()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:99</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a5ea43d8ae929703acb8ec297c5c6c618"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a5ea43d8ae929703acb8ec297c5c6c618">epion::DX12::PipeLine::Finalize</a></div><div class="ttdeci">bool Finalize()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:53</div></div>
+<div class="ttc" id="astructepion_1_1_d_x12_1_1_pipe_line_states_html_a14575b47f725ad982dd4b3c2ac6a7001"><div class="ttname"><a href="structepion_1_1_d_x12_1_1_pipe_line_states.html#a14575b47f725ad982dd4b3c2ac6a7001">epion::DX12::PipeLineStates::NUM_BACK_BUFFERS</a></div><div class="ttdeci">const int NUM_BACK_BUFFERS</div><div class="ttdef"><b>Definition:</b> PipeLine.h:8</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a98a1356ed98f27401d92d02737718cc3"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a98a1356ed98f27401d92d02737718cc3">epion::DX12::PipeLine::ResouceBarrierEnd</a></div><div class="ttdeci">void ResouceBarrierEnd()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:145</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a62b356652118092a13449449169bdc36"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a62b356652118092a13449449169bdc36">epion::DX12::PipeLine::SetBackColor</a></div><div class="ttdeci">void SetBackColor(std::array&lt; float, 4 &gt; &amp;color)</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:117</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_ab9d8493e43c2697f1339df698a386047"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#ab9d8493e43c2697f1339df698a386047">epion::DX12::PipeLine::WaitForGPU</a></div><div class="ttdeci">__forceinline void WaitForGPU()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:80</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a4ff4628ab064a8ed213979c488fa0100"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a4ff4628ab064a8ed213979c488fa0100">epion::DX12::PipeLine::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:57</div></div>
+<div class="ttc" id="anamespaceepion_1_1_d_x12_html"><div class="ttname"><a href="namespaceepion_1_1_d_x12.html">epion::DX12</a></div><div class="ttdef"><b>Definition:</b> BlendState.cpp:6</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html">epion::DX12::PipeLine</a></div><div class="ttdef"><b>Definition:</b> PipeLine.h:11</div></div>
+<div class="ttc" id="anamespaceepion_html_a872c1a59e80466cad125bc80c3cc8277"><div class="ttname"><a href="namespaceepion.html#a872c1a59e80466cad125bc80c3cc8277">epion::com_ptr</a></div><div class="ttdeci">Microsoft::WRL::ComPtr&lt; T &gt; com_ptr</div><div class="ttdef"><b>Definition:</b> Common.h:44</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a44a635d37e2f29287f26ca9bc4e94a71"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a44a635d37e2f29287f26ca9bc4e94a71">epion::DX12::PipeLine::GetHeapImGui</a></div><div class="ttdeci">com_ptr&lt; ID3D12DescriptorHeap &gt; &amp; GetHeapImGui()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:108</div></div>
+<div class="ttc" id="astructepion_1_1_d_x12_1_1_pipe_line_states_html"><div class="ttname"><a href="structepion_1_1_d_x12_1_1_pipe_line_states.html">epion::DX12::PipeLineStates</a></div><div class="ttdef"><b>Definition:</b> PipeLine.h:7</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a23872c3daa1ac21b8587beea9c5e0bf7"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a23872c3daa1ac21b8587beea9c5e0bf7">epion::DX12::PipeLine::Initialize</a></div><div class="ttdeci">bool Initialize(HWND hwnd)</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:16</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_a32bef2b0b200c69a2b6ca7acf103c405"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#a32bef2b0b200c69a2b6ca7acf103c405">epion::DX12::PipeLine::End</a></div><div class="ttdeci">void End()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:102</div></div>
+<div class="ttc" id="aclassepion_1_1_d_x12_1_1_pipe_line_html_abccf7caa1ff57f6e459acdb3272d66f7"><div class="ttname"><a href="classepion_1_1_d_x12_1_1_pipe_line.html#abccf7caa1ff57f6e459acdb3272d66f7">epion::DX12::PipeLine::EndUpdate</a></div><div class="ttdeci">void EndUpdate()</div><div class="ttdef"><b>Definition:</b> PipeLine.cpp:66</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築: &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

@@ -1,0 +1,192 @@
+\hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager}{}\doxysection{epion\+::D\+X12\+::Constant\+Buffer\+Manager クラス}
+\label{classepion_1_1_d_x12_1_1_constant_buffer_manager}\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+
+
+{\ttfamily \#include $<$Constant\+Buffer\+Manager.\+h$>$}
+
+\doxysubsection*{静的公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a2ac1bea5e5b979ec2ec55ad2aa3c5e75}{Initialize}} ()
+\item 
+static bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_aab3658b9a411a10c3be20d2d11498b99}{Build2D}} (const int buffer\+\_\+num=1)
+\item 
+static bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_aee6dcc3204d06c6dc72a76fb66f03257}{Build3D}} (const int buffer\+\_\+num=2)
+\item 
+static bool \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_ac2b5005aaf7ee408fa3153fdd22d397d}{Finalize}} ()
+\item 
+static void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a0aff6ecce1a681b4851e03c4d5d9eafa}{Update\+C\+Buffer0}} (const \mbox{\hyperlink{namespaceepion_1_1_math_af1aabb16975dbbad2e5703d7b0a019cd}{Math\+::\+F\+Vector2}} \&mouse\+\_\+pos)
+\item 
+static void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_add1631bd463fac1ef7e060bd06c1af5b}{Update\+C\+Buffer1}} (const Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \&world)
+\item 
+static void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_ac210965fe828be4405b4f9eef669125a}{Update\+C\+Buffer2}} (const Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \&view, const Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \&projection, const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&camera\+\_\+pos, const \mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&color, const \mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&dir, const \mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&ambient)
+\item 
+static void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_af4a7b9cdc6a250ddf58d136bcd948d2c}{Set\+Heap}} ()
+\item 
+static void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a546c978bbaef89d96a0b29460c3b96a7}{Set\+C\+Buffer0}} (int index)
+\item 
+static void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a6634dc12964504e7536a4c5e54c2eb4e}{Set\+C\+Buffer1}} (unsigned int index, int frame\+\_\+count)
+\item 
+static void \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_afc8c4f2bafbd7d4d227200d83e48a172}{Set\+C\+Buffer2}} (int index)
+\item 
+static U\+I\+NT \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_af23271b49c2c6b885a085fd0b069ca4b}{Calc\+Constant\+Buffer\+Byte\+Size}} (U\+I\+NT byte\+Size)
+\end{DoxyCompactItemize}
+\doxysubsection*{静的公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_descriptor_heap}{D\+X12\+::\+Descriptor\+Heap}} $>$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a3aa6f7ed277037803cee7512a13646db}{m\+\_\+heap}}
+\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}}$<$ C\+Buffer0 $>$ $>$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a42694f04cf66e00828b5b9ee84b46210}{m\+\_\+cbuffer0}}
+\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}}$<$ C\+Buffer1 $>$ $>$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a3961860810e0fd09b9509ac2a0570dce}{m\+\_\+cbuffer1}}
+\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}}$<$ C\+Buffer2 $>$ $>$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a17a3a4db76ac33ee12bad146dfbfce97}{m\+\_\+cbuffer2}}
+\item 
+static C\+Buffer0 $\ast$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_abfa4f08f1b137e034e812df954f71888}{m\+\_\+cbuffer0\+\_\+data}}
+\item 
+static C\+Buffer1 $\ast$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a24250e531d0d321f97abb91cc4e12688}{m\+\_\+cbuffer1\+\_\+data}}
+\item 
+static C\+Buffer2 $\ast$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a26099a2e6f20846fcd4c42ef1b12c7c3}{m\+\_\+cbuffer2\+\_\+data}}
+\item 
+static D3\+D12\+\_\+\+G\+P\+U\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a6562629b7fc1b96bf4eb4f4df38d0111}{m\+\_\+gpu\+\_\+virtual\+\_\+address1}}
+\item 
+static D3\+D12\+\_\+\+G\+P\+U\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS \mbox{\hyperlink{classepion_1_1_d_x12_1_1_constant_buffer_manager_a0123f9f94a4d5b0cc27c96195e24e68f}{m\+\_\+gpu\+\_\+virtual\+\_\+address2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_aab3658b9a411a10c3be20d2d11498b99}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_aab3658b9a411a10c3be20d2d11498b99}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!Build2D@{Build2D}}
+\index{Build2D@{Build2D}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{Build2D()}{Build2D()}}
+{\footnotesize\ttfamily bool epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Build2D (\begin{DoxyParamCaption}\item[{const int}]{buffer\+\_\+num = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_aee6dcc3204d06c6dc72a76fb66f03257}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_aee6dcc3204d06c6dc72a76fb66f03257}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!Build3D@{Build3D}}
+\index{Build3D@{Build3D}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{Build3D()}{Build3D()}}
+{\footnotesize\ttfamily bool epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Build3D (\begin{DoxyParamCaption}\item[{const int}]{buffer\+\_\+num = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_af23271b49c2c6b885a085fd0b069ca4b}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_af23271b49c2c6b885a085fd0b069ca4b}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!CalcConstantBufferByteSize@{CalcConstantBufferByteSize}}
+\index{CalcConstantBufferByteSize@{CalcConstantBufferByteSize}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{CalcConstantBufferByteSize()}{CalcConstantBufferByteSize()}}
+{\footnotesize\ttfamily U\+I\+NT epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Calc\+Constant\+Buffer\+Byte\+Size (\begin{DoxyParamCaption}\item[{U\+I\+NT}]{byte\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_ac2b5005aaf7ee408fa3153fdd22d397d}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_ac2b5005aaf7ee408fa3153fdd22d397d}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily bool epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a2ac1bea5e5b979ec2ec55ad2aa3c5e75}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a2ac1bea5e5b979ec2ec55ad2aa3c5e75}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a546c978bbaef89d96a0b29460c3b96a7}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a546c978bbaef89d96a0b29460c3b96a7}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!SetCBuffer0@{SetCBuffer0}}
+\index{SetCBuffer0@{SetCBuffer0}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{SetCBuffer0()}{SetCBuffer0()}}
+{\footnotesize\ttfamily void epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Set\+C\+Buffer0 (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a6634dc12964504e7536a4c5e54c2eb4e}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a6634dc12964504e7536a4c5e54c2eb4e}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!SetCBuffer1@{SetCBuffer1}}
+\index{SetCBuffer1@{SetCBuffer1}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{SetCBuffer1()}{SetCBuffer1()}}
+{\footnotesize\ttfamily void epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Set\+C\+Buffer1 (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{int}]{frame\+\_\+count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_afc8c4f2bafbd7d4d227200d83e48a172}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_afc8c4f2bafbd7d4d227200d83e48a172}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!SetCBuffer2@{SetCBuffer2}}
+\index{SetCBuffer2@{SetCBuffer2}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{SetCBuffer2()}{SetCBuffer2()}}
+{\footnotesize\ttfamily void epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Set\+C\+Buffer2 (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_af4a7b9cdc6a250ddf58d136bcd948d2c}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_af4a7b9cdc6a250ddf58d136bcd948d2c}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!SetHeap@{SetHeap}}
+\index{SetHeap@{SetHeap}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{SetHeap()}{SetHeap()}}
+{\footnotesize\ttfamily void epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Set\+Heap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a0aff6ecce1a681b4851e03c4d5d9eafa}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a0aff6ecce1a681b4851e03c4d5d9eafa}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!UpdateCBuffer0@{UpdateCBuffer0}}
+\index{UpdateCBuffer0@{UpdateCBuffer0}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{UpdateCBuffer0()}{UpdateCBuffer0()}}
+{\footnotesize\ttfamily void epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Update\+C\+Buffer0 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_af1aabb16975dbbad2e5703d7b0a019cd}{Math\+::\+F\+Vector2}} \&}]{mouse\+\_\+pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_add1631bd463fac1ef7e060bd06c1af5b}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_add1631bd463fac1ef7e060bd06c1af5b}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!UpdateCBuffer1@{UpdateCBuffer1}}
+\index{UpdateCBuffer1@{UpdateCBuffer1}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{UpdateCBuffer1()}{UpdateCBuffer1()}}
+{\footnotesize\ttfamily void epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Update\+C\+Buffer1 (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \&}]{world }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_ac210965fe828be4405b4f9eef669125a}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_ac210965fe828be4405b4f9eef669125a}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!UpdateCBuffer2@{UpdateCBuffer2}}
+\index{UpdateCBuffer2@{UpdateCBuffer2}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{UpdateCBuffer2()}{UpdateCBuffer2()}}
+{\footnotesize\ttfamily void epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::\+Update\+C\+Buffer2 (\begin{DoxyParamCaption}\item[{const Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \&}]{view,  }\item[{const Direct\+X\+::\+X\+M\+M\+A\+T\+R\+IX \&}]{projection,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_a90fd6d7afdc3ce682643d1fff6f18687}{Math\+::\+F\+Vector3}} \&}]{camera\+\_\+pos,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&}]{color,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&}]{dir,  }\item[{const \mbox{\hyperlink{namespaceepion_1_1_math_ae15593863199a3569bb46a323106f9f6}{Math\+::\+F\+Vector4}} \&}]{ambient }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a42694f04cf66e00828b5b9ee84b46210}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a42694f04cf66e00828b5b9ee84b46210}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_cbuffer0@{m\_cbuffer0}}
+\index{m\_cbuffer0@{m\_cbuffer0}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_cbuffer0}{m\_cbuffer0}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}}$<$ C\+Buffer0 $>$ $>$ epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+cbuffer0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_abfa4f08f1b137e034e812df954f71888}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_abfa4f08f1b137e034e812df954f71888}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_cbuffer0\_data@{m\_cbuffer0\_data}}
+\index{m\_cbuffer0\_data@{m\_cbuffer0\_data}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_cbuffer0\_data}{m\_cbuffer0\_data}}
+{\footnotesize\ttfamily C\+Buffer0 $\ast$ epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+cbuffer0\+\_\+data\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a3961860810e0fd09b9509ac2a0570dce}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a3961860810e0fd09b9509ac2a0570dce}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_cbuffer1@{m\_cbuffer1}}
+\index{m\_cbuffer1@{m\_cbuffer1}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_cbuffer1}{m\_cbuffer1}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}}$<$ C\+Buffer1 $>$ $>$ epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+cbuffer1\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a24250e531d0d321f97abb91cc4e12688}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a24250e531d0d321f97abb91cc4e12688}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_cbuffer1\_data@{m\_cbuffer1\_data}}
+\index{m\_cbuffer1\_data@{m\_cbuffer1\_data}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_cbuffer1\_data}{m\_cbuffer1\_data}}
+{\footnotesize\ttfamily C\+Buffer1 $\ast$ epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+cbuffer1\+\_\+data\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a17a3a4db76ac33ee12bad146dfbfce97}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a17a3a4db76ac33ee12bad146dfbfce97}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_cbuffer2@{m\_cbuffer2}}
+\index{m\_cbuffer2@{m\_cbuffer2}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_cbuffer2}{m\_cbuffer2}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_resource_buffer}{Resource\+Buffer}}$<$ C\+Buffer2 $>$ $>$ epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+cbuffer2\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a26099a2e6f20846fcd4c42ef1b12c7c3}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a26099a2e6f20846fcd4c42ef1b12c7c3}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_cbuffer2\_data@{m\_cbuffer2\_data}}
+\index{m\_cbuffer2\_data@{m\_cbuffer2\_data}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_cbuffer2\_data}{m\_cbuffer2\_data}}
+{\footnotesize\ttfamily C\+Buffer2 $\ast$ epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+cbuffer2\+\_\+data\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a6562629b7fc1b96bf4eb4f4df38d0111}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a6562629b7fc1b96bf4eb4f4df38d0111}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_gpu\_virtual\_address1@{m\_gpu\_virtual\_address1}}
+\index{m\_gpu\_virtual\_address1@{m\_gpu\_virtual\_address1}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_gpu\_virtual\_address1}{m\_gpu\_virtual\_address1}}
+{\footnotesize\ttfamily D3\+D12\+\_\+\+G\+P\+U\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+gpu\+\_\+virtual\+\_\+address1\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a0123f9f94a4d5b0cc27c96195e24e68f}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a0123f9f94a4d5b0cc27c96195e24e68f}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_gpu\_virtual\_address2@{m\_gpu\_virtual\_address2}}
+\index{m\_gpu\_virtual\_address2@{m\_gpu\_virtual\_address2}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_gpu\_virtual\_address2}{m\_gpu\_virtual\_address2}}
+{\footnotesize\ttfamily D3\+D12\+\_\+\+G\+P\+U\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+gpu\+\_\+virtual\+\_\+address2\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classepion_1_1_d_x12_1_1_constant_buffer_manager_a3aa6f7ed277037803cee7512a13646db}\label{classepion_1_1_d_x12_1_1_constant_buffer_manager_a3aa6f7ed277037803cee7512a13646db}} 
+\index{epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}!m\_heap@{m\_heap}}
+\index{m\_heap@{m\_heap}!epion::DX12::ConstantBufferManager@{epion::DX12::ConstantBufferManager}}
+\doxysubsubsection{\texorpdfstring{m\_heap}{m\_heap}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classepion_1_1_d_x12_1_1_descriptor_heap}{Descriptor\+Heap}} $>$ epion\+::\+D\+X12\+::\+Constant\+Buffer\+Manager\+::m\+\_\+heap\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+D\+X12/\mbox{\hyperlink{_constant_buffer_manager_8h}{Constant\+Buffer\+Manager.\+h}}\item 
+C\+:/\+Users/treize/\+Desktop/\+Epion-\/\+Graphics/\+Epion12/\+D\+X12/\mbox{\hyperlink{_constant_buffer_manager_8cpp}{Constant\+Buffer\+Manager.\+cpp}}\end{DoxyCompactItemize}
