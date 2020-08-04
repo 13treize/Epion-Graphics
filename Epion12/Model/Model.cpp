@@ -8,7 +8,6 @@ namespace epion::Model
 	{
 		m_is_update = true;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
-		m_vertex = std::make_unique<DX12::VertexBuffer>();
 		m_vertex_resource= std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
 		m_pipeline_desc = {};
@@ -97,6 +96,14 @@ namespace epion::Model
 		m_pipeline_desc.SampleDesc.Count = 1;
 		m_pipeline_desc.SampleDesc.Quality = 0;
 		m_pipeline_desc.pRootSignature = root_sig.Get();
+	}
+	void Model3D::ResourceUpdate()
+	{
+		DirectX::XMMATRIX S, R, T;
+		S = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
+		R = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
+		T = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
+		m_world_matrix = S * R * T;
 	}
 
 	void  Model3D::Draw(com_ptr<ID3D12GraphicsCommandList>& cmd)

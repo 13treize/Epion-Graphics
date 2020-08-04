@@ -16,8 +16,8 @@ namespace epion::DX12
 		{
 
 		}
-
-		bool Initialize(com_ptr<ID3D12Device>& device, unsigned int buffer_count, bool is_constant)
+		template<class U = ID3D12Device>
+		bool Initialize(com_ptr<U>& device, unsigned int buffer_count, bool is_constant)
 		{
 			m_byte_size = sizeof(T);
 			m_count = buffer_count;
@@ -42,7 +42,6 @@ namespace epion::DX12
 			resource_desc.SampleDesc.Count = 1;
 			resource_desc.Flags = D3D12_RESOURCE_FLAG_NONE;
 			resource_desc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
-
 			device->CreateCommittedResource(
 				&heap_prop,
 				D3D12_HEAP_FLAG_NONE,
@@ -54,6 +53,8 @@ namespace epion::DX12
 			m_resource_buffer->Map(0, nullptr, reinterpret_cast<void**>(&m_mapped_resource));
 			return true;
 		}
+		//template<>
+
 		bool Finalize()
 		{
 			if (m_resource_buffer != nullptr)
@@ -75,10 +76,20 @@ namespace epion::DX12
 			memcpy(m_mapped_resource, data.data(), sizeof(data));
 		}
 
+		void CopyResource(const T& data)
+		{
+			memcpy(m_mapped_resource, &data, sizeof(data));
+		}
+
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress()
 		{
 			return m_resource_buffer->GetGPUVirtualAddress();
 		}
+		ID3D12Resource* Get()const
+		{
+			return m_resource_buffer.Get();
+		}
+
 		const unsigned int GetCount()
 		{
 			return m_count;
@@ -92,57 +103,5 @@ namespace epion::DX12
 		unsigned int m_count;
 
 	};
-	class Buffer abstract
-	{
-	public:
-		Buffer();
-		virtual	~Buffer() {};
-		virtual bool	Finalize() = 0;
-		virtual void	SetState() = 0;
-		unsigned int GetBufferCount();
-		com_ptr<ID3D12Resource>& GetBuffer()
-		{
-			return m_resource_buffer;
-		}
-
-	protected:
-		com_ptr<ID3D12Resource>	m_resource_buffer;
-
-		unsigned int m_buffer_count;
-
-	};
-
-	class VertexBuffer :public Buffer
-	{
-	public:
-		VertexBuffer();
-		~VertexBuffer();
-		bool Initialize(int size, int bytes);
-		bool Finalize() override;
-		void SetState() override;
-
-		//com_ptr<ID3D12Resource>& GetBuffer();
-		D3D12_VERTEX_BUFFER_VIEW& GetView();
-
-	private:
-		D3D12_VERTEX_BUFFER_VIEW m_vertex_buffer_view;
-	};
-
-	class ConstantBuffer :public Buffer
-	{
-	public:
-		ConstantBuffer();
-		~ConstantBuffer();
-		bool Initialize(int size);
-		bool Finalize() override;
-		void SetState() override;
-		//com_ptr<ID3D12Resource>& GetBuffer();
-		D3D12_CONSTANT_BUFFER_VIEW_DESC& GetView();
-
-	private:
-		D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view;
-
-	};
-
 }
 

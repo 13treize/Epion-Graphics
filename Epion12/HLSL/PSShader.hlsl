@@ -12,15 +12,16 @@ cbuffer CBuffer0 : register(b0)
 cbuffer CBuffer1 : register(b1)
 {
     float4x4 World;//: packoffset(c0);
-    float4x4 View;//: packoffset(c4);
-    float4x4 Proj;//: packoffset(c8);
 };
-//cbuffer CBuffer2 : register(b2)
-//{
-//    float4 LightColor;
-//    float4 LightDir;
-//    float4 AmbientColor;
-//};
+cbuffer CBuffer2 : register(b2)
+{
+    float4x4 View; //: packoffset(c4);
+    float4x4 Proj; //: packoffset(c8);
+    //float4 CameraPos;
+    //float4 LightColor;
+    //float4 LightDir;
+    //float4 AmbientColor;
+};
 
 void Unity_ColorspaceConversion_RGB_RGB_float(float3 In, out float3 Out)
 {
@@ -112,6 +113,15 @@ PSOutput PS(const VSOutput input)
     float2 uv;
     RotateRadians(input.UV, 0.5, Time.x, uv);
     Gear(uv, 12., .3, 0.13, 0.8, 6., 0.2, c);
-    output.Color.rgb =aa.y;
+    output.Color.rgb =c;
+    return output;
+}
+
+PSOutput PS2(const VSOutput input)
+{
+    PSOutput output = (PSOutput) 0;
+    float3 aaaaaa;
+    Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(10.0, 10.0), aaaaaa);
+    output.Color.rgb = aaaaaa;
     return output;
 }

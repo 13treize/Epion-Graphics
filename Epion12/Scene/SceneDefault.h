@@ -7,7 +7,7 @@ namespace	epion
 		bool	Initialize()	override;
 		bool	Finalize() 		override;
 		void	Update()		override;
-		void	Render()		override;
+		void	Render(int frame_count)		override;
 		void	RenderTex()		override;
 
 	private:

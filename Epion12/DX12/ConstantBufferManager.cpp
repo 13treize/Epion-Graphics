@@ -4,36 +4,76 @@
 #include "CommandList.h"
 #include	"../DX12/ViewPort.h"
 
+namespace
+{
+	UINT objCBByteSize;
+	D3D12_GPU_VIRTUAL_ADDRESS objCBAddress1;
+}
 namespace epion::DX12
 {
-	std::unique_ptr<epion::DX12::DescriptorHeap> ConstantBufferManager::m_heap;
-	std::unique_ptr<DX12::ConstantBuffer> ConstantBufferManager::m_cbuffer0;
-	std::unique_ptr<DX12::ConstantBuffer> ConstantBufferManager::m_cbuffer1;
-	std::unique_ptr<DX12::ConstantBuffer> ConstantBufferManager::m_cbuffer2;
+	std::unique_ptr<DescriptorHeap> ConstantBufferManager::m_heap;
+
+	std::unique_ptr<ResourceBuffer<CBuffer0>>  ConstantBufferManager::m_cbuffer0;
+	std::unique_ptr<ResourceBuffer<CBuffer1>>  ConstantBufferManager::m_cbuffer1;
+	std::unique_ptr<ResourceBuffer<CBuffer2>>  ConstantBufferManager::m_cbuffer2;
 
 	CBuffer0* ConstantBufferManager::m_cbuffer0_data;
 	CBuffer1* ConstantBufferManager::m_cbuffer1_data;
 	CBuffer2* ConstantBufferManager::m_cbuffer2_data;
+
+	static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address0;
+	static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address1;
+	static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address2;
+
 
 	bool ConstantBufferManager::Initialize()
 	{
 		m_heap = std::make_unique<DX12::DescriptorHeap>();
 		m_heap->Initialize(2, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
-		m_cbuffer0 = std::make_unique<DX12::ConstantBuffer>();
-		m_cbuffer0->Initialize(256);
-		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer0->GetView(), m_heap->GetHandleCPU(0));
-		m_cbuffer0->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer0_data));
+		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer0>>();
+		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBuffer0), true);
+		D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view;
+		//m_constant_buffer_view = {};
+		//m_constant_buffer_view.BufferLocation = m_cbuffer0->GetGPUVirtualAddress();
+		//m_constant_buffer_view.SizeInBytes = 256;
+		//DX12::Device::Get()->CreateConstantBufferView(&m_constant_buffer_view, m_heap->GetHandleCPU(0));
 
-		m_cbuffer1 = std::make_unique<DX12::ConstantBuffer>();
-		m_cbuffer1->Initialize(256);
-		DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer1->GetView(), m_heap->GetHandleCPU(1));
-		m_cbuffer1->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer1_data));
 
-		//m_cbuffer2 = std::make_unique<DX12::ConstantBuffer>();
-		//m_cbuffer2->Initialize(256);
-		//DX12::Device::Get()->CreateConstantBufferView(&m_cbuffer2->GetView(), m_heap->GetHandleCPU(2));
-		//m_cbuffer2->GetBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&m_cbuffer2_data));
+		m_cbuffer1 = std::make_unique<DX12::ResourceBuffer<CBuffer1>>();
+		m_cbuffer1->Initialize(DX12::Device::Get(), sizeof(CBuffer1), true);
+		D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view2;
+		//m_constant_buffer_view2 = {};
+		//m_constant_buffer_view2.BufferLocation = m_cbuffer1->GetGPUVirtualAddress();
+		//m_constant_buffer_view2.SizeInBytes = 256;
+		//DX12::Device::Get()->CreateConstantBufferView(&m_constant_buffer_view2, m_heap->GetHandleCPU(1));
+
+		m_cbuffer2 = std::make_unique<DX12::ResourceBuffer<CBuffer2>>();
+		m_cbuffer2->Initialize(DX12::Device::Get(), sizeof(CBuffer2), true);
+		//D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view3;
+		//m_constant_buffer_view3 = {};
+		//m_constant_buffer_view3.BufferLocation = m_cbuffer1->GetGPUVirtualAddress();
+		//m_constant_buffer_view3.SizeInBytes = 256;
+		//DX12::Device::Get()->CreateConstantBufferView(&m_constant_buffer_view3, m_heap->GetHandleCPU(2));
+
+		return true;
+	}
+	bool ConstantBufferManager::Build2D(const int buffer_num)
+	{
+		//m_heap = std::make_unique<DX12::DescriptorHeap>();
+		//m_heap->Initialize(buffer_num, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer0>>();
+		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBuffer0), true);
+		//D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view = { m_cbuffer0->GetGPUVirtualAddress(), 256 };
+		//DX12::Device::Get()->CreateConstantBufferView(&m_constant_buffer_view, m_heap->GetHandleCPU(0));
+
+		return true;
+	}
+	bool ConstantBufferManager::Build3D(const int buffer_num)
+	{
+		m_heap = std::make_unique<DX12::DescriptorHeap>();
+		m_heap->Initialize(buffer_num, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
 		return true;
 	}
@@ -60,43 +100,64 @@ namespace epion::DX12
 		};
 		data0.MousePos = mouse_pos;
 		data0.Time = { time,0.0f,0.0f,0.0f };
-		memcpy(m_cbuffer0_data, &data0, sizeof(data0));
+		m_cbuffer0->CopyResource(data0);
+
 	}
-	void ConstantBufferManager::UpdateCBuffer1(const DirectX::XMMATRIX& world, const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& projection)
+	void ConstantBufferManager::UpdateCBuffer1(const DirectX::XMMATRIX& world)
 	{
 		CBuffer1 data1;
 		data1.World = world;
-		data1.View = view;
-		data1.Proj = projection;
-		memcpy(m_cbuffer1_data, &data1, sizeof(data1));
+		//data1.View = view;
+		//data1.Proj = projection;
+		m_cbuffer1->CopyResource(data1);
 	}
 
-	void ConstantBufferManager::UpdateCBuffer2(const Math::FVector4& color, const Math::FVector4& dir, const Math::FVector4& ambient)
+	void ConstantBufferManager::UpdateCBuffer2(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& projection, const Math::FVector3& camera_pos, const Math::FVector4& color, const Math::FVector4& dir, const Math::FVector4& ambient)
 	{
 		CBuffer2 data2;
-		data2.LightColor = color;
-		data2.LightColor = dir;
-		data2.AmbientColor = ambient;
-		memcpy(m_cbuffer2_data, &data2, sizeof(data2));
+		data2.View = view;
+		data2.Proj = projection;
+		//data2.CameraPos.x = camera_pos.x;
+		//data2.CameraPos.y = camera_pos.y;
+		//data2.CameraPos.z = camera_pos.z;
+		//data2.CameraPos.w = 1.0f;
+
+		//data2.LightColor = color;
+		//data2.LightDir = dir;
+		//data2.AmbientColor = ambient;
+		m_cbuffer2->CopyResource(data2);
 	}
 
-	void ConstantBufferManager::SetCBuffer0()
+	void ConstantBufferManager::SetCBuffer0(int index)
 	{
-		//D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = m_cbuffer0->GetBuffer().Get()->GetGPUVirtualAddress();
-		//DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(0, objCBAddress);
+		UINT objCBByteSize =CalcConstantBufferByteSize(sizeof(CBuffer0));
+		auto objectCB = m_cbuffer0->Get();
+		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
+		objCBAddress += static_cast<UINT>(index *objCBByteSize);
+		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(0, objCBAddress);
 
-		DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(0, m_heap->GetHandleGPU(0));
+		//DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(0, m_heap->GetHandleGPU(0));
 	}
 
-	void ConstantBufferManager::SetCBuffer1(unsigned int index)
+	void ConstantBufferManager::SetCBuffer1(unsigned int index,int frame_count)
 	{
-		auto handle = m_heap->GetHandleGPU(1);
-	//	handle += index * CalcConstantBufferByteSize(sizeof(CBuffer1));
-		DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(1, handle);
+		objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer1));
+		auto objectCB = m_cbuffer1->Get();
+		objCBAddress1 = objectCB->GetGPUVirtualAddress();
+		//objCBAddress1 +=objCBByteSize*(index);
+		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(1, objCBAddress1);
+		//DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(1, m_heap->GetHandleGPU(1));
 	}
-	void ConstantBufferManager::SetCBuffer2()
+	void ConstantBufferManager::SetCBuffer2(int index)
 	{
-		DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(2, m_heap->GetHandleGPU(2));
+		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer2));
+		auto objectCB = m_cbuffer2->Get();
+		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
+		//objCBAddress += static_cast<UINT>(index * objCBByteSize);
+		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(2, objCBAddress);
+
+		//DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(2, m_cbuffer2->Get()->GetGPUVirtualAddress());
+		//DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(2, m_heap->GetHandleGPU(2));
 	}
 
 	UINT ConstantBufferManager::CalcConstantBufferByteSize(UINT byteSize)

@@ -94,6 +94,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <ShaderModel>6.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -111,6 +114,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <ShaderModel>6.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -125,6 +131,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <ShaderModel>6.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -142,6 +151,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <ShaderModel>6.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\All.h" />
@@ -155,6 +167,7 @@
     <ClInclude Include="Epion12\DX12\DescriptorHeap.h" />
     <ClInclude Include="Epion12\DX12\Device.h" />
     <ClInclude Include="Epion12\DX12\Factory.h" />
+    <ClInclude Include="Epion12\DX12\FrameResource.h" />
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
     <ClInclude Include="Epion12\DX12\RasterizerManager.h" />
     <ClInclude Include="Epion12\DX12\RenderTarget.h" />
@@ -179,7 +192,6 @@
     <ClInclude Include="Epion12\Model\Model.h" />
     <ClInclude Include="Epion12\Model\ObjLoader.h" />
     <ClInclude Include="Epion12\Model\ObjMesh.h" />
-    <ClInclude Include="Epion12\Model\Plane.h" />
     <ClInclude Include="Epion12\Model\PrimitiveModelData.h" />
     <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Model\StaticMesh.h" />
@@ -259,6 +271,7 @@
     <ClCompile Include="Epion12\DX12\DescriptorHeap.cpp" />
     <ClCompile Include="Epion12\DX12\Device.cpp" />
     <ClCompile Include="Epion12\DX12\Factory.cpp" />
+    <ClCompile Include="Epion12\DX12\FrameResource.cpp" />
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
     <ClCompile Include="Epion12\DX12\RasterizerManager.cpp" />
     <ClCompile Include="Epion12\DX12\RenderTarget.cpp" />
@@ -276,7 +289,6 @@
     <ClCompile Include="Epion12\Model\Model.cpp" />
     <ClCompile Include="Epion12\Model\ObjLoader.cpp" />
     <ClCompile Include="Epion12\Model\ObjMesh.cpp" />
-    <ClCompile Include="Epion12\Model\Plane.cpp" />
     <ClCompile Include="Epion12\Model\PrimitiveModelData.cpp" />
     <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Model\StaticMesh.cpp" />
@@ -335,6 +347,7 @@
   <ItemGroup>
     <None Include="Epion12\HLSL\Function\Artistic.hlsli" />
     <None Include="Epion12\HLSL\Function\DistanceFunction.hlsli" />
+    <None Include="Epion12\HLSL\Function\Font.hlsli" />
     <None Include="Epion12\HLSL\Function\Lighting.hlsli" />
     <None Include="Epion12\HLSL\Function\Noise.hlsli" />
     <None Include="Epion12\HLSL\Function\Procedural.hlsli" />

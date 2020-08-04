@@ -4,7 +4,7 @@ namespace epion::DX12
 	class RootSignatureManager final
 	{
 	public:
-		static void Build2D();
+		static void Build2D(D3D12_ROOT_PARAMETER_TYPE type);
 		static void Build();
 		static void SetGraphicsRootSignature();
 

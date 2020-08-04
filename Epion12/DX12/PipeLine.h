@@ -1,6 +1,8 @@
 #pragma once
 namespace epion::DX12
 {
+	static constexpr size_t MAX_BACK_BUFFER_COUNT = 3;
+
 	struct PipeLineStates
 	{
 		const int NUM_BACK_BUFFERS = 3;
@@ -26,7 +28,7 @@ namespace epion::DX12
 
 		//get
 		com_ptr<ID3D12DescriptorHeap>& GetHeapImGui();
-
+		int GetFrameCount();
 		//set
 		void	SetBackColor(std::array<float, 4>& color);
 

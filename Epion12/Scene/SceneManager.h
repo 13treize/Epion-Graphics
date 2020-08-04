@@ -9,7 +9,7 @@ namespace	epion
 		virtual bool	Initialize() = 0;
 		virtual bool	Finalize() = 0;
 		virtual	void	Update() = 0;
-		virtual	void	Render() = 0;
+		virtual	void	Render(int frame_count) = 0;
 		virtual	void	RenderTex() = 0;
 
 		//std::unique_ptr<Texture> m_tex;
@@ -19,7 +19,7 @@ namespace	epion
 	{
 	public:
 		static void Update();
-		static void Render();
+		static void Render(int frame_count);
 		static bool Release();
 
 		//static std::unique_ptr<Texture>& GetTexData();

@@ -28,11 +28,11 @@ namespace epion::Model
 		m_is_update = true;
 
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
-		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model2DVertex), false);
+		m_vertex_resource->Initialize<ID3D12Device>(DX12::Device::Get(), sizeof(Model2DVertex), false);
 		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model2DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model2DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
+		m_index_resource->Initialize<ID3D12Device>(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
 		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
 		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
@@ -51,11 +51,11 @@ namespace epion::Model
 		m_is_update = true;
 
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
-		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model2DVertex), false);
+		m_vertex_resource->Initialize<ID3D12Device>(DX12::Device::Get(), sizeof(Model2DVertex), false);
 		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model2DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model2DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
+		m_index_resource->Initialize<ID3D12Device>(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
 		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
 		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
@@ -86,18 +86,18 @@ namespace epion::Model
 
 	}
 
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob,com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob, com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
 		m_is_update = true;
 
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
-		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model2DVertex), false);
+		m_vertex_resource->Initialize<ID3D12Device>(DX12::Device::Get(), sizeof(Model2DVertex), false);
 		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model2DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model2DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
+		m_index_resource->Initialize<ID3D12Device>(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
 		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
 		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
@@ -138,21 +138,9 @@ namespace epion::Model
 	{
 		if (m_is_update)
 		{
-			std::valarray<float>	arr_x =
-			{
-				d_xy.x,				//left-top
-				d_xy.x + d_wh.x,	//right-top
-				d_xy.x,				//left-bottom
-				d_xy.x + d_wh.x,	//right-bottom
-			};
-
-			std::valarray<float>	arr_y =
-			{
-				d_xy.y,				//left-top
-				d_xy.y,				//right-top
-				d_xy.y + d_wh.y,	//left-bottom
-				d_xy.y + d_wh.y,	//right-bottom
-			};
+			//left-top,right-top,left-bottom,right-bottom
+			std::valarray<float> arr_x = { d_xy.x,	d_xy.x + d_wh.x,	d_xy.x,	d_xy.x + d_wh.x, };
+			std::valarray<float> arr_y = { d_xy.y,	d_xy.y,	d_xy.y + d_wh.y,	d_xy.y + d_wh.y, };
 			std::array<Model2DVertex, 4> vertices;
 
 			arr_x = 2.0f * arr_x / static_cast<float>(DX12::ViewPort::GetScreenSize().x) - 1.0f;
@@ -160,10 +148,7 @@ namespace epion::Model
 
 			I_FOR(4)
 			{
-				vertices[i].pos.x = arr_x[i];
-				vertices[i].pos.y = arr_y[i];
-				vertices[i].pos.z = 0.0f;
-				vertices[i].pos.w = 1.0f;
+				vertices[i].pos = { arr_x[i], arr_y[i], 0.0f, 1.0f };
 			}
 			vertices[0].uv = { 0.0f,1.0f };
 			vertices[1].uv = { 1.0f,1.0f };

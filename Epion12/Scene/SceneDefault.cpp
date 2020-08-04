@@ -18,7 +18,7 @@ namespace epion
 	void SceneDefault::Update()
 	{
 	}
-	void SceneDefault::Render()
+	void SceneDefault::Render(int frame_count)
 	{
 	}
 	void SceneDefault::RenderTex()

@@ -28,10 +28,7 @@ namespace epion::DX12
 		static_assert(std::is_base_of<IDXGIFactory, T>::value == true, "BaseClass not IDXGIFactory");
 		HRESULT hr;
 		hr = CreateDXGIFactory(IID_PPV_ARGS(&factory));
-		if (FAILED(hr))
-		{
-			return false;
-		}
+		if (FAILED(hr))	return false;
 		return true;
 	}
 

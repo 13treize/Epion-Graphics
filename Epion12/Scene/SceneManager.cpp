@@ -17,9 +17,9 @@ namespace	epion
 		m_scene->Update();
 	}
 
-	void	SceneManager::Render()
+	void	SceneManager::Render(int frame_count)
 	{
-		m_scene->Render();
+		m_scene->Render(frame_count);
 	}
 	bool SceneManager::Release()
 	{

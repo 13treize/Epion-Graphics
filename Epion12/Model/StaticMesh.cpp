@@ -47,12 +47,12 @@ namespace epion::Model
 
 
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model3DVertex>>();
-		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model3DVertex), false);
+		m_vertex_resource->Initialize<ID3D12Device>(DX12::Device::Get(), sizeof(Model3DVertex), false);
 		m_vertex_resource->CopyResource<PrimitiveData::Polygon::VERTEX_SIZE>(PrimitiveData::Polygon::vertices);
 		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model3DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model3DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
+		m_index_resource->Initialize<ID3D12Device>(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
 		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
 		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 		return true;
@@ -67,11 +67,7 @@ namespace epion::Model
 
 	void Polygon::Update()
 	{
-		DirectX::XMMATRIX S, R, T;
-		S = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
-		R = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
-		T = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
-		m_world_matrix = S * R * T;
+		ResourceUpdate();
 	}
 
 	void Polygon::Render()
@@ -127,7 +123,6 @@ namespace epion::Model
 		m_pipeline_desc.pRootSignature = root_sig.Get();
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 
-
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model3DVertex>>();
 		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model3DVertex), false);
 		m_vertex_resource->CopyResource<PrimitiveData::CubeMesh::VERTEX_SIZE>(PrimitiveData::CubeMesh::vertices);
@@ -143,22 +138,14 @@ namespace epion::Model
 	{
 		m_vertex_resource->Finalize();
 		m_index_resource->Finalize();
-
 		return true;
 	}
-
 	void CubeMesh::Update()
 	{
-		DirectX::XMMATRIX S, R, T;
-		S = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
-		R = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
-		T = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
-		m_world_matrix = S * R * T;
+		ResourceUpdate();
 	}
-
 	void CubeMesh::Render()
 	{
 		Draw(DX12::CommandList::GetCmd());
 	}
-
 }

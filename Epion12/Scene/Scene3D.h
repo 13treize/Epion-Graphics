@@ -11,16 +11,11 @@ namespace	epion
 		bool	Initialize()	override;
 		bool	Finalize() 		override;
 		void	Update()		override;
-		void	Render()		override;
+		void	Render(int frame_count)		override;
 		void	RenderTex()		override;
 
 	private:
 		com_ptr<ID3DBlob> vs_blob;
 		com_ptr<ID3DBlob> ps_blob;
-
-		//std::unique_ptr<Model::ObjMesh> m_plane;
-
-		std::unique_ptr<DX12::ConstantBuffer> m_cbuffer;
-
 	};
 }

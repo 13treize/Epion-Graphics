@@ -1,7 +1,6 @@
 #pragma once
 #include	"../DX12/Buffer.h"
 #include	"../Model/Square.h"
-#include	"../Model/Plane.h"
 
 namespace	epion
 {
@@ -11,7 +10,7 @@ namespace	epion
 		bool	Initialize()	override;
 		bool	Finalize() 		override;
 		void	Update()		override;
-		void	Render()		override;
+		void	Render(int frame_count)		override;
 		void	RenderTex()		override;
 
 	private:
@@ -21,13 +20,9 @@ namespace	epion
 		epion::com_ptr<ID3DBlob> ds_blob;
 		epion::com_ptr<ID3DBlob> gs_blob;
 
-		epion::com_ptr<ID3DBlob> ps_blob2;
-
-		std::unique_ptr<Model::Square> m_square;
-		std::unique_ptr<Model::Square> m_square2;
-
-		std::unique_ptr<Model::Plane> m_plane;
-		std::unique_ptr<DX12::ConstantBuffer> m_cbuffer;
+		com_ptr<ID3DBlob> ps_blob2;
+		std::array<com_ptr<ID3DBlob>,48> m_ps_blob;
+		std::array<std::unique_ptr<Model::Square>,48> m_square;
 
 	};
 }

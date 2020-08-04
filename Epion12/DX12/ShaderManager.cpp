@@ -48,15 +48,21 @@ namespace	epion::DX12
 		return true;
 	}
 
+	bool ShaderResouceManager::Settings()
+	{
+
+		return true;
+	}
+
 	bool ShaderResouceManager::Compile(const std::wstring& hlsl_name, com_ptr<ID3DBlob>& shader_blob, ShaderType type)
 	{
 		switch (type)
 		{
-		case ShaderType::TYPE_VERTEX:	if (ShaderCompile(hlsl_name, "VS", "vs_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_HULL:		if (ShaderCompile(hlsl_name, "HS", "hs_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_DOMAIN:	if (ShaderCompile(hlsl_name, "DS", "ds_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_GEOMETRY:	if (ShaderCompile(hlsl_name, "GS", "gs_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_PIXEL:	if (ShaderCompile(hlsl_name, "PS", "ps_5_0", shader_blob))	return true;	break;
+		case ShaderType::TYPE_VERTEX:	if (ShaderCompile(hlsl_name, "VS", "vs_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_HULL:		if (ShaderCompile(hlsl_name, "HS", "hs_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_DOMAIN:	if (ShaderCompile(hlsl_name, "DS", "ds_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_GEOMETRY:	if (ShaderCompile(hlsl_name, "GS", "gs_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_PIXEL:	if (ShaderCompile(hlsl_name, "PS", "ps_5_1", shader_blob))	return true;	break;
 		default:	break;
 		}
 		return false;
@@ -65,11 +71,11 @@ namespace	epion::DX12
 	{
 		switch (type)
 		{
-		case ShaderType::TYPE_VERTEX:	if (ShaderCompile(hlsl_name, entry_point, "vs_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_HULL:		if (ShaderCompile(hlsl_name, entry_point, "hs_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_DOMAIN:	if (ShaderCompile(hlsl_name, entry_point, "ds_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_GEOMETRY:	if (ShaderCompile(hlsl_name, entry_point, "gs_5_0", shader_blob))	return true;	break;
-		case ShaderType::TYPE_PIXEL:	if (ShaderCompile(hlsl_name, entry_point, "ps_5_0", shader_blob))	return true;	break;
+		case ShaderType::TYPE_VERTEX:	if (ShaderCompile(hlsl_name, entry_point, "vs_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_HULL:		if (ShaderCompile(hlsl_name, entry_point, "hs_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_DOMAIN:	if (ShaderCompile(hlsl_name, entry_point, "ds_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_GEOMETRY:	if (ShaderCompile(hlsl_name, entry_point, "gs_5_1", shader_blob))	return true;	break;
+		case ShaderType::TYPE_PIXEL:	if (ShaderCompile(hlsl_name, entry_point, "ps_5_1", shader_blob))	return true;	break;
 		default:	break;
 		}
 		return false;

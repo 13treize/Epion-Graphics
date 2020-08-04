@@ -6,7 +6,6 @@
 #include	"CommandQueue.h"
 #include	"Factory.h"
 #include	"RenderTarget.h"
-//#include	"../Shader/ShaderManager.h"
 #include	"PipeLine.h"
 
 namespace
@@ -109,6 +108,10 @@ namespace epion::DX12
 	com_ptr<ID3D12DescriptorHeap>& PipeLine::GetHeapImGui()
 	{
 		return m_heap_imgui;
+	}
+	int PipeLine::GetFrameCount()
+	{
+		return  static_cast<int>(m_swap->GetCurrentBackBufferIndex());
 	}
 
 	void	PipeLine::SetBackColor(std::array<float, 4>& color)
