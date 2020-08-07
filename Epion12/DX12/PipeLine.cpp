@@ -2,7 +2,6 @@
 #include	"ViewPort.h"
 #include	"Device.h"
 #include	"CommandList.h"
-#include	"SwapChain.h"
 #include	"RenderTarget.h"
 #include	"DX12Wrapper.h"
 #include	"PipeLine.h"
@@ -23,7 +22,7 @@ namespace epion::DX12
 		CommandList::Initialize(m_cmd_alloc);
 
 		DX12Wrapper::CreateCommandQueue<ID3D12Device>(Device::Get(), m_cmd_queue);
-		SwapChainFunction::CreateSwapChains<IDXGISwapChain4>(m_swap, m_factory, m_cmd_queue, hwnd, ViewPort::GetScreenSize(), 2);
+		DX12Wrapper::CreateSwapChains<IDXGISwapChain4>(m_swap, m_factory, m_cmd_queue, hwnd, ViewPort::GetScreenSize(), 2);
 		RenderTargetFunction::CreateRenderTarget(Device::Get(), m_heap_rtv);
 		DXGI_SWAP_CHAIN_DESC swcDesc = {};
 		hr = m_swap->GetDesc(&swcDesc);

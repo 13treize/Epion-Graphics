@@ -165,9 +165,6 @@
     <ClInclude Include="Epion12\DX12\CommandList.h">
       <Filter>ヘッダー ファイル\DX12</Filter>
     </ClInclude>
-    <ClInclude Include="Epion12\DX12\SwapChain.h">
-      <Filter>ヘッダー ファイル\DX12</Filter>
-    </ClInclude>
     <ClInclude Include="Epion12\DX12\RenderTarget.h">
       <Filter>ヘッダー ファイル\DX12</Filter>
     </ClInclude>
@@ -321,9 +318,6 @@
       <Filter>ソース ファイル\DX12</Filter>
     </ClCompile>
     <ClCompile Include="Epion12\DX12\CommandList.cpp">
-      <Filter>ソース ファイル\DX12</Filter>
-    </ClCompile>
-    <ClCompile Include="Epion12\DX12\SwapChain.cpp">
       <Filter>ソース ファイル\DX12</Filter>
     </ClCompile>
     <ClCompile Include="Epion12\DX12\RenderTarget.cpp">
