@@ -130,6 +130,11 @@ namespace epion::Model
 	{
 		return m_world_matrix;
 	}
+	const unsigned int Model3D::GetCBIndex()
+	{
+		return m_cb_index;
+	}
+
 	void Model3D::SetPos(const float x, const float y, const float z)
 	{
 		m_pos = { x,y,z };

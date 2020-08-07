@@ -101,14 +101,11 @@ namespace epion::DX12
 		data0.MousePos = mouse_pos;
 		data0.Time = { time,0.0f,0.0f,0.0f };
 		m_cbuffer0->CopyResource(data0);
-
 	}
 	void ConstantBufferManager::UpdateCBuffer1(const DirectX::XMMATRIX& world)
 	{
 		CBuffer1 data1;
 		data1.World = world;
-		//data1.View = view;
-		//data1.Proj = projection;
 		m_cbuffer1->CopyResource(data1);
 	}
 
@@ -143,8 +140,10 @@ namespace epion::DX12
 	{
 		objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer1));
 		auto objectCB = m_cbuffer1->Get();
-		objCBAddress1 = objectCB->GetGPUVirtualAddress();
-		//objCBAddress1 +=objCBByteSize*(index);
+		//objCBAddress1 = objectCB->GetGPUVirtualAddress();
+		//objCBAddress1 +=objCBByteSize* frame_count;
+		objCBAddress1 = objectCB->GetGPUVirtualAddress() + (objCBByteSize * frame_count);
+
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(1, objCBAddress1);
 		//DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(1, m_heap->GetHandleGPU(1));
 	}

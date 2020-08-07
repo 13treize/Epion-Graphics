@@ -5,6 +5,7 @@
 
 namespace	epion
 {
+	const int NUM_FRAME_RESOUCE = 3;
 	class	SceneTest	final :public	Scene
 	{
 	public:
@@ -15,6 +16,8 @@ namespace	epion
 		void	RenderTex()		override;
 
 	private:
+		int m_num_frame_resources;
+
 		com_ptr<ID3DBlob> vs_blob;
 		com_ptr<ID3DBlob> ps_blob[2];
 

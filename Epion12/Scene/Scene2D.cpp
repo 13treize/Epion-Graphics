@@ -12,12 +12,14 @@
 #include	"../DX12/DescriptorHeap.h"
 namespace
 {
+
 }
 namespace epion
 {
 	bool Scene2D::Initialize()
 	{
 		HRESULT hr;
+		//m_frame_resouce.push_back(std::make_unique<DX12::FrameResource>(DX12::Device::Get()));
 
 		DX12::ConstantBufferManager::Build2D();
 		DX12::RootSignatureManager::Build2D(D3D12_ROOT_PARAMETER_TYPE_CBV);

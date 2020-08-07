@@ -11,7 +11,7 @@ namespace	epion
 		virtual	void	Update() = 0;
 		virtual	void	Render(int frame_count) = 0;
 		virtual	void	RenderTex() = 0;
-
+	protected:
 		//std::unique_ptr<Texture> m_tex;
 	};
 

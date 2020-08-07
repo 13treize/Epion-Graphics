@@ -24,7 +24,7 @@ namespace epion::DX12
 		template<class T>
 		FrameResource(com_ptr<T>& device)
 		{
-			device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(m_cmdlist_alloc.ReleaseAndGetAddressOf()));
+			device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(m_cmd_alloc.ReleaseAndGetAddressOf()));
 			m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer2D>>();
 			m_cbuffer0->Initialize(device, sizeof(CBuffer2D), true);
 			m_cbuffer1 = std::make_unique<DX12::ResourceBuffer<CBuffer3D>>();
@@ -35,9 +35,13 @@ namespace epion::DX12
 		~FrameResource()
 		{
 		}
+		com_ptr<ID3D12CommandAllocator>& GetCmdAlloc()
+		{
+			return m_cmd_alloc;
+		}
 
 	private:
-		com_ptr<ID3D12CommandAllocator> m_cmdlist_alloc;
+		com_ptr<ID3D12CommandAllocator> m_cmd_alloc;
 		std::unique_ptr<ResourceBuffer<CBuffer2D>> m_cbuffer0;
 		std::unique_ptr<ResourceBuffer<CBuffer3D>> m_cbuffer1;
 		UINT64 m_fence;

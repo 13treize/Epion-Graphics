@@ -1,4 +1,5 @@
 #pragma once
+#include	"FrameResource.h"
 namespace epion::DX12
 {
 	static constexpr size_t MAX_BACK_BUFFER_COUNT = 3;
@@ -17,7 +18,7 @@ namespace epion::DX12
 		void	EndUpdate();
 
 		__forceinline void	WaitForGPU();
-		__forceinline void Reset();
+		__forceinline void	Reset();
 		__forceinline void	Begin();
 		void	End();
 
@@ -50,6 +51,8 @@ namespace epion::DX12
 		D3D12_RESOURCE_BARRIER m_barrier_desc;
 		UINT64 m_fence_value;
 		std::array<float, 4> m_clear_color;
+		std::unique_ptr<FrameResource> m_curr_frame_resource;
+		int m_curr_frame_resource_index = 0;
 
 		__forceinline void	ClearRenderTarget();
 

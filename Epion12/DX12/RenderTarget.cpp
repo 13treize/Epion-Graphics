@@ -52,15 +52,12 @@ namespace epion::DX12
 	bool RenderTargetFunction::CreateRenderTarget(com_ptr<ID3D12Device>& device, com_ptr<ID3D12DescriptorHeap>& rtv_heaps)
 	{
 		D3D12_DESCRIPTOR_HEAP_DESC heapDesc = {};
-		heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;//レンダーターゲットビューなので当然RTV
+		heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
 		heapDesc.NodeMask = 0;
-		heapDesc.NumDescriptors = 2;//表裏の２つ
+		heapDesc.NumDescriptors = 2;//表裏
 		heapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;//特に指定なし
 		HRESULT hr = device->CreateDescriptorHeap(&heapDesc, IID_PPV_ARGS(&rtv_heaps));
-		if (FAILED(hr))
-		{
-			return false;
-		}
+		if (FAILED(hr))	return false;
 		return true;
 	}
 

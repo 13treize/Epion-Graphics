@@ -1,10 +1,11 @@
 #pragma once
 #include	"../DX12/Buffer.h"
+//#include	"../DX12/FrameResource.h"
 #include	"../Model/Square.h"
 
 namespace	epion
 {
-	class	 Scene2D	final :public	Scene
+	class Scene2D	final :public	Scene
 	{
 	public:
 		bool	Initialize()	override;
@@ -21,8 +22,7 @@ namespace	epion
 		epion::com_ptr<ID3DBlob> gs_blob;
 
 		com_ptr<ID3DBlob> ps_blob2;
-		std::array<com_ptr<ID3DBlob>,48> m_ps_blob;
-		std::array<std::unique_ptr<Model::Square>,48> m_square;
-
+		std::array<com_ptr<ID3DBlob>, 48> m_ps_blob;
+		std::array<std::unique_ptr<Model::Square>, 48> m_square;
 	};
 }

@@ -70,7 +70,7 @@ namespace epion::DX12
 
 		//コマンドリストの実行
 		ID3D12CommandList* cmdlists[] = { CommandList::GetCmd().Get() };
-		m_cmd_queue->ExecuteCommandLists(1, cmdlists);
+		m_cmd_queue->ExecuteCommandLists(_countof(cmdlists), cmdlists);
 		WaitForGPU();
 		Reset();
 	}

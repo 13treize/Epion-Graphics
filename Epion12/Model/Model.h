@@ -35,7 +35,7 @@ namespace epion::Model
 		Math::FVector3& GetAngle();
 		Math::FVector3& GetScale();
 		DirectX::XMMATRIX& GetWorldMaxrix();
-
+		const unsigned int GetCBIndex();
 		void SetPos(const float x, const float y, const float z);
 		void SetAngle(const float x, const float y, const float z);
 		void SetScale(const float x, const float y, const float z);
@@ -57,7 +57,7 @@ namespace epion::Model
 		Math::FVector3 m_angle;
 		Math::FVector3 m_scale;
 		DirectX::XMMATRIX m_world_matrix;
+		unsigned int m_cb_index;
 	};
-
 
 }
