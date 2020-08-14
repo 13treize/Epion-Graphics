@@ -4,6 +4,7 @@
 #include	"CommandList.h"
 #include	"RenderTarget.h"
 #include	"DX12Wrapper.h"
+#include	"FrameResourceManager.h"
 #include	"PipeLine.h"
 namespace
 {
@@ -13,38 +14,32 @@ namespace epion::DX12
 	bool PipeLine::Initialize(HWND hwnd)
 	{
 		HRESULT hr = S_OK;
+		m_swapchain_buffer_count=2;
 
 		DX12Wrapper::CreateFactory<IDXGIFactory6>(m_factory);
 
 		Device::Initialize(m_factory);
 
-		DX12Wrapper::CreateCommandAllocator<ID3D12Device>(Device::Get(), m_cmd_alloc);
-		CommandList::Initialize(m_cmd_alloc);
+		DX12Wrapper::CreateFence<ID3D12Device>(Device::Get(), m_fence, m_fence_value);
 
-		DX12Wrapper::CreateCommandQueue<ID3D12Device>(Device::Get(), m_cmd_queue);
-		DX12Wrapper::CreateSwapChains<IDXGISwapChain4>(m_swap, m_factory, m_cmd_queue, hwnd, ViewPort::GetScreenSize(), 2);
-		RenderTargetFunction::CreateRenderTarget(Device::Get(), m_heap_rtv);
-		DXGI_SWAP_CHAIN_DESC swcDesc = {};
-		hr = m_swap->GetDesc(&swcDesc);
-		m_back_buffers.resize(swcDesc.BufferCount);
-		int count = 0;
+		CreateCommandObjects();
+		DX12Wrapper::CreateSwapChains<IDXGISwapChain4>(m_swap, m_factory, m_cmd_queue, hwnd, ViewPort::GetScreenSize(), m_swapchain_buffer_count);
+
+		CreateHeaps();
+		//DXGI_SWAP_CHAIN_DESC swcDesc = {};
+		//hr = m_swap->GetDesc(&swcDesc);
+		//m_back_buffers.resize(swcDesc.BufferCount);
+		m_back_buffers.resize(m_swapchain_buffer_count);
+
 		D3D12_CPU_DESCRIPTOR_HANDLE handle = m_heap_rtv->GetCPUDescriptorHandleForHeapStart();
-		for (int i = 0; i < static_cast<int>(swcDesc.BufferCount); ++i)
+		for (int i = 0; i < m_swapchain_buffer_count; ++i)
 		{
 			hr = m_swap->GetBuffer(i, IID_PPV_ARGS(&m_back_buffers[i]));
 			Device::Get()->CreateRenderTargetView(m_back_buffers[i].Get(), nullptr, handle);
 			handle.ptr +=Device::Get()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
-			count++;
 		}
-		hr =Device::Get()->CreateFence(m_fence_value, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_fence));
 
-		D3D12_DESCRIPTOR_HEAP_DESC desc = {};
-		desc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
-		desc.NodeMask = 0;
-		desc.NumDescriptors = 1;
-		desc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
-		Device::Get()->CreateDescriptorHeap(&desc, IID_PPV_ARGS(m_heap_imgui.ReleaseAndGetAddressOf()));
-
+		CreateFrameResources();
 		return true;
 	}
 	bool PipeLine::Finalize()
@@ -53,6 +48,7 @@ namespace epion::DX12
 	}
 	void PipeLine::Update()
 	{
+		FrameResourceManager::Update(m_fence);
 	}
 	void	PipeLine::Render()
 	{
@@ -73,24 +69,42 @@ namespace epion::DX12
 		WaitForGPU();
 		Reset();
 	}
+	__forceinline void PipeLine::CreateCommandObjects()
+	{
+		DX12Wrapper::CreateCommandQueue<ID3D12Device>(Device::Get(), m_cmd_queue);
+		DX12Wrapper::CreateCommandAllocator<ID3D12Device>(Device::Get(), m_cmd_alloc);
+		CommandList::Initialize(m_cmd_alloc);
+	}
+	__forceinline void PipeLine::CreateHeaps()
+	{
+		DX12Wrapper::CreateRenderTargetHeap<ID3D12Device>(Device::Get(), m_heap_rtv, m_swapchain_buffer_count);
+		DX12Wrapper::CreateDepthStencilHeap<ID3D12Device>(Device::Get(), m_heap_dsv, 1);
+		DX12Wrapper::CreateCBufferHeap<ID3D12Device>(Device::Get(), m_heap_imgui, 1);
+	}
+	__forceinline void	PipeLine::CreateFrameResources()
+	{
+		FrameResourceManager::Initialize();
+	}
 
 	__forceinline void PipeLine::WaitForGPU()
 	{
-		m_cmd_queue->Signal(m_fence.Get(), ++m_fence_value);
+		m_fence_value++;
+		m_cmd_queue->Signal(m_fence.Get(), m_fence_value);
 
-		if (m_fence->GetCompletedValue() != m_fence_value)
+		//if (m_fence->GetCompletedValue() != m_fence_value)
+		if (m_fence->GetCompletedValue() < m_fence_value)
 		{
 			auto event = CreateEvent(nullptr, false, false, nullptr);
 			m_fence->SetEventOnCompletion(m_fence_value, event);
 			WaitForSingleObject(event, INFINITE);
 			CloseHandle(event);
 		}
-		// フレームバッファ番号を更新.
 	}
 	__forceinline void PipeLine::Reset()
 	{
-		m_cmd_alloc->Reset();//キューをクリア
-		CommandList::GetCmd()->Reset(m_cmd_alloc.Get(), nullptr);//再びコマンドリストをためる準備
+		auto cmdListAlloc = m_cmd_alloc;
+		cmdListAlloc->Reset();//キューをクリア
+		CommandList::GetCmd()->Reset(cmdListAlloc.Get(), nullptr);//再びコマンドリストをためる準備
 	}
 
 	__forceinline void PipeLine::Begin()

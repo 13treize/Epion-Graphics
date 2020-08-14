@@ -3,6 +3,7 @@
 namespace epion::DX12
 {
 	static constexpr size_t MAX_BACK_BUFFER_COUNT = 3;
+	static constexpr int NUM_FRAME_RESOURCES = 3;
 
 	struct PipeLineStates
 	{
@@ -34,6 +35,12 @@ namespace epion::DX12
 		void	SetBackColor(std::array<float, 4>& color);
 
 	private:
+		__forceinline void	CreateCommandObjects();
+		__forceinline void	CreateHeaps();
+		__forceinline void	CreateFrameResources();
+
+		__forceinline void	ClearRenderTarget();
+
 		com_ptr<IDXGISwapChain4> m_swap;
 		com_ptr<IDXGIFactory6> m_factory;
 		com_ptr<ID3D12CommandQueue> m_cmd_queue;
@@ -43,18 +50,17 @@ namespace epion::DX12
 
 		com_ptr<ID3D12DescriptorHeap> m_heap_imgui;
 		com_ptr<ID3D12DescriptorHeap> m_heap_rtv;
+		com_ptr<ID3D12DescriptorHeap> m_heap_dsv;
 
 		std::vector<com_ptr<ID3D12Resource>> m_back_buffers;
 
 		D3D12_CPU_DESCRIPTOR_HANDLE m_rtv_handle;
 
+		std::array<float, 4> m_clear_color;
+
+		int m_swapchain_buffer_count;
 		D3D12_RESOURCE_BARRIER m_barrier_desc;
 		UINT64 m_fence_value;
-		std::array<float, 4> m_clear_color;
-		std::unique_ptr<FrameResource> m_curr_frame_resource;
-		int m_curr_frame_resource_index = 0;
-
-		__forceinline void	ClearRenderTarget();
 
 	};
 }

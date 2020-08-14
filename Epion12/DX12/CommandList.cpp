@@ -1,5 +1,6 @@
 #include	"../Epion12.h"
 #include	"Device.h"
+#include	"DX12Wrapper.h"
 #include	"CommandList.h"
 
 namespace epion::DX12
@@ -15,12 +16,7 @@ namespace epion::DX12
 
 	bool CommandList::Initialize(com_ptr<ID3D12CommandAllocator>& cmd_alloc)
 	{
-		HRESULT hr = Device::Get()->CreateCommandList(
-			0,
-			D3D12_COMMAND_LIST_TYPE::D3D12_COMMAND_LIST_TYPE_DIRECT,
-			cmd_alloc.Get(),
-			nullptr,
-			IID_PPV_ARGS(&m_cmd_list));
+		DX12Wrapper::CreateCommandList<ID3D12Device>(Device::Get(),m_cmd_list, cmd_alloc);
 		return true;
 	}
 	bool CommandList::Finalize()

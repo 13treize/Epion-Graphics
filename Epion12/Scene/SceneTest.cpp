@@ -110,11 +110,11 @@ namespace epion
 
 		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetWorldMaxrix());
 		DX12::ConstantBufferManager::SetCBuffer1(1, m_mesh->GetCBIndex());
-		m_mesh->Render();
+		Model::ModelDraw<Model::Polygon>(m_mesh, DX12::CommandList::GetCmd());
 
 		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetWorldMaxrix());
 		DX12::ConstantBufferManager::SetCBuffer1(1, m_mesh2->GetCBIndex());
-		m_mesh2->Render();
+		Model::ModelDraw<Model::Polygon>(m_mesh2, DX12::CommandList::GetCmd());
 	}
 	void SceneTest::RenderTex()
 	{

@@ -12,24 +12,56 @@ namespace epion::DX12
 	struct DX12Wrapper
 	{
 		template<class T>
+		__forceinline static bool CreateCBufferHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& csv_heaps, unsigned int num);
+
+		template<class T>
 		__forceinline static bool CreateCommandAllocator(com_ptr<T>& device, com_ptr<ID3D12CommandAllocator>& alloc);
+
+		template<class T>
+		__forceinline static bool CreateCommandList(com_ptr<T>& device, com_ptr<ID3D12GraphicsCommandList> &cmd_list,com_ptr<ID3D12CommandAllocator>& cmd_alloc);
 
 		template<class T>
 		__forceinline static bool CreateCommandQueue(com_ptr<T>& device, com_ptr<ID3D12CommandQueue>& queue);
 
 		template<class T>
+		__forceinline static bool CreateDepthStencilHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heaps, unsigned int num);
+
+		template<class T>
 		__forceinline static bool CreateFactory(com_ptr<T>& factory);
+
+		template<class T>
+		__forceinline static bool CreateFence(com_ptr<T>& device, com_ptr<ID3D12Fence>& fence, UINT64 fence_value);
+
+		template<class T>
+		__forceinline static bool CreateRenderTargetHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& rtv_heaps, unsigned int num);
 
 		template	<class	T>
 		__forceinline static bool CreateSwapChains(com_ptr<T>& swap_ptr, com_ptr<IDXGIFactory6>& factory, com_ptr<ID3D12CommandQueue>& cmd_queue, HWND hwnd, const Math::Vector2<int>& screen_size_, int buffer_num);
-
 	};
+
+	template<class T>
+	__forceinline static bool DX12Wrapper::CreateCBufferHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& csv_heaps, unsigned int num)
+	{
+		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
+		D3D12_DESCRIPTOR_HEAP_DESC csv_heap_desc = { D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, num, D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE, 0 };
+		HRESULT hr = device->CreateDescriptorHeap(&csv_heap_desc, IID_PPV_ARGS(&csv_heaps));
+		if (FAILED(hr))	return false;
+		return true;
+	}
 
 	template<class T>
 	__forceinline static bool DX12Wrapper::CreateCommandAllocator(com_ptr<T>& device, com_ptr<ID3D12CommandAllocator>& alloc)
 	{
 		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
 		HRESULT hr = device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(alloc.ReleaseAndGetAddressOf()));
+		if (FAILED(hr))	return false;
+		return true;
+	}
+	template<class T>
+	__forceinline static bool DX12Wrapper::CreateCommandList(com_ptr<T>& device, com_ptr<ID3D12GraphicsCommandList>& cmd_list, com_ptr<ID3D12CommandAllocator>& cmd_alloc)
+	{
+		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
+		HRESULT hr = device->CreateCommandList(0,D3D12_COMMAND_LIST_TYPE_DIRECT,	cmd_alloc.Get(),nullptr,IID_PPV_ARGS(&cmd_list));
 		if (FAILED(hr))	return false;
 		return true;
 	}
@@ -51,10 +83,39 @@ namespace epion::DX12
 	}
 
 	template<class T>
+	__forceinline static bool DX12Wrapper::CreateDepthStencilHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heaps, unsigned int num)
+	{
+		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
+		D3D12_DESCRIPTOR_HEAP_DESC dsv_heap_desc = { D3D12_DESCRIPTOR_HEAP_TYPE_DSV, num, D3D12_DESCRIPTOR_HEAP_FLAG_NONE, 0 };
+		HRESULT hr = device->CreateDescriptorHeap(&dsv_heap_desc, IID_PPV_ARGS(&dsv_heaps));
+		if (FAILED(hr))	return false;
+		return true;
+	}
+
+	template<class T>
 	__forceinline static bool DX12Wrapper::CreateFactory(com_ptr<T>& factory)
 	{
 		static_assert(std::is_base_of<IDXGIFactory, T>::value == true, "BaseClass not IDXGIFactory");
 		HRESULT hr = CreateDXGIFactory(IID_PPV_ARGS(factory.ReleaseAndGetAddressOf()));
+		if (FAILED(hr))	return false;
+		return true;
+	}
+
+	template<class T>
+	__forceinline static bool DX12Wrapper::CreateFence(com_ptr<T>& device, com_ptr<ID3D12Fence>& fence, UINT64 fence_value)
+	{
+		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
+		HRESULT hr = device->CreateFence(fence_value, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
+		if (FAILED(hr))	return false;
+		return true;
+	}
+
+	template<class T>
+	__forceinline static bool DX12Wrapper::CreateRenderTargetHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& rtv_heaps, unsigned int num)
+	{
+		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
+		D3D12_DESCRIPTOR_HEAP_DESC rtv_heap_desc = { D3D12_DESCRIPTOR_HEAP_TYPE_RTV, num, D3D12_DESCRIPTOR_HEAP_FLAG_NONE, 0 };
+		HRESULT hr = device->CreateDescriptorHeap(&rtv_heap_desc, IID_PPV_ARGS(&rtv_heaps));
 		if (FAILED(hr))	return false;
 		return true;
 	}

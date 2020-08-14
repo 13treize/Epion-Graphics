@@ -60,4 +60,14 @@ namespace epion::Model
 		unsigned int m_cb_index;
 	};
 
+	template <class T>
+	concept Drawable = requires (T & x)
+	{
+		x.Draw();
+	};
+	template<class T>
+	void ModelDraw(std::unique_ptr<T>& model, com_ptr<ID3D12GraphicsCommandList>& cmd)
+	{
+		model->Draw(cmd);
+	}
 }

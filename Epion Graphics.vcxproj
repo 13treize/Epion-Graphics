@@ -167,6 +167,7 @@
     <ClInclude Include="Epion12\DX12\Device.h" />
     <ClInclude Include="Epion12\DX12\DX12Wrapper.h" />
     <ClInclude Include="Epion12\DX12\FrameResource.h" />
+    <ClInclude Include="Epion12\DX12\FrameResourceManager.h" />
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
     <ClInclude Include="Epion12\DX12\RasterizerManager.h" />
     <ClInclude Include="Epion12\DX12\RenderTarget.h" />
@@ -269,6 +270,7 @@
     <ClCompile Include="Epion12\DX12\Device.cpp" />
     <ClCompile Include="Epion12\DX12\DX12Wrapper.cpp" />
     <ClCompile Include="Epion12\DX12\FrameResource.cpp" />
+    <ClCompile Include="Epion12\DX12\FrameResourceManager.cpp" />
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
     <ClCompile Include="Epion12\DX12\RasterizerManager.cpp" />
     <ClCompile Include="Epion12\DX12\RenderTarget.cpp" />

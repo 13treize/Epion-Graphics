@@ -39,6 +39,10 @@ namespace epion::DX12
 		{
 			return m_cmd_alloc;
 		}
+		const UINT64 GetFenceValue()
+		{
+			return m_fence;
+		}
 
 	private:
 		com_ptr<ID3D12CommandAllocator> m_cmd_alloc;

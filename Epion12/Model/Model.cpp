@@ -106,7 +106,7 @@ namespace epion::Model
 		m_world_matrix = S * R * T;
 	}
 
-	void  Model3D::Draw(com_ptr<ID3D12GraphicsCommandList>& cmd)
+	void Model3D::Draw(com_ptr<ID3D12GraphicsCommandList>& cmd)
 	{
 		cmd->SetPipelineState(m_pipeline_state.Get());
 		cmd->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);

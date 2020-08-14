@@ -25,6 +25,6 @@ namespace epion::DX12
 
 	struct RenderTargetFunction
 	{
-		static bool CreateRenderTarget(com_ptr<ID3D12Device>& device, com_ptr<ID3D12DescriptorHeap>& rtv_heaps);
+		static bool CreateRenderTargetHeap(com_ptr<ID3D12Device>& device, com_ptr<ID3D12DescriptorHeap>& rtv_heaps);
 	};
 }
