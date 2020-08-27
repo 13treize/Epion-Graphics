@@ -174,13 +174,13 @@ namespace epion::Model
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model3DVertex>>();
 		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model3DVertex), false);
 		m_vertex_resource->CopyResource(m_obj_loader->vertices);
-		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,static_cast<UINT>(sizeof(Model3DVertex) * vertex_size),sizeof(Model3DVertex) };
+		m_model_param->VertexBufferView= { m_vertex_resource->GetGPUVirtualAddress() ,static_cast<UINT>(sizeof(Model3DVertex) * vertex_size),sizeof(Model3DVertex) };
 
 		index_size = m_obj_loader->indices.size();
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
 		m_index_resource->Initialize(DX12::Device::Get(), index_size, false);
 		m_index_resource->CopyResource(m_obj_loader->indices);
-		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), static_cast<UINT>(sizeof(unsigned short)*index_size),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_model_param->IndexBufferView = { m_index_resource->GetGPUVirtualAddress(), static_cast<UINT>(sizeof(unsigned short)*index_size),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
 
 		return true;
 	}
@@ -195,15 +195,15 @@ namespace epion::Model
 		S = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
 		R = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
 		T = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
-		m_world_matrix = S * R * T;
+		m_model_param->WorldMatrix = S * R * T;
 	}
 
 	void ObjMesh::Render()
 	{
-		DX12::CommandList::GetCmd()->SetPipelineState(m_pipeline_state.Get());
-		DX12::CommandList::GetCmd()->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
-		DX12::CommandList::GetCmd()->IASetIndexBuffer(&m_index_buffer_view);
-		DX12::CommandList::GetCmd()->DrawIndexedInstanced(m_index_resource->GetCount(),1, 0, 0, 0);
+		//DX12::CommandList::GetCmd()->SetPipelineState(m_pipeline_state.Get());
+		//DX12::CommandList::GetCmd()->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
+		//DX12::CommandList::GetCmd()->IASetIndexBuffer(&m_index_buffer_view);
+		//DX12::CommandList::GetCmd()->DrawIndexedInstanced(m_index_resource->GetCount(),1, 0, 0, 0);
 
 		//for (auto& material : m_obj_loader->materials)
 		//{

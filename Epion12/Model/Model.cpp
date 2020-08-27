@@ -55,11 +55,11 @@ namespace epion::Model
 		m_is_update = true;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
-		m_pipeline_desc = {};
+		m_model_param = std::make_unique<ModelParam>();
+
 		m_pos = {};
 		m_angle = {};
 		m_scale = {};
-		m_world_matrix = {};
 
 	}
 	void Model3D::DefaultSetPipeLine(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig)
@@ -103,15 +103,15 @@ namespace epion::Model
 		S = DirectX::XMMatrixScaling(m_scale.x, m_scale.y, m_scale.z);
 		R = DirectX::XMMatrixRotationRollPitchYaw(m_angle.x * 0.01745f, m_angle.y * 0.01745f, m_angle.z * 0.01745f);
 		T = DirectX::XMMatrixTranslation(m_pos.x, m_pos.y, m_pos.z);
-		m_world_matrix = S * R * T;
+		m_model_param->WorldMatrix = S * R * T;
 	}
 
 	void Model3D::Draw(com_ptr<ID3D12GraphicsCommandList>& cmd)
 	{
-		cmd->SetPipelineState(m_pipeline_state.Get());
-		cmd->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
-		cmd->IASetIndexBuffer(&m_index_buffer_view);
-		cmd->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
+		//cmd->SetPipelineState(m_pipeline_state.Get());
+		//cmd->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
+		//cmd->IASetIndexBuffer(&m_index_buffer_view);
+		//cmd->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
 	}
 
 	Math::FVector3& Model3D::GetPos()
@@ -126,13 +126,9 @@ namespace epion::Model
 	{
 		return m_scale;
 	}
-	DirectX::XMMATRIX& Model3D::GetWorldMaxrix()
+	std::unique_ptr<ModelParam>& Model3D::GetState()
 	{
-		return m_world_matrix;
-	}
-	const unsigned int Model3D::GetCBIndex()
-	{
-		return m_cb_index;
+		return m_model_param;
 	}
 
 	void Model3D::SetPos(const float x, const float y, const float z)

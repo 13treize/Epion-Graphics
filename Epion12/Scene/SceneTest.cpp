@@ -108,13 +108,14 @@ namespace epion
 		DX12::ConstantBufferManager::SetCBuffer2(2);
 		DX12::ConstantBufferManager::SetCBuffer0(0);
 
-		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetWorldMaxrix());
-		DX12::ConstantBufferManager::SetCBuffer1(1, m_mesh->GetCBIndex());
-		Model::ModelDraw<Model::Polygon>(m_mesh, DX12::CommandList::GetCmd());
+		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetState()->WorldMatrix);
+		DX12::ConstantBufferManager::SetCBuffer1(1, m_mesh->GetState()->ObjCBIndex);
+		Model::ModelParamDraw(DX12::CommandList::GetCmd(), m_mesh->GetState());
 
-		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetWorldMaxrix());
-		DX12::ConstantBufferManager::SetCBuffer1(1, m_mesh2->GetCBIndex());
-		Model::ModelDraw<Model::Polygon>(m_mesh2, DX12::CommandList::GetCmd());
+		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetState()->WorldMatrix);
+		DX12::ConstantBufferManager::SetCBuffer1(1, m_mesh2->GetState()->ObjCBIndex);
+		Model::ModelParamDraw(DX12::CommandList::GetCmd(), m_mesh2->GetState());
+
 	}
 	void SceneTest::RenderTex()
 	{

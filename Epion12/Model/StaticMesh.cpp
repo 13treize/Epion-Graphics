@@ -19,7 +19,7 @@ namespace epion::Model
 	}
 	bool Polygon::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig,unsigned int cb_index)
 	{
-		m_cb_index = cb_index;
+		m_model_param->ObjCBIndex = cb_index;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
@@ -44,18 +44,20 @@ namespace epion::Model
 		m_pipeline_desc.SampleMask = UINT_MAX; // ‚±‚ê‚ð–Y‚ê‚é‚ÆŠG‚ªo‚È‚¢•Œx‚ào‚È‚¢‚Ì‚Å’ˆÓ.
 
 		m_pipeline_desc.pRootSignature = root_sig.Get();
-		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
+		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_model_param->PipeLineState));
 
 
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model3DVertex>>();
 		m_vertex_resource->Initialize<ID3D12Device>(DX12::Device::Get(), sizeof(Model3DVertex), false);
 		m_vertex_resource->CopyResource<PrimitiveData::Polygon::VERTEX_SIZE>(PrimitiveData::Polygon::vertices);
-		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model3DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model3DVertex) };
+		m_model_param->VertexBufferView = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model3DVertex) * PrimitiveData::Polygon::VERTEX_SIZE,sizeof(Model3DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
 		m_index_resource->Initialize<ID3D12Device>(DX12::Device::Get(), PrimitiveData::Polygon::INDEX_SIZE, false);
 		m_index_resource->CopyResource<PrimitiveData::Polygon::INDEX_SIZE>(PrimitiveData::Polygon::indices);
-		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_model_param->IndexBufferView = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::Polygon::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_model_param->IndexCount = m_index_resource->GetCount();
+
 		return true;
 	}
 	bool Polygon::Finalize()
@@ -86,7 +88,7 @@ namespace epion::Model
 	}
 	bool CubeMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig, unsigned int cb_index)
 	{
-		m_cb_index = cb_index;
+		m_model_param->ObjCBIndex = cb_index;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
@@ -123,17 +125,18 @@ namespace epion::Model
 		m_pipeline_desc.SampleDesc = { 1,0 };
 		m_pipeline_desc.SampleMask = UINT_MAX;
 		m_pipeline_desc.pRootSignature = root_sig.Get();
-		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
+		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_model_param->PipeLineState));
 
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model3DVertex>>();
 		m_vertex_resource->Initialize(DX12::Device::Get(), sizeof(Model3DVertex), false);
 		m_vertex_resource->CopyResource<PrimitiveData::CubeMesh::VERTEX_SIZE>(PrimitiveData::CubeMesh::vertices);
-		m_vertex_buffer_view = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model3DVertex) * PrimitiveData::CubeMesh::VERTEX_SIZE,sizeof(Model3DVertex) };
+		m_model_param->VertexBufferView = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(Model3DVertex) * PrimitiveData::CubeMesh::VERTEX_SIZE,sizeof(Model3DVertex) };
 
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
 		m_index_resource->Initialize(DX12::Device::Get(), PrimitiveData::CubeMesh::INDEX_SIZE, false);
 		m_index_resource->CopyResource<PrimitiveData::CubeMesh::INDEX_SIZE>(PrimitiveData::CubeMesh::indices);
-		m_index_buffer_view = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::CubeMesh::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_model_param->IndexBufferView = { m_index_resource->GetGPUVirtualAddress(), PrimitiveData::CubeMesh::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_model_param->IndexCount = m_index_resource->GetCount();
 		return true;
 	}
 	bool CubeMesh::Finalize()
