@@ -6,6 +6,7 @@
 #include "../Scene/SceneDefault.h"
 #include "../Scene/Scene2D.h"
 #include "../Scene/Scene3D.h"
+#include "../Scene/SceneNoise.h"
 #include "../Scene/SceneTest.h"
 #include "../Camera/CameraManager.h"
 #include "../DX12/ViewPort.h"
@@ -54,8 +55,11 @@ namespace epion::GUI
 			{
 				SceneManager::SetNextScene<Scene3D>();
 			}
-
-			if (ImGui::RadioButton("Test Scene", &m_select_scene, 3))
+			if (ImGui::RadioButton("Noise Scene", &m_select_scene, 3))
+			{
+				SceneManager::SetNextScene<SceneNoise>();
+			}
+			if (ImGui::RadioButton("Test Scene", &m_select_scene, 4))
 			{
 				SceneManager::SetNextScene<SceneTest>();
 			}

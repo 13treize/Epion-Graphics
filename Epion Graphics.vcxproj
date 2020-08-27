@@ -200,6 +200,7 @@
     <ClInclude Include="Epion12\Scene\Scene3D.h" />
     <ClInclude Include="Epion12\Scene\SceneDefault.h" />
     <ClInclude Include="Epion12\Scene\SceneManager.h" />
+    <ClInclude Include="Epion12\Scene\SceneNoise.h" />
     <ClInclude Include="Epion12\Scene\SceneTest.h" />
     <ClInclude Include="Epion12\String\EpionString.h" />
     <ClInclude Include="Epion12\WinApp.h" />
@@ -295,6 +296,7 @@
     <ClCompile Include="Epion12\Scene\Scene3D.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDefault.cpp" />
     <ClCompile Include="Epion12\Scene\SceneManager.cpp" />
+    <ClCompile Include="Epion12\Scene\SceneNoise.cpp" />
     <ClCompile Include="Epion12\Scene\SceneTest.cpp" />
     <ClCompile Include="Epion12\String\EpionString.cpp" />
     <ClCompile Include="Epion12\WinApp.cpp" />
@@ -461,6 +463,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\PS\Scene2DDemo.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\PS\SceneNoiseDemo.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\VS.hlsl">
