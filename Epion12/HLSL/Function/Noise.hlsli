@@ -255,16 +255,17 @@ float2 eval_noise(float2 UV, float kr, float f, float b, float o)
     }
     return noise;
 }
-void PhasorNoise(float2 uv, float f_, float b_, float o_, out float a, out float b, out float c, out float d)
+void PhasorNoise(float2 uv,float2 scale, float f_, float b_, float o_, out float a, out float b, out float c, out float d)
 {
     float2 dir = float2(cos(o_), sin(o_));
     float kr = sqrt(-log(0.05) / 3.14) / b_;
-    float2 phasorNoise = eval_noise(uv, kr, f_, b_, o_)*0.3;
+    float2 p = uv * scale;
+    float2 phasorNoise = eval_noise(p, kr, f_, b_, o_)*0.3;
     float phi = atan2(phasorNoise.y, phasorNoise.x);
     a = phi;
     b = sin(phi)+ 0.5;
     c = length(phasorNoise);
-    d = frac(phi / (2.0 * 3.14) - f_ * dot(uv, dir));
+    d = frac(phi / (2.0 * 3.14) - f_ * dot(p, dir));
 }
 //  SimpleNoise
 inline float noise_randomValue(float2 uv)

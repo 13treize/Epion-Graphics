@@ -63,8 +63,6 @@ namespace epion::GUI
 			{
 				SceneManager::SetNextScene<SceneTest>();
 			}
-
-
 			ImGui::EndTabItem();
 		}
 		if (ImGui::BeginTabItem("Camera Manager"))
@@ -111,7 +109,6 @@ namespace epion::GUI
 			}
 			ImGui::EndTabItem();
 		}
-
 		ImGui::EndTabBar();
 		ImGui::End();
 	}

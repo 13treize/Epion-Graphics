@@ -111,7 +111,7 @@ namespace epion::Model
 		//cmd->SetPipelineState(m_pipeline_state.Get());
 		//cmd->IASetVertexBuffers(0, 1, &m_vertex_buffer_view);
 		//cmd->IASetIndexBuffer(&m_index_buffer_view);
-		//cmd->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
+		cmd->DrawIndexedInstanced(m_index_resource->GetCount(), 1, 0, 0, 0);
 	}
 
 	Math::FVector3& Model3D::GetPos()

@@ -14,9 +14,11 @@ namespace	epion
 		void	RenderTex()		override;
 
 	private:
-		epion::com_ptr<ID3DBlob> m_vs_blob;
+		void UpdataGUI();
+		com_ptr<ID3DBlob> m_vs_blob;
 
 		std::array<com_ptr<ID3DBlob>, 48> m_ps_blob;
 		std::array<std::unique_ptr<Model::Square>, 48> m_square;
+		std::array<Math::FVector4, 4> m_data;
 	};
 }

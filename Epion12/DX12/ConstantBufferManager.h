@@ -23,10 +23,17 @@ namespace epion::DX12
 		DirectX::XMMATRIX	View;
 		DirectX::XMMATRIX	Proj;
 		//Math::FVector4		CameraPos;
-		//Math::FVector4		LightColor;
-		//Math::FVector4		LightDir;
-		//Math::FVector4		AmbientColor;
+		Math::FVector4		LightColor;
+		Math::FVector4		LightDir;
+		Math::FVector4		AmbientColor;
 	};
+
+	__declspec(align(512))
+		struct CBuffer3
+	{
+		std::array<Math::FVector4, 4> Data;
+	};
+
 
 	template<class T>
 	class CBufferData final
@@ -76,14 +83,16 @@ namespace epion::DX12
 
 		static bool Finalize();
 		static void UpdateCBuffer0(const Math::FVector2& mouse_pos);
-		static void UpdateCBuffer1(const DirectX::XMMATRIX& world);
+		static void UpdateCBuffer1(const DirectX::XMMATRIX& world, const unsigned int index);
 		static void UpdateCBuffer2(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& projection, const Math::FVector3& camera_pos, const Math::FVector4& color, const Math::FVector4& dir, const Math::FVector4& ambient);
+		static void UpdateCBuffer3(const std::array < Math::FVector4, 4>& data);
 
 		static void SetHeap();
 
 		static void SetCBuffer0(int index);
-		static void SetCBuffer1(unsigned int index,int frame_count);
+		static void SetCBuffer1(unsigned int index, int frame_count);
 		static void SetCBuffer2(int index);
+		static void SetCBuffer3(int index);
 
 		static UINT CalcConstantBufferByteSize(UINT byteSize);
 
@@ -94,10 +103,13 @@ namespace epion::DX12
 		static std::unique_ptr<ResourceBuffer<CBuffer0>> m_cbuffer0;
 		static std::unique_ptr<ResourceBuffer<CBuffer1>> m_cbuffer1;
 		static std::unique_ptr<ResourceBuffer<CBuffer2>> m_cbuffer2;
+		static std::unique_ptr<ResourceBuffer<CBuffer3>> m_cbuffer3;
 
 		static CBuffer0* m_cbuffer0_data;
 		static CBuffer1* m_cbuffer1_data;
 		static CBuffer2* m_cbuffer2_data;
+		static CBuffer3* m_cbuffer3_data;
+
 		static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address1;
 		static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address2;
 

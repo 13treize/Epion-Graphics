@@ -5,13 +5,13 @@
 
 namespace	epion
 {
-	class	 Scene3D	final :public	Scene
+	class Scene3D	final :public	Scene
 	{
 	public:
 		bool	Initialize()	override;
-		bool	Finalize() 		override;
+		bool	Finalize()		override;
 		void	Update()		override;
-		void	Render(int frame_count)		override;
+		void	Render(int frame_count)	override;
 		void	RenderTex()		override;
 
 	private:

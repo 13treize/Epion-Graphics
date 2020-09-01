@@ -81,6 +81,11 @@ namespace epion::DX12
 			memcpy(m_mapped_resource, &data, sizeof(data));
 		}
 
+		void CopyResource(const T& data,const unsigned int index)
+		{
+			memcpy(&m_mapped_resource[index], &data, sizeof(data));
+		}
+
 		D3D12_GPU_VIRTUAL_ADDRESS GetGPUVirtualAddress()
 		{
 			return m_resource_buffer->GetGPUVirtualAddress();

@@ -5,22 +5,22 @@
 
 cbuffer CBuffer0 : register(b0)
 {
-    float4 Time; //: packoffset(c0);
+    float4 Time;
     float2 ScreenSize;
     float2 MousePos;
 };
 cbuffer CBuffer1 : register(b1)
 {
-    float4x4 World;//: packoffset(c0);
+    float4x4 World;
 };
 cbuffer CBuffer2 : register(b2)
 {
     float4x4 View; //: packoffset(c4);
     float4x4 Proj; //: packoffset(c8);
     //float4 CameraPos;
-    //float4 LightColor;
-    //float4 LightDir;
-    //float4 AmbientColor;
+    float4 LightColor;
+    float4 LightDir;
+    float4 AmbientColor;
 };
 
 void Unity_ColorspaceConversion_RGB_RGB_float(float3 In, out float3 Out)
@@ -61,7 +61,12 @@ struct PSOutput
     float4  Color   : SV_TARGET0;
 };
 
-
+float3 Diffuse(float3 N, float3 L, float3 C, float3 K)
+{
+    float D = dot(N, -L);
+    D = max(0, D); // •‰‚Ì’l‚ğ‚O‚É‚·‚é
+    return K * C * D;
+}
 
 float4 Fire(float2 UV, float3 Color)
 {
@@ -114,6 +119,24 @@ PSOutput PS(const VSOutput input)
     RotateRadians(input.UV, 0.5, Time.x, uv);
     Gear(uv, 12., .3, 0.13, 0.8, 6., 0.2, c);
     output.Color.rgb =c;
+    
+    float3 N = mul((float3x3) World, input.Normal);
+    N = normalize(N); //³‹K‰»
+
+	//@ƒ‰ƒCƒgŒvZ
+    float3 L = normalize(LightDir.xyz);
+	//float D = max(0, dot(-L, N));
+    float3 C = LightColor.rgb;
+	// ”½Ë—¦
+    float3 Kd = float3(1, 1, 1);
+	// ŠgU”½ËŒvZ
+    float3 D = Diffuse(N, L, C, Kd);
+
+	// o—Í’lİ’è.
+
+    //output.Color = float4(input.Position, 1.0);
+    output.Color.rgb += D + AmbientColor.rgb;
+
     return output;
 }
 
