@@ -10,7 +10,7 @@ namespace	epion::DX12
 		TYPE_PIXEL,
 	};
 
-	bool	ShaderCompile(const std::wstring& hlsl_name, const std::string& entry_point, const std::string& target, com_ptr<ID3DBlob>& shader_blob);
+	bool	ShaderCompile(std::wstring_view hlsl_name, const std::string& entry_point, const std::string& target, com_ptr<ID3DBlob>& shader_blob);
 
 	class ShaderResouceManager final
 	{
@@ -18,8 +18,8 @@ namespace	epion::DX12
 		static bool	Initialize();
 		static bool	Finalize();
 		static bool Settings();
-		static bool Compile(const std::wstring& hlsl_name, com_ptr<ID3DBlob>& shader_blob, ShaderType type);
-		static bool Compile(const std::wstring& hlsl_name, const std::string& entry_point,com_ptr<ID3DBlob>& shader_blob, ShaderType type);
+		static bool Compile(std::wstring_view hlsl_name, com_ptr<ID3DBlob>& shader_blob, ShaderType type);
+		static bool Compile(std::wstring_view hlsl_name, const std::string& entry_point,com_ptr<ID3DBlob>& shader_blob, ShaderType type);
 	private:
 
 	};

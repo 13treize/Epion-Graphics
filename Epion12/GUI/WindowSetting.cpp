@@ -8,6 +8,7 @@
 #include "../Scene/Scene3D.h"
 #include "../Scene/SceneNoise.h"
 #include "../Scene/SceneTest.h"
+#include "../Scene/SceneDemoProcedural.h"
 #include "../Camera/CameraManager.h"
 #include "../DX12/ViewPort.h"
 
@@ -63,6 +64,11 @@ namespace epion::GUI
 			{
 				SceneManager::SetNextScene<SceneTest>();
 			}
+			if (ImGui::RadioButton("Procedural Scene ", &m_select_scene, 5))
+			{
+				SceneManager::SetNextScene<SceneProcedural>();
+			}
+
 			ImGui::EndTabItem();
 		}
 		if (ImGui::BeginTabItem("Camera Manager"))

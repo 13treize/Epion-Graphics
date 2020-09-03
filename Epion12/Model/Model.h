@@ -5,6 +5,8 @@
 
 namespace epion::Model
 {
+	template <class T>
+	concept IsPrimitive =std::is_base_of<CorePrimitive, T>::value;
 	struct ModelParam
 	{
 		unsigned int ObjCBIndex;
@@ -61,7 +63,24 @@ namespace epion::Model
 		Math::FVector3 m_pos;
 		Math::FVector3 m_angle;
 		Math::FVector3 m_scale;
+
+		template<IsPrimitive T, class D,class M>
+		void PrimitiveBufferSet(com_ptr<D>& device);
 	};
+	template<IsPrimitive T,class D, class M>
+	void Model3D::PrimitiveBufferSet(com_ptr<D>& device)
+	{
+		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<M>>();
+		m_vertex_resource->Initialize(device, sizeof(M), false);
+		m_vertex_resource->CopyResource<T::VERTEX_SIZE>(T::vertices);
+		m_model_param->VertexBufferView = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(M) *T::VERTEX_SIZE,sizeof(M) };
+
+		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
+		m_index_resource->Initialize(device, T::INDEX_SIZE, false);
+		m_index_resource->CopyResource<T::INDEX_SIZE>(T::indices);
+		m_model_param->IndexBufferView = { m_index_resource->GetGPUVirtualAddress(), T::INDEX_SIZE * sizeof(unsigned short),DXGI_FORMAT::DXGI_FORMAT_R16_UINT };
+		m_model_param->IndexCount = m_index_resource->GetCount();
+	}
 
 	static void ModelParamDraw(com_ptr<ID3D12GraphicsCommandList>& cmd,std::unique_ptr<ModelParam>& param)
 	{

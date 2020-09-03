@@ -6,8 +6,6 @@
 
 namespace
 {
-	UINT objCBByteSize;
-	D3D12_GPU_VIRTUAL_ADDRESS objCBAddress1;
 }
 namespace epion::DX12
 {
@@ -23,41 +21,10 @@ namespace epion::DX12
 	CBuffer2* ConstantBufferManager::m_cbuffer2_data;
 	CBuffer3* ConstantBufferManager::m_cbuffer3_data;
 
-	static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address0;
-	static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address1;
-	static D3D12_GPU_VIRTUAL_ADDRESS m_gpu_virtual_address2;
 
 
 	bool ConstantBufferManager::Initialize()
 	{
-		m_heap = std::make_unique<DX12::DescriptorHeap>();
-		m_heap->Initialize(2, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-
-		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer0>>();
-		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBuffer0), true);
-		D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view;
-		//m_constant_buffer_view = {};
-		//m_constant_buffer_view.BufferLocation = m_cbuffer0->GetGPUVirtualAddress();
-		//m_constant_buffer_view.SizeInBytes = 256;
-		//DX12::Device::Get()->CreateConstantBufferView(&m_constant_buffer_view, m_heap->GetHandleCPU(0));
-
-
-		m_cbuffer1 = std::make_unique<DX12::ResourceBuffer<CBuffer1>>();
-		m_cbuffer1->Initialize(DX12::Device::Get(), sizeof(CBuffer1), true);
-		D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view2;
-		//m_constant_buffer_view2 = {};
-		//m_constant_buffer_view2.BufferLocation = m_cbuffer1->GetGPUVirtualAddress();
-		//m_constant_buffer_view2.SizeInBytes = 256;
-		//DX12::Device::Get()->CreateConstantBufferView(&m_constant_buffer_view2, m_heap->GetHandleCPU(1));
-
-		m_cbuffer2 = std::make_unique<DX12::ResourceBuffer<CBuffer2>>();
-		m_cbuffer2->Initialize(DX12::Device::Get(), sizeof(CBuffer2), true);
-		//D3D12_CONSTANT_BUFFER_VIEW_DESC m_constant_buffer_view3;
-		//m_constant_buffer_view3 = {};
-		//m_constant_buffer_view3.BufferLocation = m_cbuffer1->GetGPUVirtualAddress();
-		//m_constant_buffer_view3.SizeInBytes = 256;
-		//DX12::Device::Get()->CreateConstantBufferView(&m_constant_buffer_view3, m_heap->GetHandleCPU(2));
-
 		return true;
 	}
 	bool ConstantBufferManager::Build2D(const int buffer_num)
@@ -67,8 +34,6 @@ namespace epion::DX12
 
 		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer0>>();
 		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBuffer0), true);
-
-
 		m_cbuffer3 = std::make_unique<DX12::ResourceBuffer<CBuffer3>>();
 		m_cbuffer3->Initialize(DX12::Device::Get(), sizeof(CBuffer3), true);
 
@@ -78,7 +43,14 @@ namespace epion::DX12
 	{
 		m_heap = std::make_unique<DX12::DescriptorHeap>();
 		m_heap->Initialize(buffer_num, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-
+		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer0>>();
+		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBuffer0), true);
+		m_cbuffer1 = std::make_unique<DX12::ResourceBuffer<CBuffer1>>();
+		m_cbuffer1->Initialize(DX12::Device::Get(), sizeof(CBuffer1), true);
+		m_cbuffer2 = std::make_unique<DX12::ResourceBuffer<CBuffer2>>();
+		m_cbuffer2->Initialize(DX12::Device::Get(), sizeof(CBuffer2), true);
+		m_cbuffer3 = std::make_unique<DX12::ResourceBuffer<CBuffer3>>();
+		m_cbuffer3->Initialize(DX12::Device::Get(), sizeof(CBuffer3), true);
 		return true;
 	}
 
@@ -140,33 +112,22 @@ namespace epion::DX12
 		UINT objCBByteSize =CalcConstantBufferByteSize(sizeof(CBuffer0));
 		auto objectCB = m_cbuffer0->Get();
 		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
-		objCBAddress += static_cast<UINT>(index *objCBByteSize);
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(0, objCBAddress);
-
-		//DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(0, m_heap->GetHandleGPU(0));
 	}
 
-	void ConstantBufferManager::SetCBuffer1(unsigned int index,int frame_count)
+	void ConstantBufferManager::SetCBuffer1(int frame_count, int index)
 	{
-		objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer1));
+		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer1));
 		auto objectCB = m_cbuffer1->Get();
-		//objCBAddress1 = objectCB->GetGPUVirtualAddress();
-		//objCBAddress1 +=objCBByteSize* frame_count;
-		objCBAddress1 = objectCB->GetGPUVirtualAddress() + (objCBByteSize * frame_count);
-
+		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress1 = objectCB->GetGPUVirtualAddress() + (objCBByteSize * frame_count);
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(1, objCBAddress1);
-		//DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(1, m_heap->GetHandleGPU(1));
 	}
 	void ConstantBufferManager::SetCBuffer2(int index)
 	{
 		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer2));
 		auto objectCB = m_cbuffer2->Get();
 		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
-		//objCBAddress += static_cast<UINT>(index * objCBByteSize);
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(2, objCBAddress);
-
-		//DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(2, m_cbuffer2->Get()->GetGPUVirtualAddress());
-		//DX12::CommandList::GetCmd()->SetGraphicsRootDescriptorTable(2, m_heap->GetHandleGPU(2));
 	}
 
 	void ConstantBufferManager::SetCBuffer3(int index)
@@ -174,8 +135,7 @@ namespace epion::DX12
 		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer3));
 		auto objectCB = m_cbuffer3->Get();
 		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
-		//objCBAddress += static_cast<UINT>(index * objCBByteSize);
-		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(1, objCBAddress);
+		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(index, objCBAddress);
 	}
 
 	UINT ConstantBufferManager::CalcConstantBufferByteSize(UINT byteSize)

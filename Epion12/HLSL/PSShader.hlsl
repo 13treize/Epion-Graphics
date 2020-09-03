@@ -107,7 +107,7 @@ PSOutput PS(const VSOutput input)
     //PSOutput output = (PSOutput) 0;
     float4 aa;
     float3 aaaaaa;
-    Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(10.0, 10.0), aaaaaa);
+    Checkerboard(input.UV, float3(input.UV.x, input.UV.y, 1.0), float3(input.UV.x, input.UV.y, 0.0), float2(2.0, 2.0), aaaaaa);
 
     MinkowskiVoronoi(input.UV, 5.0,5.0, 0.25, aa.x, aa.y, aa.z, aa.w);
     //PhasorNoise(input.UV, 25.0, 10.0, 0.1, aa.x, aa.y, aa.z, aa.w);
@@ -118,24 +118,24 @@ PSOutput PS(const VSOutput input)
     float2 uv;
     RotateRadians(input.UV, 0.5, Time.x, uv);
     Gear(uv, 12., .3, 0.13, 0.8, 6., 0.2, c);
-    output.Color.rgb =c;
-    
-    float3 N = mul((float3x3) World, input.Normal);
-    N = normalize(N); //ê≥ãKâª
+    output.Color.rgb =aaaaaa;
+    output.Color.a = 1.0f;
+ //   float3 N = mul((float3x3) World, input.Normal);
+ //   N = normalize(N); //ê≥ãKâª
 
-	//Å@ÉâÉCÉgåvéZ
-    float3 L = normalize(LightDir.xyz);
-	//float D = max(0, dot(-L, N));
-    float3 C = LightColor.rgb;
-	// îΩéÀó¶
-    float3 Kd = float3(1, 1, 1);
-	// ägéUîΩéÀåvéZ
-    float3 D = Diffuse(N, L, C, Kd);
+	////Å@ÉâÉCÉgåvéZ
+ //   float3 L = normalize(LightDir.xyz);
+	////float D = max(0, dot(-L, N));
+ //   float3 C = LightColor.rgb;
+	//// îΩéÀó¶
+ //   float3 Kd = float3(1, 1, 1);
+	//// ägéUîΩéÀåvéZ
+ //   float3 D = Diffuse(N, L, C, Kd);
 
 	// èoóÕílê›íË.
 
     //output.Color = float4(input.Position, 1.0);
-    output.Color.rgb += D + AmbientColor.rgb;
+    //output.Color.rgb += D + AmbientColor.rgb;
 
     return output;
 }
@@ -144,7 +144,7 @@ PSOutput PS2(const VSOutput input)
 {
     PSOutput output = (PSOutput) 0;
     float3 aaaaaa;
-    Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(10.0, 10.0), aaaaaa);
+    Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(2.0, 2.0), aaaaaa);
     output.Color.rgb = aaaaaa;
     return output;
 }

@@ -89,10 +89,10 @@ namespace epion::DX12
 
 		static void SetHeap();
 
-		static void SetCBuffer0(int index);
-		static void SetCBuffer1(unsigned int index, int frame_count);
-		static void SetCBuffer2(int index);
-		static void SetCBuffer3(int index);
+		static void SetCBuffer0(int index=0);
+		static void SetCBuffer1(int frame_count, int index=1);
+		static void SetCBuffer2(int index=2);
+		static void SetCBuffer3(int index=3);
 
 		static UINT CalcConstantBufferByteSize(UINT byteSize);
 

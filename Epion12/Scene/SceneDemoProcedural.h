@@ -6,8 +6,7 @@
 
 namespace	epion
 {
-	const int NUM_FRAME_RESOUCE = 3;
-	class	SceneTest	final :public	Scene
+	class	SceneProcedural	final :public	Scene
 	{
 	public:
 		bool	Initialize()	override;
@@ -20,10 +19,8 @@ namespace	epion
 		int m_num_frame_resources;
 
 		com_ptr<ID3DBlob> vs_blob;
-		com_ptr<ID3DBlob> ps_blob[2];
-
-		std::unique_ptr<Model::CubeMesh> m_mesh;
-		std::unique_ptr<Model::CubeMesh> m_mesh2;
+		std::array<com_ptr<ID3DBlob>,60> ps_blob;
+		std::array<std::unique_ptr<Model::Polygon>,60> m_mesh;
 		DX12::CBuffer2 data;
 	};
 }

@@ -199,6 +199,7 @@
     <ClInclude Include="Epion12\Scene\Scene2D.h" />
     <ClInclude Include="Epion12\Scene\Scene3D.h" />
     <ClInclude Include="Epion12\Scene\SceneDefault.h" />
+    <ClInclude Include="Epion12\Scene\SceneDemoProcedural.h" />
     <ClInclude Include="Epion12\Scene\SceneManager.h" />
     <ClInclude Include="Epion12\Scene\SceneNoise.h" />
     <ClInclude Include="Epion12\Scene\SceneTest.h" />
@@ -295,6 +296,7 @@
     <ClCompile Include="Epion12\Scene\Scene2D.cpp" />
     <ClCompile Include="Epion12\Scene\Scene3D.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDefault.cpp" />
+    <ClCompile Include="Epion12\Scene\SceneDemoProcedural.cpp" />
     <ClCompile Include="Epion12\Scene\SceneManager.cpp" />
     <ClCompile Include="Epion12\Scene\SceneNoise.cpp" />
     <ClCompile Include="Epion12\Scene\SceneTest.cpp" />

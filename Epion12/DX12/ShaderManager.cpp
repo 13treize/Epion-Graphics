@@ -4,7 +4,7 @@
 //VS > HS > DS > GS > PS
 namespace	epion::DX12
 {
-	bool ShaderCompile(const std::wstring& hlsl_name,
+	bool ShaderCompile(std::wstring_view hlsl_name,
 		const std::string& entry_point,
 		const std::string& target,
 		com_ptr<ID3DBlob>& shader_blob)
@@ -17,7 +17,7 @@ namespace	epion::DX12
 #endif
 		com_ptr<ID3DBlob>	error_blob = {};
 
-		hr = D3DCompileFromFile(hlsl_name.c_str(),
+		hr = D3DCompileFromFile(hlsl_name.data(),
 			nullptr,
 			D3D_COMPILE_STANDARD_FILE_INCLUDE,
 			entry_point.c_str(),
@@ -54,7 +54,7 @@ namespace	epion::DX12
 		return true;
 	}
 
-	bool ShaderResouceManager::Compile(const std::wstring& hlsl_name, com_ptr<ID3DBlob>& shader_blob, ShaderType type)
+	bool ShaderResouceManager::Compile(std::wstring_view hlsl_name, com_ptr<ID3DBlob>& shader_blob, ShaderType type)
 	{
 		switch (type)
 		{
@@ -67,7 +67,7 @@ namespace	epion::DX12
 		}
 		return false;
 	}
-	bool ShaderResouceManager::Compile(const std::wstring& hlsl_name, const std::string& entry_point, com_ptr<ID3DBlob>& shader_blob, ShaderType type)
+	bool ShaderResouceManager::Compile(std::wstring_view hlsl_name, const std::string& entry_point, com_ptr<ID3DBlob>& shader_blob, ShaderType type)
 	{
 		switch (type)
 		{
