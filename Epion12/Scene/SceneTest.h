@@ -23,7 +23,7 @@ namespace	epion
 		com_ptr<ID3DBlob> ps_blob[2];
 
 		std::unique_ptr<Model::CubeMesh> m_mesh;
-		std::unique_ptr<Model::CubeMesh> m_mesh2;
+		std::unique_ptr<Model::SphereMesh> m_mesh2;
 		DX12::CBuffer2 data;
 	};
 }

@@ -7,8 +7,7 @@
 #include	"../DX12/ViewPort.h"
 #include	"../Camera/CameraManager.h"
 #include	"../DX12/ShaderManager.h"
-#include	"../DX12/BlendState.h"
-#include	"../DX12/RasterizerManager.h"
+#include	"../DX12/DX12State.h"
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
 

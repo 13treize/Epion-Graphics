@@ -101,91 +101,50 @@ namespace epion::Model
 
 			void CreateSphere(float radius, unsigned int sliceCount, unsigned int stackCount)
 			{
-				MeshData mesh_data;
-
-				Model3DVertex topVertex;
-				topVertex.Position = Math::FVector3(0.0f, +radius, 0.0f);
-				topVertex.Normal = Math::FVector3(0.0f, 1.0f, 0.0f);
-				topVertex.UV = Math::FVector2(0.0f, 0.0f);
-				topVertex.Color = Math::FVector4(0.0f, 0.0f, 0.0f, 0.0f);
-
-				Model3DVertex bottomVertex;
-				topVertex.Position = Math::FVector3(0.0f, -radius, 0.0f);
-				topVertex.Normal = Math::FVector3(0.0f, -1.0f, 0.0f);
-				topVertex.UV = Math::FVector2(0.0f, 1.0f);
-				topVertex.Color = Math::FVector4(0.0f, 0.0f, 0.0f, 0.0f);
-
-				mesh_data.Vertices.push_back(topVertex);
-
-				float phiStep = Math::pi<float> / stackCount;
-				float thetaStep = 2.0f * Math::pi<float> / sliceCount;
-
-				// Compute vertices for each stack ring (do not count the poles as rings).
-				for (unsigned short i = 1; i <= stackCount - 1; ++i)
+				mesh.Vertices.clear();
+				mesh.Indices.clear();
+				unsigned int num_vertices = (sliceCount + 1) * (stackCount + 1);
+				for (int y = 0; y < stackCount + 1; y++)
 				{
-					float phi = i * phiStep;
-
-					// Vertices of ring.
-					for (unsigned short j = 0; j <= sliceCount; ++j)
+					for (int x = 0; x < sliceCount + 1; x++)
 					{
-						float theta = j * thetaStep;
+						Model3DVertex vertices;
+						int index = y * (sliceCount + 1) + x;
+						float h = 0.5f * cosf(y * Math::pi<float> / stackCount);
+						float w = 0.5f * sinf(y * Math::pi<float> / stackCount);
+						float rad_slices = x * Math::pi<float> * 2.0f / sliceCount;
 
-						Math::FVector3 p;
-						Model3DVertex v;
+						vertices.Position.x = w * sinf(rad_slices);
+						vertices.Position.y = h;
+						vertices.Position.z = w * cosf(rad_slices);
 
-						// spherical to cartesian
-						v.Position.x = radius * sinf(phi) * cosf(theta);
-						v.Position.y = radius * cosf(phi);
-						v.Position.z = radius * sinf(phi) * sinf(theta);
+						vertices.Normal.x = vertices.Position.x * 2.0f;
+						vertices.Normal.y = vertices.Position.y * 2.0f;
+						vertices.Normal.z = vertices.Position.z * 2.0f;
 
-						p = v.Position;
-						v.Normal = p.normalize();
-
-						v.UV.x = theta / (Math::pi<float> * 2.0f);
-						v.UV.y = phi / Math::pi<float>;
-						v.Color = Math::FVector4(0.0f, 0.0f, 0.0f, 0.0f);
-
-						mesh_data.Vertices.push_back(v);
+						vertices.UV.x = 1.0f - (float)x / sliceCount;
+						vertices.UV.y = (float)y / stackCount - 1.0f;
+						vertices.Color = Math::FVector4(1.0f, 1.0f, 1.0f, 1.0f);
+						mesh.Vertices.push_back(vertices);
 					}
 				}
+				unsigned int num_indices = stackCount * sliceCount * 2 * 3;
+				mesh.Indices.resize(num_indices);
 
-				mesh_data.Vertices.push_back(bottomVertex);
-
-				for (unsigned short i = 1; i <= sliceCount; ++i)
+				for (int y = 0; y < stackCount; y++)
 				{
-					mesh_data.Indices.push_back(0);
-					mesh_data.Indices.push_back(i + 1);
-					mesh_data.Indices.push_back(i);
-				}
-
-				unsigned short baseIndex = 1;
-				unsigned short ringVertexCount = sliceCount + 1;
-				for (unsigned short i = 0; i < stackCount - 2; ++i)
-				{
-					for (unsigned short j = 0; j < sliceCount; ++j)
+					for (int x = 0; x < sliceCount; x++)
 					{
-						mesh_data.Indices.push_back(baseIndex + i * ringVertexCount + j);
-						mesh_data.Indices.push_back(baseIndex + i * ringVertexCount + j + 1);
-						mesh_data.Indices.push_back(baseIndex + (i + 1) * ringVertexCount + j);
-
-						mesh_data.Indices.push_back(baseIndex + (i + 1) * ringVertexCount + j);
-						mesh_data.Indices.push_back(baseIndex + i * ringVertexCount + j + 1);
-						mesh_data.Indices.push_back(baseIndex + (i + 1) * ringVertexCount + j + 1);
+						int face = (y * sliceCount + x);
+						int vertices_index = y * (sliceCount + 1) + x;
+						mesh.Indices[face * 6] = vertices_index + 1;
+						mesh.Indices[face * 6 + 1] = vertices_index;
+						mesh.Indices[face * 6 + 2] = vertices_index + (sliceCount + 1);
+						mesh.Indices[face * 6 + 3] = vertices_index + 1;
+						mesh.Indices[face * 6 + 4] = vertices_index + (sliceCount + 1);
+						mesh.Indices[face * 6 + 5] = vertices_index + (sliceCount + 1) + 1;
 					}
 				}
-
-				unsigned short southPoleIndex = (unsigned short)mesh_data.Vertices.size() - 1;
-
-				baseIndex = southPoleIndex - ringVertexCount;
-
-				for (unsigned short i = 0; i < sliceCount; ++i)
-				{
-					mesh_data.Indices.push_back(southPoleIndex);
-					mesh_data.Indices.push_back(baseIndex + i);
-					mesh_data.Indices.push_back(baseIndex + i + 1);
-				}
-
-				mesh = mesh_data;
 			}
 		};
 	};

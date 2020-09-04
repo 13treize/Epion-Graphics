@@ -1,13 +1,11 @@
 #include	"../Epion12.h"
 #include	"ViewPort.h"
 
-
 namespace epion::DX12
 {
 	D3D12_VIEWPORT ViewPort::m_viewport;
 	D3D12_RECT ViewPort::m_scissorrect;
 	Math::Vector2<int> ViewPort::m_screen_size;
-
 
 	bool ViewPort::Initialize()
 	{

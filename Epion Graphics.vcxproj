@@ -159,17 +159,16 @@
     <ClInclude Include="Epion12\All.h" />
     <ClInclude Include="Epion12\Camera\CameraManager.h" />
     <ClInclude Include="Epion12\Common.h" />
-    <ClInclude Include="Epion12\DX12\BlendState.h" />
     <ClInclude Include="Epion12\DX12\Buffer.h" />
     <ClInclude Include="Epion12\DX12\CommandList.h" />
     <ClInclude Include="Epion12\DX12\ConstantBufferManager.h" />
     <ClInclude Include="Epion12\DX12\DescriptorHeap.h" />
     <ClInclude Include="Epion12\DX12\Device.h" />
+    <ClInclude Include="Epion12\DX12\DX12State.h" />
     <ClInclude Include="Epion12\DX12\DX12Wrapper.h" />
     <ClInclude Include="Epion12\DX12\FrameResource.h" />
     <ClInclude Include="Epion12\DX12\FrameResourceManager.h" />
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
-    <ClInclude Include="Epion12\DX12\RasterizerManager.h" />
     <ClInclude Include="Epion12\DX12\RenderTarget.h" />
     <ClInclude Include="Epion12\DX12\RootSignature.h" />
     <ClInclude Include="Epion12\DX12\ShaderManager.h" />
@@ -264,17 +263,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\Camera\CameraManager.cpp" />
-    <ClCompile Include="Epion12\DX12\BlendState.cpp" />
     <ClCompile Include="Epion12\DX12\Buffer.cpp" />
     <ClCompile Include="Epion12\DX12\CommandList.cpp" />
     <ClCompile Include="Epion12\DX12\ConstantBufferManager.cpp" />
     <ClCompile Include="Epion12\DX12\DescriptorHeap.cpp" />
     <ClCompile Include="Epion12\DX12\Device.cpp" />
+    <ClCompile Include="Epion12\DX12\DX12State.cpp" />
     <ClCompile Include="Epion12\DX12\DX12Wrapper.cpp" />
     <ClCompile Include="Epion12\DX12\FrameResource.cpp" />
     <ClCompile Include="Epion12\DX12\FrameResourceManager.cpp" />
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
-    <ClCompile Include="Epion12\DX12\RasterizerManager.cpp" />
     <ClCompile Include="Epion12\DX12\RenderTarget.cpp" />
     <ClCompile Include="Epion12\DX12\RootSignature.cpp" />
     <ClCompile Include="Epion12\DX12\ShaderManager.cpp" />
@@ -400,6 +398,17 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\GS\GS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Geometry</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Geometry</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Geometry</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Geometry</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\HS\HullShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Hull</ShaderType>

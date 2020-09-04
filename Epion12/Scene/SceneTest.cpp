@@ -7,8 +7,7 @@
 #include	"../DX12/ViewPort.h"
 #include	"../Camera/CameraManager.h"
 #include	"../DX12/ShaderManager.h"
-#include	"../DX12/BlendState.h"
-#include	"../DX12/RasterizerManager.h"
+#include	"../DX12/DX12State.h"
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
 
@@ -41,7 +40,7 @@ namespace epion
 		m_mesh->SetAngle(45.0f, 0.0f, 0.0f);
 		cbuffer_index++;
 
-		m_mesh2 = std::make_unique <Model::CubeMesh>();
+		m_mesh2 = std::make_unique <Model::SphereMesh>();
 		m_mesh2->Initialize(vs_blob, ps_blob[1], DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get(), cbuffer_index);
 		m_mesh2->SetPos(0.0, 0.0, 0.0);
 		m_mesh2->SetScale(1.0f, 1.0f, 1.0f);
@@ -110,19 +109,16 @@ namespace epion
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		DX12::CommandList::GetCmd()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-
 		DX12::ConstantBufferManager::SetCBuffer0(0);
-
 		DX12::ConstantBufferManager::SetCBuffer2(2);
 
-		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetState()->WorldMatrix, m_mesh->GetState()->ObjCBIndex);
-		DX12::ConstantBufferManager::SetCBuffer1(m_mesh->GetState()->ObjCBIndex);
-		Model::ModelParamDraw(DX12::CommandList::GetCmd(), m_mesh->GetState());
+		//DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh->GetState()->WorldMatrix, m_mesh->GetState()->ObjCBIndex);
+		//DX12::ConstantBufferManager::SetCBuffer1(m_mesh->GetState()->ObjCBIndex);
+		//Model::ModelParamDraw(DX12::CommandList::GetCmd(), m_mesh->GetState());
 
-
-		//DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetState()->WorldMatrix, m_mesh2->GetState()->ObjCBIndex);
-		//DX12::ConstantBufferManager::SetCBuffer1(m_mesh2->GetState()->ObjCBIndex);
-		//Model::ModelParamDraw(DX12::CommandList::GetCmd(), m_mesh2->GetState());
+		DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetState()->WorldMatrix, m_mesh2->GetState()->ObjCBIndex);
+		DX12::ConstantBufferManager::SetCBuffer1(m_mesh2->GetState()->ObjCBIndex);
+		Model::ModelParamDraw(DX12::CommandList::GetCmd(), m_mesh2->GetState());
 
 		//DX12::ConstantBufferManager::UpdateCBuffer1(m_mesh2->GetState()->WorldMatrix, m_mesh2->GetState()->ObjCBIndex);
 		//DX12::ConstantBufferManager::SetCBuffer1(1, m_mesh2->GetState()->ObjCBIndex);
