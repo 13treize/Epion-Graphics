@@ -63,7 +63,7 @@ namespace epion
 		DX12::ConstantBufferManager::SetCBuffer0(0);
 		DX12::ConstantBufferManager::SetCBuffer3(1);
 
-		for (int i = 0; i < 32; i++)
+		for (int i = 0; i <10; i++)
 		{
 			m_square[i]->Render();
 		}

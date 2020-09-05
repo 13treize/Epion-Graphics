@@ -172,7 +172,7 @@ namespace	epion::Camera
 			1000.0f);
 
 		m_scene3d_camera = std::make_unique<Scene3DCamera>(
-			Math::FVector3(0.0f, 0.0f, -10.0f),
+			Math::FVector3(0.0f, 0.0f, -20.0f),
 			Math::FVector3(0.0f, 0.0f, 0.0f),
 			up,
 			Math::pi<float> / 8.0f,

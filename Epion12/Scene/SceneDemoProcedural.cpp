@@ -14,7 +14,7 @@
 
 namespace
 {
-	constexpr int DRAW_CALL_NUM = 2;
+	constexpr int DRAW_CALL_NUM = 3;
 }
 namespace epion
 {
@@ -29,21 +29,24 @@ namespace epion
 		Camera::CameraManager::Update();
 
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS2", ps_blob[1], DX12::ShaderType::TYPE_PIXEL);
+		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
+		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS0", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
+		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS1", ps_blob[1], DX12::ShaderType::TYPE_PIXEL);
+		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS2", ps_blob[2], DX12::ShaderType::TYPE_PIXEL);
+		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS3", ps_blob[3], DX12::ShaderType::TYPE_PIXEL);
 
 		unsigned int cbuffer_index = 0;
 
 		for (int i = 0; i < DRAW_CALL_NUM ; i++)
 		{
-			m_mesh[i] = std::make_unique <Model::Polygon>();
-			m_mesh[i]->Initialize(vs_blob, ps_blob[0], DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get(), cbuffer_index);
-			m_mesh[i]->SetPos(-2.0+static_cast<float>(i*2.0), 0.0, 0.0);
+			m_mesh[i] = std::make_unique<Model::Polygon>();
+			m_mesh[i]->Initialize(vs_blob, ps_blob[i], DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get(), cbuffer_index);
+			m_mesh[i]->SetPos(-2.0+static_cast<float>(i*2.1), 0.0, 0.0);
 			m_mesh[i]->SetScale(1.0f, 1.0f, 1.0f);
 			m_mesh[i]->SetAngle(45.0f, 0.0f, 0.0f);
 			cbuffer_index++;
-
 		}
+
 		DX12::ConstantBufferManager::Build3D(3);
 		data.LightDir = { 0.0,1.0,0.0,1.0 };
 		data.LightColor = { 0.2,0.2,0.2,1.0 };
@@ -57,32 +60,32 @@ namespace epion
 	}
 	void SceneProcedural::Update()
 	{
-		ImGui::Begin("test ", nullptr, 0);
-		if (ImGui::TreeNode("model"))
-		{
-			auto pos = data.LightDir;
-			auto scale = data.LightColor;
-			auto angle = data.AmbientColor;
-			ImGui::Text("Pos");
-			ImGui::InputFloat("  x", &pos.x, 0.01f, 100.0f, "%.2f");
-			ImGui::InputFloat("  y", &pos.y, 0.01f, 100.0f, "%.2f");
-			ImGui::InputFloat("  z", &pos.z, 0.01f, 100.0f, "%.2f");
-			ImGui::Text("Scale");
-			ImGui::InputFloat("  x ", &scale.x, 0.01f, 100.0f, "%.2f");
-			ImGui::InputFloat("  y ", &scale.y, 0.01f, 100.0f, "%.2f");
-			ImGui::InputFloat("  z ", &scale.z, 0.01f, 100.0f, "%.2f");
-			ImGui::Text("Angle");
-			ImGui::InputFloat("  x  ", &angle.x, 0.01f, 100.0f, "%.2f");
-			ImGui::InputFloat("  y  ", &angle.y, 0.01f, 100.0f, "%.2f");
-			ImGui::InputFloat("  z  ", &angle.z, 0.01f, 100.0f, "%.2f");
-			data.LightDir = pos;
-			data.LightColor = scale;
-			data.AmbientColor = angle;
+		//ImGui::Begin("test ", nullptr, 0);
+		//if (ImGui::TreeNode("model"))
+		//{
+		//	auto pos = data.LightDir;
+		//	auto scale = data.LightColor;
+		//	auto angle = data.AmbientColor;
+		//	ImGui::Text("Pos");
+		//	ImGui::InputFloat("  x", &pos.x, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  y", &pos.y, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  z", &pos.z, 0.01f, 100.0f, "%.2f");
+		//	ImGui::Text("Scale");
+		//	ImGui::InputFloat("  x ", &scale.x, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  y ", &scale.y, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  z ", &scale.z, 0.01f, 100.0f, "%.2f");
+		//	ImGui::Text("Angle");
+		//	ImGui::InputFloat("  x  ", &angle.x, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  y  ", &angle.y, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  z  ", &angle.z, 0.01f, 100.0f, "%.2f");
+		//	data.LightDir = pos;
+		//	data.LightColor = scale;
+		//	data.AmbientColor = angle;
 
-			ImGui::TreePop();
-		}
-		//m_mesh->SetAngle(45.0f, 0.0f, 0.0f);
-		ImGui::End();
+		//	ImGui::TreePop();
+		//}
+		////m_mesh->SetAngle(45.0f, 0.0f, 0.0f);
+		//ImGui::End();
 		Camera::CameraManager::Update();
 
 		for (int i = 0; i < DRAW_CALL_NUM; i++)

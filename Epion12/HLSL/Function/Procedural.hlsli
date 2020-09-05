@@ -75,3 +75,4 @@ void RoundedRectangle(float2 UV, float Width, float Height, float Radius, out fl
     float d = length(max(0, uv)) / Radius;
     Out = saturate((1 - d) / fwidth(d));
 }
+
