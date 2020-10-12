@@ -11,15 +11,17 @@ namespace epion::DX12
 {
 	std::unique_ptr<DescriptorHeap> ConstantBufferManager::m_heap;
 
-	std::unique_ptr<ResourceBuffer<CBuffer0>> ConstantBufferManager::m_cbuffer0;
-	std::unique_ptr<ResourceBuffer<CBuffer1>> ConstantBufferManager::m_cbuffer1;
-	std::unique_ptr<ResourceBuffer<CBuffer2>> ConstantBufferManager::m_cbuffer2;
-	std::unique_ptr<ResourceBuffer<CBuffer3>> ConstantBufferManager::m_cbuffer3;
+	std::unique_ptr<ResourceBuffer<CBufferDefault2D>> ConstantBufferManager::m_cbuffer0;
+	std::unique_ptr<ResourceBuffer<CBufferObjects>> ConstantBufferManager::m_cbuffer1;
+	std::unique_ptr<ResourceBuffer<CBufferPassConstants>> ConstantBufferManager::m_cbuffer2;
+	std::unique_ptr<ResourceBuffer<CBufferMaterials>> ConstantBufferManager::m_cbuffer3;
+	std::unique_ptr<ResourceBuffer<CBufferParams>> ConstantBufferManager::m_cbuffer4;
 
-	CBuffer0* ConstantBufferManager::m_cbuffer0_data;
-	CBuffer1* ConstantBufferManager::m_cbuffer1_data;
-	CBuffer2* ConstantBufferManager::m_cbuffer2_data;
-	CBuffer3* ConstantBufferManager::m_cbuffer3_data;
+	CBufferDefault2D* ConstantBufferManager::m_cbuffer0_data;
+	CBufferObjects* ConstantBufferManager::m_cbuffer1_data;
+	CBufferPassConstants* ConstantBufferManager::m_cbuffer2_data;
+	CBufferMaterials* ConstantBufferManager::m_cbuffer3_data;
+	CBufferParams* ConstantBufferManager::m_cbuffer4_data;
 
 
 
@@ -32,10 +34,10 @@ namespace epion::DX12
 		//m_heap = std::make_unique<DX12::DescriptorHeap>();
 		//m_heap->Initialize(buffer_num, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
-		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer0>>();
-		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBuffer0), true);
-		m_cbuffer3 = std::make_unique<DX12::ResourceBuffer<CBuffer3>>();
-		m_cbuffer3->Initialize(DX12::Device::Get(), sizeof(CBuffer3), true);
+		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBufferDefault2D>>();
+		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBufferDefault2D), true);
+		m_cbuffer4 = std::make_unique<DX12::ResourceBuffer<CBufferParams>>();
+		m_cbuffer4->Initialize(DX12::Device::Get(), sizeof(CBufferParams), true);
 
 		return true;
 	}
@@ -43,14 +45,16 @@ namespace epion::DX12
 	{
 		m_heap = std::make_unique<DX12::DescriptorHeap>();
 		m_heap->Initialize(buffer_num, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBuffer0>>();
-		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBuffer0), true);
-		m_cbuffer1 = std::make_unique<DX12::ResourceBuffer<CBuffer1>>();
-		m_cbuffer1->Initialize(DX12::Device::Get(), sizeof(CBuffer1), true);
-		m_cbuffer2 = std::make_unique<DX12::ResourceBuffer<CBuffer2>>();
-		m_cbuffer2->Initialize(DX12::Device::Get(), sizeof(CBuffer2), true);
-		m_cbuffer3 = std::make_unique<DX12::ResourceBuffer<CBuffer3>>();
-		m_cbuffer3->Initialize(DX12::Device::Get(), sizeof(CBuffer3), true);
+		m_cbuffer0 = std::make_unique<DX12::ResourceBuffer<CBufferDefault2D>>();
+		m_cbuffer0->Initialize(DX12::Device::Get(), sizeof(CBufferDefault2D), true);
+		m_cbuffer1 = std::make_unique<DX12::ResourceBuffer<CBufferObjects>>();
+		m_cbuffer1->Initialize(DX12::Device::Get(), sizeof(CBufferObjects), true);
+		m_cbuffer2 = std::make_unique<DX12::ResourceBuffer<CBufferPassConstants>>();
+		m_cbuffer2->Initialize(DX12::Device::Get(), sizeof(CBufferPassConstants), true);
+		m_cbuffer3 = std::make_unique<DX12::ResourceBuffer<CBufferMaterials>>();
+		m_cbuffer3->Initialize(DX12::Device::Get(), sizeof(CBufferMaterials), true);
+		m_cbuffer4 = std::make_unique<DX12::ResourceBuffer<CBufferParams>>();
+		m_cbuffer4->Initialize(DX12::Device::Get(), sizeof(CBufferParams), true);
 		return true;
 	}
 
@@ -68,7 +72,7 @@ namespace epion::DX12
 	{
 		static float time= 0.0f;
 		time += 1.0f / 400.0f;
-		CBuffer0 data0;
+		CBufferDefault2D data0;
 		data0.ScreenSize =
 		{
 			static_cast<float>(ViewPort::GetScreenSize().x),
@@ -80,60 +84,85 @@ namespace epion::DX12
 	}
 	void ConstantBufferManager::UpdateCBuffer1(const DirectX::XMMATRIX& world,const unsigned int index)
 	{
-		CBuffer1 data1;
+		CBufferObjects data1;
 		data1.World = world;
 		m_cbuffer1->CopyResource(data1,index);
 	}
 
 	void ConstantBufferManager::UpdateCBuffer2(const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& projection, const Math::FVector3& camera_pos, const Math::FVector4& color, const Math::FVector4& dir, const Math::FVector4& ambient)
 	{
-		CBuffer2 data2;
+		CBufferPassConstants data2;
 		data2.View = view;
 		data2.Proj = projection;
-		//data2.CameraPos.x = camera_pos.x;
-		//data2.CameraPos.y = camera_pos.y;
-		//data2.CameraPos.z = camera_pos.z;
-		//data2.CameraPos.w = 1.0f;
+		data2.CameraPos.x = camera_pos.x;
+		data2.CameraPos.y = camera_pos.y;
+		data2.CameraPos.z = camera_pos.z;
+		data2.CameraPos.w = 1.0f;
 
 		data2.LightColor = color;
 		data2.LightDir = dir;
 		data2.AmbientColor = ambient;
+		data2.Lights[0].Direction = { 0.57735f, -0.57735f, 0.57735f };
+		data2.Lights[0].Strength = { 0.6f, 0.6f, 0.6f };
+		data2.Lights[1].Direction = { -0.57735f, -0.57735f, 0.57735f };
+		data2.Lights[1].Strength = { 0.3f, 0.3f, 0.3f };
+		data2.Lights[2].Direction = { 0.0f, -0.707f, -0.707f };
+		data2.Lights[2].Strength = { 0.15f, 0.15f, 0.15f };
+
+
 		m_cbuffer2->CopyResource(data2);
 	}
-	void ConstantBufferManager::UpdateCBuffer3(const std::array < Math::FVector4, 4>& data)
+	void ConstantBufferManager::UpdateCBuffer3(const Math::FVector4& DiffuseAlbedo, const Math::FVector3& FresnelR0, float Roughness, const unsigned int index)
 	{
-		CBuffer3 data3;
-		data3.Data = data;
-		m_cbuffer3->CopyResource(data3);
+		CBufferMaterials mat;
+		mat.DiffuseAlbedo = DiffuseAlbedo;
+		mat.FresnelR0 = FresnelR0;
+		mat.Roughness = Roughness;
+		mat.MatTransform = Math::Identity4x4();
+		m_cbuffer3->CopyResource(mat, index);
+	}
+
+	void ConstantBufferManager::UpdateCBuffer4(const std::array < Math::FVector4, 4>& data)
+	{
+		CBufferParams data4;
+		data4.Data = data;
+		m_cbuffer4->CopyResource(data4);
 	}
 
 	void ConstantBufferManager::SetCBuffer0(int index)
 	{
-		UINT objCBByteSize =CalcConstantBufferByteSize(sizeof(CBuffer0));
+		UINT objCBByteSize =CalcConstantBufferByteSize(sizeof(CBufferDefault2D));
 		auto objectCB = m_cbuffer0->Get();
 		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(0, objCBAddress);
 	}
 
-	void ConstantBufferManager::SetCBuffer1(int frame_count, int index)
+	void ConstantBufferManager::SetCBuffer1(int cb_num, int index)
 	{
-		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer1));
+		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBufferObjects));
 		auto objectCB = m_cbuffer1->Get();
-		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress1 = objectCB->GetGPUVirtualAddress() + (objCBByteSize * frame_count);
+		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress1 = objectCB->GetGPUVirtualAddress() + (objCBByteSize * cb_num);
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(1, objCBAddress1);
 	}
 	void ConstantBufferManager::SetCBuffer2(int index)
 	{
-		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer2));
+		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBufferPassConstants));
 		auto objectCB = m_cbuffer2->Get();
 		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(2, objCBAddress);
 	}
-
-	void ConstantBufferManager::SetCBuffer3(int index)
+	void ConstantBufferManager::SetCBuffer3(int cb_num, int index)
 	{
-		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBuffer3));
+		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBufferMaterials));
 		auto objectCB = m_cbuffer3->Get();
+		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress1 = objectCB->GetGPUVirtualAddress() + (objCBByteSize * cb_num);
+		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(3, objCBAddress1);
+	}
+
+	void ConstantBufferManager::SetCBuffer4(int index)
+	{
+		UINT objCBByteSize = CalcConstantBufferByteSize(sizeof(CBufferParams));
+		auto objectCB = m_cbuffer4->Get();
 		D3D12_GPU_VIRTUAL_ADDRESS objCBAddress = objectCB->GetGPUVirtualAddress();
 		DX12::CommandList::GetCmd()->SetGraphicsRootConstantBufferView(index, objCBAddress);
 	}

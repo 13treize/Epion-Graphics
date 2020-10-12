@@ -7,7 +7,6 @@
 #include	"../DX12/ViewPort.h"
 #include	"../Camera/CameraManager.h"
 #include	"../DX12/ShaderManager.h"
-#include	"../DX12/DX12State.h"
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
 
@@ -22,8 +21,6 @@ namespace epion
 		HRESULT hr = S_OK;
 
 		DX12::RootSignatureManager::Build();
-		DX12::BlendStateManager::Initialize();
-		DX12::RasterizerManager::Initialize();
 		Camera::CameraManager::Init(DX12::ViewPort::GetAspect());
 		Camera::CameraManager::Update();
 
@@ -34,14 +31,14 @@ namespace epion
 
 		unsigned int cbuffer_index = 0;
 		m_mesh = std::make_unique <Model::CubeMesh>();
-		m_mesh->Initialize(vs_blob, ps_blob[0], DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get(), cbuffer_index);
+		m_mesh->Initialize(vs_blob, ps_blob[0], DX12::RootSignatureManager::Get(), cbuffer_index, cbuffer_index);
 		m_mesh->SetPos(0.0, 0.0, 0.0);
 		m_mesh->SetScale(1.0f, 1.0f, 1.0f);
 		m_mesh->SetAngle(45.0f, 0.0f, 0.0f);
 		cbuffer_index++;
 
 		m_mesh2 = std::make_unique <Model::SphereMesh>();
-		m_mesh2->Initialize(vs_blob, ps_blob[1], DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get(), cbuffer_index);
+		m_mesh2->Initialize(vs_blob, ps_blob[1], DX12::RootSignatureManager::Get(), cbuffer_index, cbuffer_index);
 		m_mesh2->SetPos(0.0, 0.0, 0.0);
 		m_mesh2->SetScale(1.0f, 1.0f, 1.0f);
 		m_mesh2->SetAngle(45.0f, 0.0f, 0.0f);

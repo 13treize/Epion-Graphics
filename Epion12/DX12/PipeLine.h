@@ -54,7 +54,11 @@ namespace epion::DX12
 
 		std::vector<com_ptr<ID3D12Resource>> m_back_buffers;
 
+		com_ptr<ID3D12Resource> m_depth_stencil_buffer;
+
+
 		D3D12_CPU_DESCRIPTOR_HANDLE m_rtv_handle;
+		D3D12_CPU_DESCRIPTOR_HANDLE m_dsv_handle;
 
 		std::array<float, 4> m_clear_color;
 

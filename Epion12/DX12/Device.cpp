@@ -40,6 +40,7 @@ namespace epion::DX12
 		}
 
 		CreateDevice(m_device, adapter, m_feature_level);
+		m_device->SetName(L"Device");
 		return true;
 	}
 	bool Device::Finalize()

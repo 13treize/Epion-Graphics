@@ -21,6 +21,8 @@ namespace	epion
 		com_ptr<ID3DBlob> vs_blob;
 		std::array<com_ptr<ID3DBlob>,60> ps_blob;
 		std::array<std::unique_ptr<Model::Polygon>,60> m_mesh;
-		DX12::CBuffer2 data;
+		std::array<std::unique_ptr<Model::CubeMesh>, 10> m_cube;
+
+		DX12::CBufferPassConstants data;
 	};
 }

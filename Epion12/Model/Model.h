@@ -1,6 +1,7 @@
 #pragma once
 #include	"../DX12/ShaderManager.h"
 #include	"../DX12/Buffer.h"
+#include	"../DX12/ConstantBufferManager.h"
 #include "PrimitiveModelData.h"
 
 namespace epion::Model
@@ -17,12 +18,12 @@ namespace epion::Model
 		com_ptr<ID3D12PipelineState> PipeLineState;
 		DirectX::XMMATRIX WorldMatrix;
 	};
-	class Model abstract
+	class ModelCore abstract
 	{
 	public:
-		Model();
-		virtual ~Model() {}
-		void DefaultSetPipeLine(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig);
+		ModelCore();
+		virtual ~ModelCore() {}
+		void DefaultSetPipeLine(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3D12RootSignature>& root_sig);
 	protected:
 		bool m_is_update;
 		std::unique_ptr<DX12::ShaderReflection> m_shader_reflection;
@@ -40,7 +41,7 @@ namespace epion::Model
 	public:
 		Model3D();
 		virtual ~Model3D() {}
-		void DefaultSetPipeLine(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, com_ptr<ID3D12RootSignature>& root_sig);
+		void DefaultSetPipeLine(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob,com_ptr<ID3D12RootSignature>& root_sig);
 		void ResourceUpdate();
 		void Draw(com_ptr<ID3D12GraphicsCommandList>& cmd);
 		Math::FVector3& GetPos();
@@ -66,6 +67,8 @@ namespace epion::Model
 
 		template<IsPrimitive T, class D,class M>
 		void PrimitiveBufferSet(com_ptr<D>& device);
+
+		bool ShaderSet(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob);
 	};
 	template<IsPrimitive T,class D, class M>
 	void Model3D::PrimitiveBufferSet(com_ptr<D>& device)
@@ -74,7 +77,6 @@ namespace epion::Model
 		m_vertex_resource->Initialize(device, sizeof(M), false);
 		m_vertex_resource->CopyResource<T::VERTEX_SIZE>(T::vertices);
 		m_model_param->VertexBufferView = { m_vertex_resource->GetGPUVirtualAddress() ,sizeof(M) *T::VERTEX_SIZE,sizeof(M) };
-
 		m_index_resource = std::make_unique<DX12::ResourceBuffer<unsigned short>>();
 		m_index_resource->Initialize(device, T::INDEX_SIZE, false);
 		m_index_resource->CopyResource<T::INDEX_SIZE>(T::indices);
@@ -82,12 +84,20 @@ namespace epion::Model
 		m_model_param->IndexCount = m_index_resource->GetCount();
 	}
 
+
 	static void ModelParamDraw(com_ptr<ID3D12GraphicsCommandList>& cmd,std::unique_ptr<ModelParam>& param)
 	{
 		cmd->SetPipelineState(param->PipeLineState.Get());
 		cmd->IASetVertexBuffers(0, 1, &param->VertexBufferView);
 		cmd->IASetIndexBuffer(&param->IndexBufferView);
 		cmd->DrawIndexedInstanced(param->IndexCount, 1, 0, 0, 0);
+	}
+
+	static void CBSetModelDraw(com_ptr<ID3D12GraphicsCommandList>& cmd, std::unique_ptr<ModelParam>& param)
+	{
+		DX12::ConstantBufferManager::UpdateCBuffer1(param->WorldMatrix, param->ObjCBIndex);
+		DX12::ConstantBufferManager::SetCBuffer1(param->ObjCBIndex);
+		ModelParamDraw(cmd, param);
 	}
 	template <class T>
 	concept Drawable = requires (T & x)

@@ -16,6 +16,15 @@ namespace	epion::Math
 	using	FVector3 = Vector3<float>;
 	using	FVector4 = Vector4<float>;
 
+	static DirectX::XMFLOAT4X4 Identity4x4()
+	{
+		static DirectX::XMFLOAT4X4 I(
+			1.0f, 0.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, 1.0f, 0.0f,
+			0.0f, 0.0f, 0.0f, 1.0f);
+		return I;
+	}
 
 }
 

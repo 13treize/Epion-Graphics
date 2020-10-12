@@ -5,6 +5,8 @@
 #include "../DX12/Device.h"
 #include "../DX12/CommandList.h"
 #include "../DX12/ConstantBufferManager.h"
+#include "../DX12/DX12Wrapper.h"
+
 #include "PrimitiveModelData.h"
 
 namespace epion::Model
@@ -17,9 +19,10 @@ namespace epion::Model
 	Polygon::~Polygon()
 	{
 	}
-	bool Polygon::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig,unsigned int cb_index)
+	bool Polygon::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3D12RootSignature>& root_sig, unsigned int obj_cb_index, unsigned int mat_cb_index)
 	{
-		m_model_param->ObjCBIndex = cb_index;
+		m_model_param->ObjCBIndex = obj_cb_index;
+		m_model_param->MatCBIndex = mat_cb_index;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
@@ -27,15 +30,13 @@ namespace epion::Model
 		m_pipeline_desc.VS = { vs_blob->GetBufferPointer(), vs_blob->GetBufferSize() };
 		m_pipeline_desc.PS = { ps_blob->GetBufferPointer(), ps_blob->GetBufferSize() };
 
-		m_pipeline_desc.BlendState = b_desc;
-		m_pipeline_desc.RasterizerState = r_desc;
-
-		m_pipeline_desc.DepthStencilState.DepthEnable = false;
-		m_pipeline_desc.DepthStencilState.StencilEnable = false;
+		m_pipeline_desc.BlendState = DX12::DX12Wrapper::BLEND_DESC;
+		m_pipeline_desc.RasterizerState = DX12::DX12Wrapper::RASTERIZER_SOLID_DESC;
+		m_pipeline_desc.DepthStencilState = DX12::DX12Wrapper::DEPTH_STENCIL_DEFAULT_DESC;
 
 		m_pipeline_desc.InputLayout = { m_shader_reflection->GetInputLayout().data(), static_cast<UINT>(m_shader_reflection->GetInputLayout().size()) };
 
-		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
+		//m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
 		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 
 		m_pipeline_desc.NumRenderTargets = 1;
@@ -47,7 +48,7 @@ namespace epion::Model
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_model_param->PipeLineState));
 
 
-		PrimitiveBufferSet<PrimitiveData::Polygon,ID3D12Device,Model3DVertex>(DX12::Device::Get());
+		PrimitiveBufferSet<PrimitiveData::Polygon, ID3D12Device, Model3DVertex>(DX12::Device::Get());
 		return true;
 	}
 	bool Polygon::Finalize()
@@ -76,38 +77,26 @@ namespace epion::Model
 	CubeMesh ::~CubeMesh()
 	{
 	}
-	bool CubeMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig, unsigned int cb_index)
+	bool CubeMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3D12RootSignature>& root_sig, unsigned int obj_cb_index, unsigned int mat_cb_index)
 	{
-		m_model_param->ObjCBIndex = cb_index;
+		m_model_param->ObjCBIndex = obj_cb_index;
+		m_model_param->MatCBIndex = mat_cb_index;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
 		m_pipeline_desc = {};
-		m_pipeline_desc.VS = { vs_blob->GetBufferPointer(), vs_blob->GetBufferSize() };
-		m_pipeline_desc.PS = { ps_blob->GetBufferPointer(), ps_blob->GetBufferSize() };
+		ShaderSet(vs_blob, ps_blob);
 
-		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
+		m_pipeline_desc.BlendState = DX12::DX12Wrapper::BLEND_DESC;
+		m_pipeline_desc.DepthStencilState = DX12::DX12Wrapper::DEPTH_STENCIL_DEFAULT_DESC;
+		m_pipeline_desc.RasterizerState = DX12::DX12Wrapper::RASTERIZER_SOLID_DESC;
 
-		m_pipeline_desc.BlendState = b_desc;
-		m_pipeline_desc.RasterizerState = r_desc;
+		//m_pipeline_desc.DSVFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;;
 
-		//m_pipeline_desc.DepthStencilState.DepthEnable = false;
-		//m_pipeline_desc.DepthStencilState.StencilEnable = false;
-		m_pipeline_desc.DSVFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;;
-
-		m_pipeline_desc.DepthStencilState.DepthEnable = true;
-		m_pipeline_desc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
-		m_pipeline_desc.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_LESS;
-		m_pipeline_desc.DepthStencilState.StencilEnable = false;
-		m_pipeline_desc.DepthStencilState.StencilReadMask = D3D12_DEFAULT_STENCIL_READ_MASK;
-		m_pipeline_desc.DepthStencilState.StencilWriteMask = D3D12_DEFAULT_STENCIL_WRITE_MASK;
-		const D3D12_DEPTH_STENCILOP_DESC defaultStencilOp =	{ D3D12_STENCIL_OP_KEEP, D3D12_STENCIL_OP_KEEP, D3D12_STENCIL_OP_KEEP, D3D12_COMPARISON_FUNC_ALWAYS };
-		m_pipeline_desc.DepthStencilState.FrontFace = defaultStencilOp;
-		m_pipeline_desc.DepthStencilState.BackFace = defaultStencilOp;
 
 		m_pipeline_desc.InputLayout = { m_shader_reflection->GetInputLayout().data(), static_cast<UINT>(m_shader_reflection->GetInputLayout().size()) };
 
-		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
+		//m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
 		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 
 		m_pipeline_desc.NumRenderTargets = 1;
@@ -117,7 +106,7 @@ namespace epion::Model
 		m_pipeline_desc.pRootSignature = root_sig.Get();
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_model_param->PipeLineState));
 
-		PrimitiveBufferSet<PrimitiveData::CubeMesh,ID3D12Device,Model3DVertex>(DX12::Device::Get());
+		PrimitiveBufferSet<PrimitiveData::CubeMesh, ID3D12Device, Model3DVertex>(DX12::Device::Get());
 		return true;
 	}
 	bool CubeMesh::Finalize()
@@ -142,32 +131,24 @@ namespace epion::Model
 	SphereMesh::~SphereMesh()
 	{
 	}
-	bool SphereMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig, unsigned int cb_index)
+	bool SphereMesh::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3D12RootSignature>& root_sig, unsigned int obj_cb_index, unsigned int mat_cb_index)
 	{
-		m_model_param->ObjCBIndex = cb_index;
+		m_model_param->ObjCBIndex = obj_cb_index;
+		m_model_param->MatCBIndex = mat_cb_index;
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
 		m_pipeline_desc = {};
-		m_pipeline_desc.VS = { vs_blob->GetBufferPointer(), vs_blob->GetBufferSize() };
-		m_pipeline_desc.PS = { ps_blob->GetBufferPointer(), ps_blob->GetBufferSize() };
+		ShaderSet(vs_blob, ps_blob);
 
 		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
 
-		m_pipeline_desc.BlendState = b_desc;
-		m_pipeline_desc.RasterizerState = r_desc;
+		m_pipeline_desc.BlendState = DX12::DX12Wrapper::BLEND_DESC;
+		m_pipeline_desc.RasterizerState = DX12::DX12Wrapper::RASTERIZER_SOLID_DESC;
+		m_pipeline_desc.DepthStencilState = DX12::DX12Wrapper::DEPTH_STENCIL_DEFAULT_DESC;
 
 		m_pipeline_desc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
 
-		m_pipeline_desc.DepthStencilState.DepthEnable = TRUE;
-		m_pipeline_desc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
-		m_pipeline_desc.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_LESS;
-		m_pipeline_desc.DepthStencilState.StencilEnable = FALSE;
-		m_pipeline_desc.DepthStencilState.StencilReadMask = D3D12_DEFAULT_STENCIL_READ_MASK;
-		m_pipeline_desc.DepthStencilState.StencilWriteMask = D3D12_DEFAULT_STENCIL_WRITE_MASK;
-		const D3D12_DEPTH_STENCILOP_DESC defaultStencilOp = { D3D12_STENCIL_OP_KEEP, D3D12_STENCIL_OP_KEEP, D3D12_STENCIL_OP_KEEP, D3D12_COMPARISON_FUNC_ALWAYS };
-		m_pipeline_desc.DepthStencilState.FrontFace = defaultStencilOp;
-		m_pipeline_desc.DepthStencilState.BackFace = defaultStencilOp;
 
 		m_pipeline_desc.InputLayout = { m_shader_reflection->GetInputLayout().data(), static_cast<UINT>(m_shader_reflection->GetInputLayout().size()) };
 

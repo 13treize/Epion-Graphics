@@ -1,3 +1,8 @@
+
+#ifndef INCLUDE_GUARD_UV_HLSLI
+#define INCLUDE_GUARD_UV_HLSLI
+
+
 void Mosaic(float2 UV, float2 Power, out float2 Out)
 {
     float2 mos = 1.0 / Power;
@@ -37,3 +42,5 @@ void Twirl(float2 UV, float2 Center, float Strength, float2 Offset, out float2 O
     float y = sin(angle) * delta.x + cos(angle) * delta.y;
     Out = float2(x + Center.x + Offset.x, y + Center.y + Offset.y);
 }
+
+#endif

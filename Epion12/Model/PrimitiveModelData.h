@@ -38,17 +38,17 @@ namespace epion::Model
 			static constexpr unsigned int VERTEX_SIZE = 4;
 			static constexpr unsigned int INDEX_SIZE = 6;
 
-			static constexpr std::array<Model3DVertex, VERTEX_SIZE>  vertices =
+			static constexpr std::array<Model3DVertex, VERTEX_SIZE> vertices =
 			{
 				{
-					{ {	-1.0f,	-1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f }, { 1.0f, 0.0f, 0.0f, 1.0f } },
-					{ {	-1.0f,	1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, 1.0f } },
-					{ {	1.0f,	-1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 1.0f } },
-					{ {	1.0f,	1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f }, { 1.0f, 0.0f, 1.0f, 1.0f } }
+					{ {	-1.0f,	-1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f } },
+					{ {	1.0f,	-1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f, 1.0f } },
+					{ {	1.0f,	1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f }, { 0.0f, 0.0f, 1.0f, 1.0f } },
+					{ {	-1.0f,	1.0f, 0.0f },	{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f }, { 1.0f, 0.0f, 1.0f, 1.0f } }
 				}
 			};
 
-			static constexpr std::array<unsigned short, INDEX_SIZE> indices = { 0,1,2, 2,1,3 };
+			static constexpr std::array<unsigned short, INDEX_SIZE> indices = { 0,1,2, 0,2,3 };
 		};
 
 		struct CubeMesh :CorePrimitive
@@ -58,40 +58,47 @@ namespace epion::Model
 			static constexpr std::array<Model3DVertex, VERTEX_SIZE> vertices =
 			{
 				{
-					{ {-0.5,-0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
-					{ {-0.5, 0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
-					{ { 0.5, 0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
-					{ { 0.5,-0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
-					{ { 0.5,-0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
-					{ { 0.5, 0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
-					{ { 0.5, 0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
-					{ { 0.5,-0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
-					{ {-0.5,-0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
-					{ {-0.5, 0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
-					{ {-0.5, 0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
-					{ {-0.5,-0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
-					{ { 0.5,-0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
-					{ { 0.5, 0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
-					{ {-0.5, 0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
-					{ {-0.5,-0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
-					{ {-0.5, 0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
-					{ {-0.5, 0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
-					{ { 0.5, 0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
-					{ { 0.5, 0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
-					{ {-0.5,-0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
-					{ {-0.5,-0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
-					{ { 0.5,-0.5f,-0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
-					{ { 0.5,-0.5f, 0.5f},{ 0.0f, 0.0f, -1.0f }, { 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } }
+
+					{ {-1.0f,	-1.0f,	-1.0f},{ 0.0f, 0.0f,-1.0f },{ 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
+					{ {-1.0f,	 1.0f,	-1.0f},{ 0.0f, 0.0f,-1.0f },{ 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	 1.0f,	-1.0f},{ 0.0f, 0.0f,-1.0f },{ 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
+					{ { 1.0f,	-1.0f,	-1.0f},{ 0.0f, 0.0f,-1.0f },{ 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
+
+					{ {-1.0f,	-1.0f,	 1.0f},{ 0.0f, 0.0f, 1.0f },{ 1.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	-1.0f,	 1.0f},{ 0.0f, 0.0f, 1.0f },{ 0.0f, 1.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	 1.0f,	 1.0f},{ 0.0f, 0.0f, 1.0f },{ 0.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
+					{ {-1.0f,	 1.0f,	 1.0f},{ 0.0f, 0.0f, 1.0f },{ 1.0f, 0.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
+
+					{ {-1.0f,	 1.0f,	-1.0f},{ 0.0f, 1.0f, 0.0f },{ 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
+					{ {-1.0f,	 1.0f,	+1.0f},{ 0.0f, 1.0f, 0.0f },{ 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	 1.0f,	+1.0f},{ 0.0f, 1.0f, 0.0f },{ 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
+					{ { 1.0f,	 1.0f,	-1.0f},{ 0.0f, 1.0f, 0.0f },{ 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
+
+					{ {-1.0f,	-1.0f,	-1.0f},{ 0.0f,-1.0f, 0.0f },{ 1.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	-1.0f,	-1.0f},{ 0.0f,-1.0f, 0.0f },{ 0.0f, 1.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	-1.0f,	 1.0f},{ 0.0f,-1.0f, 0.0f },{ 0.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
+					{ {-1.0f,	-1.0f,	 1.0f},{ 0.0f,-1.0f, 0.0f },{ 1.0f, 0.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
+
+					{ {-1.0f,	-1.0f,	 1.0f},{-1.0f, 0.0f, 0.0f },{ 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
+					{ {-1.0f,	 1.0f,	 1.0f},{-1.0f, 0.0f, 0.0f },{ 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
+					{ {-1.0f,	 1.0f,	-1.0f},{-1.0f, 0.0f, 0.0f },{ 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
+					{ {-1.0f,	-1.0f,	-1.0f},{-1.0f, 0.0f, 0.0f },{ 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
+
+					{ { 1.0f,	-1.0f,	-1.0f},{ 1.0f, 0.0f, 0.0f },{ 0.0f, 1.0f}, { 1.0f, 0.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	 1.0f,	-1.0f},{ 1.0f, 0.0f, 0.0f },{ 0.0f, 0.0f}, { 0.0f, 1.0f, 0.0f, 1.0f } },
+					{ { 1.0f,	 1.0f,	 1.0f},{ 1.0f, 0.0f, 0.0f },{ 1.0f, 0.0f}, { 0.0f, 0.0f, 1.0f, 1.0f } },
+					{ { 1.0f,	-1.0f,	 1.0f},{ 1.0f, 0.0f, 0.0f },{ 1.0f, 1.0f}, { 1.0f, 0.0f, 1.0f, 1.0f } },
+
 				}
 			};
 			static constexpr std::array<unsigned short, INDEX_SIZE> indices =
 			{
-				0, 1, 2, 2, 3,0,
-				4, 5, 6, 6, 7,4,
-				8, 9, 10, 10, 11, 8,
-				12,13,14, 14,15,12,
-				16,17,18, 18,19,16,
-				20,21,22, 22,23,20
+				0,1,2,		0,2,3,
+				4,5,6,		4,6,7,
+				8,9,10,		8,10,11,
+				12,13,14,	12,14,15,
+				16,17,18,	16,18,19,
+				20,21,22,	20,22,23,
 			};
 		};
 
@@ -103,47 +110,78 @@ namespace epion::Model
 			{
 				mesh.Vertices.clear();
 				mesh.Indices.clear();
-				unsigned int num_vertices = (sliceCount + 1) * (stackCount + 1);
-				for (int y = 0; y < stackCount + 1; y++)
+				Model3DVertex topVertex;
+				topVertex.Position = { 0.0f, radius, 0.0f };
+				topVertex.Normal = { 0.0f, 1.0f, 0.0f };
+				topVertex.UV = { 0.0f, 0.0f };
+				topVertex.Color = { 0.0f, 0.0f,0.0f, 0.0f };
+
+				Model3DVertex bottomVertex;
+				topVertex.Position = { 0.0f,-radius, 0.0f };
+				topVertex.Normal = { 0.0f,-1.0f, 0.0f };
+				topVertex.UV = { 0.0f, 1.0f };
+				topVertex.Color = { 0.0f, 0.0f,0.0f, 0.0f };
+				mesh.Vertices.push_back(topVertex);
+
+				float phiStep = Math::pi<float> / static_cast<float>(stackCount);
+				float thetaStep = 2.0f * Math::pi<float>/ static_cast<float>(sliceCount);
+
+				for (unsigned int i = 1; i < stackCount; ++i)
 				{
-					for (int x = 0; x < sliceCount + 1; x++)
+					float phi = i * phiStep;
+
+					for (unsigned int j = 0; j <= sliceCount; ++j)
 					{
-						Model3DVertex vertices;
-						int index = y * (sliceCount + 1) + x;
-						float h = 0.5f * cosf(y * Math::pi<float> / stackCount);
-						float w = 0.5f * sinf(y * Math::pi<float> / stackCount);
-						float rad_slices = x * Math::pi<float> * 2.0f / sliceCount;
+						float theta = j * thetaStep;
 
-						vertices.Position.x = w * sinf(rad_slices);
-						vertices.Position.y = h;
-						vertices.Position.z = w * cosf(rad_slices);
+						Model3DVertex v;
+						v.Position.x = radius * sinf(phi) * cosf(theta);
+						v.Position.y = radius * cosf(phi);
+						v.Position.z = radius * sinf(phi) * sinf(theta);
 
-						vertices.Normal.x = vertices.Position.x * 2.0f;
-						vertices.Normal.y = vertices.Position.y * 2.0f;
-						vertices.Normal.z = vertices.Position.z * 2.0f;
+						v.Normal = v.Position.normalize();
 
-						vertices.UV.x = 1.0f - (float)x / sliceCount;
-						vertices.UV.y = (float)y / stackCount - 1.0f;
-						vertices.Color = Math::FVector4(1.0f, 1.0f, 1.0f, 1.0f);
-						mesh.Vertices.push_back(vertices);
+						v.UV.x = theta / Math::pi<float>;
+						v.UV.y = phi / Math::pi<float>;
+						v.Color = { 0.0f, 0.0f,0.0f, 0.0f };
+						mesh.Vertices.push_back(v);
 					}
 				}
-				unsigned int num_indices = stackCount * sliceCount * 2 * 3;
-				mesh.Indices.resize(num_indices);
 
-				for (int y = 0; y < stackCount; y++)
+				mesh.Vertices.push_back(bottomVertex);
+
+
+				for (unsigned int i = 1; i <= sliceCount; ++i)
 				{
-					for (int x = 0; x < sliceCount; x++)
+					mesh.Indices.push_back(0);
+					mesh.Indices.push_back(i + 1);
+					mesh.Indices.push_back(i);
+				}
+
+				unsigned int baseIndex = 1;
+				unsigned int ringVertexCount = sliceCount + 1;
+				for (unsigned int i = 0; i < stackCount - 2; ++i)
+				{
+					for (unsigned int j = 0; j < sliceCount; ++j)
 					{
-						int face = (y * sliceCount + x);
-						int vertices_index = y * (sliceCount + 1) + x;
-						mesh.Indices[face * 6] = vertices_index + 1;
-						mesh.Indices[face * 6 + 1] = vertices_index;
-						mesh.Indices[face * 6 + 2] = vertices_index + (sliceCount + 1);
-						mesh.Indices[face * 6 + 3] = vertices_index + 1;
-						mesh.Indices[face * 6 + 4] = vertices_index + (sliceCount + 1);
-						mesh.Indices[face * 6 + 5] = vertices_index + (sliceCount + 1) + 1;
+						mesh.Indices.push_back(baseIndex + i * ringVertexCount + j);
+						mesh.Indices.push_back(baseIndex + i * ringVertexCount + j + 1);
+						mesh.Indices.push_back(baseIndex + (i + 1) * ringVertexCount + j);
+						mesh.Indices.push_back(baseIndex + (i + 1) * ringVertexCount + j);
+						mesh.Indices.push_back(baseIndex + i * ringVertexCount + j + 1);
+						mesh.Indices.push_back(baseIndex + (i + 1) * ringVertexCount + j + 1);
 					}
+				}
+
+				unsigned int southPoleIndex = static_cast<unsigned int>(mesh.Vertices.size() - 1);
+
+				baseIndex = southPoleIndex - ringVertexCount;
+
+				for (unsigned int i = 0; i < sliceCount; ++i)
+				{
+					mesh.Indices.push_back(southPoleIndex);
+					mesh.Indices.push_back(baseIndex + i);
+					mesh.Indices.push_back(baseIndex + i + 1);
 				}
 			}
 		};

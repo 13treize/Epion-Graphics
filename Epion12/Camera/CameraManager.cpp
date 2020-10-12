@@ -3,8 +3,6 @@
 
 namespace
 {
-	epion::Math::FVector3	pos = { 0.0f,	0.0f, 10.0f };
-	epion::Math::FVector3	target = { 0.0f,	0.0f,	0.0f };
 	epion::Math::FVector3	up = { 0.0f,	1.0f,	0.0f };
 
 }
@@ -13,25 +11,20 @@ namespace	epion::Camera
 {
 	View::View()
 		:pos({}), target({}), up({}),
-		fov(0), aspect(0), nearPlane(0), farPlane(0)
+		fov(0), aspect(0), nearPlane(0), farPlane(0),
+		MatView(), MatProjection(), F4x4View(), F4x4Projection()
 	{
-		//MatView =DirectX::XMMATRIX(1);
-		//MatProjection = DirectX::XMMATRIX(1);
-		//F4x4View = DirectX::XMFLOAT4X4(1);
-		//F4x4Projection = DirectX::XMFLOAT4X4(1);
-
 	}
 
 	View::View(const Math::FVector3& p, const Math::FVector3& t, const Math::FVector3& u, float fov_, float aspect_, float n_, float f_)
 		:pos(p), target(t), up(u),
-		fov(fov_), aspect(aspect_), nearPlane(n_), farPlane(f_)
+		fov(fov_), aspect(aspect_), nearPlane(n_), farPlane(f_),
+		MatView(), MatProjection(), F4x4View(), F4x4Projection()
 	{
 		//MatView = DirectX::XMMATRIX(1);
 		//MatProjection = DirectX::XMMATRIX(1);
 		//F4x4View = DirectX::XMFLOAT4X4(1);
 		//F4x4Projection = DirectX::XMFLOAT4X4(1);
-
-
 	}
 
 	void	View::SetView(const	Math::FVector3& p, const	Math::FVector3& t, const	Math::FVector3& u)
@@ -151,11 +144,9 @@ namespace	epion::Camera
 	{
 		//ÉJÉÅÉâèâä˙âª
 
-		epion::Math::FVector3	pos = { 0.0f,	-7.0f, 5.0f };
-
 		m_basic_camera = std::make_unique<BasicCamera>(
 			Math::FVector3(0.0f, 0.0f, 10.0f),
-			target,
+			Math::FVector3(0.0f, 0.0f, 0.0f),
 			up,
 			Math::pi<float> / 8.0f,
 			aspect,
@@ -172,7 +163,7 @@ namespace	epion::Camera
 			1000.0f);
 
 		m_scene3d_camera = std::make_unique<Scene3DCamera>(
-			Math::FVector3(0.0f, 0.0f, -20.0f),
+			Math::FVector3(0.0f, 10.0f, 20.0f),
 			Math::FVector3(0.0f, 0.0f, 0.0f),
 			up,
 			Math::pi<float> / 8.0f,

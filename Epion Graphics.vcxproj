@@ -164,12 +164,10 @@
     <ClInclude Include="Epion12\DX12\ConstantBufferManager.h" />
     <ClInclude Include="Epion12\DX12\DescriptorHeap.h" />
     <ClInclude Include="Epion12\DX12\Device.h" />
-    <ClInclude Include="Epion12\DX12\DX12State.h" />
     <ClInclude Include="Epion12\DX12\DX12Wrapper.h" />
     <ClInclude Include="Epion12\DX12\FrameResource.h" />
     <ClInclude Include="Epion12\DX12\FrameResourceManager.h" />
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
-    <ClInclude Include="Epion12\DX12\RenderTarget.h" />
     <ClInclude Include="Epion12\DX12\RootSignature.h" />
     <ClInclude Include="Epion12\DX12\ShaderManager.h" />
     <ClInclude Include="Epion12\DX12\Texture.h" />
@@ -268,12 +266,10 @@
     <ClCompile Include="Epion12\DX12\ConstantBufferManager.cpp" />
     <ClCompile Include="Epion12\DX12\DescriptorHeap.cpp" />
     <ClCompile Include="Epion12\DX12\Device.cpp" />
-    <ClCompile Include="Epion12\DX12\DX12State.cpp" />
     <ClCompile Include="Epion12\DX12\DX12Wrapper.cpp" />
     <ClCompile Include="Epion12\DX12\FrameResource.cpp" />
     <ClCompile Include="Epion12\DX12\FrameResourceManager.cpp" />
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
-    <ClCompile Include="Epion12\DX12\RenderTarget.cpp" />
     <ClCompile Include="Epion12\DX12\RootSignature.cpp" />
     <ClCompile Include="Epion12\DX12\ShaderManager.cpp" />
     <ClCompile Include="Epion12\DX12\Texture.cpp" />
@@ -348,6 +344,7 @@
     <None Include="Epion12\HLSL\Function\Artistic.hlsli" />
     <None Include="Epion12\HLSL\Function\DistanceFunction.hlsli" />
     <None Include="Epion12\HLSL\Function\Font.hlsli" />
+    <None Include="Epion12\HLSL\Function\includes.hlsli" />
     <None Include="Epion12\HLSL\Function\Lighting.hlsli" />
     <None Include="Epion12\HLSL\Function\Noise.hlsli" />
     <None Include="Epion12\HLSL\Function\Procedural.hlsli" />

@@ -13,8 +13,8 @@ namespace epion::DX12
 		m_viewport.Height = static_cast<FLOAT>(m_screen_size.y);//出力先の高さ(ピクセル数)
 		m_viewport.TopLeftX = 0;//出力先の左上座標X
 		m_viewport.TopLeftY = 0;//出力先の左上座標Y
-		m_viewport.MaxDepth = 1.0f;//深度最大値
 		m_viewport.MinDepth = 0.0f;//深度最小値
+		m_viewport.MaxDepth = 1.0f;//深度最大値
 
 		m_scissorrect.top = 0;//切り抜き上座標
 		m_scissorrect.left = 0;//切り抜き左座標

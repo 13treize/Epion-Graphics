@@ -24,6 +24,6 @@ namespace	epion
 
 		std::unique_ptr<Model::CubeMesh> m_mesh;
 		std::unique_ptr<Model::SphereMesh> m_mesh2;
-		DX12::CBuffer2 data;
+		DX12::CBufferPassConstants data;
 	};
 }

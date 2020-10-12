@@ -12,11 +12,19 @@ cbuffer CBuffer2 : register(b2)
 {
     float4x4 View; //: packoffset(c4);
     float4x4 Proj; //: packoffset(c8);
-    //float4 CameraPos;
-    //float4 LightColor;
-    //float4 LightDir;
-    //float4 AmbientColor;
+    float4 CameraPos;
+    float4 LightColor;
+    float4 LightDir;
+    float4 AmbientColor;
 };
+cbuffer CBuffer3 : register(b3)
+{
+    float4 DiffuseAlbedo;
+    float3 FresnelR0;
+    float Roughness;
+    float4x4 MatTransform;
+};
+
 struct VSInput
 {
     float3 Position : POSITION;

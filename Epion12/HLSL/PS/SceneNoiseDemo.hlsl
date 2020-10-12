@@ -1,113 +1,93 @@
 #include"../Function//Noise.hlsli"
-#include"../Function//Procedural.hlsli"
-#include"../Function//UV.hlsli"
 
-cbuffer CBuffer : register(b0)
+#ifndef NUM_DIR_LIGHTS
+#define NUM_DIR_LIGHTS 0
+#endif
+
+#ifndef NUM_POINT_LIGHTS
+#define NUM_POINT_LIGHTS 0
+#endif
+
+#ifndef NUM_SPOT_LIGHTS
+#define NUM_SPOT_LIGHTS 0
+#endif
+#define MaxLights 16
+
+struct Light
 {
-    float4 Time; //: packoffset(c1.xyz);
-    float2 ScreenSize; //: packoffset(c0.xy);
-    float2 MousePos; //: packoffset(c0.zw);
+	float3 Strength;
+	float FalloffStart; // point/spot light only
+	float3 Direction; // directional/spot light only
+	float FalloffEnd; // point/spot light only
+	float3 Position; // point light only
+	float SpotPower; // spot light only
 };
 
+struct Material
+{
+	float4 DiffuseAlbedo;
+	float3 FresnelR0;
+	float Shininess;
+};
+
+cbuffer CBuffer0 : register(b0)
+{
+	float4 Time;
+	float2 ScreenSize;
+	float2 MousePos;
+};
+cbuffer CBuffer1 : register(b1)
+{
+	float4x4 World;
+};
+cbuffer CBuffer2 : register(b2)
+{
+	float4x4 View; //: packoffset(c4);
+	float4x4 Proj; //: packoffset(c8);
+	float4 CameraPos;
+	float4 LightColor;
+	float4 LightDir;
+	float4 AmbientColor;
+	Light Lights[MaxLights];
+};
 cbuffer CBuffer3 : register(b3)
 {
-    float4 Data[4];
+	float4 DiffuseAlbedo;
+	float3 FresnelR0;
+	float Roughness;
+	float4x4 MatTransform;
 };
 
-struct Input
+
+struct VSInput
 {
-    float4 svpos : SV_POSITION; //システム用頂点座標
-    float2 uv : TEXCOORD; //UV値
+	float3 Position : POSITION;
+	float3 Normal : NORMAL;
+	float2 UV : TEXCOORD;
+	float4 Color : VTX_COLOR;
 };
 
-float4 PS0(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    Random(input.uv, Data[0].x, a, b);
-    set_color.xyz = a;
-    return set_color;
-}
 
-float4 PS1(Input input) : SV_TARGET
+struct VSOutput
 {
-    float4 set_color;
-    float a, b, c, d;
-    Random(input.uv, Data[0].x, a, b);
-    set_color.xyz = b;
-    return set_color;
-}
-float4 PS2(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    RandomMaze(input.uv, Data[0].y, a, b, c);
-    set_color.xyz = a;
-    return set_color;
-}
-float4 PS3(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    RandomMaze(input.uv, Data[0].y, a, b, c);
-    set_color.xyz = b;
-    return set_color;
-}
-float4 PS4(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    RandomMaze(input.uv, Data[0].y, a, b, c);
-    set_color.xyz = c;
-    return set_color;
-}
-float4 PS5(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    GradientNoise(input.uv, Data[0].z, a);
-    set_color.xyz = a;
-    return set_color;
-}
+	float4 Position : SV_POSITION;
+	float3 Normal : NORMAL;
+	float2 UV : TEXCOORD;
+	float4 Color : VTX_COLOR;
+};
 
-float4 PS6(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    PhasorNoise(input.uv, Data[0].w, Data[1].x,Data[1].y,Data[1].z, a, b, c, d);
-    set_color.xyz = a;
-    return set_color;
-}
 
-float4 PS7(Input input) : SV_TARGET
+struct PSOutput
 {
-    float4 set_color;
-    float a, b, c, d;
-    PhasorNoise(input.uv, Data[0].w, Data[1].x, Data[1].y, Data[1].z, a, b, c, d);
-    set_color.xyz = b;
-    return set_color;
-}
-float4 PS8(Input input) : SV_TARGET
+	float4 Color : SV_TARGET0;
+};
+
+
+PSOutput PS0(const VSOutput input)
 {
-    float4 set_color;
-    float a, b, c, d;
-    PhasorNoise(input.uv, Data[0].w, Data[1].x, Data[1].y, Data[1].z, a, b, c, d);
-    set_color.xyz = c;
-    return set_color;
-}
-float4 PS9(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    PhasorNoise(input.uv, Data[0].w, Data[1].x, Data[1].y, Data[1].z, a, b, c, d);
-    set_color.xyz = d;
-    return set_color;
-}
-float4 PS10(Input input) : SV_TARGET
-{
-    float4 set_color;
-    float a, b, c, d;
-    Voronoi(input.uv, Data[0].w, Data[1].x, a, b, c, d);
-    set_color.xyz = d;
-    return set_color;
+	PSOutput output = (PSOutput) 0;
+	float a, b, c, d;
+	Voronoi(input.UV, 3.0, 7.0, a, b, c, d);
+	output.Color.rgb = a;
+	return output;
 }

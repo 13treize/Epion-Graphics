@@ -1,3 +1,49 @@
+/*
+    Reference materials
+
+    Use Support function
+    Bias
+    Checkerboard
+    Ellipse
+    Gear
+    Hexagon
+    Polygon
+    Ripple
+    RoundedRectangle
+*/
+
+
+#ifndef INCLUDE_GUARD_PROCEDURAL_HLSLI
+#define INCLUDE_GUARD_PROCEDURAL_HLSLI
+
+void Bias(float a, float b, out float Out)
+{
+    Out= pow(a, log(b) / log(0.5));
+}
+void Bias(float2 a, float2 b, out float2 Out)
+{
+    Out = pow(a, log(b) / log(0.5));
+}
+void Bias(float3 a, float3 b, out float3 Out)
+{
+    Out = pow(a, log(b) / log(0.5));
+}
+void Bias(float4 a, float4 b, out float4 Out)
+{
+    Out = pow(a, log(b) / log(0.5));
+}
+
+float Gain(float a, float b)
+{
+    float p = log(1.0 - b) / log(0.5);
+
+    if (a < 0.001) return 0.0;
+    else if (a > 0.999) return 1.0;
+    if (a < 0.5) return pow(2.0 * a, p) / 2.0;
+    else return 1.0 - pow(2.0 * (1.0 - a), p) / 2.0;
+}
+
+
 void Checkerboard(float2 UV, float3 ColorA, float3 ColorB, float2 Frequency, out float3 Out)
 {
     UV = (UV.xy + 0.5) * Frequency;
@@ -76,3 +122,5 @@ void RoundedRectangle(float2 UV, float Width, float Height, float Radius, out fl
     Out = saturate((1 - d) / fwidth(d));
 }
 
+
+#endif // INCLUDE_GUARD_PROCEDURAL_HLSLI

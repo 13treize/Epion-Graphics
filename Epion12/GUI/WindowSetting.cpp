@@ -48,22 +48,22 @@ namespace epion::GUI
 			{
 				SceneManager::SetNextScene<SceneDefault>();
 			}
-			if (ImGui::RadioButton("2D Scene", &m_select_scene, 1))
-			{
-				SceneManager::SetNextScene<Scene2D>();
-			}
-			if (ImGui::RadioButton("3D Scene", &m_select_scene, 2))
-			{
-				SceneManager::SetNextScene<Scene3D>();
-			}
+			//if (ImGui::RadioButton("2D Scene", &m_select_scene, 1))
+			//{
+			//	SceneManager::SetNextScene<Scene2D>();
+			//}
+			//if (ImGui::RadioButton("3D Scene", &m_select_scene, 2))
+			//{
+			//	SceneManager::SetNextScene<Scene3D>();
+			//}
 			if (ImGui::RadioButton("Noise Scene", &m_select_scene, 3))
 			{
 				SceneManager::SetNextScene<SceneNoise>();
 			}
-			if (ImGui::RadioButton("Test Scene", &m_select_scene, 4))
-			{
-				SceneManager::SetNextScene<SceneTest>();
-			}
+			//if (ImGui::RadioButton("Test Scene", &m_select_scene, 4))
+			//{
+			//	SceneManager::SetNextScene<SceneTest>();
+			//}
 			if (ImGui::RadioButton("Procedural Scene ", &m_select_scene, 5))
 			{
 				SceneManager::SetNextScene<SceneProcedural>();

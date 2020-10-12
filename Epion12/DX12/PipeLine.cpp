@@ -2,7 +2,6 @@
 #include	"ViewPort.h"
 #include	"Device.h"
 #include	"CommandList.h"
-#include	"RenderTarget.h"
 #include	"DX12Wrapper.h"
 #include	"FrameResourceManager.h"
 #include	"PipeLine.h"
@@ -38,7 +37,9 @@ namespace epion::DX12
 			Device::Get()->CreateRenderTargetView(m_back_buffers[i].Get(), nullptr, handle);
 			handle.ptr +=Device::Get()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
 		}
+		DX12Wrapper::CreateDepthStencilView<ID3D12Device>(Device::Get(), m_heap_dsv, m_depth_stencil_buffer, static_cast<UINT>(ViewPort::GetScreenSize().x), static_cast<UINT>(ViewPort::GetScreenSize().y));
 
+		m_dsv_handle = m_heap_dsv->GetCPUDescriptorHandleForHeapStart();
 		CreateFrameResources();
 		return true;
 	}
@@ -136,8 +137,10 @@ namespace epion::DX12
 		auto bbIdx = m_swap->GetCurrentBackBufferIndex();
 		m_rtv_handle = m_heap_rtv->GetCPUDescriptorHandleForHeapStart();
 		m_rtv_handle.ptr += static_cast<SIZE_T>(bbIdx) * Device::Get()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
-		CommandList::GetCmd()->OMSetRenderTargets(1, &m_rtv_handle, false, nullptr);
+		CommandList::GetCmd()->ClearDepthStencilView(m_dsv_handle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 		CommandList::GetCmd()->ClearRenderTargetView(m_rtv_handle, m_clear_color.data(), 0, nullptr);
+		CommandList::GetCmd()->OMSetRenderTargets(1, &m_rtv_handle, false, &m_dsv_handle);
+
 	}
 
 	void	PipeLine::ResouceBarrierBegin()

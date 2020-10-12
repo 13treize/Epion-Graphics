@@ -3,7 +3,7 @@
 
 namespace epion::Model
 {
-	class TestModel final :public Model
+	class TestModel final :public ModelCore
 	{
 		TestModel();
 		~TestModel();

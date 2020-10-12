@@ -5,7 +5,6 @@
 
 #include	"Scene2D.h"
 #include	"../DX12/ShaderManager.h"
-#include	"../DX12/DX12State.h"
 #include	"../DX12/ConstantBufferManager.h"
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
@@ -22,8 +21,6 @@ namespace epion
 
 		DX12::ConstantBufferManager::Build2D();
 		DX12::RootSignatureManager::Build2D(D3D12_ROOT_PARAMETER_TYPE_CBV);
-		DX12::BlendStateManager::Initialize();
-		DX12::RasterizerManager::Initialize();
 
 		// Build Shader
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VS\\VertexShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
@@ -35,7 +32,7 @@ namespace epion
 		for (int i = 0; i < 48; i++)
 		{
 			m_square[i] = std::make_unique<Model::Square>();
-			m_square[i]->Initialize(vs_blob, ps_blob,DX12::RasterizerManager::GetSolidDesc(), DX12::BlendStateManager::GetDesc(), DX12::RootSignatureManager::Get());
+			m_square[i]->Initialize(vs_blob, ps_blob, DX12::RootSignatureManager::Get());
 		}
 
 		return true;

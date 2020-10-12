@@ -4,6 +4,7 @@
 #include "../DX12/ViewPort.h"
 #include "../DX12/Device.h"
 #include "../DX12/CommandList.h"
+#include "../DX12/DX12Wrapper.h"
 
 namespace
 {
@@ -12,7 +13,7 @@ namespace
 namespace epion::Model
 {
 	Square::Square()
-		:Model()
+		:ModelCore()
 	{
 		m_pipeline_state = nullptr;
 	}
@@ -21,7 +22,7 @@ namespace epion::Model
 	{
 	}
 
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
@@ -39,12 +40,12 @@ namespace epion::Model
 		m_shader_reflection = std::make_unique<DX12::ShaderReflection>();
 		m_shader_reflection->ReflectionInputLayout(vs_blob);
 
-		DefaultSetPipeLine(vs_blob, ps_blob, r_desc, root_sig);
+		DefaultSetPipeLine(vs_blob, ps_blob, root_sig);
 		DX12::Device::Get()->CreateGraphicsPipelineState(&m_pipeline_desc, IID_PPV_ARGS(&m_pipeline_state));
 
 		return true;
 	}
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& gs_blob, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
@@ -68,10 +69,9 @@ namespace epion::Model
 		m_pipeline_desc.VS = { vs_blob->GetBufferPointer(), vs_blob->GetBufferSize() };
 		m_pipeline_desc.PS = { ps_blob->GetBufferPointer(), ps_blob->GetBufferSize() };
 		m_pipeline_desc.GS = { gs_blob->GetBufferPointer(), gs_blob->GetBufferSize() };
-		m_pipeline_desc.BlendState = b_desc;
-		m_pipeline_desc.RasterizerState = r_desc;
-		m_pipeline_desc.DepthStencilState.DepthEnable = false;
-		m_pipeline_desc.DepthStencilState.StencilEnable = false;
+		m_pipeline_desc.BlendState = DX12::DX12Wrapper::BLEND_DESC;
+		m_pipeline_desc.RasterizerState = DX12::DX12Wrapper::RASTERIZER_SOLID_DESC;
+		m_pipeline_desc.DepthStencilState = DX12::DX12Wrapper::DEPTH_STENCIL_DEFAULT_DESC;
 		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
 		m_pipeline_desc.InputLayout = { m_shader_reflection->GetInputLayout().data(), static_cast<UINT>(m_shader_reflection->GetInputLayout().size()) };
 		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
@@ -86,11 +86,11 @@ namespace epion::Model
 
 	}
 
-	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob, com_ptr<ID3DBlob>& gs_blob, D3D12_RASTERIZER_DESC& r_desc, D3D12_BLEND_DESC& b_desc, com_ptr<ID3D12RootSignature>& root_sig)
+	bool Square::Initialize(com_ptr<ID3DBlob>& vs_blob, com_ptr<ID3DBlob>& ps_blob, com_ptr<ID3DBlob>& hs_blob, com_ptr<ID3DBlob>& ds_blob, com_ptr<ID3DBlob>& gs_blob, com_ptr<ID3D12RootSignature>& root_sig)
 	{
 		HRESULT hr = S_OK;
 
-		m_is_update = true;
+		m_is_update = false;
 
 		m_vertex_resource = std::make_unique<DX12::ResourceBuffer<Model2DVertex>>();
 		m_vertex_resource->Initialize<ID3D12Device>(DX12::Device::Get(), sizeof(Model2DVertex), false);
@@ -110,11 +110,10 @@ namespace epion::Model
 		m_pipeline_desc.HS = { hs_blob->GetBufferPointer(), hs_blob->GetBufferSize() };
 		m_pipeline_desc.DS = { ds_blob->GetBufferPointer(), ds_blob->GetBufferSize() };
 		m_pipeline_desc.GS = { gs_blob->GetBufferPointer(), gs_blob->GetBufferSize() };
-		m_pipeline_desc.BlendState = b_desc;
-		m_pipeline_desc.RasterizerState = r_desc;
+		m_pipeline_desc.BlendState = DX12::DX12Wrapper::BLEND_DESC;
+		m_pipeline_desc.RasterizerState = DX12::DX12Wrapper::RASTERIZER_SOLID_DESC;
 		m_pipeline_desc.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
-		m_pipeline_desc.DepthStencilState.DepthEnable = false;
-		m_pipeline_desc.DepthStencilState.StencilEnable = false;
+		m_pipeline_desc.DepthStencilState = DX12::DX12Wrapper::DEPTH_STENCIL_DEFAULT_DESC;
 		m_pipeline_desc.InputLayout = { m_shader_reflection->GetInputLayout().data(), static_cast<UINT>(m_shader_reflection->GetInputLayout().size()) };
 		m_pipeline_desc.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
 		m_pipeline_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
@@ -158,8 +157,6 @@ namespace epion::Model
 		}
 		m_is_update = false;
 	}
-
-
 
 	void Square::Render()
 	{
