@@ -85,6 +85,12 @@
     <Filter Include="リソース ファイル\HLSL\Obj">
       <UniqueIdentifier>{a3d1e1c5-53b9-4a39-b322-60ce110995b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Node">
+      <UniqueIdentifier>{77c2a11e-a578-4202-a275-9bb70e5ae585}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Node">
+      <UniqueIdentifier>{31223a95-4142-4583-bcc5-ff8e8893e668}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -273,6 +279,9 @@
     <ClInclude Include="Epion12\Scene\SceneDemoProcedural.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\Node\NodeBase.h">
+      <Filter>ヘッダー ファイル\Node</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -421,6 +430,9 @@
     </ClCompile>
     <ClCompile Include="Epion12\Scene\SceneDemoProcedural.cpp">
       <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Node\NodeBase.cpp">
+      <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

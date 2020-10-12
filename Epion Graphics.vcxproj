@@ -192,6 +192,7 @@
     <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Model\StaticMesh.h" />
     <ClInclude Include="Epion12\Model\TestModel.h" />
+    <ClInclude Include="Epion12\Node\NodeBase.h" />
     <ClInclude Include="Epion12\Resource.h" />
     <ClInclude Include="Epion12\Scene\Scene2D.h" />
     <ClInclude Include="Epion12\Scene\Scene3D.h" />
@@ -287,6 +288,7 @@
     <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Model\StaticMesh.cpp" />
     <ClCompile Include="Epion12\Model\TestModel.cpp" />
+    <ClCompile Include="Epion12\Node\NodeBase.cpp" />
     <ClCompile Include="Epion12\Scene\Scene2D.cpp" />
     <ClCompile Include="Epion12\Scene\Scene3D.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDefault.cpp" />
