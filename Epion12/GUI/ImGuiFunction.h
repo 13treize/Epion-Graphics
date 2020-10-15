@@ -33,19 +33,81 @@ namespace epion::GUI
 	void End();
 	void ShowFPS();
 	void DrawGrid(ImDrawList* draw_list, float	size, ImU32	color, const	ImVec2& scroll);
+	void CloseContext(bool& is_current);
+	void BackContext(bool& is_back, bool& is_current);
+	void TextMenu(std::string_view name);
+
+	bool IsRightClick();
+	bool MenuItem(std::string_view name, bool& is_event);
+	class MenuItemBase
+	{
+	public:
+		MenuItemBase() {}
+		~MenuItemBase() {}
+		bool Show(std::string_view name, bool& is_event)
+		{
+			MenuItem(name, is_event);
+		}
+	};
+	class MenuItems
+	{
+	public:
+		void ShowItems()
+		{
+
+		}
+	private:
+		std::vector<MenuItemBase>	Items;
+	};
+	class ContextObject abstract
+	{
+	public:
+		ContextObject()
+			:m_menu_pos(0.0f, 0.0f), m_is_open_menu(false)
+		{
+		}
+
+		virtual	~ContextObject() {};
+
+		virtual void OpenMenu() = 0;
+		virtual void CloseMenu() = 0;
+
+		virtual void PopupBeginSettings() = 0;
+		virtual void PopupEndSettings() = 0;
+		virtual void ContextMenu(std::string_view popup_name, bool& is_event)=0;
+	protected:
+		ImVec2 m_menu_pos;
+		bool m_is_open_menu;
+
+	};
 
 	class ImGuiFunction
 	{
 	public:
 		static void DefaultWindowFlagsSetiing(ImGuiWindowFlags& window_flags);
 
+		static void DrawFont(const ImVec2& pos,std::string_view name)
+		{
+			ImGui::SetCursorScreenPos(pos);
+			ImGui::TextColored(GUI::ImColors::Vec4::WHITE, "%s",name.data());
+		}
 		static Math::FVector2 GetFVector2(ImVec2& vec2)
 		{
 			return Math::FVector2(vec2.x, vec2.y);
 		}
+		static Math::FVector2 GetFVector2(const ImVec2& vec2)
+		{
+			return Math::FVector2(vec2.x, vec2.y);
+		}
+
 		static ImVec2 GetImVec2(Math::FVector2& vec2)
 		{
 			return ImVec2(vec2.x, vec2.y);
 		}
+		static ImVec2 GetImVec2(const Math::FVector2& vec2)
+		{
+			return ImVec2(vec2.x, vec2.y);
+		}
+
 	};
 }

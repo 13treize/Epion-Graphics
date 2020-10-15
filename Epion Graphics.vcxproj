@@ -173,10 +173,12 @@
     <ClInclude Include="Epion12\DX12\Texture.h" />
     <ClInclude Include="Epion12\DX12\ViewPort.h" />
     <ClInclude Include="Epion12\Epion12.h" />
+    <ClInclude Include="Epion12\FileIO\EpionFileIO.h" />
     <ClInclude Include="Epion12\GUI\EpionGUI.h" />
     <ClInclude Include="Epion12\GUI\ImGuiBase.h" />
     <ClInclude Include="Epion12\GUI\ImGuiFunction.h" />
     <ClInclude Include="Epion12\GUI\ImGuiManager.h" />
+    <ClInclude Include="Epion12\GUI\NodeWindow.h" />
     <ClInclude Include="Epion12\GUI\WindowSetting.h" />
     <ClInclude Include="Epion12\MainSystem.h" />
     <ClInclude Include="Epion12\Math\EpionMath.h" />
@@ -188,17 +190,24 @@
     <ClInclude Include="Epion12\Model\Model.h" />
     <ClInclude Include="Epion12\Model\ObjLoader.h" />
     <ClInclude Include="Epion12\Model\ObjMesh.h" />
+    <ClInclude Include="Epion12\Model\PMDLoader.h" />
+    <ClInclude Include="Epion12\Model\PMDMesh.h" />
+    <ClInclude Include="Epion12\Model\PMXMesh.h" />
     <ClInclude Include="Epion12\Model\PrimitiveModelData.h" />
     <ClInclude Include="Epion12\Model\Square.h" />
     <ClInclude Include="Epion12\Model\StaticMesh.h" />
     <ClInclude Include="Epion12\Model\TestModel.h" />
     <ClInclude Include="Epion12\Node\NodeBase.h" />
+    <ClInclude Include="Epion12\Node\NodeContext.h" />
+    <ClInclude Include="Epion12\Node\NodeParam.h" />
+    <ClInclude Include="Epion12\Physics\EpionPhysics.h" />
     <ClInclude Include="Epion12\Resource.h" />
     <ClInclude Include="Epion12\Scene\Scene2D.h" />
     <ClInclude Include="Epion12\Scene\Scene3D.h" />
     <ClInclude Include="Epion12\Scene\SceneDefault.h" />
     <ClInclude Include="Epion12\Scene\SceneDemoProcedural.h" />
     <ClInclude Include="Epion12\Scene\SceneManager.h" />
+    <ClInclude Include="Epion12\Scene\SceneNodeEditor.h" />
     <ClInclude Include="Epion12\Scene\SceneNoise.h" />
     <ClInclude Include="Epion12\Scene\SceneTest.h" />
     <ClInclude Include="Epion12\String\EpionString.h" />
@@ -275,25 +284,34 @@
     <ClCompile Include="Epion12\DX12\ShaderManager.cpp" />
     <ClCompile Include="Epion12\DX12\Texture.cpp" />
     <ClCompile Include="Epion12\DX12\ViewPort.cpp" />
+    <ClCompile Include="Epion12\FileIO\EpionFIleIO.cpp" />
     <ClCompile Include="Epion12\GUI\ImGuiBase.cpp" />
     <ClCompile Include="Epion12\GUI\ImGuiFunction.cpp" />
     <ClCompile Include="Epion12\GUI\ImGuiManager.cpp" />
+    <ClCompile Include="Epion12\GUI\NodeWindow.cpp" />
     <ClCompile Include="Epion12\GUI\WindowSetting.cpp" />
     <ClCompile Include="Epion12\MainSystem.cpp" />
     <ClCompile Include="Epion12\Math\EpionRandom.cpp" />
     <ClCompile Include="Epion12\Model\Model.cpp" />
     <ClCompile Include="Epion12\Model\ObjLoader.cpp" />
     <ClCompile Include="Epion12\Model\ObjMesh.cpp" />
+    <ClCompile Include="Epion12\Model\PMDLoader.cpp" />
+    <ClCompile Include="Epion12\Model\PMDMesh.cpp" />
+    <ClCompile Include="Epion12\Model\PMXMesh.cpp" />
     <ClCompile Include="Epion12\Model\PrimitiveModelData.cpp" />
     <ClCompile Include="Epion12\Model\Square.cpp" />
     <ClCompile Include="Epion12\Model\StaticMesh.cpp" />
     <ClCompile Include="Epion12\Model\TestModel.cpp" />
     <ClCompile Include="Epion12\Node\NodeBase.cpp" />
+    <ClCompile Include="Epion12\Node\NodeContext.cpp" />
+    <ClCompile Include="Epion12\Node\NodeParam.cpp" />
+    <ClCompile Include="Epion12\Physics\EpionPhysics.cpp" />
     <ClCompile Include="Epion12\Scene\Scene2D.cpp" />
     <ClCompile Include="Epion12\Scene\Scene3D.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDefault.cpp" />
     <ClCompile Include="Epion12\Scene\SceneDemoProcedural.cpp" />
     <ClCompile Include="Epion12\Scene\SceneManager.cpp" />
+    <ClCompile Include="Epion12\Scene\SceneNodeEditor.cpp" />
     <ClCompile Include="Epion12\Scene\SceneNoise.cpp" />
     <ClCompile Include="Epion12\Scene\SceneTest.cpp" />
     <ClCompile Include="Epion12\String\EpionString.cpp" />
@@ -519,13 +537,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="packages\cereal.1.0.0\build\native\cereal.targets" Condition="Exists('packages\cereal.1.0.0\build\native\cereal.targets')" />
-    <Import Project="packages\directxtex_desktop_win10.2020.8.15.1\build\native\directxtex_desktop_win10.targets" Condition="Exists('packages\directxtex_desktop_win10.2020.8.15.1\build\native\directxtex_desktop_win10.targets')" />
+    <Import Project="packages\directxtex_desktop_win10.2020.9.30.1\build\native\directxtex_desktop_win10.targets" Condition="Exists('packages\directxtex_desktop_win10.2020.9.30.1\build\native\directxtex_desktop_win10.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\cereal.1.0.0\build\native\cereal.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cereal.1.0.0\build\native\cereal.targets'))" />
-    <Error Condition="!Exists('packages\directxtex_desktop_win10.2020.8.15.1\build\native\directxtex_desktop_win10.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtex_desktop_win10.2020.8.15.1\build\native\directxtex_desktop_win10.targets'))" />
+    <Error Condition="!Exists('packages\directxtex_desktop_win10.2020.9.30.1\build\native\directxtex_desktop_win10.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtex_desktop_win10.2020.9.30.1\build\native\directxtex_desktop_win10.targets'))" />
   </Target>
 </Project>

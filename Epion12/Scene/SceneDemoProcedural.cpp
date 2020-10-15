@@ -10,6 +10,7 @@
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
 
+#include	"../GUI/NodeWindow.h"
 
 namespace
 {
@@ -59,7 +60,6 @@ namespace epion
 		data.LightDir = { 1.0,1.0,1.0,1.0 };
 		data.LightColor = { 1.0,1.0,1.0,1.0 };
 		data.AmbientColor = { 0.2,0.2,0.2,1.0 };
-
 		return true;
 	}
 	bool SceneProcedural::Finalize()
@@ -68,31 +68,31 @@ namespace epion
 	}
 	void SceneProcedural::Update()
 	{
-	ImGui::Begin("test ", nullptr, 0);
-	if (ImGui::TreeNode("model"))
-	{
-		auto pos = data.LightDir;
-		auto scale = data.LightColor;
-		auto angle = data.AmbientColor;
-		ImGui::Text("dir");
-		ImGui::InputFloat("  x", &pos.x, 0.01f, 100.0f, "%.2f");
-		ImGui::InputFloat("  y", &pos.y, 0.01f, 100.0f, "%.2f");
-		ImGui::InputFloat("  z", &pos.z, 0.01f, 100.0f, "%.2f");
-		ImGui::Text("color");
-		ImGui::InputFloat("  x ", &scale.x, 0.01f, 100.0f, "%.2f");
-		ImGui::InputFloat("  y ", &scale.y, 0.01f, 100.0f, "%.2f");
-		ImGui::InputFloat("  z ", &scale.z, 0.01f, 100.0f, "%.2f");
-		ImGui::Text("ambent");
-		ImGui::InputFloat("  x  ", &angle.x, 0.01f, 100.0f, "%.2f");
-		ImGui::InputFloat("  y  ", &angle.y, 0.01f, 100.0f, "%.2f");
-		ImGui::InputFloat("  z  ", &angle.z, 0.01f, 100.0f, "%.2f");
-		data.LightDir = pos;
-		data.LightColor = scale;
-		data.AmbientColor = angle;
-
-		ImGui::TreePop();
-	}
-	ImGui::End();
+		ImGui::Begin("test ", nullptr, 0);
+		//if (ImGui::TreeNode("model"))
+		//{
+		//	auto pos = data.LightDir;
+		//	auto scale = data.LightColor;
+		//	auto angle = data.AmbientColor;
+		//	ImGui::Text("dir");
+		//	ImGui::InputFloat("  x", &pos.x, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  y", &pos.y, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  z", &pos.z, 0.01f, 100.0f, "%.2f");
+		//	ImGui::Text("color");
+		//	ImGui::InputFloat("  x ", &scale.x, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  y ", &scale.y, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  z ", &scale.z, 0.01f, 100.0f, "%.2f");
+		//	ImGui::Text("ambent");
+		//	ImGui::InputFloat("  x  ", &angle.x, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  y  ", &angle.y, 0.01f, 100.0f, "%.2f");
+		//	ImGui::InputFloat("  z  ", &angle.z, 0.01f, 100.0f, "%.2f");
+		//	data.LightDir = pos;
+		//	data.LightColor = scale;
+		//	data.AmbientColor = angle;
+	
+		//	ImGui::TreePop();
+		//}
+		ImGui::End();
 		Camera::CameraManager::Update();
 		static float time = 0.0f;
 		time += 0.1f;

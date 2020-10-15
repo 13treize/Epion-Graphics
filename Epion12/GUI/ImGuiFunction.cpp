@@ -42,5 +42,31 @@ namespace epion::GUI
 			draw_list->AddLine(ImVec2(0.0f, y) + win_pos, ImVec2(canvas_size.x, y) + win_pos, color);
 		}
 	}
+	void CloseContext(bool& is_current)
+	{
+		if (ImGui::MenuItem("Close")) is_current = false;
+	}
+	void BackContext(bool& is_back, bool& is_current)
+	{
+		if (ImGui::MenuItem("<-"))
+		{
+			is_back = true;
+			is_current = false;
+		}
+	}
+	void TextMenu(std::string_view name)
+	{
+		ImGui::TextColored(ImColors::Vec4::BLACK, name.data());
+		ImGui::Separator();
+	}
+	bool IsRightClick()
+	{
+		return (!ImGui::IsMouseClicked(0) && ImGui::IsMouseClicked(1));
+	}
+
+	bool MenuItem(std::string_view name, bool& is_event)
+	{
+		return ImGui::MenuItem(name.data(), nullptr, &is_event);
+	}
 
 }

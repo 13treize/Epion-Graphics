@@ -4,6 +4,8 @@
 #include	"Scene2D.h"
 #include	"Scene3D.h"
 #include	"SceneNoise.h"
+#include	"SceneDemoProcedural.h"
+#include	"SceneNodeEditor.h"
 
 namespace
 {
@@ -11,7 +13,7 @@ namespace
 namespace	epion
 {
 	std::unique_ptr<Scene>	SceneManager::m_scene = {};
-	std::unique_ptr<Scene>	SceneManager::m_next_scene = std::make_unique<SceneDefault>();
+	std::unique_ptr<Scene>	SceneManager::m_next_scene = std::make_unique<SceneNodeEditor>();
 
 	void	SceneManager::Update()
 	{

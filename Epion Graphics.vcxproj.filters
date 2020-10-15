@@ -91,6 +91,18 @@
     <Filter Include="ソース ファイル\Node">
       <UniqueIdentifier>{31223a95-4142-4583-bcc5-ff8e8893e668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\FileIO">
+      <UniqueIdentifier>{9d1168ea-1325-4ba1-b262-2b99f44cc51a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\FileIO">
+      <UniqueIdentifier>{e5b2603d-8b29-49f9-bcff-a80cb6166478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Physics">
+      <UniqueIdentifier>{9812c498-857d-42fc-ab04-cae88f066223}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Physics">
+      <UniqueIdentifier>{6e6423ed-03cf-461c-bb7b-d78e469b18ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -282,6 +294,33 @@
     <ClInclude Include="Epion12\Node\NodeBase.h">
       <Filter>ヘッダー ファイル\Node</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\Model\PMDMesh.h">
+      <Filter>ヘッダー ファイル\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\FileIO\EpionFileIO.h">
+      <Filter>ヘッダー ファイル\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Model\PMXMesh.h">
+      <Filter>ヘッダー ファイル\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Model\PMDLoader.h">
+      <Filter>ヘッダー ファイル\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Node\NodeParam.h">
+      <Filter>ヘッダー ファイル\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\GUI\NodeWindow.h">
+      <Filter>ヘッダー ファイル\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Physics\EpionPhysics.h">
+      <Filter>ヘッダー ファイル\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Node\NodeContext.h">
+      <Filter>ヘッダー ファイル\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\Scene\SceneNodeEditor.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -432,6 +471,33 @@
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Epion12\Node\NodeBase.cpp">
+      <Filter>ソース ファイル\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Model\PMDMesh.cpp">
+      <Filter>ソース ファイル\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\FileIO\EpionFIleIO.cpp">
+      <Filter>ソース ファイル\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Model\PMXMesh.cpp">
+      <Filter>ソース ファイル\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Model\PMDLoader.cpp">
+      <Filter>ソース ファイル\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Node\NodeParam.cpp">
+      <Filter>ソース ファイル\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\GUI\NodeWindow.cpp">
+      <Filter>ソース ファイル\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Physics\EpionPhysics.cpp">
+      <Filter>ソース ファイル\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Scene\SceneNodeEditor.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Node\NodeContext.cpp">
       <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
   </ItemGroup>
