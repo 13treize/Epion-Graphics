@@ -103,6 +103,12 @@
     <Filter Include="ヘッダー ファイル\Physics">
       <UniqueIdentifier>{6e6423ed-03cf-461c-bb7b-d78e469b18ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Settings">
+      <UniqueIdentifier>{999a8331-0b3b-4ad5-98b0-a408016e4cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WavefrontObjWriter">
+      <UniqueIdentifier>{76149ef6-43c0-4fab-9dbd-9447820f1902}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -321,6 +327,12 @@
     <ClInclude Include="Epion12\Scene\SceneNodeEditor.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="WavefrontObjWriter\obj.h">
+      <Filter>WavefrontObjWriter</Filter>
+    </ClInclude>
+    <ClInclude Include="WavefrontObjWriter\vector.h">
+      <Filter>WavefrontObjWriter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -532,6 +544,9 @@
     </None>
     <None Include="Epion12\HLSL\Function\includes.hlsli">
       <Filter>リソース ファイル\HLSL\Function</Filter>
+    </None>
+    <None Include="Epion12\Settings\ContextSetting.json">
+      <Filter>リソース ファイル\Settings</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

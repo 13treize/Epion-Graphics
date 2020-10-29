@@ -17,7 +17,22 @@ namespace	epion::Node
 		COLOR,//inputÇÃÇ›ÅAàµÇ¢ÇÕVECTOR3ìØÇ∂
 	};
 
-	enum class NODE_TYPE :unsigned char
+	enum NodeType :unsigned char
+	{
+		Artistic = 0,
+		Channel,
+		Input,
+		Master,
+		Math,
+		Procedural,
+		Utility,
+		UV,
+		Noise,
+		ArraySize
+	};
+
+
+	enum class NODE_STATE :unsigned char
 	{
 		NORMAL,
 		DYNAMIC,

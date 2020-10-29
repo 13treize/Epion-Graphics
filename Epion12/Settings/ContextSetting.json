@@ -1,0 +1,49 @@
+{
+  "Procedural": {
+    "Name": [
+      "Bias",
+      "Checkerboard",
+      "Ellipse",
+      "Gear",
+      "Hexagon",
+      "Polygon",
+      "Ripple",
+      "RoundedRectangle"
+    ]
+  },
+  "Noise": {
+    "Name": [
+      "hash11",
+      "hash12",
+      "hash13",
+      "hash21",
+      "hash22",
+      "hash23",
+      "hash31",
+      "hash32",
+      "hash33",
+      "hash41",
+      "hash42",
+      "hash43",
+      "hash44",
+      "random_seed1",
+      "random_seed2",
+      "random_seed3",
+      "Random",
+      "RandomMaze",
+      "Noise2",
+      "Noise3",
+      "GradientNoise",
+      "PhasorNoise",
+      "SimpleNoise",
+      "ValueNoise",
+      "Voronoi",
+      "ChebychevVoronoi",
+      "ManhattanVoronoi",
+      "MinkowskiVoronoi",
+      "WaveletNoise",
+      "FBM24",
+      "FBM28"
+    ]
+  }
+}

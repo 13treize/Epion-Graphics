@@ -6,6 +6,7 @@
     Checkerboard
     Ellipse
     Gear
+    Grid
     Hexagon
     Polygon
     Ripple
@@ -72,6 +73,11 @@ void Gear(float2 UV, float tooths, float radius, float tlength, float tshape, fl
     gear = min(min(gear, step(0.03, length(p))), step(clamp(inradius, 0.1, radius) * (sign(cos((atan2(p.x, p.y) * intooths)))), length(p)));
     col *= min(step(gear, length(p)), step(0.05, length(p)));
     Out = 1.0-col;
+}
+void Grid(float2 UV, float2 LineSize, float2 GridSize, out float Out)
+{
+    float2 p = frac(UV * LineSize + GridSize / 2.0);
+    Out = step(GridSize.x, p.x) * step(GridSize.y, p.y);
 }
 void Hexagon(float2 UV, float Scale, out float Out, out float2 Pos, out float2 oUV, out float2 Index)
 {

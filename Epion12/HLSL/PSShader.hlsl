@@ -2,7 +2,7 @@
 #include"Function//Noise.hlsli"
 #include"Function//Procedural.hlsli"
 #include"Function//UV.hlsli"
-#include"Function//UniqueFunction.hlsli"
+//#include"Function//UniqueFunction.hlsli"
 
 #ifndef NUM_DIR_LIGHTS
 	#define NUM_DIR_LIGHTS 0
@@ -19,19 +19,19 @@
 
 struct Light
 {
-    float3 Strength;
-    float FalloffStart; // point/spot light only
-    float3 Direction; // directional/spot light only
-    float FalloffEnd; // point/spot light only
-    float3 Position; // point light only
-    float SpotPower; // spot light only
+	float3 Strength;
+	float FalloffStart; // point/spot light only
+	float3 Direction; // directional/spot light only
+	float FalloffEnd; // point/spot light only
+	float3 Position; // point light only
+	float SpotPower; // spot light only
 };
 
 struct Material
 {
-    float4 DiffuseAlbedo;
-    float3 FresnelR0;
-    float Shininess;
+	float4 DiffuseAlbedo;
+	float3 FresnelR0;
+	float Shininess;
 };
 
 cbuffer CBuffer0 : register(b0)
@@ -157,23 +157,24 @@ PSOutput PS0(const VSOutput input)
 
 	//output.Color = float4(input.Position, 1.0);
 	float3 check;
-	//Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(5.0, 5.0), check);
-
-    //float2 uv1 = input.UV;
-    //float2 uv2 = input.UV;
-    //Spherize(uv1, 0.0, 0.2, 7.0, uv1);
+	Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(5.0, 5.0), check);
+	float c;
+	Grid(input.UV, 10.0, 0.1, c);
+	//float2 uv1 = input.UV;
+	//float2 uv2 = input.UV;
+	//Spherize(uv1, 0.0, 0.2, 7.0, uv1);
 	
-    //float a, b, c, d;
-    //Voronoi(uv2, 3.0, 7.0, a, b, c, d);
+	//float a, b, c, d;
+	//Voronoi(uv2, 3.0, 7.0, a, b, c, d);
 	
-    //float aa, bb, cc, dd;
-    //float2 uv3 = uv1;
-    //Voronoi(uv3, 7.0, 11.0, aa, bb, cc, dd);
+	//float aa, bb, cc, dd;
+	//float2 uv3 = uv1;
+	//Voronoi(uv3, 7.0, 11.0, aa, bb, cc, dd);
 
-    //float e;
-    //SimpleNoise(uv1, 200.0, e);
-    //check = float3(aa + a, aa / 2.0 + a / 2.0 * e, 0.0);
-    Lava(input.UV, 0.0, check);
+	//float e;
+	//SimpleNoise(uv1, 200.0, e);
+	//check = float3(aa + a, aa / 2.0 + a / 2.0 * e, 0.0);
+	//Lava(input.UV, 0.0, check);
 	//float3 col;
 	//float2 uv2 = input.UV;
 	//Spherize(uv, 0.0, 0.2, 7.0, uv);
@@ -192,7 +193,9 @@ PSOutput PS0(const VSOutput input)
 	//col.g = aa / 2.0 + a / 2.0 * e;
 	////check = Bias(check, 1.5);
 	//output.Color.rgb = check * (S + D + AmbientColor.rgb);
-    output.Color.rgb = check;
+	//check.r *= (c);
+	output.Color.rgb = check;
+//    output.Color.r -=c;
 	return output;
 
 //	//// Indirect lighting.
@@ -217,27 +220,35 @@ PSOutput PS0(const VSOutput input)
 PSOutput PS1(const VSOutput input)
 {
 	PSOutput output = (PSOutput) 0;
-	//float3 N = mul((float3x3) World, input.Normal);
-	//N = normalize(N); //ê≥ãKâª
-	//float3 L = normalize(LightDir.xyz);
-	//float3 C = LightColor.rgb;
-	//float3 Kd = float3(1, 1, 1);
-	//float3 D;
-	//Diffuse(N, L, C, Kd, D);
-
 	float a, b, c, d;
 	Voronoi(input.UV,5.0f,5.0f, a, b, c, d);
-    output.Color.rgb = b;
-	//output.Color.rgb = b * (D + AmbientColor.rgb);
-
+	output.Color.rgb = a;
 	return output;
 }
 
 PSOutput PS2(const VSOutput input)
 {
 	PSOutput output = (PSOutput) 0;
-	float gear;
-	RoundedRectangle(input.UV, 0.5, 0.3, (sin(Time.x)), gear);
-	output.Color.rgb = gear;
+	float a, b, c, d;
+	Voronoi(input.UV, 5.0f, 5.0f, a, b, c, d);
+	output.Color.rgb = b;
+	return output;
+}
+
+PSOutput PS3(const VSOutput input)
+{
+	PSOutput output = (PSOutput) 0;
+	float a, b, c, d;
+	Voronoi(input.UV, 5.0f, 5.0f, a, b, c, d);
+	output.Color.rgb = c;
+	return output;
+}
+
+PSOutput PS4(const VSOutput input)
+{
+	PSOutput output = (PSOutput) 0;
+	float a, b, c, d;
+	Voronoi(input.UV, 5.0f, 5.0f, a, b, c, d);
+	output.Color.rgb = d;
 	return output;
 }

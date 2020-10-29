@@ -37,6 +37,7 @@ namespace epion::GUI
 	void BackContext(bool& is_back, bool& is_current);
 	void TextMenu(std::string_view name);
 
+	bool IsLeftMouseDown();
 	bool IsRightClick();
 	bool MenuItem(std::string_view name, bool& is_event);
 	class MenuItemBase

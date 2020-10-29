@@ -20,6 +20,7 @@ namespace epion::Node
 		m_Outputs.clear();
 		m_Inputs.resize(input_num);
 		m_Outputs.resize(input_num);
+		m_NodeType = NODE_STATE::NORMAL;
 
 	}
 	void	NodeBase::Draw(ImDrawList* draw_list, const ImVec2& offset, float scroll_scale)
@@ -33,7 +34,7 @@ namespace epion::Node
 		ImVec2 title_bar_pos = m_DrawPos + ImVec2(m_Size.x, 18.0f) * scroll_scale;
 		draw_list->AddRectFilled(m_DrawPos, node_rect_size, RECT_COLOR, 2.0f);
 
-		if (m_NodeType != NODE_TYPE::MASTER)
+		if (m_NodeType != NODE_STATE::MASTER)
 		{
 			draw_list->AddRectFilled(m_DrawPos, node_rect_max, RECT_COLOR, 2.0f);
 		}
@@ -56,14 +57,14 @@ namespace epion::Node
 		}
 		for (int i = 0; i < input_size; i++)
 		{
-			m_Inputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) +GetInputSlotPos(i) + Math::FVector2(0.0f, 10.0f);
+			m_Inputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) +GetInputSlotPos(i, Math::FVector2(0.0f, 10.0f));
 			GUI::ImGuiFunction::DrawFont(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos + Math::FVector2(10.0f, -SLOT_INPUT_FLOAT)), m_Inputs[i].Name);
 			NodeFunction::NodeCircle(draw_list, GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), NODE_SLOT_RADIUS, m_Inputs[i].SlotType);
 			NodeFunction::HitCircle(draw_list, m_Inputs[i].Pos, GUI::ImColors::U32::GREEN);
 		}
 		for (int i = 0; i < output_size; i++)
 		{
-			m_Outputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) + GetOutputSlotPos(i)+Math::FVector2(0.0f,10.0f);
+			m_Outputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) + GetOutputSlotPos(i, Math::FVector2(0.0f, 10.0f));
 			GUI::ImGuiFunction::DrawFont(GUI::ImGuiFunction::GetImVec2(m_Outputs[i].Pos + Math::FVector2(-60.0f, -SLOT_INPUT_FLOAT)), m_Outputs[i].Name);
 			NodeFunction::NodeCircle(draw_list, GUI::ImGuiFunction::GetImVec2(m_Outputs[i].Pos), NODE_SLOT_RADIUS, m_Outputs[i].SlotType);
 			NodeFunction::HitCircle(draw_list, m_Outputs[i].Pos, GUI::ImColors::U32::RED);
@@ -86,10 +87,37 @@ namespace epion::Node
 	{
 		return m_ID;
 	}
+	SLOT_TYPE NodeBase::GetInputSlotType(size_t id) const
+	{
+		return m_Inputs[id].SlotType;
+	}
+	SLOT_TYPE NodeBase::GetOutputSlotType(size_t id) const
+	{
+		return m_Outputs[id].SlotType;
+	}
+
+	const size_t	NodeBase::GetInputsSize() const
+	{
+		return m_Inputs.size();
+	}
+	const size_t	NodeBase::GetOutputsSize() const
+	{
+		return m_Outputs.size();
+	}
 
 	const Math::FVector2& NodeBase::GetPos() const
 	{
 		return m_Pos;
+	}
+
+	const Math::FVector2& NodeBase::GetSize() const
+	{
+		return m_Size;
+	}
+
+	void NodeBase::SetPos(const Math::FVector2& pos)
+	{
+		m_Pos = pos;
 	}
 
 	void NodeBase::SetDrawPos(const ImVec2& draw_pos)
@@ -97,15 +125,28 @@ namespace epion::Node
 		m_DrawPos = draw_pos;
 	}
 
-	const Math::FVector2 NodeBase::GetInputSlotPos(int slot_no) const
+	const Math::FVector2 NodeBase::GetInputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const
 	{
 		Math::FVector2 pos(m_Pos.x + SLOT_POS, m_Pos.y + m_Size.y * (static_cast<float>(slot_no) + 1) / (static_cast<float>(m_Inputs.size()) + 1));
-		return pos;
+		return pos+ adjustment_pos;
 	}
-	const Math::FVector2 NodeBase::GetOutputSlotPos(int slot_no) const
+	const Math::FVector2 NodeBase::GetOutputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const
 	{
 		Math::FVector2 pos(m_Pos.x + m_Size.x - SLOT_POS, m_Pos.y + m_Size.y * (static_cast<float>(slot_no) + 1) / (static_cast<float>(m_Outputs.size()) + 1));
-		return pos;
+		return pos+ adjustment_pos;
+	}
+	bool NodeBase::GetIsPush()
+	{
+		return m_is_push;
+	}
+
+	void NodeBase::PushEventBegin()
+	{
+		m_is_push = true;
+	}
+	void NodeBase::PushEventEnd()
+	{
+		m_is_push = false;
 	}
 
 
@@ -172,20 +213,32 @@ namespace epion::Node
 			"in id "	+ std::to_string(m_input.LinkData.id)	+	" "+
 			"in slot "	+ std::to_string(m_input.LinkData.slot);
 	}
-	std::string Name;
-	std::string ArgumentName;
-	Math::FVector2 Pos;
-	ImU32 Color;
-	LinkVector Links;
-	SLOT_TYPE	SlotType;
-	std::vector<std::string> OutputName;//Shaderに書き出す時の名前
+	//std::string Name;
+	//std::string ArgumentName;
+	//Math::FVector2 Pos;
+	//ImU32 Color;
+	//LinkVector Links;
+	//SLOT_TYPE	SlotType;
+	//std::vector<std::string> OutputName;//Shaderに書き出す時の名前
 
 	SampleNode::SampleNode(std::string_view name,int id, const Math::FVector2& pos)
 		:NodeBase(name, id, pos,Math::FVector2(200,200), 1, 1)
 	{
-		m_Inputs[0] = { "A","SampleA",pos,GUI::ImColors::U32::BLACK,{},SLOT_TYPE::VECTOR1,"AAAA" };
-		m_Outputs[0] = { "H","SampleB",pos,GUI::ImColors::U32::GRAY,{},SLOT_TYPE::VECTOR1,"AAAA" };
+		//m_Inputs.resize(2);
+		//m_Outputs.resize(2);
+		m_Inputs[0] = { "A","SampleA",pos,GUI::ImColors::U32::BLACK,{},SLOT_TYPE::VECTOR1,"A" };
+		//m_Inputs[1] = { "B","SampleB",pos,GUI::ImColors::U32::BLACK,{},SLOT_TYPE::VECTOR1,"B" };
+		m_Outputs[0] = { "C","SampleC",pos,GUI::ImColors::U32::GRAY,{},SLOT_TYPE::VECTOR1,"C" };
+		//m_Outputs[1] = { "D","SampleD",pos,GUI::ImColors::U32::GRAY,{},SLOT_TYPE::VECTOR1,"D" };
+	}
 
+	FunctionNode::FunctionNode(std::string_view name, int id, const Math::FVector2& pos)
+		:NodeBase(name, id, pos, Math::FVector2(200, 200), 1, 1)
+	{
+
+	}
+	FunctionNode::~FunctionNode()
+	{
 	}
 
 }

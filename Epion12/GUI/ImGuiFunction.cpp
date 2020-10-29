@@ -59,6 +59,10 @@ namespace epion::GUI
 		ImGui::TextColored(ImColors::Vec4::BLACK, name.data());
 		ImGui::Separator();
 	}
+	bool IsLeftMouseDown()
+	{
+		return ImGui::IsMouseDown(0);
+	}
 	bool IsRightClick()
 	{
 		return (!ImGui::IsMouseClicked(0) && ImGui::IsMouseClicked(1));

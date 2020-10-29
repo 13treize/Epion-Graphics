@@ -61,11 +61,26 @@ namespace epion::Node
 		void DrawLinkLine(ImDrawList* draw_list);
 
 		const int GetID() const;
+		const Math::FVector2& GetPos() const;
+		const Math::FVector2& GetSize() const;
 
-		const Math::FVector2&	GetPos() const;
+		SLOT_TYPE GetInputSlotType(size_t id) const;
+		SLOT_TYPE GetOutputSlotType(size_t id) const;
 
+		const size_t	GetInputsSize() const;
+		const size_t	GetOutputsSize() const;
+
+
+		const Math::FVector2 GetInputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const;
+		const Math::FVector2 GetOutputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const;
+
+		bool GetIsPush();
+
+		void SetPos(const Math::FVector2& pos);
 		void SetDrawPos(const ImVec2& draw_pos);
 
+		void PushEventBegin();
+		void PushEventEnd();
 	//private:
 	protected:
 		std::string	m_Name;
@@ -75,7 +90,7 @@ namespace epion::Node
 		ImVec2	m_DrawPos;
 		NodeVector	m_Inputs;
 		NodeVector	m_Outputs;
-		NODE_TYPE	m_NodeType;
+		NODE_STATE	m_NodeType;
 
 		bool	m_is_push;
 		bool	m_is_double_clicked;
@@ -85,8 +100,6 @@ namespace epion::Node
 		//TODO ï°êîÇ…ëŒâû
 		std::deque<INPUT_SLOT_STATE> m_is_slot_input;
 
-		const Math::FVector2 GetInputSlotPos(int slot_no) const;
-		const Math::FVector2 GetOutputSlotPos(int slot_no) const;
 	};
 
 	class	NodeLink
@@ -94,7 +107,6 @@ namespace epion::Node
 	public:
 		NodeLink() = delete;
 		NodeLink(int output_id, int output_slot, int input_id, int input_slot);
-
 		NodeLink(int output_id, int output_slot, SLOT_TYPE output_type, int input_id, int input_slot, SLOT_TYPE input_type);
 
 		~NodeLink();
@@ -105,8 +117,6 @@ namespace epion::Node
 			archive(CEREAL_NVP(m_input.LinkData.id), CEREAL_NVP(m_input.LinkData.slot), CEREAL_NVP(m_input.SlotType),
 				CEREAL_NVP(m_output.LinkData.id), CEREAL_NVP(m_output.LinkData.slot), CEREAL_NVP(m_output.SlotType));
 		};
-
-
 
 		int	GetOutputID();
 		int	GetOutputSlot();
@@ -156,6 +166,16 @@ namespace epion::Node
 
 
 
+
+	class FunctionNode final :public NodeBase
+	{
+	public:
+		FunctionNode() = delete;
+		FunctionNode(std::string_view name, int id, const Math::FVector2& pos);
+		~FunctionNode();
+	private:
+
+	};
 
 	class SampleNode final :public NodeBase
 	{

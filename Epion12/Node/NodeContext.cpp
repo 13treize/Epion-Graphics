@@ -1,6 +1,13 @@
 #include "../Epion12.h"
+#include <cereal/cereal.hpp>
+#include <cereal/archives/json.hpp>
+#include <cereal/types/vector.hpp>
+
 #include "../GUI/ImGuiFunction.h"
+#include "NodeParam.h"
+#include "NodeBase.h"
 #include "NodeContext.h"
+#include "../FileIO/EpionFileIO.h"
 
 namespace	epion::Node
 {
@@ -47,12 +54,7 @@ namespace	epion::Node
 			{
 				GUI::TextMenu("Menu");
 				GUI::CloseContext(m_is_open_menu);
-				if(GUI::MenuItem("Create Node",is_event)) CloseMenu();
-				//if (ImGui::MenuItem("Create Node", nullptr, &is_event))
-				//{
-				//	//is_event = true;
-				//	CloseMenu();
-				//}
+				if (GUI::MenuItem("Create Node", is_event)) CloseMenu();
 			}
 			PopupEndSettings();
 		}
@@ -60,10 +62,43 @@ namespace	epion::Node
 	NodeTypeMenuContext::NodeTypeMenuContext()
 		:GUI::ContextObject()
 	{
+		m_is_first_click = false;
+		m_create_node_count = 0;
+		for (int i = 0; i < NodeType::ArraySize; i++)
+		{
+			m_menu_item_states[i].IsOpen = false;
+			m_menu_item_states[i].ItemChild.clear();
+
+			m_context_data[i].Name.clear();
+		}
+		m_menu_item_states[Artistic].Name = TO_STRING(Artistic);
+		m_menu_item_states[Channel].Name = TO_STRING(Channel);
+		m_menu_item_states[Input].Name = TO_STRING(Input);
+		m_menu_item_states[Master].Name = TO_STRING(Master);
+		m_menu_item_states[Math].Name = TO_STRING(Math);
+		m_menu_item_states[Procedural].Name = TO_STRING(Procedural);
+		m_menu_item_states[Utility].Name = TO_STRING(Utility);
+		m_menu_item_states[UV].Name = TO_STRING(UV);
+		m_menu_item_states[Noise].Name = TO_STRING(Noise);
+
+
+		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Noise), m_context_data[Noise]);
+		for (const auto& e : m_context_data[Noise].Name)	m_menu_item_states[Noise].ItemChild.push_back({ e, false, {} });
+
+		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Procedural), m_context_data[Procedural]);
+		for (const auto& e : m_context_data[Procedural].Name)	m_menu_item_states[Procedural].ItemChild.push_back({ e, false, {} });
+
 	}
 	NodeTypeMenuContext::~NodeTypeMenuContext()
 	{
+
 	}
+
+	void NodeTypeMenuContext::Update()
+	{
+
+	}
+
 	void NodeTypeMenuContext::OpenMenu()
 	{
 		m_is_open_menu = true;
@@ -96,19 +131,43 @@ namespace	epion::Node
 			{
 				GUI::TextMenu("Create Node");
 				GUI::CloseContext(m_is_open_menu);
-				if (GUI::MenuItem("Noise", is_event)) CloseMenu();
-
-				//for (int i = 0; i < static_cast<int>(ArraySize); i++)
-				//{
-				//	if (GUI::MenuItem(TO_STRING(static_cast<NodeType>(i)), is_event)) CloseMenu();
-				//}
-				//if (ImGui::MenuItem("Create Node", nullptr, &is_event))
-				//{
-				//	//is_event = true;
-				//	CloseMenu();
-				//}
+				ImGui::Separator();
+				for (int i = 0; i < NodeType::ArraySize; i++)
+				{
+					if (GUI::MenuItem(m_menu_item_states[i].Name, m_menu_item_states[i].IsOpen))
+					{
+						CloseMenu();
+					}
+				}
 			}
 			PopupEndSettings();
+		}
+	}
+
+	void NodeTypeMenuContext::ContextChild(std::vector<std::unique_ptr<Node::NodeBase>>& nodes)
+	{
+		for (int i = 0; i < NodeType::ArraySize; i++)
+		{
+			if (m_menu_item_states[i].IsOpen)
+			{
+				PopupBeginSettings();
+				ImGui::OpenPopup(m_menu_item_states[i].Name.c_str());
+				if (ImGui::BeginPopup(m_menu_item_states[i].Name.c_str()))
+				{
+					GUI::TextMenu(m_menu_item_states[i].Name);
+					GUI::BackContext(m_is_open_menu, m_menu_item_states[i].IsOpen);
+					GUI::CloseContext(m_menu_item_states[i].IsOpen);
+					if (!m_menu_item_states[i].ItemChild.empty())
+					{
+						for (auto& item : m_menu_item_states[i].ItemChild)
+						{
+							MenuCreateNode<Node::SampleNode>(nodes, item.Name, m_menu_pos, m_create_node_count, m_menu_item_states[i].IsOpen);
+						}
+					}
+					ImGui::Separator();
+				}
+				PopupEndSettings();
+			}
 		}
 	}
 
