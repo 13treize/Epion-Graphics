@@ -548,6 +548,9 @@
     <None Include="Epion12\Settings\ContextSetting.json">
       <Filter>リソース ファイル\Settings</Filter>
     </None>
+    <None Include="Epion12\Settings\NodeSetting.json">
+      <Filter>リソース ファイル\Settings</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Epion12\HLSL\PS\PixelShader.hlsl">

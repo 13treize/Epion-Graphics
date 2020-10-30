@@ -139,7 +139,22 @@ struct PSOutput
 //    Out = vec4(U.x < .5 == U.x < 1. - U.y == U.x < U.y);
 //}
 
+float4 Fire(float2 UV, float3 Color)
+{
+    float2 tiling_data;
+    TilingAndOffset(UV, float2(1.0, 1.0), Time.x, tiling_data);
 
+    float4 voronoi_data;
+    Voronoi(tiling_data, 8.0, 4.0, voronoi_data.x, voronoi_data.y, voronoi_data.z, voronoi_data.w);
+
+    float gradient_data;
+    GradientNoise(tiling_data, 8.0, gradient_data);
+
+    float3 fire = Color * gradient_data * pow(voronoi_data.x, 0.4);
+
+    float4 flag_color = float4(fire, 1.0f);
+    return flag_color;
+}
 PSOutput PS0(const VSOutput input)
 {
 	PSOutput output = (PSOutput) 0;
@@ -160,42 +175,9 @@ PSOutput PS0(const VSOutput input)
 	Checkerboard(input.UV, float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0), float2(5.0, 5.0), check);
 	float c;
 	Grid(input.UV, 10.0, 0.1, c);
-	//float2 uv1 = input.UV;
-	//float2 uv2 = input.UV;
-	//Spherize(uv1, 0.0, 0.2, 7.0, uv1);
 	
-	//float a, b, c, d;
-	//Voronoi(uv2, 3.0, 7.0, a, b, c, d);
-	
-	//float aa, bb, cc, dd;
-	//float2 uv3 = uv1;
-	//Voronoi(uv3, 7.0, 11.0, aa, bb, cc, dd);
-
-	//float e;
-	//SimpleNoise(uv1, 200.0, e);
-	//check = float3(aa + a, aa / 2.0 + a / 2.0 * e, 0.0);
-	//Lava(input.UV, 0.0, check);
-	//float3 col;
-	//float2 uv2 = input.UV;
-	//Spherize(uv, 0.0, 0.2, 7.0, uv);
-	
-	//float a, b, c, d;
-	//Voronoi(uv2, 3.0, 7.0, a, b, c, d);
-	
-	//float aa, bb, cc, dd;
-	//float2 sc = uv + float2(0.0, iTime / 10.0);
-	//Voronoi(sc, 7.0, 11.0, aa, bb, cc, dd);
-	
-	//float e;
-	//SimpleNoise(uv, 200.0, e);
-	
-	//col.r = aa + a;
-	//col.g = aa / 2.0 + a / 2.0 * e;
-	////check = Bias(check, 1.5);
-	//output.Color.rgb = check * (S + D + AmbientColor.rgb);
-	//check.r *= (c);
 	output.Color.rgb = check;
-//    output.Color.r -=c;
+    output.Color = Fire(input.UV, float3(1.0,0.4,0.0));
 	return output;
 
 //	//// Indirect lighting.

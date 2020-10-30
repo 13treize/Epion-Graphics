@@ -1,0 +1,56 @@
+{
+  "Sample": {
+    "Inputs": [
+      {
+        "Name": "In",
+        "Type": 1
+      },
+      {
+        "Name": "In2",
+        "Type": 1
+      }
+    ],
+    "Outputs": [
+      {
+        "Name": "Out",
+        "Type": 1
+      }
+    ]
+  },
+  "Voronoi": {
+    "Inputs": [
+      {
+        "Name": "UV",
+        "Type": 10
+      },
+      {
+        "Name": "AngleOffset",
+        "Type": 1
+      },
+      {
+        "Name": "CellDensity",
+        "Type": 1
+      }
+
+    ],
+    "Outputs": [
+      {
+        "Name": "Out",
+        "Type": 1
+      },
+      {
+        "Name": "Cells",
+        "Type": 1
+      },
+      {
+        "Name": "Lines",
+        "Type": 1
+      },
+      {
+        "Name": "Points",
+        "Type": 1
+      }
+    ]
+
+  }
+}

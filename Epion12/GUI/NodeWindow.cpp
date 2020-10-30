@@ -23,8 +23,8 @@ namespace epion::GUI
 
 		m_nodes.clear();
 		m_links.clear();
-		m_nodes.push_back(std::make_unique<Node::SampleNode>("Sample", 0, Math::FVector2(120.0f, 20.0f)));
-		m_nodes.push_back(std::make_unique<Node::SampleNode>("Sample2", 1, Math::FVector2(360.0f, 120.0f)));
+		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Sample", 0, Math::FVector2(120.0f, 20.0f)));
+		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Voronoi", 1, Math::FVector2(360.0f, 120.0f)));
 
 		//m_links.push_back(Node::NodeLink(0, 0, Node::SLOT_TYPE::VECTOR1, 1, 0, Node::SLOT_TYPE::VECTOR1));
 		m_scroll_scale = 1.0f;
@@ -369,7 +369,7 @@ namespace epion::GUI
 
 			if (Physics::Collider2D::SphereAndSphere(ImGuiFunction::GetFVector2(ImGui::GetIO().MousePos), ImGuiFunction::GetFVector2(get_pos), 8.0f))
 			{
-				draw_list->AddBezierCurve(output_pos, output_pos + Node::BEZIERCURVE_LEFT_POS, input_pos + Node::BEZIERCURVE_RIGHT_POS, input_pos, Node::NODE_LINE_HIT_COLOR, 7.0f, 12.0f);
+				draw_list->AddBezierCurve(output_pos, output_pos + Node::BEZIERCURVE_LEFT_POS, input_pos + Node::BEZIERCURVE_RIGHT_POS, input_pos, Node::NODE_LINE_HIT_COLOR, 7.0f, 12);
 				l.m_is_hit = true;
 			}
 			else
@@ -377,7 +377,7 @@ namespace epion::GUI
 				m_line_size = 3.0f;
 				l.m_is_hit = false;
 			}
-			draw_list->AddBezierCurve(output_pos, output_pos + Node::BEZIERCURVE_LEFT_POS, input_pos + Node::BEZIERCURVE_RIGHT_POS, input_pos, Node::NODE_LINE_COLOR, m_line_size, 12.0f);
+			draw_list->AddBezierCurve(output_pos, output_pos + Node::BEZIERCURVE_LEFT_POS, input_pos + Node::BEZIERCURVE_RIGHT_POS, input_pos, Node::NODE_LINE_COLOR, m_line_size, 12);
 		}
 
 		for (int i = 0; i < m_links.size(); i++)

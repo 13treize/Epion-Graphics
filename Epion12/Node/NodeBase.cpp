@@ -6,21 +6,86 @@
 
 
 #include "../GUI/ImGuiFunction.h"
+#include "../FileIO/EpionFileIO.h"
+
 #include "NodeParam.h"
 #include "NodeBase.h"
 
 namespace epion::Node
 {
-	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos, const Math::FVector2& size, int input_num, int output_num)
-		:m_Name(name), m_ID(id), m_Pos(pos), m_Size(size),m_is_push(false),m_is_double_clicked(false)
+	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos,int input_num, int output_num)
+		:m_Name(name), m_ID(id), m_Pos(pos),m_is_push(false),m_is_double_clicked(false)
 	{
 		m_is_slot_input.clear();
-		m_is_slot_input.push_back(INPUT_SLOT_STATE::ZERO);
+		for (int i = 0; i < input_num; i++)
+		{
+			m_is_slot_input.push_back(INPUT_SLOT_STATE::ZERO);
+		}
 		m_Inputs.clear();
 		m_Outputs.clear();
 		m_Inputs.resize(input_num);
-		m_Outputs.resize(input_num);
+		m_Outputs.resize(output_num);
 		m_NodeType = NODE_STATE::NORMAL;
+
+		if (input_num < output_num)
+		{
+			m_Size = { 55.0f * output_num ,55.0f * output_num };
+		}
+		else
+		{
+			m_Size = { 55.0f * input_num ,55.0f * input_num };
+		}
+		if (input_num == 1 && output_num == 1)
+		{
+			m_Size = { 130.0f,55.0f };
+		}
+
+		if (input_num == 0)
+		{
+			m_Size = { 55.0f * output_num + 30.0f,55.0f * output_num };
+		}
+	}
+	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos)
+		:m_Name(name), m_ID(id), m_Pos(pos), m_is_push(false), m_is_double_clicked(false)
+	{
+		m_NodeType = NODE_STATE::NORMAL;
+
+		NodeParam data;
+		FileIO::InputJson<NodeParam>("Epion12\\Settings\\NodeSetting.json", name, data);
+		auto input_num = data.Inputs.size();
+		auto output_num = data.Outputs.size();
+		m_Inputs.clear();
+		m_Outputs.clear();
+		m_is_slot_input.clear();
+		for (int i = 0; i < input_num; i++)
+		{
+			m_Inputs.push_back( { data.Inputs[i].Name,data.Inputs[i].SlotType,pos,GUI::ImColors::U32::BLACK,{}});
+			m_is_slot_input.push_back(INPUT_SLOT_STATE::ZERO);
+
+		}
+		for (int o = 0; o < output_num; o++)
+		{
+			m_Outputs.push_back( { data.Outputs[o].Name,data.Outputs[o].SlotType,pos,GUI::ImColors::U32::BLACK,{} });
+		}
+
+		if (input_num < output_num)
+		{
+			m_Size = { 55.0f * output_num ,55.0f * output_num };
+		}
+		else
+		{
+			m_Size = { 55.0f * input_num ,55.0f * input_num };
+		}
+		if (input_num == 1 && output_num == 1)
+		{
+			m_Size = { 130.0f,55.0f };
+		}
+
+		if (input_num == 0)
+		{
+			m_Size = { 55.0f * output_num + 30.0f,55.0f * output_num };
+		}
+
 
 	}
 	void	NodeBase::Draw(ImDrawList* draw_list, const ImVec2& offset, float scroll_scale)
@@ -213,27 +278,23 @@ namespace epion::Node
 			"in id "	+ std::to_string(m_input.LinkData.id)	+	" "+
 			"in slot "	+ std::to_string(m_input.LinkData.slot);
 	}
-	//std::string Name;
-	//std::string ArgumentName;
-	//Math::FVector2 Pos;
-	//ImU32 Color;
-	//LinkVector Links;
-	//SLOT_TYPE	SlotType;
-	//std::vector<std::string> OutputName;//ShaderÇ…èëÇ´èoÇ∑éûÇÃñºëO
-
 	SampleNode::SampleNode(std::string_view name,int id, const Math::FVector2& pos)
-		:NodeBase(name, id, pos,Math::FVector2(200,200), 1, 1)
+		:NodeBase(name, id, pos, 2, 1)
 	{
-		//m_Inputs.resize(2);
-		//m_Outputs.resize(2);
-		m_Inputs[0] = { "A","SampleA",pos,GUI::ImColors::U32::BLACK,{},SLOT_TYPE::VECTOR1,"A" };
-		//m_Inputs[1] = { "B","SampleB",pos,GUI::ImColors::U32::BLACK,{},SLOT_TYPE::VECTOR1,"B" };
-		m_Outputs[0] = { "C","SampleC",pos,GUI::ImColors::U32::GRAY,{},SLOT_TYPE::VECTOR1,"C" };
-		//m_Outputs[1] = { "D","SampleD",pos,GUI::ImColors::U32::GRAY,{},SLOT_TYPE::VECTOR1,"D" };
+		NodeParam data;
+		FileIO::InputJson<NodeParam>("Epion12\\Settings\\NodeSetting.json", name, data);
+		for (int i = 0; i < data.Inputs.size(); i++)
+		{
+			m_Inputs[i] = { data.Inputs[i].Name,data.Inputs[i].SlotType,pos,GUI::ImColors::U32::BLACK,{} };
+		}
+		for (int o = 0; o < data.Outputs.size(); o++)
+		{
+			m_Outputs[o] = { data.Outputs[o].Name,data.Outputs[o].SlotType,pos,GUI::ImColors::U32::BLACK,{} };
+		}
 	}
 
 	FunctionNode::FunctionNode(std::string_view name, int id, const Math::FVector2& pos)
-		:NodeBase(name, id, pos, Math::FVector2(200, 200), 1, 1)
+		:NodeBase(name, id, pos)
 	{
 
 	}

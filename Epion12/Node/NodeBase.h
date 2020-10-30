@@ -29,17 +29,22 @@ namespace epion::Node
 		SLOT_TYPE SlotType;
 	};
 
-	struct NodeData
+	struct SlotData
 	{
 		std::string Name;
-		std::string ArgumentName;
+		SLOT_TYPE	SlotType;
+		template<class Archive>
+		void serialize(Archive& archive)
+		{
+			archive(cereal::make_nvp("Name", Name), cereal::make_nvp("Type", SlotType));
+		};
+
 		Math::FVector2 Pos;
 		ImU32 Color;
 		LinkVector Links;
-		SLOT_TYPE	SlotType;
-		std::string OutputName;//Shaderに書き出す時の名前
+
 	};
-	using NodeVector = std::vector<NodeData>;
+	using NodeVector = std::vector<SlotData>;
 
 	//外部から読み込みするときのパラメータ
 	struct NodeParam
@@ -48,13 +53,21 @@ namespace epion::Node
 		NodeVector	Inputs;
 		NodeVector	Outputs;
 		std::string ShaderCode;
+		template<class Archive>
+		void serialize(Archive& archive)
+		{
+			archive(CEREAL_NVP(Inputs), Outputs);
+		}
+
 	};
 
 
 	class NodeBase abstract
 	{
 	public:
-		NodeBase(std::string_view name,int id, const Math::FVector2&	pos,const Math::FVector2&	size,int input_num,int output_num);
+		NodeBase(std::string_view name,int id, const Math::FVector2&	pos,int input_num,int output_num);
+		NodeBase(std::string_view name, int id, const Math::FVector2& pos);
+
 		virtual	~NodeBase() {};
 
 		void Draw(ImDrawList* draw_list, const ImVec2& offset, float scroll_scale);

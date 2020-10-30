@@ -161,7 +161,7 @@ namespace	epion::Node
 					{
 						for (auto& item : m_menu_item_states[i].ItemChild)
 						{
-							MenuCreateNode<Node::SampleNode>(nodes, item.Name, m_menu_pos, m_create_node_count, m_menu_item_states[i].IsOpen);
+							MenuCreateNode<Node::FunctionNode>(nodes, item.Name, m_menu_pos, m_create_node_count, m_menu_item_states[i].IsOpen);
 						}
 					}
 					ImGui::Separator();
