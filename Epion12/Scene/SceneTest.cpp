@@ -25,9 +25,9 @@ namespace epion
 		Camera::CameraManager::Update();
 
 
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl","PS2", ps_blob[1], DX12::ShaderType::TYPE_PIXEL);
+		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
+		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
+		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl","PS2", ps_blob[1], DX12::ShaderType::TYPE_PIXEL);
 
 		unsigned int cbuffer_index = 0;
 		m_mesh = std::make_unique <Model::CubeMesh>();

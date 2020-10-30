@@ -5,8 +5,8 @@
 namespace	epion::DX12
 {
 	bool ShaderCompile(std::wstring_view hlsl_name,
-		const std::string& entry_point,
-		const std::string& target,
+		std::string_view entry_point,
+		std::string_view target,
 		com_ptr<ID3DBlob>& shader_blob)
 	{
 		HRESULT	hr = S_OK;
@@ -20,8 +20,8 @@ namespace	epion::DX12
 		hr = D3DCompileFromFile(hlsl_name.data(),
 			nullptr,
 			D3D_COMPILE_STANDARD_FILE_INCLUDE,
-			entry_point.c_str(),
-			target.c_str(),
+			entry_point.data(),
+			target.data(),
 			flags,
 			0,
 			shader_blob.ReleaseAndGetAddressOf(),
@@ -67,7 +67,7 @@ namespace	epion::DX12
 		}
 		return false;
 	}
-	bool ShaderResouceManager::Compile(std::wstring_view hlsl_name, const std::string& entry_point, com_ptr<ID3DBlob>& shader_blob, ShaderType type)
+	bool ShaderResouceManager::Compile(std::wstring_view hlsl_name, std::string_view entry_point, com_ptr<ID3DBlob>& shader_blob, ShaderType type)
 	{
 		switch (type)
 		{

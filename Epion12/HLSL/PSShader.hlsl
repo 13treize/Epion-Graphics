@@ -2,7 +2,7 @@
 #include"Function//Noise.hlsli"
 #include"Function//Procedural.hlsli"
 #include"Function//UV.hlsli"
-//#include"Function//UniqueFunction.hlsli"
+#include"Function//UniqueFunction.hlsli"
 
 #ifndef NUM_DIR_LIGHTS
 	#define NUM_DIR_LIGHTS 0
@@ -139,22 +139,7 @@ struct PSOutput
 //    Out = vec4(U.x < .5 == U.x < 1. - U.y == U.x < U.y);
 //}
 
-float4 Fire(float2 UV, float3 Color)
-{
-    float2 tiling_data;
-    TilingAndOffset(UV, float2(1.0, 1.0), Time.x, tiling_data);
 
-    float4 voronoi_data;
-    Voronoi(tiling_data, 8.0, 4.0, voronoi_data.x, voronoi_data.y, voronoi_data.z, voronoi_data.w);
-
-    float gradient_data;
-    GradientNoise(tiling_data, 8.0, gradient_data);
-
-    float3 fire = Color * gradient_data * pow(voronoi_data.x, 0.4);
-
-    float4 flag_color = float4(fire, 1.0f);
-    return flag_color;
-}
 PSOutput PS0(const VSOutput input)
 {
 	PSOutput output = (PSOutput) 0;
@@ -177,7 +162,7 @@ PSOutput PS0(const VSOutput input)
 	Grid(input.UV, 10.0, 0.1, c);
 	
 	output.Color.rgb = check;
-    output.Color = Fire(input.UV, float3(1.0,0.4,0.0));
+	//output.Color.rgb = Fire(input.UV, 1.5,Time.x, float3(1.0, 0.4, 0.0));
 	return output;
 
 //	//// Indirect lighting.
@@ -231,6 +216,39 @@ PSOutput PS4(const VSOutput input)
 	PSOutput output = (PSOutput) 0;
 	float a, b, c, d;
 	Voronoi(input.UV, 5.0f, 5.0f, a, b, c, d);
+	output.Color.rgb = d;
+	return output;
+}
+
+PSOutput PS5(const VSOutput input)
+{
+	PSOutput output = (PSOutput) 0;
+	float a, b, c, d;
+	MinkowskiVoronoi(input.UV, 5.0f, 5.0f,1.0f, a, b, c, d);
+	output.Color.rgb = a;
+	return output;
+}
+PSOutput PS6(const VSOutput input)
+{
+	PSOutput output = (PSOutput) 0;
+	float a, b, c, d;
+	MinkowskiVoronoi(input.UV, 5.0f, 5.0f, 1.0f, a, b, c, d);
+	output.Color.rgb = b;
+	return output;
+}
+PSOutput PS7(const VSOutput input)
+{
+	PSOutput output = (PSOutput) 0;
+	float a, b, c, d;
+	MinkowskiVoronoi(input.UV, 5.0f, 5.0f, 1.0f, a, b, c, d);
+	output.Color.rgb = c;
+	return output;
+}
+PSOutput PS8(const VSOutput input)
+{
+	PSOutput output = (PSOutput) 0;
+	float a, b, c, d;
+	MinkowskiVoronoi(input.UV, 5.0f, 5.0f, 1.0f, a, b, c, d);
 	output.Color.rgb = d;
 	return output;
 }

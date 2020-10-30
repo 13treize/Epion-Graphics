@@ -16,33 +16,24 @@
 
 namespace
 {
-	constexpr int DRAW_CALL_NUM = 4;
+	constexpr int DRAW_CALL_NUM = 8;
 }
 namespace epion
 {
 	bool SceneProcedural::Initialize()
 	{
 		HRESULT hr = S_OK;
-		wow::Obj obj;
-		obj.appendVertex(0, 0, 0);
-		obj.appendVertex(100, 0, 0);
-		obj.appendVertex(100, 100, 0);
-		obj.appendVertex(0, 100, 0);
-		obj.closeFace();
-
 		DX12::RootSignatureManager::Build();
 		Camera::CameraManager::Init(DX12::ViewPort::GetAspect());
 		Camera::CameraManager::Update();
 
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
-		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS0", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS1", ps_blob[1], DX12::ShaderType::TYPE_PIXEL);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS2", ps_blob[2], DX12::ShaderType::TYPE_PIXEL);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS3", ps_blob[3], DX12::ShaderType::TYPE_PIXEL);
-		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS4", ps_blob[4], DX12::ShaderType::TYPE_PIXEL);
+		for (int i = 0; i < DRAW_CALL_NUM+1; i++)
+		{
+			std::string ps = "PS" + std::to_string(i);
+			DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps, ps_blob[i], DX12::ShaderType::TYPE_PIXEL);
+		}
 
-		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", "PS3", ps_blob[3], DX12::ShaderType::TYPE_PIXEL);
 
 		unsigned int obj_cbuffer_index = 0;
 		unsigned int mat_cbuffer_index = 0;
@@ -58,7 +49,7 @@ namespace epion
 		{
 			m_cube[i] = std::make_unique<Model::CubeMesh>();
 			m_cube[i]->Initialize(vs_blob, ps_blob[static_cast<size_t>(i+1)], DX12::RootSignatureManager::Get(), obj_cbuffer_index, mat_cbuffer_index);
-			m_cube[i]->SetPos(static_cast<float>(i), 0.0f, 0.0f);
+			m_cube[i]->SetPos(-4.0f+static_cast<float>(i), 0.0f, 0.0f);
 			m_cube[i]->SetScale(0.3f, 0.3f, 0.3f);
 			m_cube[i]->SetAngle(0.0f, 0.0f, 0.0f);
 			obj_cbuffer_index++;

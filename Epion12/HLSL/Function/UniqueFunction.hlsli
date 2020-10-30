@@ -5,7 +5,19 @@
 //#include"Noise.hlsli"
 //#include"Procedural.hlsli"
 //#include"UV.hlsli"
+float3 Fire(float2 UV, float2 Tiling, float2 Offset, float3 Color)
+{
+    float2 tiling_data;
+    TilingAndOffset(UV, Tiling, Offset, tiling_data);
 
+    float4 voronoi_data;
+    Voronoi(tiling_data, 8.0, 4.0, voronoi_data.x, voronoi_data.y, voronoi_data.z, voronoi_data.w);
+
+    float gradient_data;
+    GradientNoise(tiling_data, 8.0, gradient_data);
+
+    return float3(Color * gradient_data * pow(voronoi_data.x, 0.4));
+}
 
 void Lava(float2 UV,float2 vec,out float3 Out)
 {
