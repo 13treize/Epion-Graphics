@@ -58,9 +58,13 @@ namespace epion::Node
 		{
 			archive(CEREAL_NVP(Inputs), Outputs);
 		}
-
 	};
 
+	enum class NodeState :unsigned char
+	{
+		NORMAL=0,
+		CONPACT
+	};
 
 	class NodeBase abstract
 	{

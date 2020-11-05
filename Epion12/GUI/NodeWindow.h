@@ -41,6 +41,7 @@ namespace epion::GUI
 
 		int m_hit_line_num;
 		float m_line_size;
+		bool m_is_node_hit;
 		bool m_is_line_hit;
 		bool m_is_slot_hit;
 
@@ -52,11 +53,18 @@ namespace epion::GUI
 		//std::array<bool, NodeType::ArraySize> is_events;
 		//std::array<std::string , NodeType::ArraySize> is_names;
 
+		void Begin();
+		void End();
+
+		void ContextUpdate();
+
 		void MouseUpdate(ImDrawList* draw_list);
 		void CallContext();
+
 		void Drag(ImDrawList* draw_list);
 		void Enclose(ImDrawList* draw_list);
 		void Scroll();
+
 
 		void NodeUpdate(ImDrawList* draw_list);
 		void NodeInputUpdate(ImDrawList* draw_list, int size);
@@ -66,6 +74,14 @@ namespace epion::GUI
 		void NodeMouseUpdate(ImDrawList* draw_list, int size);
 
 		void DrawLinkLine(ImDrawList* draw_list);
+
+
+		bool IsOpenContextMenu();
+
+	
+		void LineDeleteContext();
+		void PopUpBegin(std::string_view str);
+		void PopUpEnd();
 
 	};
 }

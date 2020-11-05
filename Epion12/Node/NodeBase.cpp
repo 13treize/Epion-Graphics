@@ -13,8 +13,8 @@
 
 namespace epion::Node
 {
-	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos,int input_num, int output_num)
-		:m_Name(name), m_ID(id), m_Pos(pos),m_is_push(false),m_is_double_clicked(false)
+	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos, int input_num, int output_num)
+		:m_Name(name), m_ID(id), m_Pos(pos), m_is_push(false), m_is_double_clicked(false)
 	{
 		m_is_slot_input.clear();
 		for (int i = 0; i < input_num; i++)
@@ -59,13 +59,13 @@ namespace epion::Node
 		m_is_slot_input.clear();
 		for (int i = 0; i < input_num; i++)
 		{
-			m_Inputs.push_back( { data.Inputs[i].Name,data.Inputs[i].SlotType,pos,GUI::ImColors::U32::BLACK,{}});
+			m_Inputs.push_back({ data.Inputs[i].Name,data.Inputs[i].SlotType,pos,GUI::ImColors::U32::BLACK,{} });
 			m_is_slot_input.push_back(INPUT_SLOT_STATE::ZERO);
 
 		}
 		for (int o = 0; o < output_num; o++)
 		{
-			m_Outputs.push_back( { data.Outputs[o].Name,data.Outputs[o].SlotType,pos,GUI::ImColors::U32::BLACK,{} });
+			m_Outputs.push_back({ data.Outputs[o].Name,data.Outputs[o].SlotType,pos,GUI::ImColors::U32::BLACK,{} });
 		}
 
 		if (input_num < output_num)
@@ -93,10 +93,19 @@ namespace epion::Node
 		draw_list->ChannelsSetCurrent(1);
 		ImGui::SetWindowFontScale(1.0f);
 
-		m_DrawPos = GUI::ImGuiFunction::GetImVec2(m_Pos)+ offset;
+		m_DrawPos = GUI::ImGuiFunction::GetImVec2(m_Pos) + offset;
 		ImVec2 node_rect_size = m_DrawPos + GUI::ImGuiFunction::GetImVec2(m_Size);
 		ImVec2 node_rect_max = m_DrawPos + ImVec2(m_Size.x * 0.5f, m_Size.y) * scroll_scale;
 		ImVec2 title_bar_pos = m_DrawPos + ImVec2(m_Size.x, 18.0f) * scroll_scale;
+
+
+		draw_list->AddRectFilled(m_DrawPos, title_bar_pos, TITLE_BAR_COLOR, 2.0f);
+		ImGui::SetCursorScreenPos(m_DrawPos + NODE_FONT_ADD_POS);	//ノードのタイトル描画の座標を指定
+		//if (ImGui::TreeNode(m_Name.c_str()))
+		//{
+		//}
+			//ImGui::TreePop();
+
 		draw_list->AddRectFilled(m_DrawPos, node_rect_size, RECT_COLOR, 2.0f);
 
 		if (m_NodeType != NODE_STATE::MASTER)
@@ -106,7 +115,6 @@ namespace epion::Node
 		draw_list->AddRectFilled(m_DrawPos, title_bar_pos, TITLE_BAR_COLOR, 2.0f);
 		ImGui::SetCursorScreenPos(m_DrawPos + NODE_FONT_ADD_POS);	//ノードのタイトル描画の座標を指定
 		ImGui::TextColored(GUI::ImColors::Vec4::WHITE, "%s", m_Name.c_str());
-
 		ImGui::SetWindowFontScale(0.9f * scroll_scale);
 
 		auto input_size = m_Inputs.size();
@@ -122,7 +130,7 @@ namespace epion::Node
 		}
 		for (int i = 0; i < input_size; i++)
 		{
-			m_Inputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) +GetInputSlotPos(i, Math::FVector2(0.0f, 10.0f));
+			m_Inputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) + GetInputSlotPos(i, Math::FVector2(0.0f, 10.0f));
 			GUI::ImGuiFunction::DrawFont(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos + Math::FVector2(10.0f, -SLOT_INPUT_FLOAT)), m_Inputs[i].Name);
 			NodeFunction::NodeCircle(draw_list, GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), NODE_SLOT_RADIUS, m_Inputs[i].SlotType);
 			NodeFunction::HitCircle(draw_list, m_Inputs[i].Pos, GUI::ImColors::U32::GREEN);
@@ -144,6 +152,7 @@ namespace epion::Node
 				NodeFunction::InputRectDraw(draw_list, GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].SlotType);
 			}
 		}
+
 	}
 
 
@@ -193,12 +202,12 @@ namespace epion::Node
 	const Math::FVector2 NodeBase::GetInputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const
 	{
 		Math::FVector2 pos(m_Pos.x + SLOT_POS, m_Pos.y + m_Size.y * (static_cast<float>(slot_no) + 1) / (static_cast<float>(m_Inputs.size()) + 1));
-		return pos+ adjustment_pos;
+		return pos + adjustment_pos;
 	}
 	const Math::FVector2 NodeBase::GetOutputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const
 	{
 		Math::FVector2 pos(m_Pos.x + m_Size.x - SLOT_POS, m_Pos.y + m_Size.y * (static_cast<float>(slot_no) + 1) / (static_cast<float>(m_Outputs.size()) + 1));
-		return pos+ adjustment_pos;
+		return pos + adjustment_pos;
 	}
 	bool NodeBase::GetIsPush()
 	{
@@ -273,12 +282,12 @@ namespace epion::Node
 	std::string NodeLink::StateStr()
 	{
 		return
-			"out id "	+ std::to_string(m_output.LinkData.id)	+	" "+
-			"out slot " + std::to_string(m_output.LinkData.slot)+	" "+
-			"in id "	+ std::to_string(m_input.LinkData.id)	+	" "+
-			"in slot "	+ std::to_string(m_input.LinkData.slot);
+			"out id " + std::to_string(m_output.LinkData.id) + " " +
+			"out slot " + std::to_string(m_output.LinkData.slot) + " " +
+			"in id " + std::to_string(m_input.LinkData.id) + " " +
+			"in slot " + std::to_string(m_input.LinkData.slot);
 	}
-	SampleNode::SampleNode(std::string_view name,int id, const Math::FVector2& pos)
+	SampleNode::SampleNode(std::string_view name, int id, const Math::FVector2& pos)
 		:NodeBase(name, id, pos, 2, 1)
 	{
 		NodeParam data;

@@ -10,7 +10,7 @@ namespace
 	epion::Node::NodeMenuContext context;
 	epion::Node::NodeTypeMenuContext menus;
 	constexpr	float	NODE_SLOT_RADIUS = 5.0f;
-
+	bool m_is_open_line_delete_menu;
 }
 namespace epion::GUI
 {
@@ -29,6 +29,7 @@ namespace epion::GUI
 		//m_links.push_back(Node::NodeLink(0, 0, Node::SLOT_TYPE::VECTOR1, 1, 0, Node::SLOT_TYPE::VECTOR1));
 		m_scroll_scale = 1.0f;
 		m_is_context = false;
+		m_is_node_hit = false;
 		m_is_slot_hit = false;
 
 		return true;
@@ -39,12 +40,7 @@ namespace epion::GUI
 	}
 	void	NodeWindow::Update()
 	{
-		ImGui::SetNextWindowPos(ImVec2(30, 10));
-		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(1, 1));
-		ImGui::PushStyleColor(ImGuiCol_Border, ImColors::U32::GREEN);
-		ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_ChildBg, ImColors::U32::GRAYBLACK);
-
-		ImGui::BeginChild("NodeWindow", ImVec2(800, 600));
+		Begin();
 		ImDrawList* draw_list = ImGui::GetWindowDrawList();
 		draw_list->ChannelsSplit(5);
 
@@ -58,15 +54,7 @@ namespace epion::GUI
 				NodeUpdate(draw_list);
 				MouseUpdate(draw_list);
 
-				if (IsRightClick())	context.OpenMenu();
-				context.ContextMenu("Create Node First", m_is_context);
-				if (m_is_context)
-				{
-					menus.OpenMenu();
-					m_is_context = false;
-				}
-				menus.ContextMenu("Create Node", m_is_context);
-				menus.ContextChild(m_nodes);
+				ContextUpdate();
 				//menus.ProceduralContext(m_nodes);
 
 				//if (m_node_hovered_list != Node::INIT_NUM)
@@ -86,10 +74,36 @@ namespace epion::GUI
 
 			ImGui::EndTabBar();
 		}
-		ImGui::EndChild();
+		End();
+	}
 
+	void NodeWindow::Begin()
+	{
+		ImGui::SetNextWindowPos(ImVec2(30, 10));
+		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(1, 1));
+		ImGui::PushStyleColor(ImGuiCol_Border, ImColors::U32::GREEN);
+		ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_ChildBg, ImColors::U32::GRAYBLACK);
+		ImGui::BeginChild("NodeWindow", ImVec2(800, 600));
+
+	}
+	void NodeWindow::End()
+	{
+		ImGui::EndChild();
 		ImGui::PopStyleColor(2);
 		ImGui::PopStyleVar();
+	}
+
+	void NodeWindow::ContextUpdate()
+	{
+		LineDeleteContext();
+		context.ContextMenu("Create Node First", m_is_context);
+		if (m_is_context)
+		{
+			menus.OpenMenu();
+			m_is_context = false;
+		}
+		menus.ContextMenu("Create Node", m_is_context);
+		menus.ContextChild(m_nodes);
 	}
 
 	void NodeWindow::MouseUpdate(ImDrawList* draw_list)
@@ -98,8 +112,50 @@ namespace epion::GUI
 		Drag(draw_list);
 		Enclose(draw_list);
 		Scroll();
+		if (IsRightClick()
+			&& !m_is_node_hit
+			&& !m_is_line_hit)
+		{
+			context.OpenMenu();
+		}
+		if (IsRightClick()
+			&& !m_is_node_hit
+			&& m_is_line_hit)
+		{
+			//Line Delete
+			m_is_open_line_delete_menu = true;
+			//context.OpenMenu();
+		}
+
 	}
 
+	//void	ContextManager::DeleteLineMenu(std::vector<Node::NodeLink>& lines, int& hit_index)
+	//{
+	//	if (m_is_open_line_delete_menu)
+	//	{
+	//		ImGui::OpenPopup("delete_line_menu");
+
+	//		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(12, 16));
+	//		ImGui::PushStyleColor(ImGuiCol_Border, ImColors::U32::GREEN);
+	//		ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_PopupBg, ImColors::U32::GRAY);
+	//		if (ImGui::BeginPopup("delete_line_menu"))
+	//		{
+	//			ImGui::TextColored(ImColors::Vec4::BLACK, "Menu");
+	//			ImGui::Separator();
+	//			CloseContext(m_is_open_line_delete_menu);
+	//			if (ImGui::MenuItem("Delete", nullptr))
+	//			{
+	//				lines.erase(lines.begin() + hit_index);
+	//				hit_index = Node::INIT_NUM;
+	//				m_is_open_line_delete_menu = false;
+	//			}
+	//		}
+	//		ImGui::PopStyleColor(2);
+	//		ImGui::PopStyleVar();
+	//		ImGui::EndPopup();
+
+	//	}
+	//}
 
 	void NodeWindow::CallContext()
 	{
@@ -330,10 +386,13 @@ namespace epion::GUI
 			m_node_hovered_in_scene == m_nodes[size]->GetID())
 		{
 			m_nodes[size]->PushEventBegin();
+			m_is_node_hit = true;
 		}
 		else
 		{
 			m_nodes[size]->PushEventEnd();
+			m_is_node_hit = false;
+
 		}
 
 		if (m_nodes[size]->GetIsPush() &&
@@ -341,6 +400,7 @@ namespace epion::GUI
 		{
 			//m_nodes[size]->m_is_double_clicked = true;
 			m_nodes[size]->PushEventEnd();
+			m_is_node_hit = false;
 		}
 
 		if (m_is_now_any_active &&
@@ -351,7 +411,7 @@ namespace epion::GUI
 			m_nodes[size]->SetPos(m_nodes[size]->GetPos() + ImGuiFunction::GetFVector2(ImGui::GetIO().MouseDelta));
 		}
 
-	}
+		}
 
 	void NodeWindow::DrawLinkLine(ImDrawList* draw_list)
 	{
@@ -392,4 +452,39 @@ namespace epion::GUI
 		}
 
 	}
+
+	void NodeWindow::LineDeleteContext()
+	{
+		if (m_is_open_line_delete_menu)
+		{
+			PopUpBegin("delete_line_menu");
+			if (ImGui::BeginPopup("delete_line_menu"))
+			{
+				ImGui::TextColored(ImColors::Vec4::BLACK, "Menu");
+				ImGui::Separator();
+				CloseContext(m_is_open_line_delete_menu);
+				if (ImGui::MenuItem("Delete", nullptr))
+				{
+					m_links.erase(m_links.begin() + m_hit_line_num);
+					m_hit_line_num = Node::INIT_NUM;
+					m_is_open_line_delete_menu = false;
+				}
+			}
+			PopUpEnd();
+		}
+	}
+	void NodeWindow::PopUpBegin(std::string_view str)
+	{
+		ImGui::OpenPopup(str.data());
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(12, 16));
+		ImGui::PushStyleColor(ImGuiCol_Border, ImColors::U32::GREEN);
+		ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_PopupBg, ImColors::U32::GRAY);
+	}
+	void NodeWindow::PopUpEnd()
+	{
+		ImGui::PopStyleColor(2);
+		ImGui::PopStyleVar();
+		ImGui::EndPopup();
+	}
+
 }
