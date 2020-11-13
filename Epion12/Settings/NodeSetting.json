@@ -1,4 +1,22 @@
 {
+  "Result": {
+    "Inputs": [
+      {
+        "Name": "Color",
+        "Type": 3
+      },
+      {
+        "Name": "Alpha",
+        "Type": 1
+      },
+      {
+        "Name": "AlphaClipThreshold",
+        "Type": 1
+      }
+    ],
+    "Outputs": [
+    ]
+  },
   "Sample": {
     "Inputs": [
       {
@@ -51,6 +69,36 @@
         "Type": 1
       }
     ]
+  },
+  "WaveletNoise": {
+    "Inputs": [
+      {
+        "Name": "UV",
+        "Type": 10
+      },
+      {
+        "Name": "Angle",
+        "Type": 1
+      },
+      {
+        "Name": "Phase",
+        "Type": 1
+      },
+      {
+        "Name": "SeedScale",
+        "Type": 1
+      },
+      {
+        "Name": "ScaleFactor",
+        "Type": 1
+      }
 
+    ],
+    "Outputs": [
+      {
+        "Name": "Out",
+        "Type": 1
+      }
+    ]
   }
 }

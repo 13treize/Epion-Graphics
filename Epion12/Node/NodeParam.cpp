@@ -18,19 +18,19 @@ namespace	epion::Node
 	//std::string	NodeFunction::SetInputToString3(Math::FVector3& str) { return "float3(" + StringConverter::to_string3(str, ",") + ")"; }
 	//std::string	NodeFunction::SetInputToString4(Math::FVector4& str) { return "float4(" + StringConverter::to_string4(str, ",") + ")"; }
 
-	//void NodeFunction::SetInputSlotFloat(ImVec2& set_cursor, const std::string& label, float& num)
-	//{
-	//	ImGui::SetCursorScreenPos(set_cursor + ImVec2(SLOT_INPUT_POS_X, -SLOT_INPUT_FLOAT));
-	//	ImGui::SetNextItemWidth(30.0f);
-	//	ImGui::InputFloat(label.c_str(), &num, 0.0f, 1.0f, "%.2f");
-	//}
+	void NodeFunction::SetInputSlotFloat(const ImVec2& set_cursor, std::string_view label, float& num)
+	{
+		ImGui::SetCursorScreenPos(set_cursor + ImVec2(SLOT_INPUT_POS_X, -SLOT_INPUT_FLOAT));
+		ImGui::SetNextItemWidth(30.0f);
+		ImGui::InputFloat(label.data(), &num, 0.0f, 1.0f, "%.2f");
+	}
 
-	//void NodeFunction::SetInputSlotFloat(ImVec2& set_cursor, float x, const std::string& label, float& num)
-	//{
-	//	ImGui::SetCursorScreenPos(set_cursor + ImVec2(x, -SLOT_INPUT_FLOAT));
-	//	ImGui::SetNextItemWidth(30.0f);
-	//	ImGui::InputFloat(label.c_str(), &num, 0.0f, 1.0f, "%.2f");
-	//}
+	void NodeFunction::SetInputSlotFloat(const ImVec2& set_cursor, float x, std::string_view label, float& num)
+	{
+		ImGui::SetCursorScreenPos(set_cursor + ImVec2(x, -SLOT_INPUT_FLOAT));
+		ImGui::SetNextItemWidth(30.0f);
+		ImGui::InputFloat(label.data(), &num, 0.0f, 1.0f, "%.2f");
+	 }
 	//void NodeFunction::SetInputSlotFloat2(ImVec2& set_cursor, math::FVector2& num, int label_num)
 	//{
 	//	SetInputSlotFloat(set_cursor, SLOT_INPUT_POS_X, StringConverter::GetSpace(1 + (label_num + 1) * 2), num.x);
@@ -50,9 +50,6 @@ namespace	epion::Node
 	//void NodeFunction::SetInputSlotSamplerState(ImVec2& set_cursor)
 	//{
 	//	ImGui::SetCursorScreenPos(set_cursor + ImVec2(-50, -SLOT_INPUT_FLOAT));
-	//	ImGui::TextColored(ImColors::Vec4::WHITE, "%s", "ss");
-	//}
-
 	//void NodeFunction::SetInputSlotColor(ImVec2& set_cursor, bool& popup, math::FVector3& num, int label_num)
 	//{
 	//	ImGui::SetCursorScreenPos(set_cursor + SLOT_INPUT_POS + ImVec2(-30, 0));
@@ -64,18 +61,17 @@ namespace	epion::Node
 	//	num = ColorPicker::GetColor();
 	//}
 
-	//void NodeFunction::SetInputSlotDynamic(ImVec2& set_cursor, math::FVector4& num, SLOT_TYPE type, int label_num)
-	//{
-	//	switch (type)
-	//	{
-	//	case SLOT_TYPE::VECTOR4:	SetInputSlotFloat(set_cursor, (static_cast<float>(type) - 3) * SLOT_INPUT_POS_X, StringConverter::GetSpace(static_cast<int>(type) + (label_num + 1) * 4), num.w);
-	//	case SLOT_TYPE::VECTOR3:	SetInputSlotFloat(set_cursor, (static_cast<float>(type) - 2) * SLOT_INPUT_POS_X, StringConverter::GetSpace(static_cast<int>(type) - 1 + (label_num + 1) * 4), num.z);
-	//	case SLOT_TYPE::VECTOR2:	SetInputSlotFloat(set_cursor, (static_cast<float>(type) - 1) * SLOT_INPUT_POS_X, StringConverter::GetSpace(static_cast<int>(type) - 2 + (label_num + 1) * 4), num.y);
-	//	case SLOT_TYPE::VECTOR1:	SetInputSlotFloat(set_cursor, static_cast<float>(type) * SLOT_INPUT_POS_X, StringConverter::GetSpace(static_cast<int>(type) - 3 + (label_num + 1) * 4), num.x);
-	//		break;
-	//	}
-
-	//}
+	void NodeFunction::SetInputSlotDynamic(const ImVec2& set_cursor, Math::FVector4& num, SLOT_TYPE type, int label_num)
+	{
+		switch (type)
+		{
+		case SLOT_TYPE::VECTOR4:	SetInputSlotFloat(set_cursor, (static_cast<float>(type) - 3.0f) * SLOT_INPUT_POS_X, String::StringConverter::GetSpace(static_cast<int>(type) + (label_num + 1) * 4), num.w);
+		case SLOT_TYPE::VECTOR3:	SetInputSlotFloat(set_cursor, (static_cast<float>(type) - 2.0f) * SLOT_INPUT_POS_X, String::StringConverter::GetSpace(static_cast<int>(type) - 1 + (label_num + 1) * 4), num.z);
+		case SLOT_TYPE::VECTOR2:	SetInputSlotFloat(set_cursor, (static_cast<float>(type) - 1.0f) * SLOT_INPUT_POS_X, String::StringConverter::GetSpace(static_cast<int>(type) - 2 + (label_num + 1) * 4), num.y);
+		case SLOT_TYPE::VECTOR1:	SetInputSlotFloat(set_cursor, static_cast<float>(type) * SLOT_INPUT_POS_X, String::StringConverter::GetSpace(static_cast<int>(type) - 3 + (label_num + 1) * 4), num.x);
+			break;
+		}
+	}
 
 	//std::string NodeFunction::SetDefineOutName(std::string	str, int id)
 	//{

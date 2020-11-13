@@ -40,6 +40,7 @@ namespace epion::Node
 		};
 
 		Math::FVector2 Pos;
+		Math::FVector4	InputData;
 		ImU32 Color;
 		LinkVector Links;
 
@@ -92,9 +93,11 @@ namespace epion::Node
 		const Math::FVector2 GetOutputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const;
 
 		bool GetIsPush();
+		bool GetIsSlotInputONE(int index);
 
 		void SetPos(const Math::FVector2& pos);
 		void SetDrawPos(const ImVec2& draw_pos);
+		void SetIsSlotInput(int index, INPUT_SLOT_STATE type);
 
 		void PushEventBegin();
 		void PushEventEnd();
@@ -115,7 +118,7 @@ namespace epion::Node
 
 		//inputslotÇ…ÉmÅ[ÉhÇ™éhÇ≥Ç¡ÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©
 		//TODO ï°êîÇ…ëŒâû
-		std::deque<INPUT_SLOT_STATE> m_is_slot_input;
+		std::vector<INPUT_SLOT_STATE> m_is_slot_input;
 
 	};
 
@@ -125,9 +128,7 @@ namespace epion::Node
 		NodeLink() = delete;
 		NodeLink(int output_id, int output_slot, int input_id, int input_slot);
 		NodeLink(int output_id, int output_slot, SLOT_TYPE output_type, int input_id, int input_slot, SLOT_TYPE input_type);
-
 		~NodeLink();
-
 		template<class Archive>
 		void serialize(Archive& archive)
 		{
@@ -168,17 +169,12 @@ namespace epion::Node
 			};
 			return	false;
 		}
-
 		bool m_is_hit;
 		bool m_is_delete_menu;
-
 		std::string StateStr();
-
 	private:
-		//left
-		ChildParam m_output;
-		//right
-		ChildParam m_input;
+		ChildParam m_output;	//left
+		ChildParam m_input;		//right
 	};
 
 
@@ -190,16 +186,6 @@ namespace epion::Node
 		FunctionNode() = delete;
 		FunctionNode(std::string_view name, int id, const Math::FVector2& pos);
 		~FunctionNode();
-	private:
-
-	};
-
-	class SampleNode final :public NodeBase
-	{
-	public:
-		SampleNode() = delete;
-		SampleNode(std::string_view name, int id, const Math::FVector2& pos);
-
 	private:
 
 	};

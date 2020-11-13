@@ -18,8 +18,13 @@ namespace	epion
 
 	private:
 		void UpdataGUI();
+		int m_num_frame_resources;
+
 		com_ptr<ID3DBlob> vs_blob;
 		std::array<com_ptr<ID3DBlob>, 60> ps_blob;
 		std::array<std::unique_ptr<Model::Polygon>, 60> m_mesh;
+		std::array<std::unique_ptr<Model::CubeMesh>, 10> m_cube;
+
+		DX12::CBufferPassConstants data;
 	};
 }

@@ -23,10 +23,9 @@ namespace epion::GUI
 
 		m_nodes.clear();
 		m_links.clear();
-		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Sample", 0, Math::FVector2(120.0f, 20.0f)));
-		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Voronoi", 1, Math::FVector2(360.0f, 120.0f)));
 
-		//m_links.push_back(Node::NodeLink(0, 0, Node::SLOT_TYPE::VECTOR1, 1, 0, Node::SLOT_TYPE::VECTOR1));
+		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Result", 0, Math::FVector2(560.0f, 120.0f)));
+		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Voronoi", 1, Math::FVector2(360.0f, 120.0f)));
 		m_scroll_scale = 1.0f;
 		m_is_context = false;
 		m_is_node_hit = false;
@@ -43,35 +42,17 @@ namespace epion::GUI
 		Begin();
 		ImDrawList* draw_list = ImGui::GetWindowDrawList();
 		draw_list->ChannelsSplit(5);
-
 		if (ImGui::BeginTabBar("##tabs", m_bar_flags))
 		{
 			if (ImGui::BeginTabItem("Node"))
 			{
 				DrawGrid(draw_list, 64.0f, IM_COL32(0, 200, 120, 120), m_offset);
 				DrawLinkLine(draw_list);
-
 				NodeUpdate(draw_list);
 				MouseUpdate(draw_list);
-
 				ContextUpdate();
-				//menus.ProceduralContext(m_nodes);
-
-				//if (m_node_hovered_list != Node::INIT_NUM)
-				//{
-				//	m_node_select_num = m_node_hovered_list;
-				//}
-				//if (m_node_hovered_in_scene != Node::INIT_NUM)
-				//{
-				//	m_node_select_num = m_node_hovered_in_scene;
-				//}
-				//	ContextManager::ClickEvent(m_offset);
-
-					//ContextManager::LineEvent();
-
 				ImGui::EndTabItem();
 			}
-
 			ImGui::EndTabBar();
 		}
 		End();
@@ -126,37 +107,7 @@ namespace epion::GUI
 			m_is_open_line_delete_menu = true;
 			//context.OpenMenu();
 		}
-
 	}
-
-	//void	ContextManager::DeleteLineMenu(std::vector<Node::NodeLink>& lines, int& hit_index)
-	//{
-	//	if (m_is_open_line_delete_menu)
-	//	{
-	//		ImGui::OpenPopup("delete_line_menu");
-
-	//		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(12, 16));
-	//		ImGui::PushStyleColor(ImGuiCol_Border, ImColors::U32::GREEN);
-	//		ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_PopupBg, ImColors::U32::GRAY);
-	//		if (ImGui::BeginPopup("delete_line_menu"))
-	//		{
-	//			ImGui::TextColored(ImColors::Vec4::BLACK, "Menu");
-	//			ImGui::Separator();
-	//			CloseContext(m_is_open_line_delete_menu);
-	//			if (ImGui::MenuItem("Delete", nullptr))
-	//			{
-	//				lines.erase(lines.begin() + hit_index);
-	//				hit_index = Node::INIT_NUM;
-	//				m_is_open_line_delete_menu = false;
-	//			}
-	//		}
-	//		ImGui::PopStyleColor(2);
-	//		ImGui::PopStyleVar();
-	//		ImGui::EndPopup();
-
-	//	}
-	//}
-
 	void NodeWindow::CallContext()
 	{
 		//if (m_is_line_hit)
@@ -292,9 +243,12 @@ namespace epion::GUI
 							}
 						}
 						if (is_input)	m_links.erase(m_links.begin() + slot_index - 1);
-						if (!m_is_slot_hit)
+						if (!m_is_slot_hit
+							&& !m_nodes[size]->GetIsSlotInputONE(slot_index)
+							)
 						{
-							m_links.push_back(Node::NodeLink(m_click_param.id, m_click_param.slot, m_nodes[m_click_param.id]->GetInputSlotType(slot_index), m_nodes[size]->GetID(), slot_index, m_nodes[size]->GetOutputSlotType(slot_index)));
+							m_links.push_back(Node::NodeLink(m_click_param.id, m_click_param.slot, m_nodes[m_click_param.id]->GetOutputSlotType(m_click_param.slot), m_nodes[size]->GetID(), slot_index, m_nodes[size]->GetInputSlotType(slot_index)));
+							m_nodes[size]->SetIsSlotInput(slot_index,Node::INPUT_SLOT_STATE::ONE);
 						}
 					}
 					m_click_param = { Node::INIT_NUM,	Node::INIT_NUM,	ImVec2(0, 0),	false,	false,	false };
@@ -338,6 +292,7 @@ namespace epion::GUI
 						if (!m_is_slot_hit)
 						{
 							m_links.push_back(Node::NodeLink(m_nodes[size]->GetID(), slot_index, m_nodes[size]->GetOutputSlotType(slot_index), m_click_param.id, m_click_param.slot, m_nodes[m_click_param.id]->GetInputSlotType(m_click_param.slot)));
+							m_nodes[m_click_param.id]->SetIsSlotInput(m_click_param.slot, Node::INPUT_SLOT_STATE::ONE);
 						}
 					}
 					m_click_param = { Node::INIT_NUM,Node::INIT_NUM,ImVec2(0, 0),	false,	false,	false };
@@ -411,7 +366,7 @@ namespace epion::GUI
 			m_nodes[size]->SetPos(m_nodes[size]->GetPos() + ImGuiFunction::GetFVector2(ImGui::GetIO().MouseDelta));
 		}
 
-		}
+	}
 
 	void NodeWindow::DrawLinkLine(ImDrawList* draw_list)
 	{
@@ -425,7 +380,7 @@ namespace epion::GUI
 			ImVec2 input_pos = m_offset + ImGuiFunction::GetImVec2(m_nodes[l.GetInputID()]->GetInputSlotPos(l.GetInputSlot(), Math::FVector2(0.0f, 10.0f)));
 			ImVec2 output_pos = m_offset + ImGuiFunction::GetImVec2(m_nodes[l.GetOutputID()]->GetOutputSlotPos(l.GetOutputSlot(), Math::FVector2(0.0f, 10.0f)));
 
-			ImVec2 get_pos = ImBezierClosestPoint(output_pos, output_pos + Node::BEZIERCURVE_LEFT_POS, input_pos + Node::BEZIERCURVE_RIGHT_POS, input_pos, ImGui::GetIO().MousePos, 12.0f);
+			ImVec2 get_pos = ImBezierClosestPoint(output_pos, output_pos + Node::BEZIERCURVE_LEFT_POS, input_pos + Node::BEZIERCURVE_RIGHT_POS, input_pos, ImGui::GetIO().MousePos, 12);
 
 			if (Physics::Collider2D::SphereAndSphere(ImGuiFunction::GetFVector2(ImGui::GetIO().MousePos), ImGuiFunction::GetFVector2(get_pos), 8.0f))
 			{
@@ -465,6 +420,7 @@ namespace epion::GUI
 				CloseContext(m_is_open_line_delete_menu);
 				if (ImGui::MenuItem("Delete", nullptr))
 				{
+					m_nodes[m_links[m_hit_line_num].GetInputID()]->SetIsSlotInput(m_links[m_hit_line_num].GetInputSlot(), Node::INPUT_SLOT_STATE::ZERO);
 					m_links.erase(m_links.begin() + m_hit_line_num);
 					m_hit_line_num = Node::INIT_NUM;
 					m_is_open_line_delete_menu = false;

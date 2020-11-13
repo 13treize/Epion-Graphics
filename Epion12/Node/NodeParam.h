@@ -95,8 +95,8 @@ namespace	epion::Node
 		//static std::string SetInputToString4(Math::FVector4& str);
 
 
-		//static void SetInputSlotFloat(ImVec2& set_cursor, std::string_view label, float& num);
-		//static void SetInputSlotFloat(ImVec2& set_cursor, float x, std::string_view  label, float& num);
+		static void SetInputSlotFloat(const ImVec2& set_cursor, std::string_view label, float& num);
+		static void SetInputSlotFloat(const ImVec2& set_cursor, float x, std::string_view label, float& num);
 
 		//static void SetInputSlotFloat2(ImVec2& set_cursor, Math::FVector2& num, int label_num = 0);
 		//static void SetInputSlotUV(ImVec2& set_cursor);
@@ -104,8 +104,8 @@ namespace	epion::Node
 		//static void SetInputSlotSamplerState(ImVec2& set_cursor);
 		//static void SetInputSlotColor(ImVec2& set_cursor, bool& popup, Math::FVector3& num, int label_num = 0);
 
-		////ÅŒã‚Ìˆø”‚ÍImgui‚Å‚ÌƒoƒO—U”­–h~
-		//static void SetInputSlotDynamic(ImVec2& set_cursor, Math::FVector4& num, SLOT_TYPE type, int label_num = 0);
+		//ÅŒã‚Ìˆø”‚ÍImgui‚Å‚ÌƒoƒO—U”­–h~
+		static void SetInputSlotDynamic(const ImVec2& set_cursor, Math::FVector4& num, SLOT_TYPE type, int label_num = 0);
 
 		////ˆø”‚ÉNode‚Ìname‚ÆidAname‚ÉŠÖ‚µ‚Ä‚ÍDynamicl—¶
 		//static std::string SetDefineOutName(std::string_view, int id);

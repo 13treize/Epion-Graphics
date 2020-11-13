@@ -106,9 +106,6 @@
     <Filter Include="リソース ファイル\Settings">
       <UniqueIdentifier>{999a8331-0b3b-4ad5-98b0-a408016e4cf0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WavefrontObjWriter">
-      <UniqueIdentifier>{76149ef6-43c0-4fab-9dbd-9447820f1902}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -326,12 +323,6 @@
     </ClInclude>
     <ClInclude Include="Epion12\Scene\SceneNodeEditor.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="WavefrontObjWriter\obj.h">
-      <Filter>WavefrontObjWriter</Filter>
-    </ClInclude>
-    <ClInclude Include="WavefrontObjWriter\vector.h">
-      <Filter>WavefrontObjWriter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -598,11 +589,14 @@
     <FxCompile Include="Epion12\HLSL\PS.hlsl">
       <Filter>リソース ファイル\HLSL</Filter>
     </FxCompile>
-    <FxCompile Include="Epion12\HLSL\PS\SceneNoiseDemo.hlsl">
-      <Filter>リソース ファイル\HLSL\PS</Filter>
-    </FxCompile>
     <FxCompile Include="Epion12\HLSL\GS\GS.hlsl">
       <Filter>リソース ファイル\HLSL\GS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\PS\SceneProcedural.hlsl">
+      <Filter>リソース ファイル\HLSL\PS</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\ProceduralDemo.hlsl">
+      <Filter>リソース ファイル\HLSL</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

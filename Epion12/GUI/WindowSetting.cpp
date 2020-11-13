@@ -9,6 +9,7 @@
 #include "../Scene/SceneNoise.h"
 #include "../Scene/SceneTest.h"
 #include "../Scene/SceneDemoProcedural.h"
+#include "../Scene/SceneNodeEditor.h"
 #include "../Camera/CameraManager.h"
 #include "../DX12/ViewPort.h"
 
@@ -60,13 +61,13 @@ namespace epion::GUI
 			{
 				SceneManager::SetNextScene<SceneNoise>();
 			}
-			//if (ImGui::RadioButton("Test Scene", &m_select_scene, 4))
-			//{
-			//	SceneManager::SetNextScene<SceneTest>();
-			//}
-			if (ImGui::RadioButton("Procedural Scene ", &m_select_scene, 5))
+			if (ImGui::RadioButton("Procedural Scene ", &m_select_scene, 4))
 			{
 				SceneManager::SetNextScene<SceneProcedural>();
+			}
+			if (ImGui::RadioButton("Test Node", &m_select_scene, 5))
+			{
+				SceneManager::SetNextScene<SceneNodeEditor>();
 			}
 
 			ImGui::EndTabItem();

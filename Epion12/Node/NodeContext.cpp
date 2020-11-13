@@ -80,6 +80,7 @@ namespace	epion::Node
 		m_menu_item_states[Utility].Name = TO_STRING(Utility);
 		m_menu_item_states[UV].Name = TO_STRING(UV);
 		m_menu_item_states[Noise].Name = TO_STRING(Noise);
+		//m_menu_item_states[Noise].ItemChild.push_back({ "Hash", false,{} });
 
 
 		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Noise), m_context_data[Noise]);

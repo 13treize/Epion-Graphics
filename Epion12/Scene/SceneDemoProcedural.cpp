@@ -1,5 +1,4 @@
 #include	"../Epion12.h"
-#include	"../../WavefrontObjWriter/obj.h"
 
 #include	"SceneManager.h"
 #include	"SceneDemoProcedural.h"
@@ -27,11 +26,12 @@ namespace epion
 		Camera::CameraManager::Init(DX12::ViewPort::GetAspect());
 		Camera::CameraManager::Update();
 
+
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
 		for (int i = 0; i < DRAW_CALL_NUM+1; i++)
 		{
 			std::string ps = "PS" + std::to_string(i);
-			DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps, ps_blob[i], DX12::ShaderType::TYPE_PIXEL);
+			DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\ProceduralDemo.hlsl", ps, ps_blob[i], DX12::ShaderType::TYPE_PIXEL);
 		}
 
 
@@ -48,7 +48,7 @@ namespace epion
 		for (int i = 0; i < DRAW_CALL_NUM ; i++)
 		{
 			m_cube[i] = std::make_unique<Model::CubeMesh>();
-			m_cube[i]->Initialize(vs_blob, ps_blob[static_cast<size_t>(i+1)], DX12::RootSignatureManager::Get(), obj_cbuffer_index, mat_cbuffer_index);
+			m_cube[i]->Initialize(vs_blob, ps_blob[i], DX12::RootSignatureManager::Get(), obj_cbuffer_index, mat_cbuffer_index);
 			m_cube[i]->SetPos(-4.0f+static_cast<float>(i), 0.0f, 0.0f);
 			m_cube[i]->SetScale(0.3f, 0.3f, 0.3f);
 			m_cube[i]->SetAngle(0.0f, 0.0f, 0.0f);
@@ -70,31 +70,6 @@ namespace epion
 	}
 	void SceneProcedural::Update()
 	{
-		ImGui::Begin("test ", nullptr, 0);
-		//if (ImGui::TreeNode("model"))
-		//{
-		//	auto pos = data.LightDir;
-		//	auto scale = data.LightColor;
-		//	auto angle = data.AmbientColor;
-		//	ImGui::Text("dir");
-		//	ImGui::InputFloat("  x", &pos.x, 0.01f, 100.0f, "%.2f");
-		//	ImGui::InputFloat("  y", &pos.y, 0.01f, 100.0f, "%.2f");
-		//	ImGui::InputFloat("  z", &pos.z, 0.01f, 100.0f, "%.2f");
-		//	ImGui::Text("color");
-		//	ImGui::InputFloat("  x ", &scale.x, 0.01f, 100.0f, "%.2f");
-		//	ImGui::InputFloat("  y ", &scale.y, 0.01f, 100.0f, "%.2f");
-		//	ImGui::InputFloat("  z ", &scale.z, 0.01f, 100.0f, "%.2f");
-		//	ImGui::Text("ambent");
-		//	ImGui::InputFloat("  x  ", &angle.x, 0.01f, 100.0f, "%.2f");
-		//	ImGui::InputFloat("  y  ", &angle.y, 0.01f, 100.0f, "%.2f");
-		//	ImGui::InputFloat("  z  ", &angle.z, 0.01f, 100.0f, "%.2f");
-		//	data.LightDir = pos;
-		//	data.LightColor = scale;
-		//	data.AmbientColor = angle;
-	
-		//	ImGui::TreePop();
-		//}
-		ImGui::End();
 		Camera::CameraManager::Update();
 		static float time = 0.0f;
 		time += 0.1f;

@@ -43,7 +43,7 @@ namespace	epion::String
 		static	std::string		ToString4(Math::FVector4& vec4, const std::string& str = ",");
 		static	std::string		ToString4(float x, float y, float z, float w, const std::string& str = ",");
 
-		static	std::string		GetSpace(int num);
+		static	std::string	GetSpace(int num);
 
 		[[nodiscard]] static std::wstring	SetFilePath(const	wchar_t* add_path_filename,	const	wchar_t* resource_filename);
 	};

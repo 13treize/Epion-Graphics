@@ -43,7 +43,6 @@ namespace epion
 		GUI::ImGuiManager::Begin();
 		SceneManager::Update();
 		setting_window.Update(m_back_color);
-		//GUI::NodeEditor::Update();
 		m_pipeline.SetBackColor(m_back_color);
 		m_pipeline.Update();
 	}

@@ -11,6 +11,10 @@
 #include "NodeParam.h"
 #include "NodeBase.h"
 
+namespace
+{
+	constexpr float SIZE_BASE = 47.0f;
+}
 namespace epion::Node
 {
 	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos, int input_num, int output_num)
@@ -29,20 +33,20 @@ namespace epion::Node
 
 		if (input_num < output_num)
 		{
-			m_Size = { 55.0f * output_num ,55.0f * output_num };
+			m_Size = { SIZE_BASE * output_num ,SIZE_BASE * output_num };
 		}
 		else
 		{
-			m_Size = { 55.0f * input_num ,55.0f * input_num };
+			m_Size = { SIZE_BASE * input_num ,SIZE_BASE * input_num };
 		}
 		if (input_num == 1 && output_num == 1)
 		{
-			m_Size = { 130.0f,55.0f };
+			m_Size = { 130.0f,SIZE_BASE };
 		}
 
 		if (input_num == 0)
 		{
-			m_Size = { 55.0f * output_num + 30.0f,55.0f * output_num };
+			m_Size = { SIZE_BASE * output_num + 30.0f,SIZE_BASE * output_num };
 		}
 	}
 	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos)
@@ -59,31 +63,31 @@ namespace epion::Node
 		m_is_slot_input.clear();
 		for (int i = 0; i < input_num; i++)
 		{
-			m_Inputs.push_back({ data.Inputs[i].Name,data.Inputs[i].SlotType,pos,GUI::ImColors::U32::BLACK,{} });
+			m_Inputs.push_back({ data.Inputs[i].Name,data.Inputs[i].SlotType,pos,{0.0f,0.0f,0.0f,0.0f},GUI::ImColors::U32::BLACK,{} });
 			m_is_slot_input.push_back(INPUT_SLOT_STATE::ZERO);
 
 		}
 		for (int o = 0; o < output_num; o++)
 		{
-			m_Outputs.push_back({ data.Outputs[o].Name,data.Outputs[o].SlotType,pos,GUI::ImColors::U32::BLACK,{} });
+			m_Outputs.push_back({ data.Outputs[o].Name,data.Outputs[o].SlotType,pos,{0.0f,0.0f,0.0f,0.0f},GUI::ImColors::U32::BLACK,{} });
 		}
 
 		if (input_num < output_num)
 		{
-			m_Size = { 55.0f * output_num ,55.0f * output_num };
+			m_Size = { SIZE_BASE * output_num ,SIZE_BASE * output_num };
 		}
 		else
 		{
-			m_Size = { 55.0f * input_num ,55.0f * input_num };
+			m_Size = { SIZE_BASE * input_num ,SIZE_BASE * input_num };
 		}
 		if (input_num == 1 && output_num == 1)
 		{
-			m_Size = { 130.0f,55.0f };
+			m_Size = { 130.0f,SIZE_BASE };
 		}
 
 		if (input_num == 0)
 		{
-			m_Size = { 55.0f * output_num + 30.0f,55.0f * output_num };
+			m_Size = { SIZE_BASE * output_num + 30.0f,SIZE_BASE * output_num };
 		}
 
 
@@ -138,7 +142,7 @@ namespace epion::Node
 		for (int i = 0; i < output_size; i++)
 		{
 			m_Outputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) + GetOutputSlotPos(i, Math::FVector2(0.0f, 10.0f));
-			GUI::ImGuiFunction::DrawFont(GUI::ImGuiFunction::GetImVec2(m_Outputs[i].Pos + Math::FVector2(-60.0f, -SLOT_INPUT_FLOAT)), m_Outputs[i].Name);
+			GUI::ImGuiFunction::DrawFont(GUI::ImGuiFunction::GetImVec2(m_Outputs[i].Pos + Math::FVector2(-50.0f, -SLOT_INPUT_FLOAT)), m_Outputs[i].Name);
 			NodeFunction::NodeCircle(draw_list, GUI::ImGuiFunction::GetImVec2(m_Outputs[i].Pos), NODE_SLOT_RADIUS, m_Outputs[i].SlotType);
 			NodeFunction::HitCircle(draw_list, m_Outputs[i].Pos, GUI::ImColors::U32::RED);
 		}
@@ -146,10 +150,11 @@ namespace epion::Node
 		draw_list->ChannelsSetCurrent(0); // input_slot
 		for (int i = 0; i < input_size; i++)
 		{
-			if (m_is_slot_input[i] != INPUT_SLOT_STATE::ONE)
+			if (m_is_slot_input[i] == INPUT_SLOT_STATE::ZERO)
 			{
 				draw_list->AddLine(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos) + ImVec2(-20, 0), GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), GUI::ImColors::U32::GREEN, 1.0f);
 				NodeFunction::InputRectDraw(draw_list, GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].SlotType);
+				NodeFunction::SetInputSlotDynamic(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].InputData, m_Inputs[i].SlotType,i* input_size);
 			}
 		}
 
@@ -189,15 +194,6 @@ namespace epion::Node
 		return m_Size;
 	}
 
-	void NodeBase::SetPos(const Math::FVector2& pos)
-	{
-		m_Pos = pos;
-	}
-
-	void NodeBase::SetDrawPos(const ImVec2& draw_pos)
-	{
-		m_DrawPos = draw_pos;
-	}
 
 	const Math::FVector2 NodeBase::GetInputSlotPos(int slot_no, const Math::FVector2& adjustment_pos) const
 	{
@@ -213,7 +209,29 @@ namespace epion::Node
 	{
 		return m_is_push;
 	}
+	bool NodeBase::GetIsSlotInputONE(int index)
+	{
+		if(m_is_slot_input[index]==INPUT_SLOT_STATE::ONE)
+		{
+			return true;
+		}
+		return false;
+	}
 
+	void NodeBase::SetPos(const Math::FVector2& pos)
+	{
+		m_Pos = pos;
+	}
+
+	void NodeBase::SetDrawPos(const ImVec2& draw_pos)
+	{
+		m_DrawPos = draw_pos;
+	}
+
+	void NodeBase::SetIsSlotInput(int index, INPUT_SLOT_STATE type)
+	{
+		m_is_slot_input[index] = type;
+	}
 	void NodeBase::PushEventBegin()
 	{
 		m_is_push = true;
@@ -286,20 +304,6 @@ namespace epion::Node
 			"out slot " + std::to_string(m_output.LinkData.slot) + " " +
 			"in id " + std::to_string(m_input.LinkData.id) + " " +
 			"in slot " + std::to_string(m_input.LinkData.slot);
-	}
-	SampleNode::SampleNode(std::string_view name, int id, const Math::FVector2& pos)
-		:NodeBase(name, id, pos, 2, 1)
-	{
-		NodeParam data;
-		FileIO::InputJson<NodeParam>("Epion12\\Settings\\NodeSetting.json", name, data);
-		for (int i = 0; i < data.Inputs.size(); i++)
-		{
-			m_Inputs[i] = { data.Inputs[i].Name,data.Inputs[i].SlotType,pos,GUI::ImColors::U32::BLACK,{} };
-		}
-		for (int o = 0; o < data.Outputs.size(); o++)
-		{
-			m_Outputs[o] = { data.Outputs[o].Name,data.Outputs[o].SlotType,pos,GUI::ImColors::U32::BLACK,{} };
-		}
 	}
 
 	FunctionNode::FunctionNode(std::string_view name, int id, const Math::FVector2& pos)
