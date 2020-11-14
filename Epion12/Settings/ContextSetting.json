@@ -11,7 +11,7 @@
       "RoundedRectangle"
     ]
   },
-  "Noise": {
+  "Hash": {
     "Name": [
       "hash11",
       "hash12",
@@ -25,7 +25,11 @@
       "hash41",
       "hash42",
       "hash43",
-      "hash44",
+      "hash44"
+    ]
+  },
+  "Noise": {
+    "Name": [
       "random_seed1",
       "random_seed2",
       "random_seed3",

@@ -65,7 +65,6 @@ namespace epion::GUI
 		void Enclose(ImDrawList* draw_list);
 		void Scroll();
 
-
 		void NodeUpdate(ImDrawList* draw_list);
 		void NodeInputUpdate(ImDrawList* draw_list, int size);
 		void NodeOutputUpdate(ImDrawList* draw_list, int size);
@@ -75,10 +74,8 @@ namespace epion::GUI
 
 		void DrawLinkLine(ImDrawList* draw_list);
 
-
 		bool IsOpenContextMenu();
 
-	
 		void LineDeleteContext();
 		void PopUpBegin(std::string_view str);
 		void PopUpEnd();

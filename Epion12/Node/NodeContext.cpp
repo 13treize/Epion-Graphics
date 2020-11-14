@@ -79,15 +79,20 @@ namespace	epion::Node
 		m_menu_item_states[Procedural].Name = TO_STRING(Procedural);
 		m_menu_item_states[Utility].Name = TO_STRING(Utility);
 		m_menu_item_states[UV].Name = TO_STRING(UV);
+		m_menu_item_states[Hash].Name = TO_STRING(Hash);
 		m_menu_item_states[Noise].Name = TO_STRING(Noise);
 		//m_menu_item_states[Noise].ItemChild.push_back({ "Hash", false,{} });
 
 
+		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Procedural), m_context_data[Procedural]);
+		for (const auto& e : m_context_data[Procedural].Name)	m_menu_item_states[Procedural].ItemChild.push_back({ e, false, {} });
+
+		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Hash), m_context_data[Hash]);
+		for (const auto& e : m_context_data[Hash].Name)	m_menu_item_states[Hash].ItemChild.push_back({ e, false, {} });
+
 		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Noise), m_context_data[Noise]);
 		for (const auto& e : m_context_data[Noise].Name)	m_menu_item_states[Noise].ItemChild.push_back({ e, false, {} });
 
-		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Procedural), m_context_data[Procedural]);
-		for (const auto& e : m_context_data[Procedural].Name)	m_menu_item_states[Procedural].ItemChild.push_back({ e, false, {} });
 
 	}
 	NodeTypeMenuContext::~NodeTypeMenuContext()
@@ -143,6 +148,10 @@ namespace	epion::Node
 			}
 			PopupEndSettings();
 		}
+		if (GUI::IsRightClick() && m_is_open_menu)
+		{
+			m_is_open_menu = false;
+		}
 	}
 
 	void NodeTypeMenuContext::ContextChild(std::vector<std::unique_ptr<Node::NodeBase>>& nodes)
@@ -168,6 +177,11 @@ namespace	epion::Node
 					ImGui::Separator();
 				}
 				PopupEndSettings();
+			}
+			if (GUI::IsRightClick() && m_menu_item_states[i].IsOpen)
+			{
+				CloseMenu();
+				m_menu_item_states[i].IsOpen = false;
 			}
 		}
 	}

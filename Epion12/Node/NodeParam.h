@@ -27,6 +27,7 @@ namespace	epion::Node
 		Procedural,
 		Utility,
 		UV,
+		Hash,
 		Noise,
 		ArraySize
 	};

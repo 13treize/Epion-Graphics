@@ -17,6 +17,77 @@ namespace
 }
 namespace epion::Node
 {
+	ColorPicker2::ColorPicker2()
+	{
+	}
+	ColorPicker2::~ColorPicker2()
+	{
+	}
+
+	void	ColorPicker2::Init(std::string_view str, std::string_view str2)
+	{
+		std::string str3 = str.data();
+		m_backup_color = ImVec4(0, 0, 0, 0);
+		m_color = ImVec4(0, 0, 0, 0);
+		m_popup_name = "mypicker"+str3;
+		m_picker_name = "##picker" + str3;
+		m_current_name = "##current" + str3;
+		m_previous_name = "##previous" + str3;
+		m_color_button_name = "MyColor" + str3;
+		m_button_name = str2;
+	}
+
+	void	ColorPicker2::Activate(bool is_popup, Math::FVector4& color)
+	{
+		if (is_popup)
+		{
+			ImGui::OpenPopup(m_popup_name.c_str());
+			m_backup_color.x = color.x;
+			m_backup_color.y = color.y;
+			m_backup_color.z = color.z;
+			m_backup_color.w = 1.0;
+		}
+		if (ImGui::BeginPopup(m_popup_name.c_str()))
+		{
+			ImGui::Text("ColorPicker");
+			ImGui::Separator();
+			ImGui::ColorPicker4(m_picker_name.c_str(), (float*)&m_color, m_edit_flags);
+			ImGui::SameLine();
+
+			ImGui::BeginGroup();
+			ImGui::Text("Current");
+			ImGui::ColorButton(m_current_name.c_str(), m_color, ImGuiColorEditFlags_NoPicker | ImGuiColorEditFlags_AlphaPreviewHalf, ImVec2(60, 40));
+			ImGui::Text("Previous");
+			if (ImGui::ColorButton(m_previous_name.c_str(), m_backup_color, ImGuiColorEditFlags_NoPicker | ImGuiColorEditFlags_AlphaPreviewHalf, ImVec2(60, 40)))
+				m_color = m_backup_color;
+			ImGui::EndGroup();
+			ImGui::EndPopup();
+		}
+
+		m_ret_color.x = m_color.x;
+		m_ret_color.y = m_color.y;
+		m_ret_color.z = m_color.z;
+	}
+
+	void	ColorPicker2::SetInputSlotColor2(const ImVec2& set_cursor, bool popup, Math::FVector4& num, int label_num)
+	{
+		m_edit_flags |= ImGuiColorEditFlags_AlphaBar;
+		m_edit_flags |= ImGuiColorEditFlags_NoSidePreview;
+		m_edit_flags |= ImGuiColorEditFlags_PickerHueBar;
+		m_edit_flags |= ImGuiColorEditFlags_Float;
+
+		ImGui::SetCursorScreenPos(set_cursor + ImVec2(-90, -8));
+		//	std::string	m_color_button_name;
+
+		popup = ImGui::ColorButton(m_color_button_name.c_str(), ImVec4(num.x, num.y, num.z, 1.0f), m_edit_flags);
+		ImGui::SameLine();
+		//	std::string	m_button_name;
+
+		popup |= ImGui::Button(m_button_name.c_str());
+
+		Activate(popup, num);
+		num = m_ret_color;
+	}
 	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos, int input_num, int output_num)
 		:m_Name(name), m_ID(id), m_Pos(pos), m_is_push(false), m_is_double_clicked(false)
 	{
@@ -48,6 +119,13 @@ namespace epion::Node
 		{
 			m_Size = { SIZE_BASE * output_num + 30.0f,SIZE_BASE * output_num };
 		}
+		m_open_popup[0] = false;
+		m_color_picker[0].Init("1", "Color");
+		m_open_popup[1] = false;
+		m_color_picker[1].Init("2", "Color ");
+		m_open_popup[2] = false;
+		m_color_picker[2].Init("3", "Color  ");
+
 	}
 	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos)
 		:m_Name(name), m_ID(id), m_Pos(pos), m_is_push(false), m_is_double_clicked(false)
@@ -89,29 +167,24 @@ namespace epion::Node
 		{
 			m_Size = { SIZE_BASE * output_num + 30.0f,SIZE_BASE * output_num };
 		}
-
-
+		m_open_popup[0] = false;
+		m_color_picker[0].Init("1", "Color");
+		m_open_popup[1] = false;
+		m_color_picker[1].Init("2", "Color ");
+		m_open_popup[2] = false;
+		m_color_picker[2].Init("3", "Color  ");
 	}
 	void	NodeBase::Draw(ImDrawList* draw_list, const ImVec2& offset, float scroll_scale)
 	{
 		draw_list->ChannelsSetCurrent(1);
 		ImGui::SetWindowFontScale(1.0f);
-
 		m_DrawPos = GUI::ImGuiFunction::GetImVec2(m_Pos) + offset;
 		ImVec2 node_rect_size = m_DrawPos + GUI::ImGuiFunction::GetImVec2(m_Size);
 		ImVec2 node_rect_max = m_DrawPos + ImVec2(m_Size.x * 0.5f, m_Size.y) * scroll_scale;
 		ImVec2 title_bar_pos = m_DrawPos + ImVec2(m_Size.x, 18.0f) * scroll_scale;
-
-
 		draw_list->AddRectFilled(m_DrawPos, title_bar_pos, TITLE_BAR_COLOR, 2.0f);
 		ImGui::SetCursorScreenPos(m_DrawPos + NODE_FONT_ADD_POS);	//ノードのタイトル描画の座標を指定
-		//if (ImGui::TreeNode(m_Name.c_str()))
-		//{
-		//}
-			//ImGui::TreePop();
-
 		draw_list->AddRectFilled(m_DrawPos, node_rect_size, RECT_COLOR, 2.0f);
-
 		if (m_NodeType != NODE_STATE::MASTER)
 		{
 			draw_list->AddRectFilled(m_DrawPos, node_rect_max, RECT_COLOR, 2.0f);
@@ -123,7 +196,6 @@ namespace epion::Node
 
 		auto input_size = m_Inputs.size();
 		auto output_size = m_Outputs.size();
-
 		if (m_is_push && !m_is_double_clicked)
 		{
 			draw_list->AddRect(m_DrawPos, node_rect_size, GUI::ImColors::U32::GREEN);
@@ -154,13 +226,17 @@ namespace epion::Node
 			{
 				draw_list->AddLine(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos) + ImVec2(-20, 0), GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), GUI::ImColors::U32::GREEN, 1.0f);
 				NodeFunction::InputRectDraw(draw_list, GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].SlotType);
-				NodeFunction::SetInputSlotDynamic(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].InputData, m_Inputs[i].SlotType,i* input_size);
+				if (m_Inputs[i].SlotType == SLOT_TYPE::COLOR)
+				{
+					m_color_picker[0].SetInputSlotColor2(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_open_popup[0], m_Inputs[i].InputData, 1);
+				}
+				else
+				{
+					NodeFunction::SetInputSlotDynamic(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].InputData, m_Inputs[i].SlotType, i * input_size);
+				}
 			}
 		}
-
 	}
-
-
 
 	const int NodeBase::GetID() const
 	{
@@ -240,6 +316,7 @@ namespace epion::Node
 	{
 		m_is_push = false;
 	}
+
 
 
 	NodeLink::NodeLink(int output_id, int output_slot, int input_id, int input_slot)

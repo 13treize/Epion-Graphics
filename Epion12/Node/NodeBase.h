@@ -6,6 +6,42 @@
 
 namespace epion::Node
 {
+	/**
+	* @brief Imguiを用いたColorPickerクラス
+	*/
+
+	class ColorPicker2 final
+	{
+	public:
+		ColorPicker2();
+		~ColorPicker2();
+		/**
+		* @brief privateメンバー変数の初期化、Activateを呼び出す前に使う
+		*/
+		void Init(std::string_view str, std::string_view str2);
+		/**
+		* @brief ColorPickerを開ける
+		* @param[in] (is_popup) ColorPickerを開けるかどうか,trueで	open
+		* @param[in] (color) baseのcolorを渡す
+		*/
+		void Activate(bool is_popup, Math::FVector4& color);
+
+		void SetInputSlotColor2(const ImVec2& set_cursor, bool popup, Math::FVector4& num, int label_num = 0);
+
+	private:
+		ImGuiColorEditFlags m_edit_flags;
+		ImVec4 m_backup_color;
+		ImVec4 m_color;
+		Math::FVector4 m_ret_color;
+		std::string	m_popup_name;
+		std::string	m_picker_name;
+		std::string	m_current_name;
+		std::string	m_previous_name;
+		std::string	m_color_button_name;
+		std::string	m_button_name;
+
+	};
+
 	struct LinkData
 	{
 		int id;
@@ -76,6 +112,7 @@ namespace epion::Node
 		virtual	~NodeBase() {};
 
 		void Draw(ImDrawList* draw_list, const ImVec2& offset, float scroll_scale);
+
 		void DrawLinkLine(ImDrawList* draw_list);
 
 		const int GetID() const;
@@ -101,7 +138,8 @@ namespace epion::Node
 
 		void PushEventBegin();
 		void PushEventEnd();
-	//private:
+	private:
+
 	protected:
 		std::string	m_Name;
 		int	m_ID;
@@ -114,6 +152,9 @@ namespace epion::Node
 
 		bool	m_is_push;
 		bool	m_is_double_clicked;
+
+		ColorPicker2	m_color_picker[3];
+		bool			m_open_popup[3];
 
 
 		//inputslotにノードが刺さっているかどうか

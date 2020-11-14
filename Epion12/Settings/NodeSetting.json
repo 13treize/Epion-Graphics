@@ -3,7 +3,7 @@
     "Inputs": [
       {
         "Name": "Color",
-        "Type": 3
+        "Type": 11
       },
       {
         "Name": "Alpha",
