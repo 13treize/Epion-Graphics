@@ -24,8 +24,8 @@ namespace epion::GUI
 		m_nodes.clear();
 		m_links.clear();
 
-		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Result", 0, Math::FVector2(560.0f, 120.0f)));
-		m_nodes.push_back(std::make_unique<Node::FunctionNode>("Voronoi", 1, Math::FVector2(360.0f, 120.0f)));
+		//m_nodes.push_back(std::make_unique<Node::FunctionNode>("Result", 0, Math::FVector2(560.0f, 120.0f)));
+		//m_nodes.push_back(std::make_unique<Node::FunctionNode>("Voronoi", 1, Math::FVector2(360.0f, 120.0f)));
 		m_scroll_scale = 1.0f;
 		m_is_context = false;
 		m_is_node_hit = false;

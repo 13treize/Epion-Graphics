@@ -1,4 +1,46 @@
 {
+  "Test": {
+    "Inputs": [
+      {
+        "Name": "Color",
+        "Type": 11
+      },
+      {
+        "Name": "vec1",
+        "Type": 1
+      },
+      {
+        "Name": "vec2",
+        "Type": 2
+      },
+      {
+        "Name": "vec3",
+        "Type": 3
+      },
+      {
+        "Name": "vec4",
+        "Type": 4
+      }
+    ],
+    "Outputs": [
+      {
+        "Name": "vec1",
+        "Type": 1
+      },
+      {
+        "Name": "vec2",
+        "Type": 2
+      },
+      {
+        "Name": "vec3",
+        "Type": 3
+      },
+      {
+        "Name": "vec4",
+        "Type": 4
+      }
+    ]
+  },
   "Result": {
     "Inputs": [
       {
@@ -17,24 +59,6 @@
     "Outputs": [
     ]
   },
-  "Sample": {
-    "Inputs": [
-      {
-        "Name": "In",
-        "Type": 1
-      },
-      {
-        "Name": "In2",
-        "Type": 1
-      }
-    ],
-    "Outputs": [
-      {
-        "Name": "Out",
-        "Type": 1
-      }
-    ]
-  },
   "Voronoi": {
     "Inputs": [
       {
@@ -49,7 +73,6 @@
         "Name": "CellDensity",
         "Type": 1
       }
-
     ],
     "Outputs": [
       {
@@ -92,7 +115,6 @@
         "Name": "ScaleFactor",
         "Type": 1
       }
-
     ],
     "Outputs": [
       {

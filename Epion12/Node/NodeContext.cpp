@@ -64,36 +64,30 @@ namespace	epion::Node
 	{
 		m_is_first_click = false;
 		m_create_node_count = 0;
+
+		std::array<std::string, NodeType::ArraySize> node_type_name =
+		{
+			TO_STRING(Artistic),
+			TO_STRING(Channel),
+			TO_STRING(Input),
+			TO_STRING(Master),
+			TO_STRING(Math),
+			TO_STRING(Procedural),
+			TO_STRING(Utility),
+			TO_STRING(UV),
+			TO_STRING(Hash),
+			TO_STRING(Noise)
+		};
+
 		for (int i = 0; i < NodeType::ArraySize; i++)
 		{
 			m_menu_item_states[i].IsOpen = false;
 			m_menu_item_states[i].ItemChild.clear();
-
+			m_menu_item_states[i].Name = node_type_name[i];
 			m_context_data[i].Name.clear();
+			FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", node_type_name[i], m_context_data[i]);
+			for (const auto& e : m_context_data[i].Name)	m_menu_item_states[i].ItemChild.push_back({ e, false, {} });
 		}
-		m_menu_item_states[Artistic].Name = TO_STRING(Artistic);
-		m_menu_item_states[Channel].Name = TO_STRING(Channel);
-		m_menu_item_states[Input].Name = TO_STRING(Input);
-		m_menu_item_states[Master].Name = TO_STRING(Master);
-		m_menu_item_states[Math].Name = TO_STRING(Math);
-		m_menu_item_states[Procedural].Name = TO_STRING(Procedural);
-		m_menu_item_states[Utility].Name = TO_STRING(Utility);
-		m_menu_item_states[UV].Name = TO_STRING(UV);
-		m_menu_item_states[Hash].Name = TO_STRING(Hash);
-		m_menu_item_states[Noise].Name = TO_STRING(Noise);
-		//m_menu_item_states[Noise].ItemChild.push_back({ "Hash", false,{} });
-
-
-		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Procedural), m_context_data[Procedural]);
-		for (const auto& e : m_context_data[Procedural].Name)	m_menu_item_states[Procedural].ItemChild.push_back({ e, false, {} });
-
-		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Hash), m_context_data[Hash]);
-		for (const auto& e : m_context_data[Hash].Name)	m_menu_item_states[Hash].ItemChild.push_back({ e, false, {} });
-
-		FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", TO_STRING(Noise), m_context_data[Noise]);
-		for (const auto& e : m_context_data[Noise].Name)	m_menu_item_states[Noise].ItemChild.push_back({ e, false, {} });
-
-
 	}
 	NodeTypeMenuContext::~NodeTypeMenuContext()
 	{
