@@ -86,7 +86,10 @@ namespace	epion::Node
 			m_menu_item_states[i].Name = node_type_name[i];
 			m_context_data[i].Name.clear();
 			FileIO::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", node_type_name[i], m_context_data[i]);
-			for (const auto& e : m_context_data[i].Name)	m_menu_item_states[i].ItemChild.push_back({ e, false, {} });
+			for (const auto& e : m_context_data[i].Name)
+			{
+				m_menu_item_states[i].ItemChild.push_back({ e, false, {} });
+			}
 		}
 	}
 	NodeTypeMenuContext::~NodeTypeMenuContext()

@@ -64,7 +64,7 @@ namespace epion::GUI
 		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(1, 1));
 		ImGui::PushStyleColor(ImGuiCol_Border, ImColors::U32::GREEN);
 		ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_ChildBg, ImColors::U32::GRAYBLACK);
-		ImGui::BeginChild("NodeWindow", ImVec2(800, 600));
+		ImGui::BeginChild("NodeWindow", ImVec2(1200, 700));
 	}
 	void NodeWindow::End()
 	{

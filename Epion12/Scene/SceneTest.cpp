@@ -19,11 +19,9 @@ namespace epion
 	bool SceneTest::Initialize()
 	{
 		HRESULT hr = S_OK;
-
 		DX12::RootSignatureManager::Build();
 		Camera::CameraManager::Init(DX12::ViewPort::GetAspect());
 		Camera::CameraManager::Update();
-
 
 		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
 		//DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\PSShader.hlsl", ps_blob[0], DX12::ShaderType::TYPE_PIXEL);
@@ -42,7 +40,6 @@ namespace epion
 		m_mesh2->SetPos(0.0, 0.0, 0.0);
 		m_mesh2->SetScale(1.0f, 1.0f, 1.0f);
 		m_mesh2->SetAngle(45.0f, 0.0f, 0.0f);
-
 		cbuffer_index++;
 
 		DX12::ConstantBufferManager::Build3D(3);

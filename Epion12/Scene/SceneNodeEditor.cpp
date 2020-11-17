@@ -23,7 +23,7 @@ namespace epion
 		m_window_flags |= ImGuiWindowFlags_NoMove;
 		m_window_flags |= ImGuiWindowFlags_NoResize;
 
-		ImGui::SetNextWindowSize(ImVec2(900, 780), 1);
+		ImGui::SetNextWindowSize(ImVec2(1280, 720), 1);
 		if (!ImGui::Begin("Editor", nullptr, m_window_flags))
 		{
 			ImGui::End();

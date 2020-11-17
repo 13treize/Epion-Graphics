@@ -4,8 +4,8 @@
 
 namespace
 {
-	constexpr int SCREEN_WIDTH = 1280;
-	constexpr int SCREEN_HEIGHT = 720;
+	constexpr int SCREEN_WIDTH = 1920;
+	constexpr int SCREEN_HEIGHT = 1080;
 	epion::Math::Vector2<int> SCREEN_SIZE =
 	{
 		 SCREEN_WIDTH,SCREEN_HEIGHT
