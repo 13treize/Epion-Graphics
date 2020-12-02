@@ -324,6 +324,15 @@
     <ClInclude Include="Epion12\Scene\SceneNodeEditor.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\Scene\SceneSimpleLighting.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\DX12\DeferredRenderer.h">
+      <Filter>ヘッダー ファイル\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\DX12\ShadowMap.h">
+      <Filter>ヘッダー ファイル\DX12</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -503,6 +512,15 @@
     <ClCompile Include="Epion12\Node\NodeContext.cpp">
       <Filter>ソース ファイル\Node</Filter>
     </ClCompile>
+    <ClCompile Include="Epion12\Scene\SceneSimpleLighting.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\DX12\DeferredRenderer.cpp">
+      <Filter>ソース ファイル\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\DX12\ShadowMap.cpp">
+      <Filter>ソース ファイル\DX12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -596,6 +614,9 @@
       <Filter>リソース ファイル\HLSL\PS</Filter>
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\ProceduralDemo.hlsl">
+      <Filter>リソース ファイル\HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\LightingScene.hlsl">
       <Filter>リソース ファイル\HLSL</Filter>
     </FxCompile>
   </ItemGroup>

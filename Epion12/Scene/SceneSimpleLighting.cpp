@@ -1,7 +1,7 @@
 #include	"../Epion12.h"
 
 #include	"SceneManager.h"
-#include	"SceneDemoProcedural.h"
+#include	"SceneSimpleLighting.h"
 
 #include	"../DX12/Device.h"
 #include	"../DX12/CommandList.h"
@@ -10,14 +10,13 @@
 #include	"../DX12/ShaderManager.h"
 #include	"../DX12/RootSignature.h"
 #include	"../DX12/DescriptorHeap.h"
-
 namespace
 {
-	constexpr int DRAW_CALL_NUM = 8;
+	constexpr int DRAW_CALL_NUM = 1;
 }
 namespace epion
 {
-	bool SceneProcedural::Initialize()
+	bool SceneSimpleLighting::Initialize()
 	{
 		HRESULT hr = S_OK;
 		DX12::RootSignatureManager::Build();
@@ -26,10 +25,10 @@ namespace epion
 
 
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
-		for (int i = 0; i < DRAW_CALL_NUM+1; i++)
+		for (int i = 0; i < DRAW_CALL_NUM + 1; i++)
 		{
 			std::string ps = "PS" + std::to_string(i);
-			DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\ProceduralDemo.hlsl", ps, ps_blob[i], DX12::ShaderType::TYPE_PIXEL);
+			DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\LightingScene.hlsl", ps, ps_blob[i], DX12::ShaderType::TYPE_PIXEL);
 		}
 
 
@@ -43,11 +42,11 @@ namespace epion
 		m_mesh[0]->SetAngle(270.0f, 0.0f, 0.0f);
 		obj_cbuffer_index++;
 		mat_cbuffer_index++;
-		for (int i = 0; i < DRAW_CALL_NUM ; i++)
+		for (int i = 0; i < DRAW_CALL_NUM; i++)
 		{
 			m_cube[i] = std::make_unique<Model::CubeMesh>();
 			m_cube[i]->Initialize(vs_blob, ps_blob[i], DX12::RootSignatureManager::Get(), obj_cbuffer_index, mat_cbuffer_index);
-			m_cube[i]->SetPos(-4.0f+static_cast<float>(i), 0.0f, 0.0f);
+			m_cube[i]->SetPos(-4.0f + static_cast<float>(i), 0.0f, 0.0f);
 			m_cube[i]->SetScale(0.3f, 0.3f, 0.3f);
 			m_cube[i]->SetAngle(0.0f, 0.0f, 0.0f);
 			obj_cbuffer_index++;
@@ -62,11 +61,11 @@ namespace epion
 		data.AmbientColor = { 0.2f,0.2f,0.2f,1.0f };
 		return true;
 	}
-	bool SceneProcedural::Finalize()
+	bool SceneSimpleLighting::Finalize()
 	{
 		return true;
 	}
-	void SceneProcedural::Update()
+	void SceneSimpleLighting::Update()
 	{
 		Camera::CameraManager::Update();
 		static float time = 0.0f;
@@ -82,14 +81,14 @@ namespace epion
 		//DX12::ConstantBufferManager::UpdateCBuffer3(DiffuseAlbedo,FresnelR0,Roughness,0);
 		for (int i = 0; i < DRAW_CALL_NUM; i++)
 		{
-			m_cube[i]->SetAngle(0.0f,time, 0.0f);
+			m_cube[i]->SetAngle(0.0f, time, 0.0f);
 			m_cube[i]->Update();
 			//m_mesh[i]->SetAngle(0.0f, time, 0.0f);
 		}
 		m_mesh[0]->Update();
 
 	}
-	void SceneProcedural::Render(int frame_count)
+	void SceneSimpleLighting::Render(int frame_count)
 	{
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		DX12::CommandList::GetCmd()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -109,7 +108,7 @@ namespace epion
 			Model::CBSetModelDraw(DX12::CommandList::GetCmd(), m_cube[i]->GetState());
 		}
 	}
-	void SceneProcedural::RenderTex()
+	void SceneSimpleLighting::RenderTex()
 	{
 	}
 }

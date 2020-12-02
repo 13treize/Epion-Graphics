@@ -162,6 +162,7 @@
     <ClInclude Include="Epion12\DX12\Buffer.h" />
     <ClInclude Include="Epion12\DX12\CommandList.h" />
     <ClInclude Include="Epion12\DX12\ConstantBufferManager.h" />
+    <ClInclude Include="Epion12\DX12\DeferredRenderer.h" />
     <ClInclude Include="Epion12\DX12\DescriptorHeap.h" />
     <ClInclude Include="Epion12\DX12\Device.h" />
     <ClInclude Include="Epion12\DX12\DX12Wrapper.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Epion12\DX12\PipeLine.h" />
     <ClInclude Include="Epion12\DX12\RootSignature.h" />
     <ClInclude Include="Epion12\DX12\ShaderManager.h" />
+    <ClInclude Include="Epion12\DX12\ShadowMap.h" />
     <ClInclude Include="Epion12\DX12\Texture.h" />
     <ClInclude Include="Epion12\DX12\ViewPort.h" />
     <ClInclude Include="Epion12\Epion12.h" />
@@ -209,6 +211,8 @@
     <ClInclude Include="Epion12\Scene\SceneManager.h" />
     <ClInclude Include="Epion12\Scene\SceneNodeEditor.h" />
     <ClInclude Include="Epion12\Scene\SceneNoise.h" />
+    <ClInclude Include="Epion12\Scene\SceneSimpleLighting.h" />
+    <ClInclude Include="Epion12\Scene\SceneTessellation.h" />
     <ClInclude Include="Epion12\Scene\SceneTest.h" />
     <ClInclude Include="Epion12\String\EpionString.h" />
     <ClInclude Include="Epion12\WinApp.h" />
@@ -274,6 +278,7 @@
     <ClCompile Include="Epion12\DX12\Buffer.cpp" />
     <ClCompile Include="Epion12\DX12\CommandList.cpp" />
     <ClCompile Include="Epion12\DX12\ConstantBufferManager.cpp" />
+    <ClCompile Include="Epion12\DX12\DeferredRenderer.cpp" />
     <ClCompile Include="Epion12\DX12\DescriptorHeap.cpp" />
     <ClCompile Include="Epion12\DX12\Device.cpp" />
     <ClCompile Include="Epion12\DX12\DX12Wrapper.cpp" />
@@ -282,6 +287,7 @@
     <ClCompile Include="Epion12\DX12\PipeLine.cpp" />
     <ClCompile Include="Epion12\DX12\RootSignature.cpp" />
     <ClCompile Include="Epion12\DX12\ShaderManager.cpp" />
+    <ClCompile Include="Epion12\DX12\ShadowMap.cpp" />
     <ClCompile Include="Epion12\DX12\Texture.cpp" />
     <ClCompile Include="Epion12\DX12\ViewPort.cpp" />
     <ClCompile Include="Epion12\FileIO\EpionFIleIO.cpp" />
@@ -313,6 +319,8 @@
     <ClCompile Include="Epion12\Scene\SceneManager.cpp" />
     <ClCompile Include="Epion12\Scene\SceneNodeEditor.cpp" />
     <ClCompile Include="Epion12\Scene\SceneNoise.cpp" />
+    <ClCompile Include="Epion12\Scene\SceneSimpleLighting.cpp" />
+    <ClCompile Include="Epion12\Scene\SceneTessellation.cpp" />
     <ClCompile Include="Epion12\Scene\SceneTest.cpp" />
     <ClCompile Include="Epion12\String\EpionString.cpp" />
     <ClCompile Include="Epion12\WinApp.cpp" />
@@ -445,6 +453,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
+    <FxCompile Include="Epion12\HLSL\LightingScene.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
     <FxCompile Include="Epion12\HLSL\Obj\TestPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
@@ -513,6 +527,12 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Epion12\HLSL\Tessellation.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="Epion12\HLSL\VS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

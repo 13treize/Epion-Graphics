@@ -5,6 +5,7 @@
 #include	"Scene3D.h"
 #include	"SceneNoise.h"
 #include	"SceneDemoProcedural.h"
+#include	"SceneSimpleLighting.h"
 #include	"SceneNodeEditor.h"
 
 namespace

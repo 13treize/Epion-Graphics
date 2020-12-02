@@ -12,5 +12,6 @@ namespace epion::GUI
 	private:
 		std::string m_bar_title;
 		int m_select_scene;
+
 	};
 }

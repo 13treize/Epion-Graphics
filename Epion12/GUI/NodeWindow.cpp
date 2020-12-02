@@ -332,7 +332,6 @@ namespace epion::GUI
 		{
 			m_nodes[size]->PushEventEnd();
 			m_is_node_hit = false;
-
 		}
 
 		if (m_nodes[size]->GetIsPush() &&

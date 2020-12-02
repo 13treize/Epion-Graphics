@@ -4,8 +4,8 @@
 
 namespace
 {
-	constexpr int SCREEN_WIDTH = 1920;
-	constexpr int SCREEN_HEIGHT = 1080;
+	constexpr int SCREEN_WIDTH = 1280;
+	constexpr int SCREEN_HEIGHT = 720;
 	epion::Math::Vector2<int> SCREEN_SIZE =
 	{
 		 SCREEN_WIDTH,SCREEN_HEIGHT
@@ -46,7 +46,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
 		epion::MainSystem::Render();
 	}
 	epion::MainSystem::Finalize();
-
 	epion::WinApp::UnRegisterCall();
 
 	return (int)msg.wParam;

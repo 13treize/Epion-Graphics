@@ -138,6 +138,15 @@ namespace epion::Node
 
 		void PushEventBegin();
 		void PushEventEnd();
+		template<class Archive>
+		void serialize(Archive& archive)
+		{
+			archive(
+				CEREAL_NVP(m_Name),
+				CEREAL_NVP(m_ID),
+				CEREAL_NVP(m_Pos));
+		}
+
 	private:
 
 	protected:

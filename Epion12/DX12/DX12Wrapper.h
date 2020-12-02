@@ -25,10 +25,13 @@ namespace epion::DX12
 		__forceinline static bool CreateCommandQueue(com_ptr<T>& device, com_ptr<ID3D12CommandQueue>& queue);
 
 		template<class T>
+		__forceinline static bool CreateDepthStencilBuffer(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heap, com_ptr<ID3D12Resource>& depth_buffer, UINT width, UINT height);
+
+		template<class T>
 		__forceinline static bool CreateDepthStencilHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heaps, unsigned int num);
 
 		template<class T>
-		__forceinline static bool CreateDepthStencilView(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heap, com_ptr<ID3D12Resource>& depth_buffer,UINT width,UINT height);
+		__forceinline static bool CreateDepthStencilView(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heap, com_ptr<ID3D12Resource>& depth_buffer, UINT width, UINT height);
 
 		template<class T>
 		__forceinline static bool CreateFactory(com_ptr<T>& factory);
@@ -40,42 +43,45 @@ namespace epion::DX12
 		__forceinline static bool CreateRenderTargetHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& rtv_heaps, unsigned int num);
 
 		template<class	T>
+		__forceinline static bool CreateShadowMap(com_ptr<T>& device, com_ptr<ID3D12Resource>& shadow_map, const Math::Vector2<int>& screen_size, const DXGI_FORMAT format);
+
+		template<class	T>
 		__forceinline static bool CreateSwapChains(com_ptr<T>& swap_ptr, com_ptr<IDXGIFactory6>& factory, com_ptr<ID3D12CommandQueue>& cmd_queue, HWND hwnd, const Math::Vector2<int>& screen_size_, int buffer_num);
 
 		static constexpr DXGI_SWAP_CHAIN_DESC1 SWAP_CHAIN_DESC1 =
 		{
-			.Width=0,
-			.Height=0,
-			.Format= DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM,
-			.Stereo=false,
+			.Width = 0,
+			.Height = 0,
+			.Format = DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM,
+			.Stereo = false,
 			.SampleDesc = {1,0},
-			.BufferUsage=DXGI_USAGE_BACK_BUFFER,
-			.BufferCount=0,
+			.BufferUsage = DXGI_USAGE_BACK_BUFFER,
+			.BufferCount = 0,
 			.Scaling = DXGI_SCALING::DXGI_SCALING_STRETCH,
 			.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_FLIP_DISCARD,
 			.AlphaMode = DXGI_ALPHA_MODE::DXGI_ALPHA_MODE_UNSPECIFIED,
-			.Flags= DXGI_SWAP_CHAIN_FLAG::DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH,
+			.Flags = DXGI_SWAP_CHAIN_FLAG::DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH,
 		};
 		static constexpr D3D12_HEAP_PROPERTIES DSV_HEAP_PROPERTIES =
 		{
-			.Type= D3D12_HEAP_TYPE_DEFAULT,
-			.CPUPageProperty= D3D12_CPU_PAGE_PROPERTY_UNKNOWN,
-			.MemoryPoolPreference= D3D12_MEMORY_POOL_UNKNOWN,
-			.CreationNodeMask=0,
-			.VisibleNodeMask=0,
+			.Type = D3D12_HEAP_TYPE_DEFAULT,
+			.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN,
+			.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN,
+			.CreationNodeMask = 0,
+			.VisibleNodeMask = 0,
 		};
 		static constexpr D3D12_RESOURCE_DESC RESOURCE_DESC_TEX2D =
 		{
 			.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D,
-			.Alignment=0,
-			.Width=0,
-			.Height=0,
-			.DepthOrArraySize=1,
-			.MipLevels=0,
-			.Format= DXGI_FORMAT_D32_FLOAT,
+			.Alignment = 0,
+			.Width = 0,
+			.Height = 0,
+			.DepthOrArraySize = 1,
+			.MipLevels = 0,
+			.Format = DXGI_FORMAT_D32_FLOAT,
 			.SampleDesc = {1,0},
-			.Layout= D3D12_TEXTURE_LAYOUT_UNKNOWN,
-			.Flags= D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL,
+			.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN,
+			.Flags = D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL,
 		};
 
 		static constexpr D3D12_RENDER_TARGET_BLEND_DESC RENDER_TARGET_BLEND_DESC =
@@ -156,6 +162,14 @@ namespace epion::DX12
 			.ForcedSampleCount = 0,
 			.ConservativeRaster = D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF,
 		};
+		static constexpr D3D12_HEAP_PROPERTIES SHADOW_HEAP_PROPERTIES =
+		{
+			.Type = D3D12_HEAP_TYPE_DEFAULT,
+			.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN,
+			.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN,
+			.CreationNodeMask = 0,
+			.VisibleNodeMask = 0,
+		};
 
 	};
 
@@ -203,11 +217,17 @@ namespace epion::DX12
 	}
 
 	template<class T>
+	__forceinline static bool DX12Wrapper::CreateDepthStencilBuffer(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heap, com_ptr<ID3D12Resource>& depth_buffer, UINT width, UINT height)
+	{
+		return true;
+	}
+
+	template<class T>
 	__forceinline static bool DX12Wrapper::CreateDepthStencilHeap(com_ptr<T>& device, com_ptr<ID3D12DescriptorHeap>& dsv_heaps, unsigned int num)
 	{
 		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
-		D3D12_DESCRIPTOR_HEAP_DESC dsv_heap_desc= 
-		{ D3D12_DESCRIPTOR_HEAP_TYPE_DSV, num, D3D12_DESCRIPTOR_HEAP_FLAG_NONE, 0 
+		D3D12_DESCRIPTOR_HEAP_DESC dsv_heap_desc =
+		{ D3D12_DESCRIPTOR_HEAP_TYPE_DSV, num, D3D12_DESCRIPTOR_HEAP_FLAG_NONE, 0
 		};
 		HRESULT hr = device->CreateDescriptorHeap(&dsv_heap_desc, IID_PPV_ARGS(&dsv_heaps));
 		if (FAILED(hr))	return false;
@@ -240,7 +260,7 @@ namespace epion::DX12
 		descDSV.ViewDimension = D3D12_DSV_DIMENSION_TEXTURE2D;
 		descDSV.Format = DXGI_FORMAT_D32_FLOAT;
 		descDSV.Texture2D.MipSlice = 0;
-		device->CreateDepthStencilView(	depth_buffer.Get(),	&descDSV,	dsv_heap->GetCPUDescriptorHandleForHeapStart());
+		device->CreateDepthStencilView(depth_buffer.Get(), &descDSV, dsv_heap->GetCPUDescriptorHandleForHeapStart());
 		return true;
 	}
 
@@ -269,6 +289,38 @@ namespace epion::DX12
 		D3D12_DESCRIPTOR_HEAP_DESC rtv_heap_desc = { D3D12_DESCRIPTOR_HEAP_TYPE_RTV, num, D3D12_DESCRIPTOR_HEAP_FLAG_NONE, 0 };
 		HRESULT hr = device->CreateDescriptorHeap(&rtv_heap_desc, IID_PPV_ARGS(&rtv_heaps));
 		if (FAILED(hr))	return false;
+		return true;
+	}
+
+	template<class	T>
+	__forceinline static bool DX12Wrapper::CreateShadowMap(com_ptr<T>& device, com_ptr<ID3D12Resource>& shadow_map,const Math::Vector2<int>& screen_size, const DXGI_FORMAT format)
+	{
+		static_assert(std::is_base_of<ID3D12Device, T>::value == true, "BaseClass not ID3D12Device");
+		D3D12_RESOURCE_DESC tex_desc;
+		tex_desc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+		tex_desc.Alignment = 0;
+		tex_desc.Width = static_cast<UINT64>(screen_size.x);
+		tex_desc.Height = static_cast<UINT64>(screen_size.y);
+		tex_desc.DepthOrArraySize = 1;
+		tex_desc.MipLevels = 1;
+		tex_desc.Format = format;
+		tex_desc.SampleDesc.Count = 1;
+		tex_desc.SampleDesc.Quality = 0;
+		tex_desc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
+		tex_desc.Flags = D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL;
+
+		D3D12_CLEAR_VALUE opt_clear;
+		opt_clear.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+		opt_clear.DepthStencil.Depth = 1.0f;
+		opt_clear.DepthStencil.Stencil = 0;
+
+		device->CreateCommittedResource(
+			&SHADOW_HEAP_PROPERTIES,
+			D3D12_HEAP_FLAG_NONE,
+			&tex_desc,
+			D3D12_RESOURCE_STATE_GENERIC_READ,
+			&opt_clear,
+			IID_PPV_ARGS(&shadow_map));
 		return true;
 	}
 

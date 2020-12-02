@@ -9,6 +9,8 @@
 #include "../Scene/SceneNoise.h"
 #include "../Scene/SceneTest.h"
 #include "../Scene/SceneDemoProcedural.h"
+#include "../Scene/SceneSimpleLighting.h"
+#include "../Scene/SceneTessellation.h"
 #include "../Scene/SceneNodeEditor.h"
 #include "../Camera/CameraManager.h"
 #include "../DX12/ViewPort.h"
@@ -45,30 +47,14 @@ namespace epion::GUI
 		}
 		if (ImGui::BeginTabItem("DemoScene"))
 		{
-			if (ImGui::RadioButton("Default Scene", &m_select_scene, 0))
-			{
-				SceneManager::SetNextScene<SceneDefault>();
-			}
-			//if (ImGui::RadioButton("2D Scene", &m_select_scene, 1))
-			//{
-			//	SceneManager::SetNextScene<Scene2D>();
-			//}
-			//if (ImGui::RadioButton("3D Scene", &m_select_scene, 2))
-			//{
-			//	SceneManager::SetNextScene<Scene3D>();
-			//}
-			if (ImGui::RadioButton("Noise Scene", &m_select_scene, 3))
-			{
-				SceneManager::SetNextScene<SceneNoise>();
-			}
-			if (ImGui::RadioButton("Procedural Scene ", &m_select_scene, 4))
-			{
-				SceneManager::SetNextScene<SceneProcedural>();
-			}
-			if (ImGui::RadioButton("Test Node", &m_select_scene, 5))
-			{
-				SceneManager::SetNextScene<SceneNodeEditor>();
-			}
+			if (ImGui::RadioButton("Default Scene", &m_select_scene, 0))	SceneManager::SetNextScene<SceneDefault>();
+			//if (ImGui::RadioButton("2D Scene", &m_select_scene, 1))	SceneManager::SetNextScene<Scene2D>();
+			//if (ImGui::RadioButton("3D Scene", &m_select_scene, 2))	SceneManager::SetNextScene<Scene3D>();
+			if (ImGui::RadioButton("Noise Scene", &m_select_scene, 3))	SceneManager::SetNextScene<SceneNoise>();
+			if (ImGui::RadioButton("Procedural Scene ", &m_select_scene, 4))	SceneManager::SetNextScene<SceneProcedural>();
+			if (ImGui::RadioButton("Lighting Scene ", &m_select_scene, 5))	SceneManager::SetNextScene<SceneSimpleLighting>();
+			if (ImGui::RadioButton("Tessellation Scene", &m_select_scene, 6))	SceneManager::SetNextScene<SceneTessellation>();
+			if (ImGui::RadioButton("Test Node", &m_select_scene, 7))	SceneManager::SetNextScene<SceneNodeEditor>();
 
 			ImGui::EndTabItem();
 		}
