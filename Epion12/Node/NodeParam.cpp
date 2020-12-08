@@ -175,6 +175,7 @@ namespace	epion::Node
 		case SLOT_TYPE::SAMPLERSTATE:return GUI::ImColors::U32::WHITE;
 		case SLOT_TYPE::BOOLEAN:return GUI::ImColors::U32::BLUE;
 		}
+		return GUI::ImColors::U32::BLACK;
 	}
 
 	void NodeFunction::NodeCircle(ImDrawList* draw_list, const ImVec2& centrer, float radius, SLOT_TYPE type)

@@ -3,23 +3,53 @@
     "Inputs": [
       {
         "Name": "Color",
-        "Type": 11
+        "Type": 11,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "vec1",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "vec2",
-        "Type": 2
+        "Type": 2,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "vec3",
-        "Type": 3
+        "Type": 3,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "vec4",
-        "Type": 4
+        "Type": 4,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       }
     ],
     "Outputs": [
@@ -45,15 +75,33 @@
     "Inputs": [
       {
         "Name": "Color",
-        "Type": 11
+        "Type": 11,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "Alpha",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "AlphaClipThreshold",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       }
     ],
     "Outputs": [
@@ -63,15 +111,33 @@
     "Inputs": [
       {
         "Name": "UV",
-        "Type": 10
+        "Type": 10,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "AngleOffset",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "CellDensity",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       }
     ],
     "Outputs": [
@@ -97,23 +163,53 @@
     "Inputs": [
       {
         "Name": "UV",
-        "Type": 10
+        "Type": 10,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "Angle",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "Phase",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "SeedScale",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
       },
       {
         "Name": "ScaleFactor",
-        "Type": 1
+        "Type": 1,
+        "Data": {
+          "x": 1,
+          "y": 0,
+          "z": 1,
+          "w": 0
+        }
       }
     ],
     "Outputs": [

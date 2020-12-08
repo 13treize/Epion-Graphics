@@ -3,6 +3,7 @@
 #include <cereal/cereal.hpp>
 #include <cereal/archives/json.hpp>
 #include <cereal/types/vector.hpp>
+#include <cereal/types/polymorphic.hpp>
 
 namespace epion::Node
 {
@@ -46,12 +47,12 @@ namespace epion::Node
 	{
 		int id;
 		int slot;
-		bool	operator==(const	 LinkData& vec)const
+		bool	operator==(const LinkData& vec)const
 		{
 			if (id == vec.id && slot == vec.slot)	return	true;
 			return	false;
 		}
-		bool	operator!=(const	 LinkData& vec)const
+		bool	operator!=(const LinkData& vec)const
 		{
 			if (id != vec.id || slot != vec.slot)	return	true;
 			return	false;
@@ -65,7 +66,22 @@ namespace epion::Node
 		SLOT_TYPE SlotType;
 	};
 
-	struct SlotData
+	struct InputSlotData
+	{
+		std::string Name;
+		SLOT_TYPE	SlotType;
+		Math::FVector4	InputData;
+		template<class Archive>
+		void serialize(Archive& archive)
+		{
+			archive(cereal::make_nvp("Name", Name), cereal::make_nvp("Type", SlotType), cereal::make_nvp("Data",InputData));
+		};
+		Math::FVector2 Pos;
+		ImU32 Color;
+		LinkVector Links;
+	};
+
+	struct OutputSlotData
 	{
 		std::string Name;
 		SLOT_TYPE	SlotType;
@@ -74,26 +90,24 @@ namespace epion::Node
 		{
 			archive(cereal::make_nvp("Name", Name), cereal::make_nvp("Type", SlotType));
 		};
-
 		Math::FVector2 Pos;
-		Math::FVector4	InputData;
 		ImU32 Color;
 		LinkVector Links;
-
 	};
-	using NodeVector = std::vector<SlotData>;
+	using InNodeVector = std::vector<InputSlotData>;
+	using OutNodeVector = std::vector<OutputSlotData>;
 
 	//外部から読み込みするときのパラメータ
 	struct NodeParam
 	{
 		std::string	Name;
-		NodeVector	Inputs;
-		NodeVector	Outputs;
+		InNodeVector	Inputs;
+		OutNodeVector	Outputs;
 		std::string ShaderCode;
 		template<class Archive>
 		void serialize(Archive& archive)
 		{
-			archive(CEREAL_NVP(Inputs), Outputs);
+			archive(CEREAL_NVP(Inputs), CEREAL_NVP(Outputs));
 		}
 	};
 
@@ -106,7 +120,6 @@ namespace epion::Node
 	class NodeBase abstract
 	{
 	public:
-		NodeBase(std::string_view name,int id, const Math::FVector2&	pos,int input_num,int output_num);
 		NodeBase(std::string_view name, int id, const Math::FVector2& pos);
 
 		virtual	~NodeBase() {};
@@ -138,27 +151,30 @@ namespace epion::Node
 
 		void PushEventBegin();
 		void PushEventEnd();
+
 		template<class Archive>
 		void serialize(Archive& archive)
 		{
 			archive(
 				CEREAL_NVP(m_Name),
 				CEREAL_NVP(m_ID),
-				CEREAL_NVP(m_Pos));
+				CEREAL_NVP(m_Pos),
+				cereal::make_nvp("Input Data",m_Inputs)
+				);
 		}
 
 	private:
-
+		void SizeSetting(const size_t input, const size_t output);
 	protected:
 		std::string	m_Name;
 		int	m_ID;
 		Math::FVector2	m_Pos;
 		Math::FVector2	m_Size;
 		ImVec2	m_DrawPos;
-		NodeVector	m_Inputs;
-		NodeVector	m_Outputs;
+		InNodeVector	m_Inputs;
+		OutNodeVector	m_Outputs;
 		NODE_STATE	m_NodeType;
-
+	//	std::vector<Math::FVector4> m_In
 		bool	m_is_push;
 		bool	m_is_double_clicked;
 
@@ -233,9 +249,16 @@ namespace epion::Node
 	class FunctionNode final :public NodeBase
 	{
 	public:
-		FunctionNode() = delete;
+		FunctionNode();
 		FunctionNode(std::string_view name, int id, const Math::FVector2& pos);
 		~FunctionNode();
+
+		template<class Archive>
+		void serialize(Archive& archive)
+		{
+			archive(cereal::base_class<NodeBase>(this));
+		}
+
 	private:
 
 	};

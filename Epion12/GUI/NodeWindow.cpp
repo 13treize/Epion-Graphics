@@ -5,6 +5,7 @@
 #include "../Node/NodeParam.h"
 #include "../Node/NodeBase.h"
 #include "../Node/NodeContext.h"
+#include "../FileIO/EpionFileIO.h"
 namespace
 {
 	epion::Node::NodeMenuContext context;
@@ -39,6 +40,42 @@ namespace epion::GUI
 	}
 	void	NodeWindow::Update()
 	{
+		if (ImGui::BeginMenuBar())
+		{
+			if (ImGui::BeginMenu("Menu"))
+			{
+				if(ImGui::MenuItem("Save(json)"))
+				{
+					FileIO::FileIOManager::OutputJson<Node::NodeBase, Node::NodeLink>("Epion12\\Settings\\Default2.json", "NodeParam",m_nodes, "LinkParam", m_links);
+				}
+				if (ImGui::MenuItem("HLSL Generate"))
+				{
+				}
+
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Examples"))
+			{
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Tools"))
+			{
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Option"))
+			{
+				if (ImGui::BeginMenu("ShaderGenerate"))
+				{
+					ImGui::Combo("Shader Space", &m_space_type, "None\0Tab\0Space\0");
+
+					ImGui::EndMenu();
+				}
+				ImGui::EndMenu();
+			}
+
+			ImGui::EndMenuBar();
+		}
+
 		Begin();
 		ImDrawList* draw_list = ImGui::GetWindowDrawList();
 		draw_list->ChannelsSplit(5);
@@ -60,7 +97,7 @@ namespace epion::GUI
 
 	void NodeWindow::Begin()
 	{
-		ImGui::SetNextWindowPos(ImVec2(30, 10));
+		ImGui::SetNextWindowPos(ImVec2(0, 10));
 		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(1, 1));
 		ImGui::PushStyleColor(ImGuiCol_Border, ImColors::U32::GREEN);
 		ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_ChildBg, ImColors::U32::GRAYBLACK);

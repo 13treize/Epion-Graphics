@@ -106,6 +106,12 @@
     <Filter Include="リソース ファイル\Settings">
       <UniqueIdentifier>{999a8331-0b3b-4ad5-98b0-a408016e4cf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\ShaderGenerate">
+      <UniqueIdentifier>{20460bdc-4307-45d3-8066-63f33ad53878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ShaderGenerate">
+      <UniqueIdentifier>{e259918a-73e2-42bb-b0cd-fc4e4a613293}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Epion12\Epion12.h">
@@ -333,6 +339,12 @@
     <ClInclude Include="Epion12\DX12\ShadowMap.h">
       <Filter>ヘッダー ファイル\DX12</Filter>
     </ClInclude>
+    <ClInclude Include="Epion12\Scene\SceneTessellation.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Epion12\ShaderGenerate\ShaderGenerate.h">
+      <Filter>ヘッダー ファイル\ShaderGenerate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Epion12\WinMain.cpp">
@@ -521,6 +533,12 @@
     <ClCompile Include="Epion12\DX12\ShadowMap.cpp">
       <Filter>ソース ファイル\DX12</Filter>
     </ClCompile>
+    <ClCompile Include="Epion12\Scene\SceneTessellation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\ShaderGenerate\ShaderGenerate.cpp">
+      <Filter>ソース ファイル\ShaderGenerate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -619,5 +637,6 @@
     <FxCompile Include="Epion12\HLSL\LightingScene.hlsl">
       <Filter>リソース ファイル\HLSL</Filter>
     </FxCompile>
+    <FxCompile Include="Epion12\HLSL\Tessellation.hlsl" />
   </ItemGroup>
 </Project>

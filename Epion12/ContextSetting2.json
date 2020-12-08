@@ -1,0 +1,8 @@
+{
+    "Noise": {
+        "Name": [
+            "Voronoi",
+            "WaveletNoise"
+        ]
+    }
+}

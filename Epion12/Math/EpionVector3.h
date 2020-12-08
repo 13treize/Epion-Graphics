@@ -15,7 +15,7 @@ namespace	epion::Math
 		~Vector3()	=default;
 
 		template<class Archive>
-		void serialize(Archive & archive, Vector3<T>)
+		void serialize(Archive & archive)
 		{
 			archive(CEREAL_NVP(x),
 					CEREAL_NVP(y),

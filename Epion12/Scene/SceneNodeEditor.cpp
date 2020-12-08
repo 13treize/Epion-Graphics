@@ -19,7 +19,8 @@ namespace epion
 	void	SceneNodeEditor::Update()
 	{
 		m_window_flags = 0;
-		m_window_flags |= ImGuiWindowFlags_NoTitleBar;
+		//m_window_flags |= ImGuiWindowFlags_NoTitleBar;
+		m_window_flags |= ImGuiWindowFlags_MenuBar;
 		m_window_flags |= ImGuiWindowFlags_NoMove;
 		m_window_flags |= ImGuiWindowFlags_NoResize;
 

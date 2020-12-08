@@ -1,5 +1,5 @@
 #pragma	once
-//#include	"cereal/cereal.hpp"
+#include	"cereal/cereal.hpp"
 
 #include	"EpionVector2.h"
 #include	"EpionVector3.h"

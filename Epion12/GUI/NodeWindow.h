@@ -50,6 +50,7 @@ namespace epion::GUI
 		bool	m_is_now_any_active;
 		bool	m_is_old_any_active;
 
+		int m_space_type;
 		//std::array<bool, NodeType::ArraySize> is_events;
 		//std::array<std::string , NodeType::ArraySize> is_names;
 
