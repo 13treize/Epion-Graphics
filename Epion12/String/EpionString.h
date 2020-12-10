@@ -19,7 +19,7 @@ namespace	epion::String
 		static void ToChar(const wchar_t* str, char* ret, unsigned int	max_size = 256);
 
 		//string Å® wstring
-		static	std::wstring	ToWstring(const std::string& str);
+		static	std::wstring	ToWstring(std::string_view str);
 
 		//wstring Å® string
 		static void ToString(const std::wstring& str, std::string ret, unsigned int	max_size = 256);

@@ -120,7 +120,7 @@ namespace epion::Node
 	class NodeBase abstract
 	{
 	public:
-		NodeBase(std::string_view name, int id, const Math::FVector2& pos);
+		NodeBase(std::string_view type, std::string_view name, int id, const Math::FVector2& pos);
 
 		virtual	~NodeBase() {};
 
@@ -165,6 +165,7 @@ namespace epion::Node
 
 	private:
 		void SizeSetting(const size_t input, const size_t output);
+		void FileSetting(std::string_view type, std::string_view name, NodeParam& data);
 	protected:
 		std::string	m_Name;
 		int	m_ID;
@@ -250,7 +251,7 @@ namespace epion::Node
 	{
 	public:
 		FunctionNode();
-		FunctionNode(std::string_view name, int id, const Math::FVector2& pos);
+		FunctionNode(std::string_view type, std::string_view name, int id, const Math::FVector2& pos);
 		~FunctionNode();
 
 		template<class Archive>

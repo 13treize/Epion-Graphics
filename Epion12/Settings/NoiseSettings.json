@@ -1,9 +1,9 @@
 {
-  "Test": {
+  "Voronoi": {
     "Inputs": [
       {
-        "Name": "Color",
-        "Type": 11,
+        "Name": "UV",
+        "Type": 10,
         "Data": {
           "x": 1.0,
           "y": 0.0,
@@ -12,7 +12,7 @@
         }
       },
       {
-        "Name": "vec1",
+        "Name": "AngleOffset",
         "Type": 1,
         "Data": {
           "x": 1.0,
@@ -22,28 +22,8 @@
         }
       },
       {
-        "Name": "vec2",
-        "Type": 2,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "vec3",
-        "Type": 3,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "vec4",
-        "Type": 4,
+        "Name": "CellDensity",
+        "Type": 1,
         "Data": {
           "x": 1.0,
           "y": 0.0,
@@ -54,28 +34,28 @@
     ],
     "Outputs": [
       {
-        "Name": "vec1",
+        "Name": "Out",
         "Type": 1
       },
       {
-        "Name": "vec2",
-        "Type": 2
+        "Name": "Cells",
+        "Type": 1
       },
       {
-        "Name": "vec3",
-        "Type": 3
+        "Name": "Lines",
+        "Type": 1
       },
       {
-        "Name": "vec4",
-        "Type": 4
+        "Name": "Points",
+        "Type": 1
       }
     ]
   },
-  "Result": {
+  "WaveletNoise": {
     "Inputs": [
       {
-        "Name": "Color",
-        "Type": 11,
+        "Name": "UV",
+        "Type": 10,
         "Data": {
           "x": 1.0,
           "y": 0.0,
@@ -84,7 +64,7 @@
         }
       },
       {
-        "Name": "Alpha",
+        "Name": "Angle",
         "Type": 1,
         "Data": {
           "x": 1.0,
@@ -94,17 +74,41 @@
         }
       },
       {
-        "Name": "AlphaClipThreshold",
+        "Name": "Phase",
         "Type": 1,
         "Data": {
           "x": 1.0,
           "y": 0.0,
           "z": 1.0,
           "w": 0.0
+        }
+      },
+      {
+        "Name": "SeedScale",
+        "Type": 1,
+        "Data": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0,
+          "w": 0.0
+        }
+      },
+      {
+        "Name": "ScaleFactor",
+        "Type": 1,
+        "Data": {
+          "x": 1,
+          "y": 0,
+          "z": 1,
+          "w": 0
         }
       }
     ],
     "Outputs": [
+      {
+        "Name": "Out",
+        "Type": 1
+      }
     ]
   }
 }

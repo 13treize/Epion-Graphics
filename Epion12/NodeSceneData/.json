@@ -1,0 +1,54 @@
+{
+    "NodeParam": [
+        {
+            "polymorphic_id": 2147483649,
+            "polymorphic_name": "epion::Node::FunctionNode",
+            "ptr_wrapper": {
+                "valid": 1,
+                "data": {
+                    "value0": {
+                        "m_Name": "Voronoi",
+                        "m_ID": 0,
+                        "m_Pos": {
+                            "x": 460,
+                            "y": 47
+                        },
+                        "Input Data": [
+                            {
+                                "Name": "UV",
+                                "Type": 10,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            },
+                            {
+                                "Name": "AngleOffset",
+                                "Type": 1,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            },
+                            {
+                                "Name": "CellDensity",
+                                "Type": 1,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "LinkParam": []
+}

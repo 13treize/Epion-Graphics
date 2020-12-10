@@ -57,30 +57,15 @@ namespace	epion::Node
 		int m_create_node_count;
 	};
 
-	template<class First>
-	static inline void SetFalse(First& first)
-	{
-		first = false;
-	}
-
-	template<class First, class... Args>
-	static inline void SetFalse(First& first, Args&... args)
-	{
-		first = false;
-		SetFalse(args...);
-	}
-
 	template <class T = epion::Node::NodeBase>
-	static inline void MenuCreateNode(std::vector<std::unique_ptr<Node::NodeBase>>& nodes, std::string_view name, ImVec2& pos, int& count, bool& is_open)
+	static inline void MenuCreateNode(std::vector<std::unique_ptr<Node::NodeBase>>& nodes, std::string_view type, std::string_view name, ImVec2& pos, int& count, bool& is_open)
 	{
 		static_assert(std::is_base_of<epion::Node::NodeBase, T>::value == true, "BaseClass not NodeBase");
-		//if (ImGui::MenuItem(name.data()))
 		if(GUI::MenuItem(name, is_open))
 		{
-			nodes.push_back(std::make_unique<T>(name,count, Math::FVector2(pos.x, pos.y)));
+			nodes.push_back(std::make_unique<T>(type,name,count, Math::FVector2(pos.x, pos.y)));
 			count++;
 			is_open = false;
-			//	SetFalse(first, args...);
 		}
 	};
 }

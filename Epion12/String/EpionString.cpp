@@ -23,7 +23,7 @@ namespace	epion::String
 	}
 
 	//string Å® wstring
-	std::wstring	StringConverter::ToWstring(const std::string& str)
+	std::wstring	StringConverter::ToWstring(std::string_view str)
 	{
 		std::filesystem::path	get_str = str;
 		return	get_str.wstring();

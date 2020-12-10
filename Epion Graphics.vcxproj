@@ -392,6 +392,7 @@
     <None Include="Epion12\HLSL\Obj\Obj.hlsli" />
     <None Include="Epion12\Settings\ContextSetting.json" />
     <None Include="Epion12\Settings\NodeSetting.json" />
+    <None Include="Epion12\Settings\NoiseSettings.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

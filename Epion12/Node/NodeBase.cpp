@@ -86,13 +86,15 @@ namespace epion::Node
 		num = m_ret_color;
 	}
 
-	NodeBase::NodeBase(std::string_view name, int id, const Math::FVector2& pos)
+	NodeBase::NodeBase(std::string_view type, std::string_view name, int id, const Math::FVector2& pos)
 		:m_Name(name), m_ID(id), m_Pos(pos), m_is_push(false), m_is_double_clicked(false)
 	{
 		m_NodeType = NODE_STATE::NORMAL;
 
 		NodeParam data;
-		FileIO::FileIOManager::InputJson<NodeParam>("Epion12\\Settings\\NodeSetting.json", name, data);
+		std::string file_name = "Epion12\\Settings\\NodeSetting.json";
+		FileIO::FileIOManager::InputJson<NodeParam>(file_name, name, data);
+
 		auto input_num = data.Inputs.size();
 		auto output_num = data.Outputs.size();
 		m_Inputs.clear();
@@ -139,14 +141,8 @@ namespace epion::Node
 
 		auto input_size = m_Inputs.size();
 		auto output_size = m_Outputs.size();
-		if (m_is_push && !m_is_double_clicked)
-		{
-			draw_list->AddRect(m_DrawPos, node_rect_size, GUI::ImColors::U32::GREEN);
-		}
-		if (m_is_double_clicked)
-		{
-			draw_list->AddRect(m_DrawPos, node_rect_size, GUI::ImColors::U32::REDPURPLE);
-		}
+		if (m_is_push && !m_is_double_clicked)	draw_list->AddRect(m_DrawPos, node_rect_size, GUI::ImColors::U32::GREEN);
+		if (m_is_double_clicked)	draw_list->AddRect(m_DrawPos, node_rect_size, GUI::ImColors::U32::REDPURPLE);
 		for (int i = 0; i < input_size; i++)
 		{
 			m_Inputs[i].Pos = GUI::ImGuiFunction::GetFVector2(offset) + GetInputSlotPos(i, Math::FVector2(0.0f, 10.0f));
@@ -169,13 +165,13 @@ namespace epion::Node
 			{
 				draw_list->AddLine(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos) + ImVec2(-20, 0), GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), GUI::ImColors::U32::GREEN, 1.0f);
 				NodeFunction::InputRectDraw(draw_list, GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].SlotType);
-				if (m_Inputs[i].SlotType == SLOT_TYPE::COLOR)
+				if (m_Inputs[i].SlotType != SLOT_TYPE::COLOR)
 				{
-					m_color_picker[0].SetInputSlotColor2(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_open_popup[0], m_Inputs[i].InputData, 1);
+					NodeFunction::SetInputSlotDynamic(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].InputData, m_Inputs[i].SlotType, i * static_cast<int>(input_size));
 				}
 				else
 				{
-					NodeFunction::SetInputSlotDynamic(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_Inputs[i].InputData, m_Inputs[i].SlotType, i * static_cast<int>(input_size));
+					m_color_picker[0].SetInputSlotColor2(GUI::ImGuiFunction::GetImVec2(m_Inputs[i].Pos), m_open_popup[0], m_Inputs[i].InputData, 1);
 				}
 			}
 		}
@@ -262,25 +258,24 @@ namespace epion::Node
 
 	void NodeBase::SizeSetting(const size_t input, const size_t output)
 	{
-		if (input < output)
-		{
-			m_Size = { SIZE_BASE * output ,SIZE_BASE * output };
-		}
-		else
-		{
-			m_Size = { SIZE_BASE * input ,SIZE_BASE * input };
-		}
-		if (input == 1 && output == 1)
-		{
-			m_Size = { 130.0f,SIZE_BASE };
-		}
-
-		if (input == 0)
-		{
-			m_Size = { SIZE_BASE * output + 30.0f,SIZE_BASE * output };
-		}
+		if (input < output)	m_Size = { SIZE_BASE * output ,SIZE_BASE * output };
+		else m_Size = { SIZE_BASE * input ,SIZE_BASE * input };
+		if (input == 1 && output == 1)	m_Size = { 130.0f,SIZE_BASE };
+		if (input == 0)	m_Size = { SIZE_BASE * output + 30.0f,SIZE_BASE * output };
 	}
-
+	void NodeBase::FileSetting(std::string_view type, std::string_view name, NodeParam& data)
+	{
+		//for (int i = 0; i < static_cast<int>(NodeType::ArraySize); i++)
+		//{
+		//	if (type == NodeTypeName[i])
+		//	{
+		//		//std::string file_name = "Epion12\\Settings\\" + NodeTypeName[i] + ".json";
+		//		std::string file_name = "Epion12\\Settings\\NodeSetting.json";
+		//		FileIO::FileIOManager::InputJson<NodeParam>(file_name, name, data);
+		//		break;
+		//	}
+		//}
+	}
 
 	NodeLink::NodeLink(int output_id, int output_slot, int input_id, int input_slot)
 		:m_output({ { output_id ,output_slot }, SLOT_TYPE::VECTOR1 }),
@@ -347,13 +342,13 @@ namespace epion::Node
 	}
 
 	FunctionNode::FunctionNode()
-		:NodeBase("Default", -1, Math::FVector2(0,0))
+		:NodeBase("None", "Default", -1, Math::FVector2(0, 0))
 	{
 
 	}
 
-	FunctionNode::FunctionNode(std::string_view name, int id, const Math::FVector2& pos)
-		:NodeBase(name, id, pos)
+	FunctionNode::FunctionNode(std::string_view type, std::string_view name, int id, const Math::FVector2& pos)
+		: NodeBase(type, name, id, pos)
 	{
 
 	}

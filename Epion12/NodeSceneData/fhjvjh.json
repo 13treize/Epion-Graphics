@@ -1,0 +1,74 @@
+{
+    "NodeParam": [
+        {
+            "polymorphic_id": 2147483649,
+            "polymorphic_name": "epion::Node::FunctionNode",
+            "ptr_wrapper": {
+                "valid": 1,
+                "data": {
+                    "value0": {
+                        "m_Name": "Test",
+                        "m_ID": 0,
+                        "m_Pos": {
+                            "x": 495,
+                            "y": 286
+                        },
+                        "Input Data": [
+                            {
+                                "Name": "Color",
+                                "Type": 11,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            },
+                            {
+                                "Name": "vec1",
+                                "Type": 1,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            },
+                            {
+                                "Name": "vec2",
+                                "Type": 2,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            },
+                            {
+                                "Name": "vec3",
+                                "Type": 3,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            },
+                            {
+                                "Name": "vec4",
+                                "Type": 4,
+                                "Data": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "z": 0,
+                                    "w": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "LinkParam": []
+}

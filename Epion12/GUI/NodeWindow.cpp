@@ -12,6 +12,7 @@ namespace
 	epion::Node::NodeTypeMenuContext menus;
 	constexpr	float	NODE_SLOT_RADIUS = 5.0f;
 	bool m_is_open_line_delete_menu;
+	std::string file_name;
 }
 namespace epion::GUI
 {
@@ -44,10 +45,19 @@ namespace epion::GUI
 		{
 			if (ImGui::BeginMenu("Menu"))
 			{
-				if(ImGui::MenuItem("Save(json)"))
+				if (ImGui::BeginMenu("Json Generate"))
 				{
-					FileIO::FileIOManager::OutputJson<Node::NodeBase, Node::NodeLink>("Epion12\\Settings\\Default2.json", "NodeParam",m_nodes, "LinkParam", m_links);
+					ImGui::InputText("File Name", const_cast<char*>(file_name.c_str()), CHAR_MAX);
+
+					if (ImGui::MenuItem("Save(json)"))
+					{
+						std::string path;
+						path = path + "Epion12\\NodeSceneData\\" + file_name.c_str() + ".json";
+						FileIO::FileIOManager::OutputJson<Node::NodeBase, Node::NodeLink>(path, "NodeParam", m_nodes, "LinkParam", m_links);
+					}
+					ImGui::EndMenu();
 				}
+
 				if (ImGui::MenuItem("HLSL Generate"))
 				{
 				}

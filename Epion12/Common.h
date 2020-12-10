@@ -11,7 +11,7 @@
 
 #define	I_FOR(value_limit)	for(unsigned	char	i	=0;	i	<value_limit;	i++)
 
-#define	TO_STRING(VariableName)	#	VariableName
+#define	TO_STRING(VariableName)	#VariableName
 
 namespace	epion
 {

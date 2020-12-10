@@ -9,6 +9,23 @@
 #include "NodeContext.h"
 #include "../FileIO/EpionFileIO.h"
 
+namespace
+{
+
+	std::array<std::string, epion::Node::NodeType::ArraySize> node_type_name =
+	{
+		"Artistic",
+		"Channel",
+		"Input",
+		"Master",
+		"Math",
+		"Procedural",
+		"Utility",
+		"UV",
+		"Hash",
+		"Noise"
+	};
+}
 namespace	epion::Node
 {
 	NodeMenuContext::NodeMenuContext()
@@ -65,20 +82,6 @@ namespace	epion::Node
 		m_is_first_click = false;
 		m_create_node_count = 0;
 
-		std::array<std::string, NodeType::ArraySize> node_type_name =
-		{
-			TO_STRING(Artistic),
-			TO_STRING(Channel),
-			TO_STRING(Input),
-			TO_STRING(Master),
-			TO_STRING(Math),
-			TO_STRING(Procedural),
-			TO_STRING(Utility),
-			TO_STRING(UV),
-			TO_STRING(Hash),
-			TO_STRING(Noise)
-		};
-
 		for (int i = 0; i < NodeType::ArraySize; i++)
 		{
 			m_menu_item_states[i].IsOpen = false;
@@ -86,8 +89,7 @@ namespace	epion::Node
 			m_menu_item_states[i].Name = node_type_name[i];
 			m_context_data[i].Name.clear();
 			FileIO::FileIOManager::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", node_type_name[i], m_context_data[i]);
-			FileIO::FileIOManager::OutputJson<ContextData>("Epion12\\ContextSetting2.json", node_type_name[i], m_context_data[i]);
-
+			//FileIO::FileIOManager::OutputJson<ContextData>("Epion12\\ContextSetting2.json", NodeTypeName[i], m_context_data[i]);
 			for (const auto& e : m_context_data[i].Name)
 			{
 				m_menu_item_states[i].ItemChild.push_back({ e, false, {} });
@@ -170,7 +172,7 @@ namespace	epion::Node
 					{
 						for (auto& item : m_menu_item_states[i].ItemChild)
 						{
-							MenuCreateNode<Node::FunctionNode>(nodes, item.Name, m_menu_pos, m_create_node_count, m_menu_item_states[i].IsOpen);
+							MenuCreateNode<Node::FunctionNode>(nodes, m_menu_item_states[i].Name,item.Name, m_menu_pos, m_create_node_count, m_menu_item_states[i].IsOpen);
 						}
 					}
 					ImGui::Separator();

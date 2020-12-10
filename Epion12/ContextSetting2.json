@@ -1,8 +1,7 @@
 {
-    "Noise": {
+    "": {
         "Name": [
-            "Voronoi",
-            "WaveletNoise"
+            "Test"
         ]
     }
 }
