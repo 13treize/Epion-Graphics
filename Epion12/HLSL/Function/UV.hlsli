@@ -1,4 +1,13 @@
 
+/*
+    Use Support function
+    Mosaic
+    PolarCoordinates
+    RadialShear
+    Spherize
+    TilingAndOffset
+    Twirl
+*/
 #ifndef INCLUDE_GUARD_UV_HLSLI
 #define INCLUDE_GUARD_UV_HLSLI
 

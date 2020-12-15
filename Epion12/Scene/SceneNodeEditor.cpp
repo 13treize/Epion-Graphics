@@ -1,4 +1,7 @@
 #include	"../Epion12.h"
+#include	"../DX12/Device.h"
+#include	"../DX12/CommandList.h"
+#include	"../DX12/ViewPort.h"
 #include	"SceneManager.h"
 #include	"SceneNodeEditor.h"
 
@@ -7,6 +10,7 @@ namespace epion
 {
 	bool	SceneNodeEditor::Initialize()
 	{
+		m_viewport.Initialize(1280,720);
 		m_node_window.Initialize();
 
 
@@ -34,7 +38,10 @@ namespace epion
 		ImGui::End();
 	}
 	void	SceneNodeEditor::Render(int frame_count)
-	{}
+	{
+		m_viewport.RSSets(DX12::CommandList::GetCmd());
+
+	}
 	void	SceneNodeEditor::RenderTex()
 	{}
 }

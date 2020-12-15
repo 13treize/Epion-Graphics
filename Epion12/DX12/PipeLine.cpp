@@ -10,10 +10,10 @@ namespace
 }
 namespace epion::DX12
 {
-	bool PipeLine::Initialize(HWND hwnd)
+	bool PipeLine::Initialize(HWND hwnd, const int width, const int height)
 	{
 		HRESULT hr = S_OK;
-		m_swapchain_buffer_count=2;
+		m_swapchain_buffer_count = 2;
 
 		DX12Wrapper::CreateFactory<IDXGIFactory6>(m_factory);
 
@@ -22,7 +22,7 @@ namespace epion::DX12
 		DX12Wrapper::CreateFence<ID3D12Device>(Device::Get(), m_fence, m_fence_value);
 
 		CreateCommandObjects();
-		DX12Wrapper::CreateSwapChains<IDXGISwapChain4>(m_swap, m_factory, m_cmd_queue, hwnd, ViewPort::GetScreenSize(), m_swapchain_buffer_count);
+		DX12Wrapper::CreateSwapChains<IDXGISwapChain4>(m_swap, m_factory, m_cmd_queue, hwnd, width, height, m_swapchain_buffer_count);
 
 		CreateHeaps();
 		//DXGI_SWAP_CHAIN_DESC swcDesc = {};
@@ -35,9 +35,9 @@ namespace epion::DX12
 		{
 			hr = m_swap->GetBuffer(i, IID_PPV_ARGS(&m_back_buffers[i]));
 			Device::Get()->CreateRenderTargetView(m_back_buffers[i].Get(), nullptr, handle);
-			handle.ptr +=Device::Get()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+			handle.ptr += Device::Get()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
 		}
-		DX12Wrapper::CreateDepthStencilView<ID3D12Device>(Device::Get(), m_heap_dsv, m_depth_stencil_buffer, static_cast<UINT>(ViewPort::GetScreenSize().x), static_cast<UINT>(ViewPort::GetScreenSize().y));
+		DX12Wrapper::CreateDepthStencilView<ID3D12Device>(Device::Get(), m_heap_dsv, m_depth_stencil_buffer, static_cast<UINT>(width), static_cast<UINT>(height));
 
 		m_dsv_handle = m_heap_dsv->GetCPUDescriptorHandleForHeapStart();
 		CreateFrameResources();

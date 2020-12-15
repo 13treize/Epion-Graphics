@@ -12,19 +12,7 @@
 namespace
 {
 
-	std::array<std::string, epion::Node::NodeType::ArraySize> node_type_name =
-	{
-		"Artistic",
-		"Channel",
-		"Input",
-		"Master",
-		"Math",
-		"Procedural",
-		"Utility",
-		"UV",
-		"Hash",
-		"Noise"
-	};
+
 }
 namespace	epion::Node
 {
@@ -81,18 +69,14 @@ namespace	epion::Node
 	{
 		m_is_first_click = false;
 		m_create_node_count = 0;
-
 		for (int i = 0; i < NodeType::ArraySize; i++)
 		{
-			m_menu_item_states[i].IsOpen = false;
-			m_menu_item_states[i].ItemChild.clear();
-			m_menu_item_states[i].Name = node_type_name[i];
+			m_menu_item_states[i] = { false,NodeTypeName[i].data(),{} };
 			m_context_data[i].Name.clear();
-			FileIO::FileIOManager::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", node_type_name[i], m_context_data[i]);
-			//FileIO::FileIOManager::OutputJson<ContextData>("Epion12\\ContextSetting2.json", NodeTypeName[i], m_context_data[i]);
+			FileIO::FileIOManager::InputJson<ContextData>("Epion12\\Settings\\ContextSetting.json", NodeTypeName[i], m_context_data[i]);
 			for (const auto& e : m_context_data[i].Name)
 			{
-				m_menu_item_states[i].ItemChild.push_back({ e, false, {} });
+				m_menu_item_states[i].ItemChild.push_back({ false,e, {} });
 			}
 		}
 	}
@@ -172,7 +156,7 @@ namespace	epion::Node
 					{
 						for (auto& item : m_menu_item_states[i].ItemChild)
 						{
-							MenuCreateNode<Node::FunctionNode>(nodes, m_menu_item_states[i].Name,item.Name, m_menu_pos, m_create_node_count, m_menu_item_states[i].IsOpen);
+							MenuCreateNode<Node::FunctionNode>(nodes,static_cast<NodeType>(i),item.Name, m_menu_pos, m_create_node_count, m_menu_item_states[i].IsOpen);
 						}
 					}
 					ImGui::Separator();

@@ -257,7 +257,7 @@ void GradientNoise(float2 UV, float Scale, out float Out)
 int morton(int x, int y)
 {
 	int z = 0;
-	for (int i = 0; i < 32 * 4; i++)
+	for (int i = 0; i < 32; i++)
 	{
 		z |= ((x & (1 << i)) << i) | ((y & (1 << i)) << (i + 1));
 	}
@@ -317,16 +317,17 @@ float2 eval_noise(float2 UV, float kr, float f, float b, float o)
 	}
 	return noise;
 }
-void PhasorNoise(float2 uv, float f_, float b_, float o_, out float a, out float b, out float c, out float d)
+void PhasorNoise(float2 UV,float2 Scale, float f_, float Scale2, float o_, out float a, out float b, out float c, out float d)
 {
+	float2 p = UV * Scale;
 	float2 dir = float2(cos(o_), sin(o_));
-	float kr = sqrt(-log(0.05) / 3.14) / b_;
-	float2 phasorNoise = eval_noise(uv, kr, f_, b_, o_) * 0.3;
+	float kr = sqrt(-log(0.05) / 3.14) / Scale2;
+	float2 phasorNoise = eval_noise(p, kr, f_, Scale2, o_) * 0.3;
 	float phi = atan2(phasorNoise.y, phasorNoise.x);
 	a = phi;
 	b = sin(phi) + 0.5;
 	c = length(phasorNoise);
-	d = frac(phi / (2.0 * 3.14) - f_ * dot(uv, dir));
+	d = frac(phi / (2.0 * 3.14) - f_ * dot(p, dir));
 }
 
 //  SimpleNoise
@@ -421,7 +422,7 @@ void Voronoi(float2 UV, float2 AngleOffset, float2 CellDensity, out float Out, o
 	Lines = lerp(1.0, 0.0, smoothstep(0.03, 0.06, md));
 	Points = 1.0 - smoothstep(0.0, 0.1, res);
 }
-//  ChebychevVoronoi
+// ChebychevVoronoi
 void ChebychevVoronoi(float2 UV, float2 AngleOffset, float2 CellDensity, out float Out, out float Cells, out float Lines, out float Points)
 {
 	float2 g = floor(UV * CellDensity);

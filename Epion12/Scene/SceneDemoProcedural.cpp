@@ -19,11 +19,11 @@ namespace epion
 {
 	bool SceneProcedural::Initialize()
 	{
-		HRESULT hr = S_OK;
-		DX12::RootSignatureManager::Build();
-		Camera::CameraManager::Init(DX12::ViewPort::GetAspect());
+		m_viewport.Initialize(1280,720);
+		Camera::CameraManager::Init(m_viewport.GetAspect());
 		Camera::CameraManager::Update();
 
+		DX12::RootSignatureManager::Build();
 
 		DX12::ShaderResouceManager::Compile(L"Epion12\\HLSL\\VSShader.hlsl", vs_blob, DX12::ShaderType::TYPE_VERTEX);
 		for (int i = 0; i < DRAW_CALL_NUM+1; i++)
@@ -91,6 +91,8 @@ namespace epion
 	}
 	void SceneProcedural::Render(int frame_count)
 	{
+		m_viewport.RSSets(DX12::CommandList::GetCmd());
+
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		DX12::CommandList::GetCmd()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 

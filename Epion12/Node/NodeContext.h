@@ -16,8 +16,8 @@ namespace	epion::Node
 	};
 	struct MenuItemState
 	{
-		std::string Name;
 		bool IsOpen;
+		std::string Name;
 		std::vector<MenuItemState> ItemChild;
 	};
 	class NodeMenuContext final :public GUI::ContextObject
@@ -58,7 +58,7 @@ namespace	epion::Node
 	};
 
 	template <class T = epion::Node::NodeBase>
-	static inline void MenuCreateNode(std::vector<std::unique_ptr<Node::NodeBase>>& nodes, std::string_view type, std::string_view name, ImVec2& pos, int& count, bool& is_open)
+	static inline void MenuCreateNode(std::vector<std::unique_ptr<Node::NodeBase>>& nodes, NodeType type, std::string_view name, ImVec2& pos, int& count, bool& is_open)
 	{
 		static_assert(std::is_base_of<epion::Node::NodeBase, T>::value == true, "BaseClass not NodeBase");
 		if(GUI::MenuItem(name, is_open))

@@ -16,7 +16,7 @@
   },
   "Master": {
     "Name": [
-      "Test"
+      "Result"
     ]
   },
   "Math": {
@@ -26,7 +26,15 @@
   },
   "Procedural": {
     "Name": [
-      "Test"
+      "Checkerboard",
+      "Ellipse",
+      "Gear",
+      "Grid",
+      "Hexagon",
+      "Polygon",
+      "Ripple",
+      "RoundedPolygon",
+      "RoundedRectangle"
     ]
   },
   "Utility": {
@@ -36,7 +44,12 @@
   },
   "UV": {
     "Name": [
-      "Test"
+      "Mosaic",
+      "PolarCoordinates",
+      "RadialShear",
+      "Spherize",
+      "TilingAndOffset",
+      "Twirl"
     ]
   },
   "Hash": {
@@ -58,7 +71,14 @@
   },
   "Noise": {
     "Name": [
+      "RandomMaze",
+      "GradientNoise",
+      "PhasorNoise",
+      "SimpleNoise",
       "Voronoi",
+      "ChebychevVoronoi",
+      "ManhattanVoronoi",
+      "MinkowskiVoronoi",
       "WaveletNoise"
     ]
   }

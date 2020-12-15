@@ -75,8 +75,8 @@ namespace epion::DX12
 		CBufferDefault2D data0;
 		data0.ScreenSize =
 		{
-			static_cast<float>(ViewPort::GetScreenSize().x),
-			static_cast<float>(ViewPort::GetScreenSize().y)
+			static_cast<float>(1280),
+			static_cast<float>(720)
 		};
 		data0.MousePos = mouse_pos;
 		data0.Time = { time,0.0f,0.0f,0.0f };

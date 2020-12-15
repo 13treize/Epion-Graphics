@@ -46,7 +46,7 @@ namespace epion::DX12
 		__forceinline static bool CreateShadowMap(com_ptr<T>& device, com_ptr<ID3D12Resource>& shadow_map, const Math::Vector2<int>& screen_size, const DXGI_FORMAT format);
 
 		template<class	T>
-		__forceinline static bool CreateSwapChains(com_ptr<T>& swap_ptr, com_ptr<IDXGIFactory6>& factory, com_ptr<ID3D12CommandQueue>& cmd_queue, HWND hwnd, const Math::Vector2<int>& screen_size_, int buffer_num);
+		__forceinline static bool CreateSwapChains(com_ptr<T>& swap_ptr, com_ptr<IDXGIFactory6>& factory, com_ptr<ID3D12CommandQueue>& cmd_queue, HWND hwnd, const int width, const int height, int buffer_num);
 
 		static constexpr DXGI_SWAP_CHAIN_DESC1 SWAP_CHAIN_DESC1 =
 		{
@@ -325,13 +325,13 @@ namespace epion::DX12
 	}
 
 	template	<class	T>
-	__forceinline static bool DX12Wrapper::CreateSwapChains(com_ptr<T>& swap_ptr, com_ptr<IDXGIFactory6>& factory, com_ptr<ID3D12CommandQueue>& cmd_queue, HWND hwnd, const Math::Vector2<int>& screen_size_, int buffer_num)
+	__forceinline static bool DX12Wrapper::CreateSwapChains(com_ptr<T>& swap_ptr, com_ptr<IDXGIFactory6>& factory, com_ptr<ID3D12CommandQueue>& cmd_queue, HWND hwnd, const int width, const int height, int buffer_num)
 	{
 		static_assert(std::is_base_of<IDXGIDeviceSubObject, T>::value == true, "BaseClass not IDXGIDeviceSubObject");
 		DXGI_SWAP_CHAIN_DESC1 sc_desc = SWAP_CHAIN_DESC1;
 
-		sc_desc.Width = static_cast<UINT>(screen_size_.x);
-		sc_desc.Height = static_cast<UINT>(screen_size_.y);
+		sc_desc.Width = static_cast<UINT>(width);
+		sc_desc.Height = static_cast<UINT>(height);
 		sc_desc.BufferCount = buffer_num;
 		com_ptr<IDXGISwapChain1> swap_chain1;
 

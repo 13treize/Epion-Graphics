@@ -12,7 +12,7 @@ namespace epion::DX12
 	class PipeLine final
 	{
 	public:
-		bool	Initialize(HWND hwnd);
+		bool	Initialize(HWND hwnd, const int width, const int height);
 		bool	Finalize();
 		void	Update();
 		void	Render();

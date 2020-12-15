@@ -18,6 +18,7 @@ namespace epion
 	{
 		HRESULT hr;
 		//m_frame_resouce.push_back(std::make_unique<DX12::FrameResource>(DX12::Device::Get()));
+		m_viewport.Initialize(1280,720);
 
 		DX12::ConstantBufferManager::Build2D();
 		DX12::RootSignatureManager::Build2D(D3D12_ROOT_PARAMETER_TYPE_CBV);
@@ -48,7 +49,7 @@ namespace epion
 		{
 			for (int x = 0; x < 2; x++)
 			{
-				m_square[2*y+x]->Update(Math::FVector2(x*420, y * 420), Math::FVector2(400, 400));
+				//m_square[2*y+x]->Update(Math::FVector2(x*420, y * 420), Math::FVector2(400, 400));
 			}
 		}
 		Math::FVector2 pos = { 0.0f,0.0f };
@@ -59,6 +60,7 @@ namespace epion
 
 	void Scene2D::Render(int frame_count)
 	{
+		m_viewport.RSSets(DX12::CommandList::GetCmd());
 		DX12::RootSignatureManager::SetGraphicsRootSignature();
 		DX12::CommandList::GetCmd()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		//DX12::ConstantBufferManager::SetHeap();

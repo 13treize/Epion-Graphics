@@ -10,6 +10,7 @@
 	Hexagon
 	Polygon
 	Ripple
+	RoundedPolygon
 	RoundedRectangle
 */
 
@@ -37,14 +38,11 @@ void Bias(float4 a, float4 b, out float4 Out)
 float Gain(float a, float b)
 {
 	float p = log(1.0 - b) / log(0.5);
-
 	if (a < 0.001) return 0.0;
 	else if (a > 0.999) return 1.0;
 	if (a < 0.5) return pow(2.0 * a, p) / 2.0;
 	else return 1.0 - pow(2.0 * (1.0 - a), p) / 2.0;
 }
-
-
 void Checkerboard(float2 UV, float3 ColorA, float3 ColorB, float2 Frequency, out float3 Out)
 {
 	UV = (UV.xy + 0.5) * Frequency;
@@ -119,7 +117,58 @@ void Ripple(float2 UV, float Width, float Height, float2 Center, float Scale, ou
 	float2 p = (UV * 2.0 - 1.0) / float2(Width, Height);
 	Out = sin(Scale * distance(p, Center));
 }
+void RoundedPolygon(float2 UV, float Width, float Height, float Sides, float Roundness, out float Out)
+{
+	UV = UV * 2. + float2(-1., -1.);
+	float epsilon = 1e-6;
+	float xx, yy;
+	if (Width == 0.0)
+		xx = 1.0;
+	else
+		xx = 0.0;
+	if (Height == 0.0)
+		yy = 1.0;
+	else
+		yy = 0.0;
+	
+	UV.x = UV.x / (Width + xx * epsilon);
+	UV.y = UV.y / (Height + yy * epsilon);
+	Roundness = clamp(Roundness, 1e-6, 1.);
+	float i_sides = floor(abs(Sides));
+	float fullAngle = 2. * 3.14 / i_sides;
+	float halfAngle = fullAngle / 2.;
+	float opositeAngle = 3.14 * 0.5 - halfAngle;
+	float diagonal = 1. / cos(halfAngle);
 
+	float chamferAngle = Roundness * halfAngle;
+	float remainingAngle = halfAngle - chamferAngle;
+	float ratio = tan(remainingAngle) / tan(halfAngle);
+	float2 chamferCenter = float2(cos(halfAngle), sin(halfAngle)) * ratio * diagonal;
+
+	float2 chamferOrigin = float2(1., tan(remainingAngle));
+	float distA = length(chamferCenter);
+	float distB = 1. - chamferCenter.x;
+	float distCref = length(chamferOrigin);
+
+	 //diagonal = length(chamferCenter) + distB;
+	float uvScale = diagonal;
+	UV *= uvScale;
+	float2 polaruv = float2(atan2(UV.y, UV.x), length(UV));
+	polaruv.x += 3.14 * 0.5 + 2. * 3.14;
+	polaruv.x = fmod(polaruv.x + halfAngle, fullAngle);
+	polaruv.x = abs(polaruv.x - halfAngle);
+	UV = float2(cos(polaruv.x), sin(polaruv.x)) * polaruv.y;
+	float angleRatio = 1. - (polaruv.x - remainingAngle) / chamferAngle;
+	float distC = sqrt(distA * distA + distB * distB - 2. * distA * distB * cos(3.14 - halfAngle * angleRatio));
+	Out = UV.x;
+	float chamferZone;
+	if (halfAngle - polaruv.x < chamferAngle)
+		chamferZone = 1.0;
+	else
+		chamferZone = 0.0;
+	Out = lerp(UV.x, polaruv.y / distC, chamferZone);
+	Out = clamp((1. - Out) / fwidth(Out), 0.0, 1.0);
+}
 void RoundedRectangle(float2 UV, float Width, float Height, float Radius, out float Out)
 {
 	Radius = max(min(min(abs(Radius * 2), abs(Width)), abs(Height)), 1e-5);

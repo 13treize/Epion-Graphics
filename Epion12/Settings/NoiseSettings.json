@@ -1,114 +1,352 @@
 {
-  "Voronoi": {
-    "Inputs": [
-      {
-        "Name": "UV",
-        "Type": 10,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "AngleOffset",
-        "Type": 1,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "CellDensity",
-        "Type": 1,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      }
-    ],
-    "Outputs": [
-      {
-        "Name": "Out",
-        "Type": 1
-      },
-      {
-        "Name": "Cells",
-        "Type": 1
-      },
-      {
-        "Name": "Lines",
-        "Type": 1
-      },
-      {
-        "Name": "Points",
-        "Type": 1
-      }
-    ]
-  },
-  "WaveletNoise": {
-    "Inputs": [
-      {
-        "Name": "UV",
-        "Type": 10,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "Angle",
-        "Type": 1,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "Phase",
-        "Type": 1,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "SeedScale",
-        "Type": 1,
-        "Data": {
-          "x": 1.0,
-          "y": 0.0,
-          "z": 1.0,
-          "w": 0.0
-        }
-      },
-      {
-        "Name": "ScaleFactor",
-        "Type": 1,
-        "Data": {
-          "x": 1,
-          "y": 0,
-          "z": 1,
-          "w": 0
-        }
-      }
-    ],
-    "Outputs": [
-      {
-        "Name": "Out",
-        "Type": 1
-      }
-    ]
-  }
+	"PhasorNoise": {
+		"Inputs": [
+			{
+				"Name": "UV",
+				"Type": 10,
+				"Data": {
+					"x": 0.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "Scale",
+				"Type": 2,
+				"Data": {
+					"x": 1.0,
+					"y": 1.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "f_",
+				"Type": 1,
+				"Data": {
+					"x": 25.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "Scale2",
+				"Type": 1,
+				"Data": {
+					"x": 10.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "o_",
+				"Type": 1,
+				"Data": {
+					"x": 1.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			}
+		],
+		"Outputs": [
+			{
+				"Name": "a",
+				"Type": 1
+			},
+			{
+				"Name": "b",
+				"Type": 1
+			},
+			{
+				"Name": "c",
+				"Type": 1
+			},
+			{
+				"Name": "d",
+				"Type": 1
+			}
+		]
+	},
+	"Voronoi": {
+		"Inputs": [
+			{
+				"Name": "UV",
+				"Type": 10,
+				"Data": {
+					"x": 0.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "AngleOffset",
+				"Type": 1,
+				"Data": {
+					"x": 3.0,
+					"y": 0.0,
+					"z": 1.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "CellDensity",
+				"Type": 1,
+				"Data": {
+					"x": 5.0,
+					"y": 0.0,
+					"z": 1.0,
+					"w": 0.0
+				}
+			}
+		],
+		"Outputs": [
+			{
+				"Name": "Out",
+				"Type": 1
+			},
+			{
+				"Name": "Cells",
+				"Type": 1
+			},
+			{
+				"Name": "Lines",
+				"Type": 1
+			},
+			{
+				"Name": "Points",
+				"Type": 1
+			}
+		]
+	},
+	"ChebychevVoronoi": {
+		"Inputs": [
+			{
+				"Name": "UV",
+				"Type": 10,
+				"Data": {
+					"x": 0.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "AngleOffset",
+				"Type": 1,
+				"Data": {
+					"x": 3.0,
+					"y": 0.0,
+					"z": 1.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "CellDensity",
+				"Type": 1,
+				"Data": {
+					"x": 5.0,
+					"y": 0.0,
+					"z": 1.0,
+					"w": 0.0
+				}
+			}
+		],
+		"Outputs": [
+			{
+				"Name": "Out",
+				"Type": 1
+			},
+			{
+				"Name": "Cells",
+				"Type": 1
+			},
+			{
+				"Name": "Lines",
+				"Type": 1
+			},
+			{
+				"Name": "Points",
+				"Type": 1
+			}
+		]
+	},
+	"ManhattanVoronoi": {
+		"Inputs": [
+			{
+				"Name": "UV",
+				"Type": 10,
+				"Data": {
+					"x": 0.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "AngleOffset",
+				"Type": 1,
+				"Data": {
+					"x": 3.0,
+					"y": 0.0,
+					"z": 1.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "CellDensity",
+				"Type": 1,
+				"Data": {
+					"x": 5.0,
+					"y": 0.0,
+					"z": 1.0,
+					"w": 0.0
+				}
+			}
+		],
+		"Outputs": [
+			{
+				"Name": "Out",
+				"Type": 1
+			},
+			{
+				"Name": "Cells",
+				"Type": 1
+			},
+			{
+				"Name": "Lines",
+				"Type": 1
+			},
+			{
+				"Name": "Points",
+				"Type": 1
+			}
+		]
+	},
+	"MinkowskiVoronoi": {
+		"Inputs": [
+			{
+				"Name": "UV",
+				"Type": 10,
+				"Data": {
+					"x": 0.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "AngleOffset",
+				"Type": 1,
+				"Data": {
+					"x": 3.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "CellDensity",
+				"Type": 1,
+				"Data": {
+					"x": 5.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "p",
+				"Type": 1,
+				"Data": {
+					"x": 0.25,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			}
+		],
+		"Outputs": [
+			{
+				"Name": "Out",
+				"Type": 1
+			},
+			{
+				"Name": "Cells",
+				"Type": 1
+			},
+			{
+				"Name": "Lines",
+				"Type": 1
+			},
+			{
+				"Name": "Points",
+				"Type": 1
+			}
+		]
+	},
+	"WaveletNoise": {
+		"Inputs": [
+			{
+				"Name": "UV",
+				"Type": 10,
+				"Data": {
+					"x": 0.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "Angle",
+				"Type": 1,
+				"Data": {
+					"x": 60.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "Phase",
+				"Type": 1,
+				"Data": {
+					"x": 1.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "SeedScale",
+				"Type": 1,
+				"Data": {
+					"x": 3.0,
+					"y": 0.0,
+					"z": 1.0,
+					"w": 0.0
+				}
+			},
+			{
+				"Name": "ScaleFactor",
+				"Type": 1,
+				"Data": {
+					"x": 1.0,
+					"y": 0.0,
+					"z": 0.0,
+					"w": 0.0
+				}
+			}
+		],
+		"Outputs": [
+			{
+				"Name": "Out",
+				"Type": 1
+			}
+		]
+	}
 }

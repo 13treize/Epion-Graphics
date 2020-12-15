@@ -8,21 +8,33 @@
  */
 namespace epion::DX12
 {
-	class ViewPort final
+	class ViewPortBase
 	{
 	public:
-		static bool	Initialize();
-		static bool	Finalize();
-
-		static void	RSSets(com_ptr<ID3D12GraphicsCommandList>& cmd_list);
-		static void	SetScreenSize(const Math::Vector2<int>& screen_size);
-
-		static const Math::Vector2<int>& GetScreenSize();
-
-		static const float GetAspect();
+		ViewPortBase();
+		ViewPortBase(const D3D12_VIEWPORT& view_port);
+		virtual ~ViewPortBase() {};
+		virtual bool Initialize() = 0;
+		virtual bool Finalize() = 0;
+		void RSSets(com_ptr<ID3D12GraphicsCommandList>& cmd);
+		D3D12_VIEWPORT Get();
+		D3D12_RECT GetRect();
+		const float GetAspect();
+	protected:
+		D3D12_VIEWPORT m_viewport;
+		D3D12_RECT m_scissorrect;
+	};
+	class DefaultViewPort final :public ViewPortBase
+	{
+	public:
+		DefaultViewPort();
+		DefaultViewPort(const D3D12_VIEWPORT& view_port);
+		~DefaultViewPort();
+		bool Initialize() override;
+		bool Initialize(D3D12_VIEWPORT& view_port);
+		bool Initialize(int width,int height);
+		bool Finalize() override;
 	private:
-		static D3D12_VIEWPORT m_viewport;
-		static D3D12_RECT m_scissorrect;
-		static Math::Vector2<int> m_screen_size;
+
 	};
 }

@@ -133,7 +133,7 @@ namespace epion::Model
 		m_index_resource->Finalize();
 		return true;
 	}
-	void Square::Update(const Math::FVector2& d_xy, const Math::FVector2& d_wh)
+	void Square::Update(const Math::FVector2& d_xy, const Math::FVector2& d_wh, const Math::FVector2& sc_size)
 	{
 		if (m_is_update)
 		{
@@ -142,8 +142,8 @@ namespace epion::Model
 			std::valarray<float> arr_y = { d_xy.y,	d_xy.y,	d_xy.y + d_wh.y,	d_xy.y + d_wh.y, };
 			std::array<Model2DVertex, 4> vertices;
 
-			arr_x = 2.0f * arr_x / static_cast<float>(DX12::ViewPort::GetScreenSize().x) - 1.0f;
-			arr_y = 1.0f - 2.0f * arr_y / static_cast<float>(DX12::ViewPort::GetScreenSize().y);
+			arr_x = 2.0f * arr_x / sc_size.x - 1.0f;
+			arr_y = 1.0f - 2.0f * arr_y / sc_size.y;
 
 			I_FOR(4)
 			{

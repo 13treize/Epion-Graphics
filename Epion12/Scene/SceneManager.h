@@ -1,9 +1,12 @@
 #pragma once
+#include	"../Epion12.h"
+#include	"../DX12/ViewPort.h"
 namespace	epion
 {
 	class	Scene	abstract
 	{
 	public:
+		Scene() {};
 		virtual	~Scene() {};
 
 		virtual bool	Initialize() = 0;
@@ -12,6 +15,7 @@ namespace	epion
 		virtual	void	Render(int frame_count) = 0;
 		virtual	void	RenderTex() = 0;
 	protected:
+		DX12::DefaultViewPort m_viewport;
 		//std::unique_ptr<Texture> m_tex;
 	};
 

@@ -94,7 +94,7 @@ namespace epion::GUI
 				ImGui::InputFloat("y   ", &target.y, 0.01f, 100.0f, "%.3f");
 				ImGui::InputFloat("z   ", &target.z, 0.01f, 100.0f, "%.3f");
 
-				ImGui::Text("Aspect %f", DX12::ViewPort::GetAspect());
+				//ImGui::Text("Aspect %f", DX12::ViewPort::GetAspect());
 
 				Camera::CameraManager::GetScene3DCamera()->SetPos(pos);
 				Camera::CameraManager::GetScene3DCamera()->SetTarget(target);

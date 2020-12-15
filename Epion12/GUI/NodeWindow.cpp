@@ -25,9 +25,6 @@ namespace epion::GUI
 
 		m_nodes.clear();
 		m_links.clear();
-
-		//m_nodes.push_back(std::make_unique<Node::FunctionNode>("Result", 0, Math::FVector2(560.0f, 120.0f)));
-		//m_nodes.push_back(std::make_unique<Node::FunctionNode>("Voronoi", 1, Math::FVector2(360.0f, 120.0f)));
 		m_scroll_scale = 1.0f;
 		m_is_context = false;
 		m_is_node_hit = false;
@@ -155,36 +152,6 @@ namespace epion::GUI
 		{
 			m_is_open_line_delete_menu = true;
 		}
-
-		//if (m_is_line_hit)
-		//{
-		//	if (!ImGui::IsAnyItemHovered() &&
-		//		ImGui::IsMouseClicked(1) &&	//右クリック
-		//		!ImGui::IsMouseClicked(0))	//!左クリック
-		//	{
-		//		ContextManager::OpenLineDeleteContext(ImGui::GetIO().MousePos);
-		//	}
-		//}
-		//else
-		//{
-		//	if (ImGui::IsMouseClicked(1) &&	//右クリック
-		//		!ImGui::IsMouseClicked(0))	//!左クリック
-		//	{
-		//		if (!ImGui::IsAnyItemHovered())
-		//		{
-		//			m_node_select_num = m_node_hovered_list = m_node_hovered_in_scene = Node::INIT_NUM;
-		//			ContextManager::OpenNodeCreateContext(ImGui::GetIO().MousePos);
-		//		}
-		//		else
-		//		{
-		//			m_node_select_num = m_node_hovered_list = m_node_hovered_in_scene = Node::INIT_NUM;
-		//			ContextManager::OpenNodeDeleteContext(ImGui::GetIO().MousePos);
-		//		}
-		//	}
-		//}
-		//ContextManager::CreateNodeMenu(m_offset);
-		////ContextManager::DeleteNodeMenu(m_nodes,m_hit_line_num);
-		//ContextManager::DeleteLineMenu(m_links, m_hit_line_num);
 	}
 	void NodeWindow::Drag(ImDrawList* draw_list)
 	{
@@ -202,20 +169,7 @@ namespace epion::GUI
 	}
 	void NodeWindow::Enclose(ImDrawList* draw_list)
 	{
-		//if (ImGui::IsMouseClicked(0) &&
-		//	!m_click_state.is_click_input_slot &&
-		//	!m_click_state.is_click_output_slot)
-		//{
-		//	m_click_state.is_click_display = true;
-		//	m_enclose_pos = ImGui::GetIO().MousePos;
-		//}
-		//if ((!m_click_state.is_click_input_slot ||
-		//	!m_click_state.is_click_output_slot) &&
-		//	m_click_state.is_click_display &&
-		//	ImGui::IsMouseDragging(0))
-		//{
-		//	draw_list->AddRect(m_enclose_pos, ImGui::GetIO().MousePos, IM_COL32(215, 15, 15, 255), 5.0f, 0);
-		//}
+
 	}
 	void NodeWindow::Scroll()
 	{

@@ -533,11 +533,11 @@
     <ClCompile Include="Epion12\DX12\ShadowMap.cpp">
       <Filter>ソース ファイル\DX12</Filter>
     </ClCompile>
-    <ClCompile Include="Epion12\Scene\SceneTessellation.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Epion12\ShaderGenerate\ShaderGenerate.cpp">
       <Filter>ソース ファイル\ShaderGenerate</Filter>
+    </ClCompile>
+    <ClCompile Include="Epion12\Scene\SceneTessellation.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

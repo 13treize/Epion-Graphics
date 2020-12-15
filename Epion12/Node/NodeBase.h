@@ -28,7 +28,6 @@ namespace epion::Node
 		void Activate(bool is_popup, Math::FVector4& color);
 
 		void SetInputSlotColor2(const ImVec2& set_cursor, bool popup, Math::FVector4& num, int label_num = 0);
-
 	private:
 		ImGuiColorEditFlags m_edit_flags;
 		ImVec4 m_backup_color;
@@ -40,7 +39,6 @@ namespace epion::Node
 		std::string	m_previous_name;
 		std::string	m_color_button_name;
 		std::string	m_button_name;
-
 	};
 
 	struct LinkData
@@ -79,6 +77,10 @@ namespace epion::Node
 		Math::FVector2 Pos;
 		ImU32 Color;
 		LinkVector Links;
+
+		//inputslotÇ…ÉmÅ[ÉhÇ™éhÇ≥Ç¡ÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©
+		//TODO ï°êîÇ…ëŒâû
+		INPUT_SLOT_STATE SlotInputState;
 	};
 
 	struct OutputSlotData
@@ -111,6 +113,7 @@ namespace epion::Node
 		}
 	};
 
+
 	enum class NodeState :unsigned char
 	{
 		NORMAL=0,
@@ -120,7 +123,7 @@ namespace epion::Node
 	class NodeBase abstract
 	{
 	public:
-		NodeBase(std::string_view type, std::string_view name, int id, const Math::FVector2& pos);
+		NodeBase(NodeType type, std::string_view name, int id, const Math::FVector2& pos);
 
 		virtual	~NodeBase() {};
 
@@ -146,7 +149,6 @@ namespace epion::Node
 		bool GetIsSlotInputONE(int index);
 
 		void SetPos(const Math::FVector2& pos);
-		void SetDrawPos(const ImVec2& draw_pos);
 		void SetIsSlotInput(int index, INPUT_SLOT_STATE type);
 
 		void PushEventBegin();
@@ -165,28 +167,19 @@ namespace epion::Node
 
 	private:
 		void SizeSetting(const size_t input, const size_t output);
-		void FileSetting(std::string_view type, std::string_view name, NodeParam& data);
+		void FileSetting(NodeType type, std::string_view name, NodeParam& data);
 	protected:
 		std::string	m_Name;
 		int	m_ID;
 		Math::FVector2	m_Pos;
 		Math::FVector2	m_Size;
-		ImVec2	m_DrawPos;
 		InNodeVector	m_Inputs;
 		OutNodeVector	m_Outputs;
 		NODE_STATE	m_NodeType;
-	//	std::vector<Math::FVector4> m_In
 		bool	m_is_push;
 		bool	m_is_double_clicked;
-
 		ColorPicker2	m_color_picker[3];
 		bool			m_open_popup[3];
-
-
-		//inputslotÇ…ÉmÅ[ÉhÇ™éhÇ≥Ç¡ÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©
-		//TODO ï°êîÇ…ëŒâû
-		std::vector<INPUT_SLOT_STATE> m_is_slot_input;
-
 	};
 
 	class	NodeLink
@@ -251,7 +244,7 @@ namespace epion::Node
 	{
 	public:
 		FunctionNode();
-		FunctionNode(std::string_view type, std::string_view name, int id, const Math::FVector2& pos);
+		FunctionNode(NodeType type, std::string_view name, int id, const Math::FVector2& pos);
 		~FunctionNode();
 
 		template<class Archive>
@@ -261,6 +254,5 @@ namespace epion::Node
 		}
 
 	private:
-
 	};
 }

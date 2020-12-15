@@ -15,7 +15,7 @@ namespace epion
 	class MainSystem final
 	{
 	public:
-		static bool	Initialize(HWND hwnd, const Math::Vector2<int>& screen_size);
+		static bool	Initialize(HWND hwnd, const int width,const int height);
 		static bool	Finalize();
 		static void	Update();
 		static void	Render();

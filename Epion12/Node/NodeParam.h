@@ -32,18 +32,18 @@ namespace	epion::Node
 		ArraySize
 	};
 
-	static std::array<std::string, NodeType::ArraySize> NodeTypeName =
+	static constexpr std::array<std::string_view, NodeType::ArraySize> NodeTypeName =
 	{
-		TO_STRING(Artistic),
-		TO_STRING(Channel),
-		TO_STRING(Input),
-		TO_STRING(Master),
-		TO_STRING(Math),
-		TO_STRING(Procedural),
-		TO_STRING(Utility),
-		TO_STRING(UV),
-		TO_STRING(Hash),
-		TO_STRING(Noise)
+		"Artistic",
+		"Channel",
+		"Input",
+		"Master",
+		"Math",
+		"Procedural",
+		"Utility",
+		"UV",
+		"Hash",
+		"Noise",
 	};
 	enum class NODE_STATE :unsigned char
 	{
